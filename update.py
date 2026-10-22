@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Update pipeline for 民生新聞.
 
-  python3 update.py fetch      # run fetch.py, list NEW candidate items -> data/new_candidates.json
+  python3 update.py fetch      # run fetch.py + cwa.py, list NEW candidate items -> data/new_candidates.json
   python3 update.py validate   # check data/news.json against the editorial schema
   python3 update.py finalize   # validate, prune old items, stamp `updated`, screenshots, zip
 
@@ -15,6 +15,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 NEWS = os.path.join(ROOT, "data", "news.json")
 CANDS = os.path.join(ROOT, "candidates.json")
 NEWC = os.path.join(ROOT, "data", "new_candidates.json")
+CWA = os.path.join(ROOT, "cwa_alerts.json")
 TPE = timezone(timedelta(hours=8))
 STATUSES = {"快訊・初步資訊", "完整版"}
 REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what", "when", "published", "sources"]
@@ -40,7 +41,17 @@ def cmd_fetch(a):
         if k in used or k in seen:
             continue
         seen.add(k); new.append(x)
-    json.dump({"generated": c["generated"], "feeds": c["feeds"], "new": new},
+    # Official CWA warnings/earthquakes (keyless; optional CWA_API_KEY). Never fatal.
+    print("\n" + "=" * 60, flush=True)
+    r = subprocess.run([sys.executable, os.path.join(ROOT, "cwa.py"), "-o", CWA])
+    cwa = None
+    if r.returncode == 0 and os.path.exists(CWA):
+        cwa = json.load(open(CWA, encoding="utf-8"))
+    else:
+        print("[FEED FAIL] CWA: cwa.py failed; check https://www.cwa.gov.tw/V8/C/P/Warning/FIFOWS.html manually")
+    print("=" * 60 + "\n")
+    json.dump({"generated": c["generated"], "feeds": c["feeds"], "new": new,
+               "cwa": ({k: cwa[k] for k in ("generated", "urgent", "active_alerts", "typhoons", "earthquakes")} if cwa else None)},
               open(NEWC, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     bad = [f for f in c["feeds"] if not f["ok"]]
     print(f"{len(new)} new candidates -> {NEWC}")

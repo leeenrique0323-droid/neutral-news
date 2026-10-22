@@ -8,7 +8,8 @@
 | 檔案 | 用途 |
 |---|---|
 | `fetch.py` | 抓取 RSS，輸出候選清單 `candidates.json`（含關鍵字初步分類、排除犯罪/娛樂等） |
-| `update.py fetch` | 執行 fetch.py，並列出**尚未收錄**的候選 → `data/new_candidates.json` |
+| `cwa.py` | 抓取中央氣象署（CWA）官方警特報、颱風位置、近期地震 → `cwa_alerts.json`（並印出摘要） |
+| `update.py fetch` | 執行 fetch.py 與 cwa.py，並列出**尚未收錄**的候選 → `data/new_candidates.json`（含 `cwa` 欄位） |
 | `data/news.json` | 網站唯一資料來源（含 `updated` 時間戳，頁面上的「最後更新」即讀取此欄位） |
 | `update.py validate` | 依下方欄位規則檢查 news.json |
 | `update.py finalize` | 檢查 → 刪除過期項目 → 寫入 `updated`（現在時間，UTC+8）→ 重拍截圖 → 重新打包 zip |
@@ -19,6 +20,8 @@
 1. **抓取**：`python3 update.py fetch`
    - 檢查輸出中的 `[FEED FAIL]`；失敗的來源記錄下來，不要改用繞過封鎖的方式抓取。
    - 每個來源只抓一次，間隔 1.5 秒；不要提高頻率。
+   - 輸出中間的「中央氣象署 官方警特報」區塊即目前生效的警特報（見下方「中央氣象署官方警特報」）。
+     出現 `[CWA FAIL]` 或「無法取得」時，改以瀏覽器開啟 CWA 頁面手動確認，不要猜測。
 2. **篩選**：逐一檢視 `data/new_candidates.json`，只保留符合「收錄標準」的項目（見下）。
    關鍵字分類只是提示，最終由編輯判斷。
 3. **讀原文**：對每個入選項目開啟原文網址，閱讀全文。必要時再找第二個來源（公視、中央社、政府新聞稿）交叉確認。
@@ -34,6 +37,34 @@
      若某則仍持續影響民生（例如颱風尚未遠離），應先更新內容與 `updated`，它就會保留。
    - 自動將 `updated` 設為現在時間，重拍三張截圖並重新打包 `/workspace/neutral-news.zip`。
 7. **確認截圖**：開啟三張截圖，確認中文字型正常（無方框）、快訊區在最上方、版面未破。
+
+## 中央氣象署官方警特報（cwa.py）
+
+CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa.py` 改讀網頁本身載入的公開檔案（免金鑰）：
+
+| 來源 | 內容 | 讀者可開啟的連結 |
+|---|---|---|
+| `https://www.cwa.gov.tw/rss/Data/cwa_warning.xml` | 警報、特報 RSS（標題＋說明） | RSS 內 `link`（如 `.../Typhoon/TY_WARN.html?T=…`） |
+| `https://www.cwa.gov.tw/Data/js/warn/Warning_Content.js` | 生效中警特報全文、有效期限、巨浪告警、大雷雨 | `.../V8/C/P/Warning/W25.html` 等 |
+| `https://www.cwa.gov.tw/Data/js/typhoon/TY_NEWS-Data.js` | 颱風名稱、強度、中心位置、暴風半徑 | `https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_NEWS.html` |
+| `https://www.cwa.gov.tw/V8/C/E/MOD/EQ_ROW.html` | 最近 15 筆有感地震（編號＝顯著有感地震） | 各地震報告頁 `.../V8/C/E/EQ/EQ115069-….html` |
+
+- 選用：若環境變數 `CWA_API_KEY` 有值，另抓開放資料平台 `W-C0034-005`（熱帶氣旋路徑）、`W-C0033-002`（特報內容與區域）、`E-A0015-001`（顯著有感地震報告），放在 `cwa_alerts.json` 的 `opendata` 欄位。無金鑰時自動略過，不影響其他步驟。
+- `cwa_alerts.json` 欄位：`active_alerts`（生效中警特報）、`typhoons`、`earthquakes`（預設 72 小時內，`--eq-hours` 可調）、`urgent`（是否有緊急項目）。每項皆有 `url`。
+- **用法**：天災與公共安全項目的官方數據（颱風位置、警報發布／解除時間、特報區域、地震規模與震度）以此為準；新聞報導與 CWA 不一致時採用 CWA 數字並註明「中央氣象署…」。
+  `sources` 放 `url` 欄位中的 CWA 公開網頁網址（不要放 `.js`／`.xml` 資料檔網址）。CWA 已發布但新聞尚未報導的警報，可依 CWA 內容新增或更新快訊。
+- **緊急（`urgent: true`）判定**：颱風警報（海上／陸上）、豪雨以上、海嘯、紅色燈號、巨浪告警，以及最大震度 4 級以上或規模 6.0 以上的編號地震。此為提示，仍由編輯判斷。
+- 依 CWA RSS 使用聲明：呈現時標明來源「中央氣象署」，詳細內容以連結連回 CWA，不轉載全文。
+- 檢查頻率與其他來源相同（每次執行每個檔案只抓一次，間隔 1.5 秒）。
+
+## 夜間排程（23:00–06:00，另一個獨立排程）
+
+夜間執行同樣先跑 `python3 update.py fetch`，但**只處理緊急的災害／緊急事件**：
+
+1. 先看 CWA 區塊：`整體：有緊急項目` 或任一項標示【緊急】時才需要動作；颱風警報發布、更新報數、改為陸上警報或解除，豪雨以上特報，海嘯，強震（顯著有感、震度 4 級以上）。
+2. 新聞候選中只處理同等級的緊急事件（例如重大災害、大範圍停電停水、停班停課公告、重大公共安全事故）；一般民生新聞留給白天的排程。
+3. 有需處理的項目 → 照一般流程讀原文、撰寫、`validate`、`finalize`、提交。
+4. 沒有緊急項目 → 不修改 `data/news.json`、不提交（不必只為刷新時間戳而提交）。
 
 ## 收錄標準
 
@@ -91,10 +122,15 @@
 - 中央社 RSS 的時間未標時區，fetch.py 視為台灣時間。
 - NHK `cat0.xml` 只有 2026 年 8 月的舊資料。
 - 衛福部網站憑證在嚴格 SSL 驗證下失敗，需以 curl 讀取公開頁面。
+- CWA（www.cwa.gov.tw）憑證缺少 Subject Key Identifier，Python 3.13 的嚴格檢查會拒絕；cwa.py 僅關閉該嚴格旗標（仍驗證憑證鏈與主機名稱）。
+- CWA 不存在的路徑會回 403「Request Rejected」（例如沒有地震 RSS `cwa_earthquake.xml`）；地震改讀 `EQ_ROW.html`。
+- CWA 開放資料平台 API 需會員授權碼（未帶金鑰回 401）。
 
 ## 排程範例（cron）
 
 ```
 # 每 2 小時抓取候選；之後由編輯（人或代理）撰寫並執行 finalize
 0 */2 * * * cd /workspace/neutral-news && python3 update.py fetch >> logs/fetch.log 2>&1
+# 只看 CWA 警特報（不抓新聞 RSS）
+# python3 cwa.py
 ```
