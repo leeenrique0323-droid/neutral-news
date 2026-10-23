@@ -67,3 +67,47 @@ dl.facts dd{margin:0}
   dl.facts{grid-template-columns:1fr;gap:0}
   dl.facts dd{margin-bottom:6px}
 }
+
+/* --- sections (generic, collapsible) --- */
+.item p.summary.lines{white-space:pre-line;font-size:17px;line-height:1.75;margin:0 0 12px}
+.badge.live{border-color:#b3261e;color:#b3261e;font-weight:700}
+.has-sections dl.facts{font-size:14px;margin-bottom:12px}
+.sections{margin:4px 0 14px;border-top:1px solid var(--text)}
+.sec-tools{text-align:right;margin:4px 0 0}
+.sec-toggle{appearance:none;border:0;background:none;color:var(--accent);font:inherit;font-size:13px;cursor:pointer;padding:2px 0}
+details.sec{border-bottom:1px solid var(--line)}
+details.sec>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 2px;
+  font-weight:700;font-size:16px;min-height:44px}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::before{content:"＋";color:var(--accent);font-weight:400;width:1.2em;flex:none}
+details.sec[open]>summary::before{content:"－"}
+.sec-count{margin-left:auto;font-weight:400;font-size:12px;color:var(--sub)}
+ul.bullets{margin:0 0 12px;padding:0 0 0 1.2em;font-size:15px;line-height:1.75}
+ul.bullets li{margin:0 0 8px}
+.refs{display:inline-flex;flex-wrap:wrap;gap:0 8px;margin-left:6px;font-size:12px;vertical-align:baseline}
+.refs a{color:var(--sub);text-decoration:underline;text-decoration-color:var(--line);white-space:nowrap}
+.refs a::before{content:"出處：";}
+.refs a:nth-child(n+2)::before{content:"";}
+details.all-sources{margin-top:6px}
+details.all-sources>summary{cursor:pointer;color:var(--sub);padding:6px 0}
+details.all-sources ul{max-height:none}
+/* --- archive --- */
+.logo-link{color:inherit;text-decoration:none}
+.tab-link{color:var(--sub);text-decoration:none;font-size:15px;padding:10px 0 12px}
+.tab-current{margin-left:auto;font-weight:700;padding:10px 0 12px;border-bottom:3px solid var(--accent);margin-bottom:-1px}
+.archive-note{color:var(--sub);font-size:14px;margin:0 0 8px}
+details.arch-item{border-bottom:1px solid var(--line)}
+details.arch-item>summary{cursor:pointer;list-style:none;padding:14px 0}
+details.arch-item>summary::-webkit-details-marker{display:none}
+.arch-title{display:block;font-weight:700;line-height:1.5}
+.arch-meta{display:block;font-size:12px;color:var(--sub);margin-top:2px}
+details.arch-item[open]>summary .arch-title{color:var(--accent)}
+details.arch-item .item{padding-top:4px;border-bottom:0}
+details.arch-item .item h3{display:none}
+.site-footer a{color:var(--accent)}
+@media (max-width:520px){
+  .item p.summary.lines{font-size:16px}
+  ul.bullets{font-size:15px;padding-left:1.1em}
+  .refs{display:flex;margin:2px 0 0}
+  .has-sections dl.facts{display:none}
+}

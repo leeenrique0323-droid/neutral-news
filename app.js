@@ -1,45 +1,29 @@
 (function(){
-  const fmt = iso => {
-    if(!iso) return "";
-    const d = new Date(iso);
-    const p = n => String(n).padStart(2,"0");
-    // display in Taiwan time (UTC+8)
-    const t = new Date(d.getTime() + 8*3600*1000);
-    return `${t.getUTCFullYear()}/${p(t.getUTCMonth()+1)}/${p(t.getUTCDate())} ${p(t.getUTCHours())}:${p(t.getUTCMinutes())}`;
-  };
-  const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const {fmt, esc, first, itemBody, bindToggles} = NN;
   let data = null;
 
   const isBreaking = i => i.status.startsWith("快訊");
 
   function card(i, showCat){
     return `
-        <article class="item">
+        <article class="item ${i.sections ? "has-sections" : ""}">
           <div class="badges">
             <span class="badge ${isBreaking(i) ? "prelim" : ""}">${esc(i.status)}</span>
+            ${i.ongoing && !i.ongoing.ended ? `<span class="badge live">進行中</span>` : ""}
             ${showCat ? `<span class="cat-label">${esc(i.category)}</span>` : ""}
-            <span>發布 ${fmt(i.published)}${i.updated ? `　更新 ${fmt(i.updated)}` : ""}</span>
+            <span>發布 ${fmt(first(i))}${i.updated ? `　更新 ${fmt(i.updated)}` : ""}</span>
           </div>
-          <h3>${esc(i.title)}</h3>
-          <p class="summary">${esc(i.summary)}</p>
-          <dl class="facts">
-            <dt>影響誰</dt><dd>${esc(i.who)}</dd>
-            <dt>影響什麼</dt><dd>${esc(i.what)}</dd>
-            <dt>何時開始</dt><dd>${esc(i.when)}</dd>
-          </dl>
-          ${i.taiwanImpact ? `<p class="tw-impact"><strong>對台灣的影響</strong>${esc(i.taiwanImpact)}</p>` : ""}
-          <div class="sources">原始報導與資料來源
-            <ul>${i.sources.map(s => `<li>${esc(s.name)}：<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>
-          </div>
+          ${itemBody(i)}
         </article>`;
   }
 
-  const newest = i => new Date(i.updated || i.published).getTime();
+  const newest = i => new Date(i.updated || first(i)).getTime();
 
   function render(tab){
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab===tab));
     const items = data.items.filter(i => i.tab===tab);
-    const breaking = items.filter(isBreaking).sort((a,b) => newest(b)-newest(a));
+    // pinned items first, then newest
+    const breaking = items.filter(isBreaking).sort((a,b) => (!!b.pinned - !!a.pinned) || (newest(b)-newest(a)));
     const rest = items.filter(i => !isBreaking(i));
     const cats = data.categories.filter(c => rest.some(i => i.category===c));
     document.getElementById("updated").textContent = data.updated
@@ -60,6 +44,7 @@
         <h2>${esc(c)}</h2>
         ${rest.filter(i => i.category===c).sort((a,b) => newest(b)-newest(a)).map(i => card(i, false)).join("")}
       </section>`).join("");
+    bindToggles(el);
   }
 
   function current(){ return location.hash.startsWith("#intl") ? "intl" : "tw"; }
