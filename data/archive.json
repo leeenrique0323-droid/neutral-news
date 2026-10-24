@@ -1,6 +1,29 @@
 {
-  "updated": "2026-10-24T19:33:51+08:00",
+  "updated": "2026-10-24T20:07:52+08:00",
   "items": [
+    {
+      "id": "tw-grab-foodpanda-1021",
+      "tab": "tw",
+      "category": "勞動與產業",
+      "status": "快訊・初步資訊",
+      "title": "公平會10月21日決議禁止Grab收購foodpanda台灣業務",
+      "summary": "公平會10月21日下午審議Grab收購foodpanda台灣業務案，過半數委員決議禁止結合。公平會表示，台灣餐飲外送市場由Uber Eats與foodpanda兩大業者主導，Grab與Uber之間的股權連結、董事兼任及商業合作關係，可能降低Grab與Uber Eats在台灣市場競爭的誘因，產生限制競爭效果；Grab提出的稀釋持股等承諾措施，公平會評估無法確保有效執行。Grab發表聲明表示感到失望，將持續投入資源；台灣外送權益協進聯盟表示，foodpanda台灣業務仍可能繼續求售，將關注後續買家。據公視報導，2024年Uber Eats申請收購foodpanda台灣業務，也遭公平會禁止。",
+      "who": "餐飲外送平台使用者、外送員與合作商家",
+      "what": "Grab收購foodpanda台灣業務案不得進行；foodpanda台灣業務後續安排原報導未載明",
+      "when": "公平會10月21日作出決議",
+      "published": "2026-10-21T20:04:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "公視新聞",
+          "title": "Grab併購Foodpanda案 公平會決議「結合禁止」",
+          "url": "https://news.pts.org.tw/article/832392"
+        }
+      ],
+      "first_published": "2026-10-21T20:04:00+08:00",
+      "archived": "2026-10-24T20:07:52+08:00",
+      "archive_reason": "過期：逾首次發布後72小時"
+    },
     {
       "id": "tw-dinoprostone-shortage-1021",
       "tab": "tw",
