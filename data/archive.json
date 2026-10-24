@@ -1,6 +1,58 @@
 {
-  "updated": "2026-10-24T07:09:12+08:00",
+  "updated": "2026-10-24T10:37:42+08:00",
   "items": [
+    {
+      "id": "tw-estate-tax-installment",
+      "tab": "tw",
+      "category": "稅務與補助",
+      "status": "完整版",
+      "title": "遺產稅、贈與稅取消30萬元分期門檻　可申請最多18期繳納",
+      "summary": "財政部南區國稅局表示，《遺產及贈與稅法》已於2026年9月11日修正公布，取消應納稅額須達新台幣30萬元以上才能申請分期繳納的限制。納稅義務人如無法一次以現金繳納，可在納稅期限內申請分18期以內加計利息繳納。任一期未如期繳納，未繳餘額須於通知後10日內一次繳清，逾期移送強制執行。",
+      "who": "遺產稅、贈與稅納稅義務人",
+      "what": "申請分期繳納的資格",
+      "when": "修正條文於2026年9月11日公布；須在納稅期限內提出申請",
+      "published": "2026-10-21T10:29:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "國稅局：無法1次繳清遺產稅金　可申請最多18期分期繳納",
+          "url": "https://www.cna.com.tw/news/afe/202610210047.aspx"
+        }
+      ],
+      "first_published": "2026-10-21T10:29:00+08:00",
+      "archived": "2026-10-24T10:37:42+08:00",
+      "archive_reason": "過期：逾首次發布後72小時"
+    },
+    {
+      "id": "intl-us-farm-relief",
+      "tab": "intl",
+      "category": "稅務與補助",
+      "status": "完整版",
+      "title": "美國宣布80億美元農業紓困　因應柴油與肥料價格上漲",
+      "summary": "據中央社綜合外電報導，美國總統川普10月20日宣布提供農民80億美元（約新台幣2574億元）「秋收燃料紓困計畫」，因應柴油與肥料價格上漲。報導指出，過去全球約三分之一肥料經荷莫茲海峽運輸，今年受美伊戰爭影響價格上升。這是美國農業部11個月內第2次發放單筆一次性補助。",
+      "who": "美國農民",
+      "what": "柴油與肥料成本補助",
+      "when": "原報導未載明發放日期",
+      "taiwanImpact": "可能的間接影響，程度目前無法判斷：此方案為美國對國內農民的補助。依美國農業部海外農業局報告，台灣黃豆、小麥需求分別有98%、99%仰賴進口；2025年美國在台灣進口玉米、黃豆、小麥的市占率分別為72%、64%、79%。方案是否影響美國穀物出口價格，原報導未述及。",
+      "published": "2026-10-21T10:09:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "柴油與肥料飆漲　川普宣布80億美元農業紓困",
+          "url": "https://www.cna.com.tw/news/aopl/202610210042.aspx"
+        },
+        {
+          "name": "美國農業部海外農業局（USDA FAS）",
+          "title": "2025 US Agricultural Exports to Taiwan Summary",
+          "url": "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=2025+US+Agricultural+Exports+to+Taiwan+Summary_Taipei_Taiwan_TW2026-0015.pdf"
+        }
+      ],
+      "first_published": "2026-10-21T10:09:00+08:00",
+      "archived": "2026-10-24T10:37:42+08:00",
+      "archive_reason": "過期：逾首次發布後72小時"
+    },
     {
       "id": "intl-ebola-nigeria",
       "tab": "intl",
