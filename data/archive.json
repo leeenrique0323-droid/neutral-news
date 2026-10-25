@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-25T16:39:40+08:00",
+  "updated": "2026-10-25T20:32:33+08:00",
   "items": [
     {
       "id": "tw-old-house-renewal-1022",
@@ -255,6 +255,559 @@
       "first_published": "2026-10-21T11:15:00+08:00",
       "archived": "2026-10-24T11:33:54+08:00",
       "archive_reason": "過期：逾首次發布後72小時"
+    },
+    {
+      "id": "tw-typhoon-1021",
+      "tab": "tw",
+      "category": "天災與公共安全",
+      "status": "完整版",
+      "title": "颱風薔琵警報全部解除　全台1死616傷　大雨特報25日凌晨解除",
+      "summary": "氣象署24日20時30分第24報解除颱風警報：輕颱薔琵持續減弱、暴風圈縮小，對北部海面威脅解除\n氣象署25日3時25分解除大雨特報；長浪即時訊息有效至25日21時40分；26日中南部及澎湖有陸上強風特報\n全台1死616傷（災害應變中心，至16時30分）；曾停電34萬餘戶、待修2.2萬餘戶，預計晚間11時前修復\n農業部統計至25日17時農損約1億9332萬元，雲林最多；宜蘭達全品項救助標準",
+      "who": "台灣本島及澎湖、馬祖居民；24日停班停課縣市的上班族與學生；旅客；北部及宜蘭山區居民；須出勤的勞工",
+      "what": "中央氣象署24日20時30分第24報解除颱風警報（陸上警報已於14時30分解除）；25日3時25分解除大雨特報；各項狀況見下方分項",
+      "when": "海上陸上警報自10月22日上午11時30分起發布；陸上警報於24日14時30分第22報解除；海上警報於24日20時30分第24報解除",
+      "published": "2026-10-21T11:11:00+08:00",
+      "updated": "2026-10-25T20:10:00+08:00",
+      "sources": [
+        {
+          "name": "公視",
+          "title": "薔琵颱風農損逾1.93億 卓榮泰促收件3日內核發補助",
+          "url": "https://news.pts.org.tw/article/832868"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵釀137校受災損失逾2千萬元　宜花最嚴重",
+          "url": "https://www.cna.com.tw/news/ahel/202610250101.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "卓榮泰宜蘭勘災　要求農損補助從優從速從寬3天核撥",
+          "url": "https://www.cna.com.tw/news/aloc/202610250108.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵致農損逾1.5億元　宜蘭將全品項救助",
+          "url": "https://www.cna.com.tw/news/ahel/202610250079.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵遠離花東防較大雨勢　27日迎東北季風轉涼",
+          "url": "https://www.cna.com.tw/news/ahel/202610250015.aspx"
+        },
+        {
+          "name": "公視",
+          "title": "颱風後易孳生病媒蚊 疾管署示警3感染症",
+          "url": "https://news.pts.org.tw/article/832805"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "解除大雨特報（25日3時25分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/W26.html?T=202610250325"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "颱風警報解除（第24報，24日20時30分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_WARN.html?T=202610242030"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "大雨特報（24日22時15分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/W26.html?T=202610242215"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵侵襲  全台1死616傷",
+          "url": "https://www.cna.com.tw/news/asoc/202610240170.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵逐漸遠離　估晚間8時30分解除海警",
+          "url": "https://www.cna.com.tw/news/ahel/202610240161.aspx"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "陸上強風特報（24日22時34分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/W25.html?T=202610241640"
+        },
+        {
+          "name": "中央社",
+          "title": "台電：迄今動員逾1.5萬人次投入搶修　力拚今晚全數復電",
+          "url": "https://www.cna.com.tw/news/ahel/202610240121.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "氣象署估傍晚至晚間解除颱風薔琵海警　北部雨勢入夜可望趨緩",
+          "url": "https://www.cna.com.tw/news/ahel/202610240127.aspx"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "10/24 17:30 海上颱風警報（第23報）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_WARN.html?T=202610241430"
+        },
+        {
+          "name": "中央社",
+          "title": "台東焚風凌晨飆39.3度　颱風薔琵陸警範圍剩桃園以北、宜蘭",
+          "url": "https://www.cna.com.tw/news/ahel/202610240076.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵衝擊　台鐵搶修北迴線、宜蘭線估下午3時復駛",
+          "url": "https://www.cna.com.tw/news/ahel/202610240077.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "北市陸續開啟水門　紅黃線明中午恢復禁停",
+          "url": "https://www.cna.com.tw/news/aloc/202610240074.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵漸遠離　蘇花路廊、中橫公路恢復通行",
+          "url": "https://www.cna.com.tw/news/ahel/202610240063.aspx"
+        },
+        {
+          "name": "公視新聞",
+          "title": "北捷昨風速達停駛標準 今各路線恢復正常營運",
+          "url": "https://news.pts.org.tw/article/832782"
+        },
+        {
+          "name": "公視新聞",
+          "title": "颱風薔琵北上遠離台灣 最快今日下午解除陸警",
+          "url": "https://news.pts.org.tw/article/832786"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵影響　海運6航線84航次停航",
+          "url": "https://www.cna.com.tw/news/ahel/202610240040.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "光復節連假  桃機受颱風影響取消航班、旅運人次降低",
+          "url": "https://www.cna.com.tw/news/ahel/202610240042.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵逐漸遠離　台鐵24日中午12時起西部、東部幹線陸續復駛",
+          "url": "https://www.cna.com.tw/news/ahel/202610240035.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵路徑偏西 大屯山三貂角測出17級陣風",
+          "url": "https://www.cna.com.tw/news/ahel/202610230284.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵來襲　1死350傷",
+          "url": "https://www.cna.com.tw/news/asoc/202610230277.aspx"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "豪雨特報（10月23日22時35分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/W26.html?T=202610232235"
+        },
+        {
+          "name": "公視新聞",
+          "title": "颱風近陸地將降速打轉 今夜至明早影響最劇烈",
+          "url": "https://news.pts.org.tw/article/832746"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵估移動速度減慢或打轉　蘭嶼浪高10.6公尺破紀錄",
+          "url": "https://www.cna.com.tw/news/ahel/202610230207.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "高鐵24日全線正常營運　各車次按時刻表發車",
+          "url": "https://www.cna.com.tw/news/ahel/202610230242.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵來襲　北捷文湖線、高架路段晚間6時起停駛",
+          "url": "https://www.cna.com.tw/news/ahel/202610230209.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵影響　24日6航線84航次船班停航",
+          "url": "https://www.cna.com.tw/news/ahel/202610230220.aspx"
+        },
+        {
+          "name": "公視新聞",
+          "title": "薔琵颱風移動減緩 10/24各縣市停班課狀況一次看",
+          "url": "https://news.pts.org.tw/article/832698"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵最新風雨預報出爐　24日北北基等16縣市達停班課標準",
+          "url": "https://www.cna.com.tw/news/ahel/202610230164.aspx"
+        },
+        {
+          "name": "公視新聞",
+          "title": "宜蘭山區預警性疏散352人 大同鄉英士村全村撤離",
+          "url": "https://news.pts.org.tw/article/832644"
+        },
+        {
+          "name": "中央社",
+          "title": "土石流黃色警戒145條　分布宜蘭、新北、桃園、新竹",
+          "url": "https://www.cna.com.tw/news/ahel/202610230112.aspx"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "巨浪告警",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/LargeSurf.html"
+        },
+        {
+          "name": "公視新聞",
+          "title": "薔琵暴風圈觸陸 氣象署發強風告警",
+          "url": "https://news.pts.org.tw/article/832617"
+        },
+        {
+          "name": "中央社",
+          "title": "台東23日停止上班上課",
+          "url": "https://www.cna.com.tw/news/aloc/202610230014.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵暴風圈已觸台灣東半部　23日至24日晨降雨最明顯",
+          "url": "https://www.cna.com.tw/news/ahel/202610230018.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "薔琵颱風來襲　台北股市23日休市1天",
+          "url": "https://www.cna.com.tw/news/afe/202610220388.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "高鐵：23日全線正常行駛　警報期間車票1年內可退",
+          "url": "https://www.cna.com.tw/news/ahel/202610220390.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵影響淡江大橋下午3時預警封閉　淡海安坑三鶯等3線將停駛",
+          "url": "https://www.cna.com.tw/news/aloc/202610230108.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵來襲釀1死94傷　騎車自摔等交通事故最多",
+          "url": "https://www.cna.com.tw/news/asoc/202610230042.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風後慢病藥泡水、健保卡不見　例外就醫補救",
+          "url": "https://www.cna.com.tw/news/ahel/202610230102.aspx"
+        },
+        {
+          "name": "勞動部",
+          "title": "強颱薔琵逼近，勞動部強調雇主若要求勞工出勤應負通勤協助責任",
+          "url": "https://www.mol.gov.tw/1607/1632/1633/99713/"
+        },
+        {
+          "name": "中央社",
+          "title": "北市水門晚間6時起只出不進　周邊紅黃線有條件停車",
+          "url": "https://www.cna.com.tw/news/aloc/202610220121.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "新北高灘地停車場下午4時起只出不進　晚間8時強制拖吊",
+          "url": "https://www.cna.com.tw/news/aloc/202610220163.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵來襲台東掀大浪　富岡港口吊車落海、南迴公路多良段路基流失",
+          "url": "https://www.cna.com.tw/news/aloc/202610230094.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵襲台　輕傷人數增、路樹倒塌件數多",
+          "url": "https://www.cna.com.tw/news/asoc/202610230168.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵影響淡江大橋預警性封閉　擬下午5時解除",
+          "url": "https://www.cna.com.tw/news/ahel/202610240084.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "台水：已啟動19台備用發電機　逾27萬戶免受停水之苦",
+          "url": "https://www.cna.com.tw/news/ahel/202610240109.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵釀竹縣山區多處坍方　尖石、五峰撤離1512人",
+          "url": "https://www.cna.com.tw/news/asoc/202610240110.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "新北多數越堤道下午4時開放　淡江大橋5時恢復通行",
+          "url": "https://www.cna.com.tw/news/aloc/202610240141.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "薔琵遠離仍影響船班　25日7航線18航次停航",
+          "url": "https://www.cna.com.tw/news/ahel/202610240180.aspx"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "長浪即時訊息（10月25日11時40分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/W37.html?T=202610251140"
+        },
+        {
+          "name": "中央社",
+          "title": "北市逾2000件災情路樹傾倒最大宗　蔣萬安：加速復原",
+          "url": "https://www.cna.com.tw/news/aloc/202610240207.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風擾國內線航班  民航局：協調放大機型、請軍機支援",
+          "url": "https://www.cna.com.tw/news/ahel/202610240194.aspx"
+        },
+        {
+          "name": "中央氣象署",
+          "title": "陸上強風特報（25日16時35分）",
+          "url": "https://www.cwa.gov.tw/V8/C/P/Warning/W25.html?T=202610251635"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風影響金門仍逾千人滯留　軍機6架次助疏運",
+          "url": "https://www.cna.com.tw/news/ahel/202610250090.aspx"
+        },
+        {
+          "name": "公視",
+          "title": "北市颱風災情2680件多為樹倒 蔣萬安裁示今完成復原工作",
+          "url": "https://news.pts.org.tw/article/832864"
+        },
+        {
+          "name": "中央社",
+          "title": "颱風薔琵帶來降雨　石門水庫調節放水蓄水率回升至100%",
+          "url": "https://www.cna.com.tw/news/aloc/202610250102.aspx"
+        }
+      ],
+      "first_published": "2026-10-21T11:11:00+08:00",
+      "sections": [
+        {
+          "id": "warning",
+          "title": "警報狀況",
+          "bullets": [
+            {
+              "text": "氣象署24日20時30分第24報：輕度颱風薔琵過去3小時強度減弱、暴風圈縮小，中心在台北北北東方，向北北東轉東北移動，對台灣北部海面的威脅已解除，颱風警報解除。陸上警報已於14時30分第22報解除。據公視引述氣象署，薔琵24日凌晨1時掠過宜蘭南方澳，中心未完全進入陸地，判定未登陸；據中央社引述氣象署，大屯山及三貂角測得17級陣風。",
+              "links": [
+                "https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_WARN.html?T=202610242030",
+                "https://news.pts.org.tw/article/832786",
+                "https://www.cna.com.tw/news/ahel/202610230284.aspx"
+              ]
+            },
+            {
+              "text": "中央氣象署25日凌晨3時25分解除大雨特報：降雨趨於緩和，發生大雨的機率降低（24日22時15分曾發布大雨特報，針對基隆北海岸及台北市山區）。長浪即時訊息（25日11時40分發布，有效至晚間9時40分）：25日基隆北海岸、中部以北、東北部、東部沿海及澎湖、馬祖易有長浪，新北市富貴角、龍洞已觀測到2至3公尺浪高。",
+              "links": [
+                "https://www.cwa.gov.tw/V8/C/P/Warning/W26.html?T=202610250325",
+                "https://www.cwa.gov.tw/V8/C/P/Warning/W26.html?T=202610242215",
+                "https://www.cwa.gov.tw/V8/C/P/Warning/W37.html?T=202610251140"
+              ]
+            },
+            {
+              "text": "氣象署14時30分第22報解除陸上警報；據中央社引述氣象署，若颱風行徑無特殊變化，預計24日晚間8時30分解除海上警報，下午5時中心在台北東北方約320公里；新竹以北及雙北雨勢入夜後可望緩和。台東成功24日凌晨3時許受焚風影響出現39.3度高溫（中央社）。新竹縣政府統計至24日中午12時，尖石、五峰兩鄉共撤離1,512人，開設11處收容所、收容136人（中央社）。據中央社引述氣象署，颱風遠離後沿海須留意長浪。",
+              "links": [
+                "https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_WARN.html?T=202610241430",
+                "https://www.cna.com.tw/news/ahel/202610240127.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240076.aspx",
+                "https://www.cna.com.tw/news/asoc/202610240110.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240161.aspx"
+              ]
+            },
+            {
+              "text": "陸上強風特報（24日22時34分更新）有效至25日凌晨2時，已結束。氣象署25日上午10時42分另發布陸上強風特報（下午4時35分更新，有效至26日晚間11時）（東北風增強，黃色燈號）：26日清晨至晚上台中市、彰化縣、雲林縣、嘉義縣、屏東縣、澎湖縣局部地區可能有平均風6級以上或陣風8級以上。據中央社，氣象署25日表示薔琵持續減弱、往東北朝日本九州移動；27、28日東北季風增強，北部及東北部轉涼。第30號颱風煙花距台約5000公里，對天氣無直接影響。",
+              "links": [
+                "https://www.cwa.gov.tw/V8/C/P/Warning/W25.html?T=202610241640",
+                "https://www.cwa.gov.tw/V8/C/P/Warning/W25.html?T=202610251635",
+                "https://www.cna.com.tw/news/ahel/202610250015.aspx"
+              ]
+            },
+            {
+              "text": "氣象署23日下午6時24分發布巨浪告警，23日晚間至24日清晨可能出現危險巨浪；據公視報導，告警範圍包括基隆、新北、台中、苗栗、整個東半部及屏東。中央社引述氣象署，蘭嶼23日觀測到10.6公尺浪高，為當地有紀錄以來最高；據公視報導，蘭嶼另測得15級強陣風。",
+              "links": [
+                "https://www.cwa.gov.tw/V8/C/P/Warning/LargeSurf.html",
+                "https://news.pts.org.tw/article/832746",
+                "https://www.cna.com.tw/news/ahel/202610230207.aspx",
+                "https://news.pts.org.tw/article/832617"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "closures",
+          "title": "停班停課",
+          "bullets": [
+            {
+              "text": "據公視報導，除金門縣外各縣市均宣布23日停班停課；台東縣政府23日清晨宣布全縣停止上班上課。",
+              "links": [
+                "https://news.pts.org.tw/article/832617",
+                "https://www.cna.com.tw/news/aloc/202610230014.aspx"
+              ]
+            },
+            {
+              "text": "據公視整理，24日停止上班、上課：基隆市、台北市、新北市、桃園市、新竹市、新竹縣、苗栗縣、台中市、彰化縣、南投縣、雲林縣、宜蘭縣、連江縣；24日正常上班、上課：嘉義市、嘉義縣、台南市、高雄市、屏東縣、花蓮縣、台東縣、澎湖縣、金門縣。詳細資訊以行政院人事行政總處公布為準。",
+              "links": [
+                "https://news.pts.org.tw/article/832698"
+              ]
+            },
+            {
+              "text": "中央社報導，依氣象署23日下午風雨預報，24日中午前北北基、桃竹苗等16縣市達停班停課標準，實際是否停班停課由各縣市政府決定；最新狀況以行政院人事行政總處公布為準。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610230164.aspx",
+                "https://www.cna.com.tw/news/ahel/202610230018.aspx"
+              ]
+            },
+            {
+              "text": "台灣證券交易所及櫃買中心22日表示，因台北市政府宣布23日停止上班，23日集中交易市場及櫃買市場全日休市，當日應屆交割款券順延辦理。",
+              "links": [
+                "https://www.cna.com.tw/news/afe/202610220388.aspx"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "transport",
+          "title": "交通",
+          "bullets": [
+            {
+              "text": "航空：民航局統計24日截至晚間6時，國內線仍有159架次取消、20架次延誤；松山等機場24日下午陸續恢復國內線，民航局協調加開或放大機型25架次（澎湖17、金門8）。據中央社25日報導，金門機場25日仍有逾千人滯留，除民航加班機外，另有6架次軍機協助載運旅客返台。桃園機場公司表示23日取消563架次。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610240194.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240042.aspx",
+                "https://www.cna.com.tw/news/ahel/202610250090.aspx"
+              ]
+            },
+            {
+              "text": "海運：交通部航港局表示，24日6航線84航次停航；25日仍有7航線18航次全部或部分停航，包括基隆－馬祖（1航次）、南竿福澳－福州琅岐（2航次）、北竿白沙－福州黃岐（2航次）、東港－小琉球（8航次）、成功－綠島（原富岡－綠島，2航次）等。航港局呼籲颱風期間不要到離島旅遊，以免因停航滯留。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610240040.aspx",
+                "https://www.cna.com.tw/news/ahel/202610230220.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240180.aspx"
+              ]
+            },
+            {
+              "text": "鐵路：台鐵公司表示，24日中午12時後西部幹線、南迴線正常行駛，東部幹線陸續恢復、部分列車截短或停駛；北迴線、宜蘭線因路樹倒塌搶修中，預計下午3時恢復；、六家線、集集線、沙崙線正常行駛，平溪線、深澳線、內灣線巡查完畢後恢復；警報期間車票1年內免手續費退票。高鐵24日全線正常營運，警報期間車票1年內免費退票。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610240077.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240035.aspx",
+                "https://www.cna.com.tw/news/ahel/202610220390.aspx",
+                "https://www.cna.com.tw/news/ahel/202610230242.aspx"
+              ]
+            },
+            {
+              "text": "捷運：台北捷運文湖線及高運量平面、高架路段23日晚間6時起暫停營運，據公視報導24日各路線已恢復正常營運；新北淡海、安坑輕軌及三鶯線23日下午3時起預防性停駛。據台北市政府交通局，YouBike（台北、新北、桃園）25日上午6時恢復營運，貓空纜車25日上午9時恢復，藍色水路仍暫停。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610230209.aspx",
+                "https://www.cna.com.tw/news/aloc/202610230108.aspx",
+                "https://www.cna.com.tw/news/aloc/202610240207.aspx",
+                "https://news.pts.org.tw/article/832782"
+              ]
+            },
+            {
+              "text": "公路：公路局表示，台61線淡江大橋23日下午3時起封閉，據新北市政府水利局，已於24日傍晚5時恢復通行；台7線巴陵至西村預計25日中午解除封閉，台20臨105線梅山口至向陽24日上午7時起封閉。台8線中橫24日上午8時起恢復日間放行；蘇花路廊（含蘇花改）24日上午10時解除預警性封閉。台9線多良路段路基掏空，封閉北上外車道。阿里山、奧萬大、合歡山森林遊樂區23日起預警性休園。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610240084.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240063.aspx",
+                "https://www.cna.com.tw/news/aloc/202610230094.aspx",
+                "https://www.cna.com.tw/news/aloc/202610240141.aspx"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "damage",
+          "title": "災情與停電",
+          "bullets": [
+            {
+              "text": "傷亡：中央災害應變中心統計至24日下午4時30分，颱風薔琵造成1人死亡、616人受傷，以擦挫傷等輕傷居多，其中486人已出院；死者為屏東縣琉球鄉在沙灘遭海浪捲走的男子。據公視引述北市災後復原中心，北市主要災情共2,680件、尚有540件處理中，以路樹傾倒1,442件最多；市長蔣萬安表示，鄰里公園及8米以下巷道力拚25日晚間前完成復舊，大型公園綠地及山區預計一週內完成。",
+              "links": [
+                "https://www.cna.com.tw/news/asoc/202610240170.aspx",
+                "https://www.cna.com.tw/news/aloc/202610240207.aspx",
+                "https://news.pts.org.tw/article/832864"
+              ]
+            },
+            {
+              "text": "一般災情：中央災害應變中心統計至24日下午4時30分，災情累計9,027件、處理中3,146件，以路樹倒塌、電線掉落等基礎設施毀損及廣告招牌掉落最多。市話待修1,581戶、基地台待修204座，預計27日深夜11時前修復。土石流潛勢溪流黃色警戒剩46條（桃園、新竹），大規模崩塌黃色警戒2處（新竹）。教育部統計至25日下午1時，137校受災、初估損失約2,495萬元，花蓮縣約786萬元最高。",
+              "links": [
+                "https://www.cna.com.tw/news/asoc/202610240170.aspx",
+                "https://www.cna.com.tw/news/ahel/202610250101.aspx"
+              ]
+            },
+            {
+              "text": "疏散：中央災害應變中心統計至23日晚間8時，全台疏散撤離4,372人，以新北市1,421人、新竹1,206人、桃園市694人、花蓮縣607人、宜蘭縣363人較多，其中花蓮縣萬里溪堰塞湖疏散撤離140人；6縣市開設36處收容所，收容431人。據公視引述宜蘭縣政府，大同鄉英士村全村撤離。農業部農村發展及水土保持署23日下午發布土石流黃色警戒145條，分布於宜蘭縣、新北市、桃園市、新竹縣，另有桃園市及新竹縣3處大規模崩塌黃色警戒。",
+              "links": [
+                "https://www.cna.com.tw/news/asoc/202610230277.aspx",
+                "https://www.cna.com.tw/news/asoc/202610230168.aspx",
+                "https://news.pts.org.tw/article/832644",
+                "https://www.cna.com.tw/news/ahel/202610230112.aspx",
+                "https://www.cna.com.tw/news/asoc/202610230042.aspx"
+              ]
+            },
+            {
+              "text": "停電：中央災害應變中心24日表示，颱風期間曾停電34萬餘戶，統計至下午4時30分待修2.2萬餘戶，分布新北市、宜蘭縣、桃園市、台中市、雲林縣等15縣市，預計深夜11時前修復；台電表示已動員逾1.5萬人次搶修。供水：台水公司24日表示，已啟動19台備用發電機，避免27.7萬戶因停電而停水，全台另備妥574台發電機待命。據中央社報導，北區水資源分署表示石門水庫25日上午8時蓄水率回升至100%。",
+              "links": [
+                "https://www.cna.com.tw/news/asoc/202610240170.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240121.aspx",
+                "https://www.cna.com.tw/news/ahel/202610240109.aspx",
+                "https://www.cna.com.tw/news/aloc/202610250102.aspx"
+              ]
+            },
+            {
+              "text": "農業：據公視引述農業部，統計至25日下午5時，全台農業產物及民間設施估計損失約1億9,332萬元，其中雲林縣1億2,662萬元最多，其次苗栗縣2,483萬元、新北市1,618萬元、宜蘭縣938萬元。宜蘭達全品項救助標準，另8縣市77品項主動公告救助（中央社）。行政院長卓榮泰25日赴宜蘭勘災，要求農業部從優、從速、從寬，收件3天內核撥補助，柑橘類每公頃補助9.5萬元（中央社）。",
+              "links": [
+                "https://news.pts.org.tw/article/832868",
+                "https://www.cna.com.tw/news/ahel/202610250079.aspx",
+                "https://www.cna.com.tw/news/aloc/202610250108.aspx"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "life",
+          "title": "民生提醒",
+          "bullets": [
+            {
+              "text": "健保署表示，民眾若因颱風導致慢性病藥品或處方箋泡水、遺失，或健保卡遺失損壞，可依「例外就醫」由醫師重新開立處方或持慢箋至藥局領藥，健保卡可免費換發。",
+              "links": [
+                "https://www.cna.com.tw/news/ahel/202610230102.aspx"
+              ]
+            },
+            {
+              "text": "據公視報導，疾管署表示颱風過後整理家園應做好個人防護，避免皮膚直接接觸污水、污泥，以降低感染類鼻疽、鉤端螺旋體及破傷風的風險；並應清除積水容器防止病媒蚊孳生，留意飲水及食物是否受污染或變質。",
+              "links": [
+                "https://news.pts.org.tw/article/832805"
+              ]
+            },
+            {
+              "text": "勞動部提醒，雇主若要求勞工於颱風期間出勤，應負通勤協助責任。",
+              "links": [
+                "https://www.mol.gov.tw/1607/1632/1633/99713/"
+              ]
+            },
+            {
+              "text": "氣象署提醒山區慎防坍方、落石、土石流，低窪地區慎防積淹水，避免前往山區及溪流活動。中央災害應變中心另提醒，北部海岸24日清晨至上午為滿潮時間，沿海低窪地區須注意海水倒灌及局部淹水。",
+              "links": [
+                "https://www.cwa.gov.tw/V8/C/P/Warning/W26.html?T=202610232235",
+                "https://www.cna.com.tw/news/asoc/202610230277.aspx"
+              ]
+            },
+            {
+              "text": "堤外停車場：台北市政府水利處表示疏散門及越堤坡道22日晚間6時起只出不進、晚間10時起拖吊堤外停車場滯留車輛；新北市水利局表示高灘地停車場22日下午4時起只出不進、晚間8時起強制拖吊。台北市水利處表示，24日下午1時起陸續開啟基隆河、新店溪、景美溪及淡水河沿線淡1至淡5疏散門及越堤坡道，淡5-1、淡6仍關閉；台北市交通局表示，原開放紅黃線停車路段25日中午12時恢復禁停，逾時將拖吊開罰。",
+              "links": [
+                "https://www.cna.com.tw/news/aloc/202610240074.aspx",
+                "https://www.cna.com.tw/news/aloc/202610220121.aspx",
+                "https://www.cna.com.tw/news/aloc/202610220163.aspx"
+              ]
+            }
+          ]
+        }
+      ],
+      "pinned": true,
+      "ongoing": {
+        "reason": "颱風警報已解除，災後總結已整理於分項",
+        "ended": "2026-10-24T20:30:00+08:00",
+        "wrapup_done": true
+      },
+      "archived": "2026-10-25T20:32:33+08:00",
+      "archive_reason": "過期：進行中事件已結束並完成總結（或達上限）"
     },
     {
       "id": "tw-estate-tax-installment",
