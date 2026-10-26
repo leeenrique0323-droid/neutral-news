@@ -19,6 +19,7 @@ NEWS = os.path.join(ROOT, "data", "news.json")
 CANDS = os.path.join(ROOT, "candidates.json")
 NEWC = os.path.join(ROOT, "data", "new_candidates.json")
 CWA = os.path.join(ROOT, "cwa_alerts.json")
+CORRECTIONS = os.path.join(ROOT, "data", "corrections.json")
 ARCHIVE = os.path.join(ROOT, "data", "archive.json")
 TPE = timezone(timedelta(hours=8))
 STATUSES = {"快訊・初步資訊", "完整版"}
@@ -26,7 +27,7 @@ REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what"
             "first_published", "sources"]
 
 # --- expiry / length rules (keep in sync with AUTOMATION.md) ---
-KEEP_HOURS = 72            # normal items: archived 72h after first_published (never changes on update)
+KEEP_HOURS = 48            # normal items: archived 48h after first_published (never changes on update)
 WRAPUP_HOURS = 24          # ongoing stories: upper bound for the post-event wrap-up after `ongoing.ended`
 ONGOING_MAX_HOURS = 168    # safety cap: even an "ongoing" item is archived 7 days after first_published
 ONGOING_CATEGORY = "天災與公共安全"
@@ -264,6 +265,8 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
                     errs.append(f"{tag}: EXPIRED (past {expiry(i, hours).isoformat()}); run `python3 update.py archive`")
             except (ValueError, TypeError):
                 pass
+    corr = load_corrections()
+    errs += corrections_errors(corr, d["items"])
     errs += duplicate_errors(d["items"], load_archive()["items"] if check_archive else [])
     return errs
 
@@ -312,6 +315,46 @@ def duplicate_errors(items, archived=()):
             if a.get("id") == b.get("id"): continue
             why = duplicate_pair(a, b)
             if why: errs.append(f"DUPLICATE: {a.get('id')} (news.json) and {b.get('id')} (archive.json): {why}; update/reuse the existing story or add a new item only for a genuinely new development")
+    return errs
+
+def load_corrections():
+    if os.path.exists(CORRECTIONS):
+        try: return json.load(open(CORRECTIONS, encoding="utf-8"))
+        except ValueError as e: return {"_error": str(e)}
+    return None
+
+def corrections_errors(c, items):
+    """Schema check for data/corrections.json (更正紀錄) and consistency with items' `corrected` marker.
+    File: {"started": "YYYY-MM-DD", "note": "...", "entries": [{date, item_title, item_id and/or url, what_was_wrong, correction}]}"""
+    errs = []
+    if c is None: return ["corrections.json: missing (data/corrections.json must exist, entries may be empty)"]
+    if "_error" in c: return [f"corrections.json: invalid JSON ({c['_error']})"]
+    if not isinstance(c.get("entries"), list): return ["corrections.json: `entries` must be a list"]
+    if not c.get("started"): errs.append("corrections.json: missing `started` date")
+    ids = set()
+    for n, e in enumerate(c["entries"], 1):
+        tag = f"corrections.json entry #{n}"
+        if not isinstance(e, dict): errs.append(f"{tag}: must be an object"); continue
+        for k in ("date", "item_title", "what_was_wrong", "correction"):
+            if not (isinstance(e.get(k), str) and e[k].strip()): errs.append(f"{tag}: missing {k}")
+        if not (e.get("item_id") or e.get("url")): errs.append(f"{tag}: needs item_id and/or url")
+        if e.get("url") and not re.match(r"^https?://", e["url"]): errs.append(f"{tag}: bad url")
+        try:
+            dd = datetime.strptime(e.get("date") or "", "%Y-%m-%d").date()
+            if dd > datetime.now(TPE).date(): errs.append(f"{tag}: date is in the future")
+        except ValueError: errs.append(f"{tag}: date must be YYYY-MM-DD")
+        if e.get("item_id"): ids.add(e["item_id"])
+    cur = {i.get("id"): i for i in items}
+    for iid in ids & set(cur):
+        if not cur[iid].get("corrected"):
+            errs.append(f"{iid}: has an entry in corrections.json but the item lacks the visible `corrected` note")
+    for i in items:
+        cr = i.get("corrected")
+        if cr is None: continue
+        if not (isinstance(cr, dict) and cr.get("date") and cr.get("note")):
+            errs.append(f"{i.get('id')}: `corrected` must be {{date, note}}")
+        elif i.get("id") not in ids:
+            errs.append(f"{i.get('id')}: marked `corrected` but no entry with this item_id in corrections.json (never silently edit)")
     return errs
 
 def now_tpe(a=None):

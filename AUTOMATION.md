@@ -15,7 +15,8 @@
 | `update.py archive` | 把已過期項目從 news.json **移到** archive.json（不刪除） |
 | `update.py validate` | 依下方欄位規則檢查 news.json；**有過期項目、摘要過長、分項格式錯誤都會失敗** |
 | `update.py finalize` | 移入過往新聞 → 檢查 → 寫入 `updated`（現在時間，UTC+8）→ 重拍截圖 → 重新打包 zip |
-| `tools/screenshot.py` | 啟動本機伺服器並輸出 `screenshot-desktop.png`、`screenshot-mobile.png`、`screenshot-intl.png`、`screenshot-archive.png` |
+| `data/corrections.json` | 更正紀錄（公開）：`{started, note, entries:[{date, item_title, item_id, url, what_was_wrong, correction}]}`；網站頁面 `corrections.html`（頁尾與過往新聞頁皆有連結） |
+| `tools/screenshot.py` | 啟動本機伺服器並輸出 `screenshot-desktop.png`、`screenshot-mobile.png`、`screenshot-intl.png`、`screenshot-archive.png`、`screenshot-corrections.png` |
 | `common.js` / `app.js` / `archive.js` | 前端；`common.js` 的 `sections` 渲染為通用功能，任何長篇事件都可使用 |
 
 ## 排程執行步驟（建議每 1–3 小時一次）
@@ -50,7 +51,7 @@
 7. **發布**：`python3 update.py finalize`
    - 自動把過期項目移入 `data/archive.json`（不刪除；`--keep-hours` 可調整一般項目的期限）。
    - 自動將 `updated` 設為現在時間，重拍四張截圖並重新打包 `/workspace/neutral-news.zip`。
-8. **確認截圖**：開啟截圖（桌面、手機、國際、過往新聞），確認中文字型正常（無方框）、快訊區在最上方、版面未破、分項可展開。
+8. **確認截圖**：開啟截圖（桌面、手機、國際、過往新聞、更正紀錄），確認中文字型正常（無方框）、快訊區在最上方、版面未破、分項可展開。
 
 ## 中央氣象署官方警特報（cwa.py）
 
@@ -90,8 +91,8 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 
 | 類型 | 何時移入過往新聞 |
 |---|---|
-| 一般項目 | `first_published` 起 **72 小時**（約 3 天） |
-| 進行中的天災事件（有 `ongoing`，僅限「天災與公共安全」） | 警報／事件**尚未解除**時保留；**警報解除（`ongoing.ended`）且已完成災後／災情總結（`ongoing.wrapup_done: true`）才算結束**，結束後移入。若解除後遲遲未寫完總結，**解除後 24 小時為上限**，屆時仍會移入。仍須滿足一般的 72 小時下限；另有 **7 天硬上限**（避免遺漏導致永遠不下架） |
+| 一般項目 | `first_published` 起 **48 小時**（2 天） |
+| 進行中的天災事件（有 `ongoing`，僅限「天災與公共安全」） | 警報／事件**尚未解除**時保留；**警報解除（`ongoing.ended`）且已完成災後／災情總結（`ongoing.wrapup_done: true`）才算結束**，結束後移入。若解除後遲遲未寫完總結，**解除後 24 小時為上限**，屆時仍會移入。仍須滿足一般項目的下限（48 小時）；另有 **7 天硬上限**（避免遺漏導致永遠不下架） |
 
 進行中事件的欄位：
 
@@ -128,6 +129,25 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 3. `sources` 只保留分項實際引用的來源（被取代的舊報數連結可移除；git 歷史仍保留）。完整來源在網站上收合於「全部來源」。
 4. 置頂：同分頁最重要的快訊可設 `"pinned": true`（排在快訊區最上方）。
 5. `update.py validate` 會檢查：摘要長度與行數、分項數量／標題／bullet 數、bullet 是否有出處連結且連結存在於 `sources`。
+
+## 更正紀錄（更正紀錄 / corrections）
+
+**任何已刊登的事實若發現有誤，或與原先寫法有實質差異（數字、日期、人名、因果、官方結論被推翻），不得默默修改。** 必須：
+
+1. 在 `data/corrections.json` 的 `entries` **新增一筆**（新的放最後，網站依日期倒序顯示）：
+   `{"date": "YYYY-MM-DD（台灣時間）", "item_title": "當時刊登的標題", "item_id": "項目 id", "url": "原文／更正依據的網址（選填，但 item_id 與 url 至少一項）", "what_was_wrong": "原本寫了什麼、錯在哪裡", "correction": "正確內容與依據來源"}`。
+2. 在該項目（news.json 或 archive.json 內）加上可見標示 `"corrected": {"date": "YYYY-MM-DD", "note": "一句話說明更正了什麼"}`，網站會在標題下顯示「已更正」並連到更正紀錄。已移入過往新聞的項目同樣標示，其餘內容保持當時版本。
+3. 再改正內文／數字，並在 `sources` 補上更正依據的連結。更新 `updated` 時間，**不得修改 `first_published`**。
+4. 單純的新進展（事件往前發展、數字依官方最新公布更新）不算更正，依一般「改寫」流程處理；只有「先前寫的內容有誤或被推翻」才記錄。
+5. 不得為了「看起來沒有錯」而刪除紀錄或項目；不得虛構更正。
+- `update.py validate` 會檢查更正紀錄格式（必填欄位、日期、至少一個 `item_id` 或 `url`），以及 news.json 中標示 `corrected` 的項目與 corrections.json 是否一一對應。
+- 紀錄起始日為 2026-10-26；在此之前的版本不追溯。
+
+### 引用 CWA 數據的標示
+
+- 數字直接取自 CWA 頁面（`cwa.py` 輸出或開啟的 CWA 網頁）→ 寫「中央氣象署…」，`sources` 放 CWA 網頁。
+- 數字／說法取自中央社（或公視）報導、報導中引述氣象署，而編輯並未開啟 CWA 原頁面 → 必須寫「**據中央社引述氣象署**」（或「轉引自中央社」「據公視引述氣象署」），不可寫成氣象署直接發布。
+- 兩者並存且不一致時，以 CWA 為準並註明。
 
 ## 收錄標準
 

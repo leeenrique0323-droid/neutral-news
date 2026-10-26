@@ -91,6 +91,9 @@ ul.bullets li{margin:0 0 8px}
 details.all-sources{margin-top:6px}
 details.all-sources>summary{cursor:pointer;color:var(--sub);padding:6px 0}
 details.all-sources ul{max-height:none}
+.corrected-note{margin:0 0 12px;padding:8px 12px;border-left:4px solid var(--accent);background:#fff8e6;font-size:14px;line-height:1.6}
+.corrected-note a{color:var(--accent)}
+.item.correction h3{font-size:18px}
 /* --- archive --- */
 .logo-link{color:inherit;text-decoration:none}
 .tab-link{color:var(--sub);text-decoration:none;font-size:15px;padding:10px 0 12px}

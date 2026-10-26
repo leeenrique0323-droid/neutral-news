@@ -56,6 +56,7 @@ window.NN = (function(){
     const sectioned = !!(i.sections && i.sections.length);
     return `
           <h3>${esc(i.title)}</h3>
+          ${i.corrected ? `<p class="corrected-note"><strong>已更正</strong>（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
           <p class="summary ${sectioned ? "lines" : ""}">${esc(i.summary)}</p>
           <dl class="facts">
             <dt>影響誰</dt><dd>${esc(i.who)}</dd>
