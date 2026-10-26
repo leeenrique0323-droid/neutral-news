@@ -2,6 +2,7 @@
 """Update pipeline for 民生新聞.
 
   python3 update.py fetch      # run fetch.py + cwa.py, list NEW candidate items -> data/new_candidates.json
+                               # (a repeat call within 10 min reuses the file; --force to refetch)
   python3 update.py archive    # move expired items from data/news.json to data/archive.json (never deletes)
   python3 update.py validate   # check data/news.json against the editorial schema (fails on expired items)
   python3 update.py finalize   # archive expired, validate, stamp `updated`, screenshots, zip
@@ -9,7 +10,8 @@
 Writing/curating summaries into data/news.json is an editorial step between
 `fetch` and `finalize` (see AUTOMATION.md). This script never invents content.
 """
-import argparse, json, os, re, subprocess, sys, zipfile
+import argparse, difflib, json, os, re, subprocess, sys, time, unicodedata, zipfile
+from urllib.parse import urlsplit
 from datetime import datetime, timedelta, timezone
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -35,6 +37,11 @@ FACT_MAX = 200             # who / what / when (characters)
 SECTION_MAX = 8            # sections per item
 BULLETS_MIN, BULLETS_MAX = 2, 5
 BULLET_MAX = 260           # characters per bullet
+
+# --- fetch / duplicate rules (keep in sync with AUTOMATION.md) ---
+FETCH_REUSE_MINUTES = 10   # `fetch` reuses data/new_candidates.json younger than this unless --force
+TITLE_SIM_MAX = 0.85       # validate: normalized-title similarity above this (with identical numbers) = duplicate
+SHARED_URL_HOSTS = ("cwa.gov.tw",)  # official hub pages legitimately cited as primary source by several items
 
 def load():
     return json.load(open(NEWS, encoding="utf-8"))
@@ -113,7 +120,44 @@ def write_archive(moved, now):
     json.dump(a, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     os.replace(tmp, ARCHIVE)
 
+def print_new_list(new):
+    for x in new:
+        print(f"- [{x['tab']}] {','.join(x['categories'])} | {x['title']} | {x['link']}")
+
+def fetch_summary_line(tag, new, feeds, cwa, extra=""):
+    bad = [f for f in feeds if not f["ok"]]
+    urgent = "n/a" if cwa is None else ("YES" if cwa.get("urgent") else "no")
+    return (f"[fetch {tag}] {len(new)} new candidates | feed failures: {len(bad)} | CWA urgent: {urgent}"
+            f" | file: {NEWC}{extra}")
+
 def cmd_fetch(a):
+    # Duplicate-fetch guard: AUTOMATION.md says fetch once per run. A second call within
+    # FETCH_REUSE_MINUTES re-uses the previous result (no network) unless --force is given.
+    if not a.force and os.path.exists(NEWC):
+        age_min = (time.time() - os.path.getmtime(NEWC)) / 60
+        if 0 <= age_min < FETCH_REUSE_MINUTES:
+            try:
+                prev = json.load(open(NEWC, encoding="utf-8"))
+                used = {norm(s["url"]) for i in load()["items"] for s in i["sources"]}
+                new = [x for x in prev["new"] if norm(x["link"]) not in used]   # drop ones added to news.json since
+                print(f"[fetch REUSED] already fetched this run ({age_min:.1f} min ago, < {FETCH_REUSE_MINUTES} min); "
+                      f"reusing {NEWC} - no network requests made. Use `update.py fetch --force` to fetch again.")
+                print(fetch_summary_line("REUSED", new, prev["feeds"], prev.get("cwa"), f" | generated: {prev['generated']}"))
+                for f in prev["feeds"]:
+                    if not f["ok"]: print(f"[FEED FAIL] {f['feed']}: {f.get('error')}")
+                if os.path.exists(CWA):
+                    print("\n" + "=" * 60)
+                    try:
+                        import cwa as _cwa
+                        _cwa.print_summary(json.load(open(CWA, encoding="utf-8")))
+                    except Exception as e:
+                        print(f"(CWA summary unavailable from cache: {e}; see {NEWC} `cwa` field)")
+                    print("=" * 60 + "\n")
+                print(f"{len(new)} new candidates -> {NEWC}")
+                print_new_list(new)
+                return 0
+            except (OSError, ValueError, KeyError) as e:
+                print(f"[fetch] cached {NEWC} unreadable ({e}); fetching fresh")
     subprocess.run([sys.executable, os.path.join(ROOT, "fetch.py"), "-o", CANDS, "--hours", str(a.hours)], check=True)
     c = json.load(open(CANDS, encoding="utf-8"))
     used = {norm(s["url"]) for i in load()["items"] for s in i["sources"]}
@@ -136,13 +180,13 @@ def cmd_fetch(a):
                "cwa": ({k: cwa[k] for k in ("generated", "urgent", "active_alerts", "typhoons", "earthquakes")} if cwa else None)},
               open(NEWC, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     bad = [f for f in c["feeds"] if not f["ok"]]
+    print(fetch_summary_line("FRESH", new, c["feeds"], cwa))
     print(f"{len(new)} new candidates -> {NEWC}")
     for f in bad:
         print(f"[FEED FAIL] {f['feed']}: {f.get('error')}")
-    for x in new:
-        print(f"- [{x['tab']}] {','.join(x['categories'])} | {x['title']} | {x['link']}")
+    print_new_list(new)
 
-def validate(d, now=None, hours=KEEP_HOURS, check_git=True):
+def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
     errs = []
     cats = set(d.get("categories", []))
     ids = set()
@@ -220,6 +264,54 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True):
                     errs.append(f"{tag}: EXPIRED (past {expiry(i, hours).isoformat()}); run `python3 update.py archive`")
             except (ValueError, TypeError):
                 pass
+    errs += duplicate_errors(d["items"], load_archive()["items"] if check_archive else [])
+    return errs
+
+def norm_primary_url(i):
+    """Normalized primary (first) source URL: no scheme/www/query/fragment/trailing slash, lowercase host."""
+    srcs = i.get("sources") or []
+    u = (srcs[0].get("url") if srcs else "") or ""
+    p = urlsplit(u.strip())
+    if not p.netloc: return ""
+    host = p.netloc.lower()
+    host = host[4:] if host.startswith("www.") else host
+    return host + p.path.rstrip("/")
+
+def norm_title(t):
+    t = unicodedata.normalize("NFKC", t or "").lower()
+    return re.sub(r"[\W_]+", "", t)
+
+def title_numbers(t):
+    return sorted(re.findall(r"\d+(?:\.\d+)?", unicodedata.normalize("NFKC", (t or "").replace(",", ""))))
+
+def duplicate_pair(a, b):
+    """Reason string if items a and b look like the same story, else None.
+    Only the primary source URL and the title are compared (not the whole source list).
+    - Same primary URL -> duplicate, except hub pages on SHARED_URL_HOSTS (e.g. CWA typhoon page).
+    - Titles with similarity > TITLE_SIM_MAX -> duplicate, unless their numbers differ
+      (e.g. daily oil price / daily series items: different date or figure = different item)."""
+    ua, ub = norm_primary_url(a), norm_primary_url(b)
+    if ua and ua == ub and not any(ua.split("/")[0].endswith(h) for h in SHARED_URL_HOSTS):
+        return f"same primary source URL {ua}"
+    ta, tb = norm_title(a.get("title")), norm_title(b.get("title"))
+    if ta and tb and title_numbers(a.get("title")) == title_numbers(b.get("title")):
+        r = difflib.SequenceMatcher(None, ta, tb).ratio()
+        if r > TITLE_SIM_MAX:
+            return f"near-identical titles (similarity {r:.2f} > {TITLE_SIM_MAX})"
+    return None
+
+def duplicate_errors(items, archived=()):
+    """Compare news items with each other and with archived items. Same id = same item, skipped."""
+    errs = []
+    for n, a in enumerate(items):
+        for b in items[n + 1:]:
+            if a.get("id") == b.get("id"): continue      # reported by the duplicate-id check
+            why = duplicate_pair(a, b)
+            if why: errs.append(f"DUPLICATE: {a.get('id')} and {b.get('id')}: {why}; keep one story per item (update the existing item instead)")
+        for b in archived:
+            if a.get("id") == b.get("id"): continue
+            why = duplicate_pair(a, b)
+            if why: errs.append(f"DUPLICATE: {a.get('id')} (news.json) and {b.get('id')} (archive.json): {why}; update/reuse the existing story or add a new item only for a genuinely new development")
     return errs
 
 def now_tpe(a=None):
@@ -271,6 +363,7 @@ def main():
     ap = argparse.ArgumentParser()
     sp = ap.add_subparsers(dest="cmd", required=True)
     f = sp.add_parser("fetch"); f.add_argument("--hours", type=float, default=36)
+    f.add_argument("--force", action="store_true", help=f"fetch again even if data/new_candidates.json is < {FETCH_REUSE_MINUTES} min old")
     for name in ("validate", "archive"):
         p = sp.add_parser(name)
         p.add_argument("--keep-hours", type=float, default=KEEP_HOURS)

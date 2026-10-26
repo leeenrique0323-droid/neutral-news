@@ -23,6 +23,10 @@
 1. **抓取**：`python3 update.py fetch`
    - 檢查輸出中的 `[FEED FAIL]`；失敗的來源記錄下來，不要改用繞過封鎖的方式抓取。
    - 每個來源只抓一次，間隔 1.5 秒；不要提高頻率。
+   - **重複呼叫保護**：每次執行只需呼叫一次。若 `data/new_candidates.json` 產生不到 10 分鐘，再次執行 `python3 update.py fetch`
+     不會連網，第一行會印出 `[fetch REUSED] already fetched this run …`，第二行為摘要（新候選數、來源失敗數、CWA 是否緊急），
+     接著重印 CWA 區塊與候選清單（已被收錄進 news.json 的會自動剔除）。這是**成功**，不是失敗，直接使用輸出即可。
+     真的需要重抓（例如剛才有來源失敗想重試一次）才加 `--force`。全新抓取時，結尾同樣會印出 `[fetch FRESH] …` 摘要行。
    - 輸出中間的「中央氣象署 官方警特報」區塊即目前生效的警特報（見下方「中央氣象署官方警特報」）。
      出現 `[CWA FAIL]` 或「無法取得」時，改以瀏覽器開啟 CWA 頁面手動確認，不要猜測。
 2. **篩選**：逐一檢視 `data/new_candidates.json`，只保留符合「收錄標準」的項目（見下）。
@@ -38,7 +42,11 @@
    - 同一事件只保留一則，不要重複新增。
 5. **過期整理**：`python3 update.py archive`（把過期項目移到過往新聞；見下方「過期與過往新聞」）。
    同時檢查進行中事件（`ongoing`）：警報是否已解除？是否已寫完災後總結？據實更新 `ongoing.ended`／`wrapup_done`。
-6. **檢查**：`python3 update.py validate`，必須回傳 `OK`（有過期項目、摘要過長等都會失敗，依訊息修正）。
+6. **檢查**：`python3 update.py validate`，必須回傳 `OK`（有過期項目、摘要過長、重複新聞等都會失敗，依訊息修正）。
+   - **重複新聞檢查**：`validate` 會比對 news.json 內項目之間、以及 news.json 與 archive.json 的項目。只比對「第一個（主要）來源網址」與「標題」：
+     主要來源網址（忽略 http/https、`www.`、查詢字串、結尾斜線）相同，或標題正規化後（全形轉半形、去除標點空白）相似度 > 0.85 且標題中的數字完全相同，即失敗，
+     訊息為 `DUPLICATE: <id A> and <id B>: …`。處理方式：合併成同一則（改寫既有項目、補來源），不要重複新增。
+     例外：主要來源為 `cwa.gov.tw` 的項目（多則颱風／警報項目可共用同一個 CWA 頁面）不以網址判定；每日系列（如每日油價）標題數字不同，不算重複。
 7. **發布**：`python3 update.py finalize`
    - 自動把過期項目移入 `data/archive.json`（不刪除；`--keep-hours` 可調整一般項目的期限）。
    - 自動將 `updated` 設為現在時間，重拍四張截圖並重新打包 `/workspace/neutral-news.zip`。
