@@ -65,25 +65,68 @@
       </section>`;
   }
 
+  // --- 分類篩選 (client-side only; categories are derived from the items' own `category` field) ---
+  let filter = "all";   // "all" or a category string; resets on tab switch, never persisted
+  // 進行中 (ongoing, not ended) disaster items are exempt from the filter so a live warning is never hidden.
+  const exempt = i => !!(i.ongoing && !i.ongoing.ended);
+  function categoriesOf(items){
+    const present = [...new Set(items.map(i => i.category).filter(Boolean))];
+    const order = (data && data.categories) || [];   // keep the editorial order when known; unknown (new) ones follow
+    const rank = c => { const n = order.indexOf(c); return n < 0 ? order.length : n; };
+    return present.map((c, n) => [c, n]).sort((a, b) => rank(a[0]) - rank(b[0]) || a[1] - b[1]).map(x => x[0]);
+  }
+  function filterBar(items, cats){
+    const btn = (value, label, n) =>
+      `<button type="button" class="filter-btn" data-filter="${esc(value)}" aria-pressed="${filter === value}">${esc(label)}<span class="n">${n}</span></button>`;
+    return `<div class="filter-bar" role="group" aria-label="依分類篩選">
+        ${btn("all", "全部", items.length)}${cats.map(c => btn(c, c, items.filter(i => i.category === c).length)).join("")}
+      </div>`;
+  }
+
   let renderedDay = null;
   function render(tab, keepScroll){
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab===tab));
     const items = data.items.filter(i => i.tab===tab);
     const now = new Date();
     renderedDay = taipeiDay(now);
-    const today = ordered(items.filter(i => sectionOf(i, now) === "today"));
-    const other = ordered(items.filter(i => sectionOf(i, now) === "other"));
+    const cats = categoriesOf(items);
+    if(filter !== "all" && !cats.includes(filter)) filter = "all";   // category vanished (e.g. archived) -> back to 全部
+    const filtering = filter !== "all";
+    const pass = i => !filtering || i.category === filter || exempt(i);
+    const allToday = items.filter(i => sectionOf(i, now) === "today");
+    const allOther = items.filter(i => sectionOf(i, now) === "other");
+    const today = ordered(allToday.filter(pass));
+    const other = ordered(allOther.filter(pass));
     document.getElementById("updated").textContent = data.updated
       ? `最後更新：${fmt(data.updated)}（台灣時間）　共 ${items.length} 則` : `共 ${items.length} 則`;
     document.getElementById("cat-index").innerHTML =
       `<a href="#today-${tab}" class="to-breaking">今日新聞 ${today.length}</a>` +
-      (other.length ? `<a href="#other-${tab}">其他新聞 ${other.length}</a>` : "");
+      (allOther.length ? `<a href="#other-${tab}">其他新聞 ${other.length}</a>` : "");
     const el = document.getElementById("content");
     if(!items.length){ el.innerHTML = `<p class="empty">目前沒有符合收錄標準的消息。</p>`; return; }
-    el.innerHTML = validBlock(items) +
-      listSection(`today-${tab}`, "今日新聞", today, "今天還沒有新的重大民生新聞", "台灣時間今日首次發布；進行中的事件會保留於此") +
-      (other.length ? listSection(`other-${tab}`, "其他新聞", other, "", "") : "");
+    const shown = today.length + other.length, kept = [...today, ...other].filter(i => exempt(i) && i.category !== filter).length;
+    const bar = cats.length > 1   // a single category would make the row a no-op, so hide it
+      ? filterBar(items, cats) +
+        `<p class="filter-status" role="status" aria-live="polite">${filtering
+          ? `目前顯示「${esc(filter)}」${shown - kept} 則${kept ? `，另有 ${kept} 則進行中的事件不受篩選影響` : ""}` : ""}</p>` : "";
+    const emptyFiltered = "這個分類目前沒有新聞";
+    el.innerHTML = validBlock(items) + bar +
+      listSection(`today-${tab}`, "今日新聞", today, filtering && allToday.length ? emptyFiltered : "今天還沒有新的重大民生新聞", "台灣時間今日首次發布；進行中的事件會保留於此") +
+      (allOther.length ? listSection(`other-${tab}`, "其他新聞", other, emptyFiltered, "") : "");
     bindToggles(el);
+    el.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
+      filter = b.dataset.filter;
+      render(tab, true);
+      const again = [...el.querySelectorAll(".filter-btn")].find(x => x.dataset.filter === filter);
+      if(again) again.focus({preventScroll:true});   // re-rendering replaces the button; keep keyboard focus on it
+    }));
+    // links to an item (本週有效 titles) must still work when the filter has hidden that item
+    el.querySelectorAll(".vn-title").forEach(a => a.addEventListener("click", e => {
+      const id = decodeURIComponent(a.getAttribute("href").slice(1));
+      if(document.getElementById(id)) return;
+      e.preventDefault(); filter = "all"; render(tab, true);
+      const t = document.getElementById(id); if(t) t.scrollIntoView();
+    }));
     if(keepScroll) return;
     const target = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
     if(target) target.scrollIntoView();
@@ -96,6 +139,7 @@
 
   document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
     history.replaceState(null, "", b.dataset.tab==="intl" ? "#intl" : "#tw");
+    filter = "all";
     render(b.dataset.tab); window.scrollTo(0,0);
   }));
 
