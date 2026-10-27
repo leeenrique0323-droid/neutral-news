@@ -3,3 +3,4 @@ candidates.json
 data/new_candidates.json
 __pycache__/
 cwa_alerts.json
+data/fetch_log.jsonl

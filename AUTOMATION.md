@@ -10,7 +10,7 @@
 | `fetch.py` | 抓取 RSS，輸出候選清單 `candidates.json`（含關鍵字初步分類、排除犯罪/娛樂等） |
 | `cwa.py` | 抓取中央氣象署（CWA）官方警特報、颱風位置、近期地震 → `cwa_alerts.json`（並印出摘要） |
 | `update.py fetch` | 執行 fetch.py 與 cwa.py，並列出**尚未收錄**的候選 → `data/new_candidates.json`（含 `cwa` 欄位） |
-| `data/fetch_log.jsonl` | 抓取紀錄（見下方「抓取紀錄」）；已納入版本控制，提交時請一併 `git add data/` |
+| `data/fetch_log.jsonl` | 抓取紀錄（見下方「抓取紀錄」）；只存在這台電腦上，已加入 .gitignore，不需提交 |
 | `update.py log` | 印出抓取紀錄最後 N 筆（`python3 update.py log -n 20`，預設 10） |
 | `data/news.json` | 網站唯一資料來源（含 `updated` 時間戳，頁面上的「最後更新」即讀取此欄位） |
 | `data/archive.json` | 過往新聞（已過期、移出首頁的項目，保留完整原文，供查閱與日後「更正紀錄」）。首頁頁尾連到 `archive.html` |
