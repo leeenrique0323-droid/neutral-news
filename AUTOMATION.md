@@ -10,6 +10,8 @@
 | `fetch.py` | 抓取 RSS，輸出候選清單 `candidates.json`（含關鍵字初步分類、排除犯罪/娛樂等） |
 | `cwa.py` | 抓取中央氣象署（CWA）官方警特報、颱風位置、近期地震 → `cwa_alerts.json`（並印出摘要） |
 | `update.py fetch` | 執行 fetch.py 與 cwa.py，並列出**尚未收錄**的候選 → `data/new_candidates.json`（含 `cwa` 欄位） |
+| `data/fetch_log.jsonl` | 抓取紀錄（見下方「抓取紀錄」）；已納入版本控制，提交時請一併 `git add data/` |
+| `update.py log` | 印出抓取紀錄最後 N 筆（`python3 update.py log -n 20`，預設 10） |
 | `data/news.json` | 網站唯一資料來源（含 `updated` 時間戳，頁面上的「最後更新」即讀取此欄位） |
 | `data/archive.json` | 過往新聞（已過期、移出首頁的項目，保留完整原文，供查閱與日後「更正紀錄」）。首頁頁尾連到 `archive.html` |
 | `update.py archive` | 把已過期項目從 news.json **移到** archive.json（不刪除） |
@@ -39,6 +41,7 @@
    - 已收錄的事件有新進展 → **改寫**（不是接續附加）`summary`／三行影響說明，設定 `updated` 時間，並在 `sources` 增加新連結。
      長篇事件把新資訊寫進對應的「分項」（見下方「長篇事件：分項 sections」），不要把每次更新都塞進 `summary`。
      **不得修改 `first_published`**（過期完全依它計算，`updated` 不影響過期）。
+   - 政策／補助／期限／價格凍結且來源明確載明結束日期 → 設定 `valid_until`（必要時加 `evergreen: true`），不確定就不設，見「有效期限 `valid_until`」。
    - 主要事實已確認（官方公告、數字確定、日期確定）→ 由 `快訊・初步資訊` 升級為 `完整版`。
    - 同一事件只保留一則，不要重複新增。
 5. **過期整理**：`python3 update.py archive`（把過期項目移到過往新聞；見下方「過期與過往新聞」）。
@@ -52,6 +55,19 @@
    - 自動把過期項目移入 `data/archive.json`（不刪除；`--keep-hours` 可調整一般項目的期限）。
    - 自動將 `updated` 設為現在時間，重拍四張截圖並重新打包 `/workspace/neutral-news.zip`。
 8. **確認截圖**：開啟截圖（桌面、手機、國際、過往新聞、更正紀錄），確認中文字型正常（無方框）、快訊區在最上方、版面未破、分項可展開。
+
+## 抓取紀錄（data/fetch_log.jsonl）
+
+`update.py fetch` 每次執行（實際抓取或重複呼叫保護而沿用）都會在 `data/fetch_log.jsonl` 追加一行 JSON，只保留最後約 500 行：
+
+```json
+{"ts": "2026-10-27T13:00:05+08:00", "mode": "fresh", "feeds_ok": ["公視新聞", "..."], "feeds_failed": [], "candidates": 12, "cwa_urgent": 0}
+```
+
+- `mode`：`fresh`（實際抓取）、`forced`（`--force` 實際抓取）、`reused`（10 分鐘內沿用，未連網）。
+- `feeds_ok` / `feeds_failed`：來源名稱；`candidates` 為尚未收錄的候選數；`cwa_urgent` 為 CWA 緊急項目數（CWA 抓取失敗時為 `null`）。
+- 查看：`python3 update.py log -n 20`。寫入失敗只會印出警告，不影響流程。
+- 此檔案**要提交**（不在 .gitignore）。提交時請連同 `data/` 一起 `git add`，否則下次 `git pull --rebase` 會因為未提交的變更而失敗。
 
 ## 中央氣象署官方警特報（cwa.py）
 
@@ -92,7 +108,17 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 | 類型 | 何時移入過往新聞 |
 |---|---|
 | 一般項目 | `first_published` 起 **48 小時**（2 天） |
+| 有 `valid_until` 的項目（非 `ongoing`） | **有效期限過後**才移入（日期格式＝當天結束前都有效）；另有 **14 天硬上限**（`first_published` 起算），`valid_until` 不得晚於此上限，否則 `validate` 失敗 |
 | 進行中的天災事件（有 `ongoing`，僅限「天災與公共安全」） | 警報／事件**尚未解除**時保留；**警報解除（`ongoing.ended`）且已完成災後／災情總結（`ongoing.wrapup_done: true`）才算結束**，結束後移入。若解除後遲遲未寫完總結，**解除後 24 小時為上限**，屆時仍會移入。仍須滿足一般項目的下限（48 小時）；另有 **7 天硬上限**（避免遺漏導致永遠不下架） |
+
+### 有效期限 `valid_until` 與「本週有效」區塊
+
+- `valid_until`（選填，台灣時間）：`"2026-11-01"`（當天結束前有效）或 `"2026-11-01T18:00:00+08:00"`。設定後，項目會一直留到該時間過後（最多到 `first_published` 起 14 天），不再套用 48 小時規則。網站在該項目上顯示「有效至 MM/DD」。
+- **何時設定**：新增的項目若與**政策、補助、申請／繳納期限、價格凍結、優惠措施**等有**來源明確載明的結束日期**，就把 `valid_until` 設為該日期（例：中油「一週不調整」→ 結束日）。**不確定就不要設**；不得自行推測或編造日期，原報導只寫起日、沒寫止日的也不要設。結束日超過 14 天者（例如 30 天的繳納期）不能設 `valid_until`（`validate` 會失敗），維持一般 48 小時規則，需要時於期限前另開新進展項目。
+- `evergreen`（選填，`true`）：標示此項目屬於「政策／補助／期限／價格凍結」這類實用資訊，會列入首頁「本週有效」區塊。**只有同時符合 `evergreen: true` 且 `valid_until` 尚未到期**才會列入；`evergreen: true` 必須搭配 `valid_until`（`validate` 檢查）。一般新聞（即使有 `valid_until`）不要加 `evergreen`。
+- 「本週有效」區塊位於首頁清單上方，依到期日由近到遠排列，每筆顯示標題（連到下方項目）、摘要第一句、「有效至」日期；沒有項目時顯示「目前沒有本週有效的民生資訊」。
+- 有 `ongoing` 的天災項目仍依下方 `ongoing` 規則，不使用 `valid_until`。
+- 已在 news.json 的舊項目不要補設；只有來源明確載明結束日期時才設。已過期被移入過往新聞的項目，若 `valid_until` 仍在未來且符合 14 天上限，可移回 news.json（保留原 `first_published`）。
 
 進行中事件的欄位：
 
@@ -197,7 +223,9 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
     "sources": [{"name": "中央社", "title": "原文標題", "url": "https://..."}],
     "sections": "（選填）分項，見「長篇事件：分項 sections」",
     "ongoing": "（選填，僅天災）{reason, ended, wrapup_done}，見「過期與過往新聞」",
-    "pinned": "（選填）true 則排在快訊區最上方"
+    "pinned": "（選填）true 則排在快訊區最上方",
+    "valid_until": "（選填）有效至，YYYY-MM-DD 或 ISO8601（台灣時間）；須來源明確載明，不得早於 first_published、不得晚於其後 14 天",
+    "evergreen": "（選填）true 則在 valid_until 前列入首頁「本週有效」區塊（政策／補助／期限／價格凍結）"
   }]
 }
 ```

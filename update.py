@@ -6,6 +6,7 @@
   python3 update.py archive    # move expired items from data/news.json to data/archive.json (never deletes)
   python3 update.py validate   # check data/news.json against the editorial schema (fails on expired items)
   python3 update.py finalize   # archive expired, validate, stamp `updated`, screenshots, zip
+  python3 update.py log [-n N] # print the last N (default 10) entries of data/fetch_log.jsonl
 
 Writing/curating summaries into data/news.json is an editorial step between
 `fetch` and `finalize` (see AUTOMATION.md). This script never invents content.
@@ -21,6 +22,7 @@ NEWC = os.path.join(ROOT, "data", "new_candidates.json")
 CWA = os.path.join(ROOT, "cwa_alerts.json")
 CORRECTIONS = os.path.join(ROOT, "data", "corrections.json")
 ARCHIVE = os.path.join(ROOT, "data", "archive.json")
+FETCH_LOG = os.path.join(ROOT, "data", "fetch_log.jsonl")
 TPE = timezone(timedelta(hours=8))
 STATUSES = {"快訊・初步資訊", "完整版"}
 REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what", "when", "published",
@@ -30,6 +32,7 @@ REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what"
 KEEP_HOURS = 48            # normal items: archived 48h after first_published (never changes on update)
 WRAPUP_HOURS = 24          # ongoing stories: upper bound for the post-event wrap-up after `ongoing.ended`
 ONGOING_MAX_HOURS = 168    # safety cap: even an "ongoing" item is archived 7 days after first_published
+VALID_MAX_DAYS = 14        # items with `valid_until`: hard cap after first_published (nothing lingers forever)
 ONGOING_CATEGORY = "天災與公共安全"
 SUMMARY_MAX = 300          # normal summary (characters)
 SUMMARY_MAX_SECTIONED = 200  # items with `sections`: short status block
@@ -40,6 +43,7 @@ BULLETS_MIN, BULLETS_MAX = 2, 5
 BULLET_MAX = 260           # characters per bullet
 
 # --- fetch / duplicate rules (keep in sync with AUTOMATION.md) ---
+FETCH_LOG_MAX = 500        # data/fetch_log.jsonl keeps only the last this-many lines
 FETCH_REUSE_MINUTES = 10   # `fetch` reuses data/new_candidates.json younger than this unless --force
 TITLE_SIM_MAX = 0.85       # validate: normalized-title similarity above this (with identical numbers) = duplicate
 SHARED_URL_HOSTS = ("cwa.gov.tw",)  # official hub pages legitimately cited as primary source by several items
@@ -58,14 +62,28 @@ def norm(u):
 def dt(x):
     return datetime.fromisoformat(x)
 
+def valid_until_end(v):
+    """`valid_until` (Taiwan time) -> the first instant it no longer applies.
+    A plain date (YYYY-MM-DD) is valid through the END of that day; a datetime without
+    an offset is read as Taiwan time. Raises ValueError for anything else."""
+    if not isinstance(v, str): raise ValueError("valid_until must be a string")
+    if re.fullmatch(r"\d{4}-\d{2}-\d{2}", v):
+        return datetime.strptime(v, "%Y-%m-%d").replace(tzinfo=TPE) + timedelta(days=1)
+    x = datetime.fromisoformat(v)
+    return x if x.tzinfo else x.replace(tzinfo=TPE)
+
 def expiry(i, hours=KEEP_HOURS):
     """Return the datetime after which the item must be archived, or None if it is
     currently allowed to stay open-ended (active ongoing story, subject to the hard cap).
-    Always based on first_published (never on `updated`)."""
+    Always based on first_published (never on `updated`).
+    Items with `valid_until` stay until it has passed (hard cap: VALID_MAX_DAYS after
+    first_published); ongoing disaster items keep their own rules."""
     first = dt(i["first_published"])
     normal = first + timedelta(hours=hours)
     og = i.get("ongoing")
     if not og:
+        if i.get("valid_until"):
+            return min(valid_until_end(i["valid_until"]), first + timedelta(days=VALID_MAX_DAYS))
         return normal
     cap = first + timedelta(hours=ONGOING_MAX_HOURS)
     if not og.get("ended"):
@@ -100,8 +118,10 @@ def archive_expired(d, now, hours=KEEP_HOURS, reason=None, write=True):
         if is_expired(i, now, hours):
             i = dict(i)
             i["archived"] = now.replace(microsecond=0).isoformat()
-            i["archive_reason"] = reason or ("過期：逾首次發布後%d小時" % hours if not i.get("ongoing")
-                                             else "過期：進行中事件已結束並完成總結（或達上限）")
+            i["archive_reason"] = reason or (
+                "過期：進行中事件已結束並完成總結（或達上限）" if i.get("ongoing")
+                else "過期：已過有效期限（或達%d天上限）" % VALID_MAX_DAYS if i.get("valid_until")
+                else "過期：逾首次發布後%d小時" % hours)
             moved.append(i)
         else:
             keep.append(i)
@@ -120,6 +140,44 @@ def write_archive(moved, now):
     tmp = ARCHIVE + ".tmp"
     json.dump(a, open(tmp, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     os.replace(tmp, ARCHIVE)
+
+def log_fetch(mode, new, feeds, cwa):
+    """Append one JSON line per fetch (real or reused) to data/fetch_log.jsonl; keep the last FETCH_LOG_MAX lines.
+    Never fatal: logging problems must not break a scheduled run."""
+    try:
+        cwa_items = []
+        if cwa:
+            for k in ("active_alerts", "typhoons", "earthquakes"):
+                cwa_items += [x for x in cwa.get(k) or [] if isinstance(x, dict)]
+        rec = {"ts": datetime.now(TPE).replace(microsecond=0).isoformat(), "mode": mode,
+               "feeds_ok": [f["feed"] for f in feeds if f.get("ok")],
+               "feeds_failed": [f["feed"] for f in feeds if not f.get("ok")],
+               "candidates": len(new),
+               "cwa_urgent": (sum(1 for x in cwa_items if x.get("urgent")) if cwa else None)}
+        lines = []
+        if os.path.exists(FETCH_LOG):
+            lines = [l for l in open(FETCH_LOG, encoding="utf-8").read().splitlines() if l.strip()]
+        lines.append(json.dumps(rec, ensure_ascii=False))
+        tmp = FETCH_LOG + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines[-FETCH_LOG_MAX:]) + "\n")
+        os.replace(tmp, FETCH_LOG)
+    except Exception as e:
+        print(f"[fetch log] could not write {FETCH_LOG}: {e}")
+
+def cmd_log(a):
+    if not os.path.exists(FETCH_LOG):
+        print("no fetch log yet"); return 0
+    rows = [l for l in open(FETCH_LOG, encoding="utf-8").read().splitlines() if l.strip()]
+    for l in rows[-a.n:] if a.n > 0 else []:
+        try: r = json.loads(l)
+        except ValueError: print(l); continue
+        failed = ",".join(r.get("feeds_failed") or []) or "-"
+        urgent = r.get("cwa_urgent")
+        print(f"{r.get('ts')} {r.get('mode'):7} feeds ok {len(r.get('feeds_ok') or [])} failed {len(r.get('feeds_failed') or [])} ({failed})"
+              f" | candidates {r.get('candidates')} | CWA urgent {'n/a' if urgent is None else urgent}")
+    print(f"({min(a.n, len(rows)) if a.n > 0 else 0} of {len(rows)} entries; file: {FETCH_LOG})")
+    return 0
 
 def print_new_list(new):
     for x in new:
@@ -156,6 +214,7 @@ def cmd_fetch(a):
                     print("=" * 60 + "\n")
                 print(f"{len(new)} new candidates -> {NEWC}")
                 print_new_list(new)
+                log_fetch("reused", new, prev["feeds"], prev.get("cwa"))
                 return 0
             except (OSError, ValueError, KeyError) as e:
                 print(f"[fetch] cached {NEWC} unreadable ({e}); fetching fresh")
@@ -181,6 +240,7 @@ def cmd_fetch(a):
                "cwa": ({k: cwa[k] for k in ("generated", "urgent", "active_alerts", "typhoons", "earthquakes")} if cwa else None)},
               open(NEWC, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
     bad = [f for f in c["feeds"] if not f["ok"]]
+    log_fetch("forced" if a.force else "fresh", new, c["feeds"], cwa)
     print(fetch_summary_line("FRESH", new, c["feeds"], cwa))
     print(f"{len(new)} new candidates -> {NEWC}")
     for f in bad:
@@ -258,6 +318,21 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
                 try: datetime.fromisoformat(og["ended"])
                 except ValueError: errs.append(f"{tag}: bad ongoing.ended")
             elif og.get("wrapup_done"): errs.append(f"{tag}: wrapup_done requires ongoing.ended")
+        # --- valid_until / evergreen ---
+        vu = i.get("valid_until")
+        if vu is not None:
+            try:
+                end = valid_until_end(vu)
+                if "first_published" not in bad_dt and i.get("first_published"):
+                    fp = dt(i["first_published"])
+                    if end <= fp: errs.append(f"{tag}: valid_until {vu} is before first_published")
+                    if end > fp + timedelta(days=VALID_MAX_DAYS):
+                        errs.append(f"{tag}: valid_until {vu} is more than {VALID_MAX_DAYS} days after first_published (hard cap; use a date within {VALID_MAX_DAYS} days or leave valid_until off)")
+            except (ValueError, TypeError):
+                errs.append(f"{tag}: bad valid_until {vu!r} (use YYYY-MM-DD or ISO datetime, Taiwan time)")
+        if i.get("evergreen") is not None:
+            if not isinstance(i["evergreen"], bool): errs.append(f"{tag}: evergreen must be true/false")
+            elif i["evergreen"] and not vu: errs.append(f"{tag}: evergreen requires valid_until (it is listed in 本週有效 only while valid_until is in the future)")
         # --- expiry (based on first_published only) ---
         if now is not None and not (bad_dt & {"first_published"}) and i.get("first_published"):
             try:
@@ -411,13 +486,14 @@ def main():
         p = sp.add_parser(name)
         p.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
         p.add_argument("--now", help="ISO time override (testing)")
+    lg = sp.add_parser("log"); lg.add_argument("-n", type=int, default=10, help="number of entries (default 10)")
     fn = sp.add_parser("finalize")
     fn.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
     fn.add_argument("--now", help="ISO time override (testing)")
     fn.add_argument("--no-screens", action="store_true")
     fn.add_argument("--no-zip", action="store_true")
     a = ap.parse_args()
-    sys.exit({"fetch": cmd_fetch, "validate": cmd_validate, "archive": cmd_archive, "finalize": cmd_finalize}[a.cmd](a) or 0)
+    sys.exit({"fetch": cmd_fetch, "validate": cmd_validate, "archive": cmd_archive, "finalize": cmd_finalize, "log": cmd_log}[a.cmd](a) or 0)
 
 if __name__ == "__main__":
     main()

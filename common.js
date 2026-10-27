@@ -12,6 +12,16 @@ window.NN = (function(){
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const first = i => i.first_published || i.published;
 
+  // `valid_until` ("YYYY-MM-DD" = valid through the end of that day, or an ISO datetime; Taiwan time)
+  const validEnd = i => {
+    const v = i.valid_until; if(!v) return null;
+    const t = /^\d{4}-\d{2}-\d{2}$/.test(v) ? new Date(v + "T23:59:59.999+08:00")
+      : new Date(/(Z|[+-]\d{2}:?\d{2})$/.test(v) ? v : v + "+08:00");
+    return isNaN(t) ? null : t;
+  };
+  const validLabel = i => { const e = validEnd(i); if(!e) return "";
+    const t = tp(new Date(e.getTime() - 1)); return `有效至 ${p(t.getUTCMonth()+1)}/${p(t.getUTCDate())}`; };
+
   const sourceList = i => `<ul>${i.sources.map(s =>
     `<li>${esc(s.name)}：<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>`;
 
@@ -70,5 +80,5 @@ window.NN = (function(){
             : `<div class="sources">原始報導與資料來源${sourceList(i)}</div>`}`;
   }
 
-  return {fmt, fmtDate, esc, first, sectionsHtml, bindToggles, itemBody, tp};
+  return {fmt, fmtDate, esc, first, validEnd, validLabel, sectionsHtml, bindToggles, itemBody, tp};
 })();
