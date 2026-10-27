@@ -80,5 +80,105 @@ window.NN = (function(){
             : `<div class="sources">原始報導與資料來源${sourceList(i)}</div>`}`;
   }
 
-  return {fmt, fmtDate, esc, first, validEnd, validLabel, sectionsHtml, bindToggles, itemBody, tp};
+  // ---------- v2: category chips (stable colour per category) ----------
+  // Known categories keep a fixed slot (independent of what is on the page today); any new category
+  // (e.g. 政治) falls back to a stable hash of its name into the same palette. Chips always carry the text label.
+  const CHIP_KNOWN = ["物價與薪資","稅務與補助","健保與醫療","房價與租屋","能源與水電","交通","教育","天災與公共安全","勞動與產業","新法規"];
+  const CHIP_SLOTS = 10;
+  function chipIndex(cat){
+    const k = CHIP_KNOWN.indexOf(cat);
+    if(k >= 0) return k;
+    let h = 5381; const s = String(cat || "");
+    for(let n = 0; n < s.length; n++) h = ((h * 33) ^ s.charCodeAt(n)) >>> 0;
+    return h % CHIP_SLOTS;
+  }
+  const chip = cat => cat ? `<span class="chip c${chipIndex(cat)}">${esc(cat)}</span>` : "";
+
+  // ---------- v2: teaser (first 1-2 sentences) shown while a card is collapsed ----------
+  function splitSummary(summary){
+    const text = String(summary || "").trim();
+    if(!text) return ["", ""];
+    const lines = text.split("\n").map(x => x.trim()).filter(Boolean);
+    if(lines.length > 1) return [lines[0], lines.slice(1).join("\n")];   // sectioned items: first line = latest status
+    const sents = text.match(/[^。！？]*[。！？]/g) || [text];
+    let n = 1, head = sents[0];
+    if(head.length < 45 && sents.length > 1){ head += sents[1]; n = 2; }
+    const rest = sents.slice(n).join("") + text.slice(sents.join("").length);
+    return [head, rest.trim()];
+  }
+
+  function sourceLinks(i){
+    const cnt = {}; (i.sources || []).forEach(x => cnt[x.name] = (cnt[x.name] || 0) + 1);
+    const seen = {};
+    return (i.sources || []).map(x => {
+      seen[x.name] = (seen[x.name] || 0) + 1;
+      const label = cnt[x.name] > 1 ? `${x.name}${seen[x.name]}` : x.name;
+      return `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.title)}">${esc(label)}</a>`;
+    }).join("");
+  }
+
+  // Collapsible news card. Collapsed: badges, chip, title, 已更正 note, teaser, sources.
+  // Expanded (button, aria-expanded): rest of summary, 影響誰/什麼/何時, 對台灣的影響, sections, full source list.
+  function cardHtml(i, o){
+    o = o || {};
+    const breaking = String(i.status || "").startsWith("快訊");
+    const live = !!(i.ongoing && !i.ongoing.ended);
+    const sectioned = !!(i.sections && i.sections.length);
+    const [head, rest] = splitSummary(i.summary);
+    const pid = "body-" + i.id;
+    const cls = ["item", "card", o.featured ? "featured" : "", breaking ? "breaking" : "", live ? "live" : "", sectioned ? "has-sections" : ""].filter(Boolean).join(" ");
+    return `
+        <article class="${cls}" id="${esc(i.id)}">
+          <div class="badges">
+            <span class="badge ${breaking ? "prelim" : "full"}">${esc(i.status)}</span>
+            ${live ? `<span class="badge live">進行中</span>` : ""}
+            ${i.valid_until && validLabel(i) ? `<span class="badge valid">${esc(validLabel(i))}</span>` : ""}
+            ${o.showCat === false ? "" : chip(i.category)}
+          </div>
+          <h3>${esc(i.title)}</h3>
+          ${i.corrected ? `<p class="corrected-note"><strong>已更正</strong>（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
+          <p class="summary teaser">${esc(head)}</p>
+          <div class="card-meta">
+            <span class="when-line">發布 ${fmt(first(i))}${i.updated ? `　更新 ${fmt(i.updated)}` : ""}</span>
+            <span class="src-line"><span class="src-label">來源</span>${sourceLinks(i)}</span>
+          </div>
+          <div class="card-body" id="${esc(pid)}" hidden>
+            ${rest ? `<p class="summary rest ${sectioned ? "lines" : ""}">${esc(rest)}</p>` : ""}
+            <dl class="facts">
+              <dt>影響誰</dt><dd>${esc(i.who)}</dd>
+              <dt>影響什麼</dt><dd>${esc(i.what)}</dd>
+              <dt>何時開始</dt><dd>${esc(i.when)}</dd>
+            </dl>
+            ${i.taiwanImpact ? `<p class="tw-impact"><strong>對台灣的影響</strong>${esc(i.taiwanImpact)}</p>` : ""}
+            ${sectionsHtml(i, true)}
+            <details class="sources all-sources"><summary>原始報導與資料來源（${(i.sources || []).length}）</summary>${sourceList(i)}</details>
+          </div>
+          <button type="button" class="card-toggle" aria-expanded="false" aria-controls="${esc(pid)}"><span class="lbl">展開全文</span><span class="ico" aria-hidden="true"></span></button>
+        </article>`;
+  }
+
+  function setExpanded(card, open){
+    const btn = card.querySelector(".card-toggle"), body = card.querySelector(".card-body");
+    if(!btn || !body) return;
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.querySelector(".lbl").textContent = open ? "收合" : "展開全文";
+    body.hidden = !open;
+    card.classList.toggle("expanded", open);
+  }
+  function bindCards(root){
+    root.querySelectorAll(".card-toggle").forEach(btn => btn.addEventListener("click", () => {
+      setExpanded(btn.closest(".card"), btn.getAttribute("aria-expanded") !== "true");
+    }));
+  }
+
+  // banner date (Taiwan time) e.g. 2026年10月27日 星期二
+  function bannerDate(){
+    const el = document.getElementById("today-date"); if(!el) return;
+    const t = tp(new Date()); const wd = "日一二三四五六"[t.getUTCDay()];
+    el.textContent = `${t.getUTCFullYear()}年${t.getUTCMonth()+1}月${t.getUTCDate()}日 星期${wd}`;
+  }
+  document.addEventListener("DOMContentLoaded", bannerDate);
+
+  return {fmt, fmtDate, esc, first, validEnd, validLabel, sectionsHtml, bindToggles, itemBody, tp,
+          chip, chipIndex, cardHtml, bindCards, setExpanded, splitSummary};
 })();

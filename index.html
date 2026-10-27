@@ -3,23 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>民生新聞　中立資訊</title>
+<title>中立民生新聞　中立、清楚、與生活有關</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">跳到主要內容</a>
 <header class="site-header">
-  <div class="wrap">
-    <h1 class="logo">民生新聞</h1>
-    <p class="tagline">只報導直接影響生活的重大消息．只寫可查證的事實</p>
+  <div class="wrap banner">
+    <div class="brand">
+      <h1 class="logo">中立民生新聞</h1>
+      <p class="tagline">中立、清楚、與生活有關</p>
+    </div>
+    <div class="banner-meta">
+      <p class="today-date" id="today-date"></p>
+      <p class="meta-line" id="updated"></p>
+    </div>
   </div>
-  <nav class="tabs wrap" role="tablist" aria-label="地區">
+</header>
+<nav class="tabs-bar" aria-label="地區">
+  <div class="wrap tabs" role="tablist" aria-label="地區">
     <button role="tab" id="tab-tw" data-tab="tw" aria-selected="true">台灣</button>
     <button role="tab" id="tab-intl" data-tab="intl" aria-selected="false">國際</button>
-  </nav>
-</header>
+  </div>
+</nav>
 
 <main class="wrap" id="main">
-  <p class="meta-line" id="updated"></p>
   <nav class="cat-index" id="cat-index" aria-label="分類"></nav>
   <div id="content" role="tabpanel"></div>
 </main>

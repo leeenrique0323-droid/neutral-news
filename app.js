@@ -1,21 +1,11 @@
 (function(){
-  const {fmt, esc, first, itemBody, bindToggles, validEnd, validLabel} = NN;
+  const {fmt, esc, first, bindToggles, validEnd, validLabel} = NN;
   let data = null;
 
   const isBreaking = i => String(i.status||"").startsWith("快訊");
 
-  function card(i, showCat){
-    return `
-        <article class="item ${i.sections ? "has-sections" : ""}" id="${esc(i.id)}">
-          <div class="badges">
-            <span class="badge ${isBreaking(i) ? "prelim" : ""}">${esc(i.status)}</span>
-            ${i.valid_until && validLabel(i) ? `<span class="badge valid">${esc(validLabel(i))}</span>` : ""}
-            ${i.ongoing && !i.ongoing.ended ? `<span class="badge live">進行中</span>` : ""}
-            ${showCat ? `<span class="cat-label">${esc(i.category)}</span>` : ""}
-            <span>發布 ${fmt(first(i))}${i.updated ? `　更新 ${fmt(i.updated)}` : ""}</span>
-          </div>
-          ${itemBody(i)}
-        </article>`;
+  function card(i, featured){
+    return NN.cardHtml(i, {featured: !!featured});
   }
 
   // 本週有效: items flagged `evergreen` (policy / subsidy / deadline / price freeze) whose valid_until is still ahead
@@ -57,11 +47,11 @@
   const ordered = list => list.slice().sort((a,b) =>
     (isBreaking(b) - isBreaking(a)) || (isBreaking(a) && ((!!b.pinned - !!a.pinned))) || (newest(b)-newest(a)));
 
-  function listSection(id, title, list, emptyText, note){
+  function listSection(id, title, list, emptyText, note, featureFirst){
     return `
       <section class="day-sec" id="${id}" aria-label="${title}">
         <h2>${title}<span class="count">${list.length} 則</span>${note ? `<span class="note">${note}</span>` : ""}</h2>
-        ${list.length ? list.map(i => card(i, true)).join("") : `<p class="day-empty">${emptyText}</p>`}
+        ${list.length ? list.map((i, n) => card(i, featureFirst && n === 0)).join("") : `<p class="day-empty">${emptyText}</p>`}
       </section>`;
   }
 
@@ -83,12 +73,12 @@
       </div>`;
   }
 
-  let renderedDay = null;
+  let renderedDay = null, shownTab = null;
   function render(tab, keepScroll){
     document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab===tab));
     const items = data.items.filter(i => i.tab===tab);
     const now = new Date();
-    renderedDay = taipeiDay(now);
+    renderedDay = taipeiDay(now); shownTab = tab;
     const cats = categoriesOf(items);
     if(filter !== "all" && !cats.includes(filter)) filter = "all";   // category vanished (e.g. archived) -> back to 全部
     const filtering = filter !== "all";
@@ -111,9 +101,9 @@
           ? `目前顯示「${esc(filter)}」${shown - kept} 則${kept ? `，另有 ${kept} 則進行中的事件不受篩選影響` : ""}` : ""}</p>` : "";
     const emptyFiltered = "這個分類目前沒有新聞";
     el.innerHTML = validBlock(items) + bar +
-      listSection(`today-${tab}`, "今日新聞", today, filtering && allToday.length ? emptyFiltered : "今天還沒有新的重大民生新聞", "台灣時間今日首次發布；進行中的事件會保留於此") +
+      listSection(`today-${tab}`, "今日新聞", today, filtering && allToday.length ? emptyFiltered : "今天還沒有新的重大民生新聞", "台灣時間今日首次發布；進行中的事件會保留於此", true) +
       (allOther.length ? listSection(`other-${tab}`, "其他新聞", other, emptyFiltered, "") : "");
-    bindToggles(el);
+    bindToggles(el); NN.bindCards(el);
     el.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
       filter = b.dataset.filter;
       render(tab, true);
@@ -122,20 +112,45 @@
     }));
     // links to an item (本週有效 titles) must still work when the filter has hidden that item
     el.querySelectorAll(".vn-title").forEach(a => a.addEventListener("click", e => {
+      e.preventDefault();
       const id = decodeURIComponent(a.getAttribute("href").slice(1));
-      if(document.getElementById(id)) return;
-      e.preventDefault(); filter = "all"; render(tab, true);
-      const t = document.getElementById(id); if(t) t.scrollIntoView();
+      history.replaceState(null, "", "#" + encodeURIComponent(id));
+      goTo(id);
     }));
     if(keepScroll) return;
-    const target = location.hash.length > 1 && document.getElementById(decodeURIComponent(location.hash.slice(1)));
-    if(target) target.scrollIntoView();
+    const id = location.hash.length > 1 && decodeURIComponent(location.hash.slice(1));
+    if(id) goTo(id);
   }
+
+  // Jump to an item: leave the filter if it hides the item, auto-expand the card (deep links), then scroll to it.
+  function goTo(id){
+    let t = document.getElementById(id);
+    if(!t || !t.classList.contains("card")){
+      const it = data && data.items.find(x => x.id === id);
+      if(!it) return;
+      filter = "all"; render(it.tab, true);
+      t = document.getElementById(id);
+    }
+    if(!t || !t.classList.contains("card")) return;
+    NN.setExpanded(t, true);
+    t.scrollIntoView();
+  }
+  window.addEventListener("hashchange", () => {
+    if(!data) return;
+    const id = decodeURIComponent(location.hash.slice(1));
+    if(id && id !== "tw" && id !== "intl" && !/^(today|other)-/.test(id)) goTo(id);
+    else if(id === "tw" || id === "intl"){ if(id !== shownTab) { filter = "all"; render(id); } }
+  });
 
   // a page left open across Taiwan midnight moves yesterday's items to 其他新聞
   setInterval(() => { if(data && renderedDay && taipeiDay(new Date()) !== renderedDay) render(current(), true); }, 30000);
 
-  function current(){ return location.hash.startsWith("#intl") ? "intl" : "tw"; }
+  // the tab for the URL hash; a deep link to an item (#item-id) opens the tab that holds it
+  function current(){
+    const id = decodeURIComponent(location.hash.slice(1));
+    const it = id && data && data.items.find(x => x.id === id);
+    return it ? it.tab : (location.hash.startsWith("#intl") ? "intl" : "tw");
+  }
 
   document.querySelectorAll(".tabs button").forEach(b => b.addEventListener("click", () => {
     history.replaceState(null, "", b.dataset.tab==="intl" ? "#intl" : "#tw");

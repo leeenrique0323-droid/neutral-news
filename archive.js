@@ -14,7 +14,7 @@
         <details class="arch-item">
           <summary>
             <span class="arch-title">${esc(i.title)}</span>
-            <span class="arch-meta">${i.tab==="intl" ? "國際" : "台灣"}・${esc(i.category)}・發布 ${fmt(first(i))}${i.valid_until && NN.validLabel(i) ? `・${esc(NN.validLabel(i))}` : ""}${i.archived ? `・移入 ${fmtDate(i.archived)}` : ""}</span>
+            <span class="arch-meta">${NN.chip(i.category)}<span>${i.tab==="intl" ? "國際" : "台灣"}・發布 ${fmt(first(i))}${i.valid_until && NN.validLabel(i) ? `・${esc(NN.validLabel(i))}` : ""}${i.archived ? `・移入 ${fmtDate(i.archived)}` : ""}</span></span>
           </summary>
           <article class="item">${itemBody(i, {openFirst:false})}</article>
         </details>`).join("")}
