@@ -124,6 +124,8 @@ main.wrap{padding-top:18px;padding-bottom:8px}
 .card-meta{display:flex;flex-wrap:wrap;gap:2px 16px;font-size:var(--fs-xs);color:var(--sub);line-height:1.6;margin-bottom:6px}
 .src-line{display:inline-flex;flex-wrap:wrap;gap:0 10px}
 .src-label::after{content:"：";}
+.src-line .n{font-size:11px;margin-left:2px;color:var(--sub)}
+.src-more{color:var(--sub)}
 .src-line a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
 .card-toggle{appearance:none;font:inherit;font-size:var(--fs-sm);cursor:pointer;display:inline-flex;align-items:center;gap:8px;
   min-height:44px;padding:4px 14px 4px 0;margin:0;border:0;background:none;color:var(--brand);font-weight:700}
@@ -136,11 +138,11 @@ main.wrap{padding-top:18px;padding-bottom:8px}
 .card-body > *:last-child{margin-bottom:6px}
 
 /* featured (first item of 今日新聞) */
-.card.featured{padding:22px 26px 14px;border-color:#bcd1de;box-shadow:0 2px 6px rgba(16,42,67,.08),0 6px 22px rgba(16,42,67,.08)}
+.card.featured{padding:22px 26px 14px;box-shadow:0 2px 6px rgba(16,42,67,.08),0 6px 22px rgba(16,42,67,.08)}
 .card.featured.breaking,.card.featured.live{padding-left:22px}
 .card.featured h3{font-size:var(--fs-xl);line-height:1.45;margin-bottom:12px}
 .card.featured p.summary.teaser{font-size:var(--fs-md);line-height:1.8}
-.card.featured:not(.breaking):not(.live){border-top:4px solid var(--brand)}
+.card.featured:not(.breaking):not(.live){border-top:4px solid var(--brand);border-color:#bcd1de;border-top-color:var(--brand)}
 
 /* key facts / impact / sections / sources inside the expanded body */
 dl.facts{margin:0 0 14px;padding:12px 16px;background:var(--bg);border-radius:8px;font-size:var(--fs-base);line-height:1.7;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}

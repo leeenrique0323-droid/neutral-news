@@ -107,14 +107,17 @@ window.NN = (function(){
     return [head, rest.trim()];
   }
 
+  // collapsed card: one link per publisher (first article), at most 4 publishers; the full list is in the expanded body
   function sourceLinks(i){
-    const cnt = {}; (i.sources || []).forEach(x => cnt[x.name] = (cnt[x.name] || 0) + 1);
-    const seen = {};
-    return (i.sources || []).map(x => {
-      seen[x.name] = (seen[x.name] || 0) + 1;
-      const label = cnt[x.name] > 1 ? `${x.name}${seen[x.name]}` : x.name;
-      return `<a href="${esc(x.url)}" target="_blank" rel="noopener" title="${esc(x.title)}">${esc(label)}</a>`;
-    }).join("");
+    const groups = [];
+    (i.sources || []).forEach(x => {
+      const g = groups.find(y => y.name === x.name);
+      if(g) g.n++; else groups.push({name: x.name, url: x.url, title: x.title, n: 1});
+    });
+    const shown = groups.slice(0, 4).map(g =>
+      `<a href="${esc(g.url)}" target="_blank" rel="noopener" title="${esc(g.title)}">${esc(g.name)}${g.n > 1 ? `<span class="n">×${g.n}</span>` : ""}</a>`).join("");
+    const more = groups.length > 4 ? `<span class="src-more">等 ${(i.sources || []).length} 則</span>` : "";
+    return shown + more;
   }
 
   // Collapsible news card. Collapsed: badges, chip, title, 已更正 note, teaser, sources.
