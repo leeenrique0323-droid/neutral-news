@@ -3,3 +3,4 @@
 - 預覽：`python3 -m http.server 8000` 後開啟 http://localhost:8000/ （國際分頁：#intl）
 - 過期規則：一般消息自首次發布起 48 小時移入 `archive.html`（不刪除；有 `valid_until` 的項目留到有效期限過後，上限 14 天）；更正紀錄見 `corrections.html`（資料 `data/corrections.json`）。
 - 更新流程：見 AUTOMATION.md（`python3 update.py fetch` → 編輯 data/news.json → `python3 update.py validate` → `python3 update.py finalize`）。
+- 首頁分區：「本週有效」下方分為「今日新聞」（`first_published` 為台灣時間今日）與「其他新聞」，由前端依日曆日推導、隔天自動移動；進行中（`ongoing` 未解除）的事件留在今日新聞。詳見 AUTOMATION.md。

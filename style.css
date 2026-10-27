@@ -135,3 +135,20 @@ details.arch-item .item h3{display:none}
   .valid-now h2 .note{display:block;margin:0}
   .item{scroll-margin-top:140px}
 }
+
+/* --- 今日新聞 / 其他新聞 sections --- */
+.day-sec{margin:36px 0 0}
+.day-sec h2{font-size:15px;font-weight:700;color:var(--accent);margin:0 0 4px;padding-bottom:8px;
+  border-bottom:1px solid var(--text);letter-spacing:.1em}
+.day-sec h2 .count{margin-left:10px;font-weight:400;font-size:13px;color:var(--sub);letter-spacing:.02em}
+.day-sec h2 .note{font-weight:400;color:var(--sub);font-size:12px;letter-spacing:.02em;margin-left:12px}
+#today-tw h2,#today-intl h2{border-bottom-width:3px;border-bottom-color:var(--accent)}
+.day-empty{margin:16px 0 0;font-size:15px;color:var(--sub)}
+@media (max-width:520px){ .day-sec h2 .note{display:none} }
+/* keep 本週有效 compact */
+.valid-now{margin:16px 0 0;padding:0 16px 6px}
+.valid-now h2{margin:8px 0 2px;font-size:14px}
+.valid-now li{padding:6px 0}
+.vn-sum{-webkit-line-clamp:1;font-size:13px}
+.vn-title{font-size:15px}
+@media (max-width:520px){ .valid-now{padding:0 12px 4px} .valid-now h2 .note{display:none} }
