@@ -25,9 +25,38 @@ FEEDS = [
     ("中央社 國際", "intl", "https://feeds.feedburner.com/rsscna/intworld"),
     ("BBC World", "intl", "https://feeds.bbci.co.uk/news/world/rss.xml"),
     ("BBC Business", "intl", "https://feeds.bbci.co.uk/news/business/rss.xml"),
-    # NHK cat0 RSS returned only stale (Aug 2026) items on 2026-10-21; kept for completeness
+    # NHK cat0 RSS returned only stale (Aug 2026) items on 2026-10-21 (re-checked 2026-10-29: cat0/1/3/4/5/6 and
+    # nhkworld all.json all still stale); kept for completeness
     ("NHK", "intl", "https://www3.nhk.or.jp/rss/news/cat0.xml"),
+    # --- more 國際 sources (added 2026-10-29; each verified to fetch + parse + carry fresh dates, no key needed).
+    # Mixed regions/viewpoints on purpose: UK, US/EU public media, Germany, France, Middle East, Singapore, Hong Kong,
+    # Japan, Korea, Philippines, Thailand, Australia. All feed `tab="intl"`; the editor still decides what is used.
+    ("BBC Technology", "intl", "https://feeds.bbci.co.uk/news/technology/rss.xml"),
+    ("BBC Science", "intl", "https://feeds.bbci.co.uk/news/science_and_environment/rss.xml"),
+    ("DW World", "intl", "https://rss.dw.com/rdf/rss-en-world"),
+    ("DW Business", "intl", "https://rss.dw.com/rdf/rss-en-bus"),
+    ("DW Asia", "intl", "https://rss.dw.com/rdf/rss-en-asia"),
+    ("Al Jazeera English", "intl", "https://www.aljazeera.com/xml/rss/all.xml"),
+    ("Guardian World", "intl", "https://www.theguardian.com/world/rss"),
+    ("Guardian Business", "intl", "https://www.theguardian.com/uk/business/rss"),
+    ("France 24", "intl", "https://www.france24.com/en/rss"),
+    ("CNA Singapore World", "intl", "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6311"),
+    ("CNA Singapore Asia", "intl", "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6511"),
+    ("CNA Singapore Business", "intl", "https://www.channelnewsasia.com/api/v1/rss-outbound-feed?_format=xml&category=6936"),
+    ("Straits Times Asia", "intl", "https://www.straitstimes.com/news/asia/rss.xml"),
+    ("Straits Times Business", "intl", "https://www.straitstimes.com/news/business/rss.xml"),
+    ("Japan Times", "intl", "https://www.japantimes.co.jp/news/feed/"),
+    ("Korea Herald World", "intl", "https://www.koreaherald.com/rss/kh_World"),
+    ("Yonhap English", "intl", "https://en.yna.co.kr/RSS/news.xml"),
+    ("SCMP Asia", "intl", "https://www.scmp.com/rss/3/feed"),
+    ("SCMP Economy", "intl", "https://www.scmp.com/rss/92/feed"),
+    ("Korea Herald Business", "intl", "https://www.koreaherald.com/rss/kh_Business"),
+    ("Rappler", "intl", "https://www.rappler.com/feed/"),
+    ("Bangkok Post", "intl", "https://www.bangkokpost.com/rss/data/topstories.xml"),
+    ("ABC Australia", "intl", "https://www.abc.net.au/news/feed/2942460/rss.xml"),
 ]
+TAB_TAG = {"tw": "台灣", "intl": "國際"}   # tag shown in the candidate list
+INTL_MAX_PER_FEED = 12   # keep the newest N matching items per 國際 feed so the broad English feeds cannot flood the list
 
 # keyword -> category (zh-TW). Simple first-pass filter; editor decides.
 CATEGORIES = {
@@ -42,6 +71,23 @@ CATEGORIES = {
     "勞動與產業": ["罷工", "勞資", "工會", "裁員", "工安", "勞檢", "職災", "勞動部", "strike", "layoff"],
     "新法規": ["三讀", "修法", "新制", "上路", "草案", "法案", "立法院", "施行", "law", "bill"],
 }
+# 國際 hints (English feeds): whole-word / phrase regexes -> existing category. Only a hint; the editor decides whether an
+# item has a real (direct or indirect) Taiwan livelihood link. Used only for feeds with tab="intl".
+INTL_CATEGORIES = {
+    "物價與薪資": [r"inflation", r"consumer prices?", r"central banks?", r"interest rates?", r"rate (cut|hike)s?", r"\bFed\b", r"Federal Reserve",
+                 r"currency", r"\byen\b", r"South Korean won", r"dollar", r"\beuro\b", r"wheat", r"\brice\b", r"grain", r"coffee", r"cocoa", r"food prices?",
+                 r"commodit", r"minimum wage", r"recession", r"\bGDP\b", r"unemployment"],
+    "稅務與補助": [r"tariffs?", r"\btax(es)?\b", r"subsid", r"customs dut", r"sanctions"],
+    "健保與醫療": [r"outbreak", r"epidemic", r"pandemic", r"virus", r"vaccine", r"\bWHO\b", r"\bFDA\b", r"drug approval", r"bird flu", r"avian", r"Ebola", r"measles", r"cholera", r"dengue", r"mpox", r"health (ministry|authorit)"],
+    "房價與租屋": [r"housing market", r"property market", r"home prices?", r"mortgage"],
+    "能源與水電": [r"\boil\b", r"crude", r"Brent", r"\bOPEC", r"natural gas", r"\bLNG\b", r"electricity", r"power (cuts?|outage|grid)", r"energy", r"Strait of Hormuz", r"nuclear"],
+    "交通": [r"airline", r"airport", r"aviation", r"\bflights?\b", r"Boeing", r"Airbus", r"shipping", r"container", r"port strike", r"high-speed (train|rail)", r"visa[- ]free", r"travel (ban|advisory|rules?)", r"cruise"],
+    "天災與公共安全": [r"earthquake", r"tsunami", r"typhoon", r"hurricane", r"cyclone", r"flood", r"wildfire", r"heat ?wave", r"drought", r"volcano", r"landslide", r"extreme weather", r"train crash", r"plane crash", r"climate"],
+    "勞動與產業": [r"semiconductor", r"\bchips?\b", r"\bTSMC\b", r"Nvidia", r"\bAI\b", r"artificial intelligence", r"supply chain", r"export controls?", r"\bstrikes?\b", r"layoffs?", r"job cuts", r"trade (deal|war|talks|curbs)", r"rare earth", r"\bEV\b", r"electric vehicles?", r"Samsung", r"Apple", r"Foxconn", r"Taiwan"],
+    "新法規": [r"new (law|rules?|regulation)s?", r"regulat", r"export ban", r"import ban", r"takes effect", r"comes into (force|effect)"],
+}
+EXCLUDE_INTL = [r"\bmurder", r"stabbing", r"celebrit", r"\bactress\b", r"\bactor\b", r"\bsinger\b", r"\bfootball\b", r"\bsoccer\b", r"\bcricket\b", r"\bNFL\b", r"\bNBA\b", r"\bMLB\b",
+                r"Premier League", r"\bgolf\b", r"\btennis\b", r"\brugby\b", r"royal family", r"\bhoroscope", r"\bK-pop\b"]
 EXCLUDE = ["車禍", "判刑", "起訴", "藝人", "緋聞", "殺", "命案", "詐騙集團", "竊", "毒品", "棒球", "籃球", "MLB", "NBA"]
 
 def fetch(url):
@@ -73,25 +119,41 @@ def parse_date(s):
 def parse(raw):
     root = ET.fromstring(raw)
     atom = "{http://www.w3.org/2005/Atom}"
-    items = root.findall(".//item") or root.findall(f".//{atom}entry")
+    rdf = "{http://purl.org/rss/1.0/}"   # RSS 1.0 / RDF feeds (DW, Nikkei Asia) use namespaced <item>
+    items = root.findall(".//item") or root.findall(f".//{atom}entry") or root.findall(f".//{rdf}item")
     out = []
     for it in items:
-        link = text(it, "link")
+        link = text(it, "link", f"{rdf}link")
         if not link:
             l = it.find(f"{atom}link")
             link = l.get("href") if l is not None else ""
         out.append({
-            "title": text(it, "title", f"{atom}title"),
+            "title": text(it, "title", f"{atom}title", f"{rdf}title"),
             "link": link,
-            "summary": re.sub(r"<[^>]+>", "", text(it, "description", f"{atom}summary"))[:300],
+            "summary": re.sub(r"<[^>]+>", "", text(it, "description", f"{atom}summary", f"{rdf}description"))[:300],
             "published": text(it, "pubDate", f"{atom}updated", f"{atom}published", "{http://purl.org/dc/elements/1.1/}date"),
         })
     return out
 
-def classify(title, summary):
+def intl_match(pattern, text):
+    """Pattern written all-lowercase -> case-insensitive; any capital letter (Fed, WHO, Brent, AI) -> case-sensitive,
+    so acronyms such as WHO/AI do not match ordinary words."""
+    return re.search(pattern, text, 0 if pattern != pattern.lower() else re.I) is not None
+
+def classify(title, summary, tab="tw"):
     blob = f"{title} {summary}"
     if any(k in blob for k in EXCLUDE):
         return []
+    if tab == "intl":
+        # Chinese keywords (中央社 國際, NHK...) still apply; English feeds use whole-word regexes instead of loose substrings
+        if any(intl_match(p, title) for p in EXCLUDE_INTL):
+            return []
+        out = []
+        for c, kws in CATEGORIES.items():
+            zh = [k for k in kws if not k.isascii()]
+            if any(k in blob for k in zh) or any(intl_match(p, blob) for p in INTL_CATEGORIES.get(c, [])):
+                out.append(c)
+        return out
     return [c for c, kws in CATEGORIES.items() if any(k.lower() in blob.lower() for k in kws)]
 
 def main():
@@ -105,18 +167,24 @@ def main():
     for name, tab, url in FEEDS:
         try:
             items = parse(fetch(url))
-            status.append({"feed": name, "url": url, "ok": True, "items": len(items)})
+            if not items:
+                raise ValueError("feed parsed but contains 0 items (format changed or empty)")
+            status.append({"feed": name, "url": url, "ok": True, "items": len(items), "tab": tab, "tag": TAB_TAG.get(tab, tab)})
         except Exception as e:
             status.append({"feed": name, "url": url, "ok": False, "error": str(e)[:200]})
             print(f"[FAIL] {name}: {e}", file=sys.stderr)
             continue
+        kept = 0
         for it in items:
             d = parse_date(it["published"])
             if d and d.tzinfo and d < cutoff:
                 continue
-            cats = classify(it["title"], it["summary"])
+            cats = classify(it["title"], it["summary"], tab)
             if cats or a.all:
-                cands.append({**it, "source": name, "tab": tab, "categories": cats})
+                if tab == "intl" and kept >= INTL_MAX_PER_FEED and not a.all:
+                    continue   # feeds are newest-first; cap how many items one broad 國際 feed contributes
+                kept += 1
+                cands.append({**it, "source": name, "tab": tab, "tag": TAB_TAG.get(tab, tab), "categories": cats})
         print(f"[OK] {name}: {len(items)} items", file=sys.stderr)
         time.sleep(1.5)  # be polite
     json.dump({"generated": datetime.now(timezone.utc).isoformat(), "feeds": status, "candidates": cands},
