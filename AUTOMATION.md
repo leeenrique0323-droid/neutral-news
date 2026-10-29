@@ -11,21 +11,22 @@
 | `cwa.py` | 抓取中央氣象署（CWA）官方警特報、颱風位置、近期地震 → `cwa_alerts.json`（並印出摘要） |
 | `update.py fetch` | 執行 fetch.py 與 cwa.py，並列出**尚未收錄**的候選 → `data/new_candidates.json`（含 `cwa` 欄位） |
 | `data/source_funding.json` + `funding.py` | **資金來源標示的唯一對照表**（見下方「資金來源標示」）；`fetch.py`、`update.py validate`、前端 `common.js` 共用 |
-| `data/fetch_log.jsonl` | 抓取紀錄（見下方「抓取紀錄」）；只存在這台電腦上，已加入 .gitignore，不需提交 |
+| `data/fetch_log.jsonl` | 抓取紀錄（見下方「抓取紀錄」）；只存在這台電腦上，已加入 .gitignore，不需提交；最多約 500 行 |
 | `update.py log` | 印出抓取紀錄最後 N 筆（`python3 update.py log -n 20`，預設 10） |
+| `update.py feedhealth` | 依抓取紀錄列出每個來源的成功率與連續失敗次數，連續失敗 ≥ 3 次的排最前面（見下方「來源健康檢查」） |
 | `data/news.json` | 網站唯一資料來源（含 `updated` 時間戳，頁面上的「最後更新」即讀取此欄位） |
 | `data/archive.json` | 過往新聞（已過期、移出首頁的項目，保留完整原文，供查閱與日後「更正紀錄」）。首頁頁尾連到 `archive.html` |
 | `update.py archive` | 把已過期項目從 news.json **移到** archive.json（不刪除） |
-| `update.py validate` | 依下方欄位規則檢查 news.json；**有過期項目、摘要過長、分項格式錯誤、`related` 指向不存在的項目都會失敗** |
+| `update.py validate` | 依下方欄位規則檢查 news.json；**有過期項目、摘要過長、分項格式錯誤、`related` 指向不存在的項目、更正紀錄缺少或寫錯 `type` 都會失敗** |
 | `update.py finalize` | 移入過往新聞 → 檢查 → 寫入 `updated`（現在時間，UTC+8）→ 重拍截圖 → 重新打包 zip |
-| `data/corrections.json` | 更正紀錄（公開）：`{started, note, entries:[{date, item_title, item_id, url, what_was_wrong, correction}]}`；網站頁面 `corrections.html`（頁尾與過往新聞頁皆有連結） |
+| `data/corrections.json` | 更正紀錄（公開）：`{started, note, entries:[{date, type, item_title, item_id, url, what_was_wrong, correction}]}`（`type` 必填：`事實更正` 或 `用語調整`，見「更正類型」）；網站頁面 `corrections.html`（頁尾與過往新聞頁皆有連結） |
 | `tools/screenshot.py` | 啟動本機伺服器並輸出 `screenshot-desktop.png`、`screenshot-mobile.png`、`screenshot-intl.png`、`screenshot-archive.png`、`screenshot-corrections.png` |
 | `common.js` / `app.js` / `archive.js` | 前端；`common.js` 的 `sections` 渲染為通用功能，任何長篇事件都可使用 |
 
 ## 排程執行步驟（建議每 1–3 小時一次）
 
 1. **抓取**：`python3 update.py fetch`
-   - 檢查輸出中的 `[FEED FAIL]`；失敗的來源記錄下來，不要改用繞過封鎖的方式抓取。
+   - 檢查輸出中的 `[FEED FAIL]`；失敗的來源記錄下來，不要改用繞過封鎖的方式抓取。每日報告另須執行 `python3 update.py feedhealth`，列出連續失敗的來源（見「來源健康檢查」）。
    - 每個來源只抓一次，間隔 1.5 秒；不要提高頻率。
    - **重複呼叫保護**：每次執行只需呼叫一次。若 `data/new_candidates.json` 產生不到 10 分鐘，再次執行 `python3 update.py fetch`
      不會連網，第一行會印出 `[fetch REUSED] already fetched this run …`，第二行為摘要（新候選數、來源失敗數、CWA 是否緊急），
@@ -66,13 +67,23 @@
 `update.py fetch` 每次執行（實際抓取或重複呼叫保護而沿用）都會在 `data/fetch_log.jsonl` 追加一行 JSON，只保留最後約 500 行：
 
 ```json
-{"ts": "2026-10-27T13:00:05+08:00", "mode": "fresh", "feeds_ok": ["公視新聞", "..."], "feeds_failed": [], "candidates": 12, "cwa_urgent": 0}
+{"ts": "2026-10-27T13:00:05+08:00", "mode": "fresh", "feeds_ok": ["公視新聞", "..."], "feeds_failed": ["Korea Herald World"], "feed_errors": {"Korea Herald World": "HTTP Error 403: Forbidden"}, "candidates": 12, "cwa_urgent": 0}
 ```
 
 - `mode`：`fresh`（實際抓取）、`forced`（`--force` 實際抓取）、`reused`（10 分鐘內沿用，未連網）。
-- `feeds_ok` / `feeds_failed`：來源名稱；`candidates` 為尚未收錄的候選數；`cwa_urgent` 為 CWA 緊急項目數（CWA 抓取失敗時為 `null`）。
+- `feeds_ok` / `feeds_failed`：來源名稱（fetch.py 每個 feed 每次抓取各記一筆結果；**0 筆資料也算失敗**，會出現在 `feeds_failed`）；`feed_errors`：失敗來源的簡短原因（HTTP 狀態、逾時、0 筆資料等，最多 80 字；2026-10-29 起才有，更早的紀錄沒有此欄）；`candidates` 為尚未收錄的候選數；`cwa_urgent` 為 CWA 緊急項目數（CWA 抓取失敗時為 `null`）。
 - 查看：`python3 update.py log -n 20`。寫入失敗只會印出警告，不影響流程。
-- 此檔案**要提交**（不在 .gitignore）。提交時請連同 `data/` 一起 `git add`，否則下次 `git pull --rebase` 會因為未提交的變更而失敗。
+- 此檔案**不提交**：已列入 `.gitignore`，只存在這台電腦上，大小固定（約 500 行 × 0.4 KB）。不要把它加進 git，也不要取消忽略。
+
+## 來源健康檢查（feedhealth）
+
+`python3 update.py feedhealth` 讀取抓取紀錄，對 `fetch.py` 的每個來源印出（繁體中文純文字）：近 20 次成功率、全部成功率、**連續失敗次數**、最近失敗原因、上次成功時間。
+只計算實際連網的執行（`fresh`／`forced`），`reused` 不重複計算。分區順序：**連續失敗 ≥ 3 次（含 0 筆資料）**→ 觀察中（連續失敗 1–2 次）→ 目前正常但曾失敗 → 全部成功（只印數量，`--all` 才逐一列出）。可用 `--threshold N`、`--recent N` 調整。
+
+- **每日報告必須列出連續失敗 ≥ 3 次的來源**（來源名稱、連續失敗次數、最近原因、上次成功時間）；沒有就寫「無」。「目前正常但曾失敗」中成功率偏低（例如近期低於 50%）的來源也一併提一句，供人判斷。
+- **單次失敗不算壞掉**：例如 Korea Herald 偶爾回 403，下一輪通常就恢復；只有同一來源連續失敗（≥ 3 次）或反覆失敗才視為有問題。不要因為單次 403／逾時就更換或移除來源，也不要用繞過封鎖的方式重試。
+- **更換壞掉的來源**：必須先用 `curl` 驗證替代來源（HTTP 200、可解析成 RSS／Atom、最新一則在合理時間內、文章免登入可讀），再把來源名稱、替代網址與驗證結果（日期、狀態碼）寫進本文件「國際來源」一節（連同 `data/source_funding.json` 的對應 outlet）並提交；**沒有驗證過的替代來源就不要動 `fetch.py`**。排程不得自行移除來源，需經人確認（來源壞掉只在報告中提出）。
+- 紀錄只有最近約 500 次執行；剛新增的來源只有新增後的紀錄。
 
 ## 中央氣象署官方警特報（cwa.py）
 
@@ -206,13 +217,27 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 **任何已刊登的事實若發現有誤，或與原先寫法有實質差異（數字、日期、人名、因果、官方結論被推翻），不得默默修改。** 必須：
 
 1. 在 `data/corrections.json` 的 `entries` **新增一筆**（新的放最後，網站依日期倒序顯示）：
-   `{"date": "YYYY-MM-DD（台灣時間）", "item_title": "當時刊登的標題", "item_id": "項目 id", "url": "原文／更正依據的網址（選填，但 item_id 與 url 至少一項）", "what_was_wrong": "原本寫了什麼、錯在哪裡", "correction": "正確內容與依據來源"}`。
-2. 在該項目（news.json 或 archive.json 內）加上可見標示 `"corrected": {"date": "YYYY-MM-DD", "note": "一句話說明更正了什麼"}`，網站會在標題下顯示「已更正」並連到更正紀錄。已移入過往新聞的項目同樣標示，其餘內容保持當時版本。
+   `{"date": "YYYY-MM-DD（台灣時間）", "type": "事實更正 | 用語調整", "item_title": "當時刊登的標題", "item_id": "項目 id", "url": "原文／更正依據的網址（選填，但 item_id 與 url 至少一項）", "what_was_wrong": "原本寫了什麼、錯在哪裡", "correction": "正確內容與依據來源"}`。
+2. 在該項目（news.json 或 archive.json 內）加上可見標示 `"corrected": {"date": "YYYY-MM-DD", "type": "事實更正 | 用語調整", "note": "一句話說明更正了什麼"}`（`type` 與 corrections.json 該筆相同），網站會在標題下顯示「已更正」＋類型標籤並連到更正紀錄。已移入過往新聞的項目同樣標示，其餘內容保持當時版本。
 3. 再改正內文／數字，並在 `sources` 補上更正依據的連結。更新 `updated` 時間，**不得修改 `first_published`**。
 4. 單純的新進展（事件往前發展、數字依官方最新公布更新）不算更正，依一般「改寫」流程處理；只有「先前寫的內容有誤或被推翻」才記錄。
 5. 不得為了「看起來沒有錯」而刪除紀錄或項目；不得虛構更正。
-- `update.py validate` 會檢查更正紀錄格式（必填欄位、日期、至少一個 `item_id` 或 `url`），以及 news.json 中標示 `corrected` 的項目與 corrections.json 是否一一對應。
+- `update.py validate` 會檢查更正紀錄格式（必填欄位、**`type` 必須是 `事實更正` 或 `用語調整`**、日期、至少一個 `item_id` 或 `url`；`corrected.type` 也必須有效，且該項目只要有任一筆 `事實更正`，`corrected.type` 就必須是 `事實更正`），以及 news.json 中標示 `corrected` 的項目與 corrections.json 是否一一對應。
 - 紀錄起始日為 2026-10-26；在此之前的版本不追溯。
+
+### 更正類型 `type`（2026-10-29 新增）
+
+每筆更正都必須標明類型，網站更正紀錄頁以標籤顯示並可篩選（全部／事實更正／用語調整），`事實更正` 較醒目，讓真正的事實錯誤不會被大量用語調整淹沒。
+
+| 類型 | 何時使用 |
+|---|---|
+| `事實更正` | 先前刊登的**事實、數字、日期、人名、因果、引述／出處歸屬或連結有誤**，或原文寫了來源沒有的內容（內容因此改變） |
+| `用語調整` | **只改用語或語氣**：移除推測性／評價性說法、補上出處、統一句型；**事實本身沒有改變**（例如依「對台灣的影響」新規則改寫） |
+
+- **判斷方式**：自問「改完之後，讀者會不會得到與原本不同的事實資訊？」會（數字、日期、名稱、因果、歸屬、連結、原文沒有的內容被刪除或補正）→ `事實更正`；不會（同樣的事實只是換成中性、有出處的說法）→ `用語調整`。
+- **有疑義一律選 `事實更正`**。**絕不可用 `用語調整` 掩蓋事實修正**：同一次修改若同時有事實與用語變動，記為 `事實更正`（在 `what_was_wrong`／`correction` 中分別說明）。
+- 兩種類型都必須走完整流程（新增 corrections 一筆＋`corrected` 標示），**仍不得默默修改**；`用語調整` 不是「小改可以不記錄」。
+- 2026-10-29 回填：既有 11 筆中，`intl-airline-fuel-hedge-fares-1028` 為 `事實更正`（刪除了原報導沒有的「燃油附加費」說法），其餘 10 筆為 `用語調整`。
 
 ### 引用 CWA 數據的標示
 
@@ -319,7 +344,7 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
   - 注意：既有的 SCMP、海峽時報（Straits Times）網站亦有計量式付費牆，部分文章可能無法完整閱讀；採用其報導前請先確認內容可讀，必要時改用其他來源交叉確認。
 - 已測試但不使用：Reuters（連不上）、NHK World／NHK 各分類 RSS 與 all.json（資料停在 2026 年 8 月／9 月）、Nikkei Asia（RSS 無日期）、
   Yonhap economy、The Hindu、VOA 中文（無法解析／404）、DW 中文、RFI 中文（簡體，關鍵字分類無效）。
-- 某個來源暫時失敗（如 Korea Herald 偶爾回 403）會在輸出標示 `[FEED FAIL]` 並記入抓取紀錄，其餘來源照常；不要用繞過封鎖的方式重試，下一輪再抓。
+- 某個來源暫時失敗（如 Korea Herald 偶爾回 403）會在輸出標示 `[FEED FAIL]` 並記入抓取紀錄，其餘來源照常；不要用繞過封鎖的方式重試，下一輪再抓。單次失敗不算壞掉；連續失敗 ≥ 3 次才列入報告（見「來源健康檢查」，`python3 update.py feedhealth`）。
 - 來源回傳 0 筆資料會被視為失敗（`[FEED FAIL] … 0 items`），以免來源格式改變時悄悄沒有候選。
 
 ## 資金來源標示（2026-10-29 起）
