@@ -73,6 +73,8 @@
       "first_published": "2026-10-28T19:45:00+08:00",
       "published": "2026-10-28T19:45:00+08:00",
       "updated": null,
+      "valid_until": "2026-10-31",
+      "evergreen": true,
       "sources": [
         {
           "name": "中央社",
