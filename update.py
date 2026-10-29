@@ -7,6 +7,7 @@
   python3 update.py validate   # check data/news.json against the editorial schema (fails on expired items)
   python3 update.py finalize   # archive expired, validate, stamp `updated`, screenshots, zip
   python3 update.py log [-n N] # print the last N (default 10) entries of data/fetch_log.jsonl
+  python3 update.py feedhealth # per-feed success rate + consecutive failures from the fetch log (>=3 in a row listed first)
 
 Writing/curating summaries into data/news.json is an editorial step between
 `fetch` and `finalize` (see AUTOMATION.md). This script never invents content.
@@ -153,6 +154,7 @@ def log_fetch(mode, new, feeds, cwa):
         rec = {"ts": datetime.now(TPE).replace(microsecond=0).isoformat(), "mode": mode,
                "feeds_ok": [f["feed"] for f in feeds if f.get("ok")],
                "feeds_failed": [f["feed"] for f in feeds if not f.get("ok")],
+               "feed_errors": {f["feed"]: str(f.get("error") or "")[:80] for f in feeds if not f.get("ok")},   # short reason per failed feed (HTTP 403, 0 items, timeout...)
                "candidates": len(new),
                "cwa_urgent": (sum(1 for x in cwa_items if x.get("urgent")) if cwa else None)}
         lines = []
@@ -178,6 +180,76 @@ def cmd_log(a):
         print(f"{r.get('ts')} {r.get('mode'):7} feeds ok {len(r.get('feeds_ok') or [])} failed {len(r.get('feeds_failed') or [])} ({failed})"
               f" | candidates {r.get('candidates')} | CWA urgent {'n/a' if urgent is None else urgent}")
     print(f"({min(a.n, len(rows)) if a.n > 0 else 0} of {len(rows)} entries; file: {FETCH_LOG})")
+    return 0
+
+FEED_FAIL_STREAK = 3       # feedhealth: this many consecutive failed (or 0-item) runs = "broken"
+FEED_RECENT_RUNS = 20      # feedhealth: window for the "recent" success rate
+
+def feed_health(rows, feed_names, window=FEED_RECENT_RUNS):
+    """rows: parsed fetch-log records, oldest first. Only real fetches count ('fresh'/'forced'; 'reused'
+    repeats the previous result without network, so it would double-count). A feed counts as failed when it is
+    in `feeds_failed` (HTTP/parse error, timeout, or 0 items). Runs that do not mention a feed (logged before
+    it was added) are skipped. Returns one dict per feed in feed_names order."""
+    real = [r for r in rows if r.get("mode") in ("fresh", "forced")]
+    out = []
+    for name in feed_names:
+        hist = []   # (ts, ok, error)
+        for r in real:
+            if name in (r.get("feeds_failed") or []):
+                hist.append((r.get("ts"), False, (r.get("feed_errors") or {}).get(name, "")))
+            elif name in (r.get("feeds_ok") or []):
+                hist.append((r.get("ts"), True, ""))
+        streak = 0
+        for ts, ok, _ in reversed(hist):
+            if ok: break
+            streak += 1
+        recent = hist[-window:]
+        last_ok = next((ts for ts, ok, _ in reversed(hist) if ok), None)
+        last_err = next((e for ts, ok, e in reversed(hist) if not ok and e), "")
+        out.append({"feed": name, "runs": len(hist), "ok": sum(1 for h in hist if h[1]),
+                    "recent_runs": len(recent), "recent_ok": sum(1 for h in recent if h[1]),
+                    "streak": streak, "last_ok": last_ok, "last_error": last_err if streak else ""})
+    return out
+
+def cmd_feedhealth(a):
+    path = a.log_file or FETCH_LOG
+    if not os.path.exists(path):
+        print("尚無抓取紀錄（data/fetch_log.jsonl）；先執行 `python3 update.py fetch`。"); return 0
+    rows = []
+    for l in open(path, encoding="utf-8").read().splitlines():
+        try: rows.append(json.loads(l))
+        except ValueError: pass
+    import fetch as _fetch
+    names = [n for n, _tab, _url in _fetch.FEEDS]
+    real = [r for r in rows if r.get("mode") in ("fresh", "forced")]
+    h = feed_health(rows, names, a.recent)
+    def rate(ok, n): return f"{100 * ok / n:.0f}%" if n else "—"
+    def line(x):
+        s = f"{x['feed']}：近 {x['recent_runs']} 次成功率 {rate(x['recent_ok'], x['recent_runs'])}（{x['recent_ok']}/{x['recent_runs']}），全部 {rate(x['ok'], x['runs'])}（{x['ok']}/{x['runs']}）"
+        if x["streak"]:
+            s += f"，連續失敗 {x['streak']} 次"
+            if x["last_error"]: s += f"（最近原因：{x['last_error']}）"
+            s += f"，上次成功：{x['last_ok'] or '從未成功'}"
+        return "  " + s
+    print(f"來源健康檢查：{len(names)} 個來源，{len(real)} 次實際抓取（略過 reused）"
+          + (f"，紀錄期間 {real[0].get('ts')} ～ {real[-1].get('ts')}" if real else ""))
+    if not real:
+        print("沒有實際抓取的紀錄可分析。"); return 0
+    broken = sorted([x for x in h if x["streak"] >= a.threshold], key=lambda x: -x["streak"])
+    watch = sorted([x for x in h if 0 < x["streak"] < a.threshold], key=lambda x: -x["streak"])
+    shaky = [x for x in h if x["streak"] == 0 and x["runs"] and x["ok"] < x["runs"]]
+    unseen = [x for x in h if x["runs"] == 0]
+    print(f"\n【連續失敗 ≥ {a.threshold} 次（或 0 筆資料）】{len(broken)} 個")
+    print("\n".join(line(x) for x in broken) if broken else "  無")
+    print(f"\n【觀察中：連續失敗 1–{a.threshold - 1} 次】{len(watch)} 個（單次失敗，例如偶發 403，可能只是暫時性，持續出現才算壞掉）")
+    if watch: print("\n".join(line(x) for x in watch))
+    if shaky or a.all:
+        print(f"\n【目前正常、但曾失敗】{len(shaky)} 個")
+        print("\n".join(line(x) for x in sorted(shaky, key=lambda x: x['recent_ok'] / max(x['recent_runs'], 1))) if shaky else "  無")
+    if unseen: print(f"\n【紀錄中尚無資料】{len(unseen)} 個：" + "、".join(x["feed"] for x in unseen))
+    ok_all = [x for x in h if x["runs"] and x["ok"] == x["runs"]]
+    print(f"\n全部抓取皆成功：{len(ok_all)} 個" + ("" if not a.all else "\n" + "\n".join(line(x) for x in ok_all)))
+    print("（說明：失敗＝HTTP/解析錯誤、逾時或 0 筆資料；紀錄最多約 500 次執行。更換壞掉的來源前請先用 curl 驗證替代來源，見 AUTOMATION.md「來源健康檢查」。）")
     return 0
 
 def print_new_list(new):
@@ -572,13 +644,18 @@ def main():
         p.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
         p.add_argument("--now", help="ISO time override (testing)")
     lg = sp.add_parser("log"); lg.add_argument("-n", type=int, default=10, help="number of entries (default 10)")
+    fh = sp.add_parser("feedhealth")
+    fh.add_argument("--threshold", type=int, default=FEED_FAIL_STREAK, help=f"consecutive failed runs counted as broken (default {FEED_FAIL_STREAK})")
+    fh.add_argument("--recent", type=int, default=FEED_RECENT_RUNS, help=f"runs in the 'recent' success rate (default {FEED_RECENT_RUNS})")
+    fh.add_argument("--all", action="store_true", help="also list feeds that never failed")
+    fh.add_argument("--log-file", help="read this log instead of data/fetch_log.jsonl (testing)")
     fn = sp.add_parser("finalize")
     fn.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
     fn.add_argument("--now", help="ISO time override (testing)")
     fn.add_argument("--no-screens", action="store_true")
     fn.add_argument("--no-zip", action="store_true")
     a = ap.parse_args()
-    sys.exit({"fetch": cmd_fetch, "validate": cmd_validate, "archive": cmd_archive, "finalize": cmd_finalize, "log": cmd_log}[a.cmd](a) or 0)
+    sys.exit({"fetch": cmd_fetch, "validate": cmd_validate, "archive": cmd_archive, "finalize": cmd_finalize, "log": cmd_log, "feedhealth": cmd_feedhealth}[a.cmd](a) or 0)
 
 if __name__ == "__main__":
     main()
