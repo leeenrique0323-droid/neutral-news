@@ -25,6 +25,7 @@ ARCHIVE = os.path.join(ROOT, "data", "archive.json")
 FETCH_LOG = os.path.join(ROOT, "data", "fetch_log.jsonl")
 TPE = timezone(timedelta(hours=8))
 STATUSES = {"快訊・初步資訊", "完整版"}
+CORRECTION_TYPES = ("事實更正", "用語調整")   # corrections.json `type` (required); see AUTOMATION.md「更正類型」
 REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what", "when", "published",
             "first_published", "sources"]
 
@@ -471,13 +472,15 @@ def load_corrections():
 
 def corrections_errors(c, items):
     """Schema check for data/corrections.json (更正紀錄) and consistency with items' `corrected` marker.
-    File: {"started": "YYYY-MM-DD", "note": "...", "entries": [{date, item_title, item_id and/or url, what_was_wrong, correction}]}"""
+    File: {"started": "YYYY-MM-DD", "note": "...", "entries": [{date, type, item_title, item_id and/or url, what_was_wrong, correction}]}
+    `type` is required: 事實更正 (a fact/number/date/attribution/link was wrong) or 用語調整 (wording/tone only). Items' `corrected` = {date, type, note}."""
     errs = []
     if c is None: return ["corrections.json: missing (data/corrections.json must exist, entries may be empty)"]
     if "_error" in c: return [f"corrections.json: invalid JSON ({c['_error']})"]
     if not isinstance(c.get("entries"), list): return ["corrections.json: `entries` must be a list"]
     if not c.get("started"): errs.append("corrections.json: missing `started` date")
     ids = set()
+    types = {}   # item_id -> set of entry types
     for n, e in enumerate(c["entries"], 1):
         tag = f"corrections.json entry #{n}"
         if not isinstance(e, dict): errs.append(f"{tag}: must be an object"); continue
@@ -489,7 +492,11 @@ def corrections_errors(c, items):
             dd = datetime.strptime(e.get("date") or "", "%Y-%m-%d").date()
             if dd > datetime.now(TPE).date(): errs.append(f"{tag}: date is in the future")
         except ValueError: errs.append(f"{tag}: date must be YYYY-MM-DD")
-        if e.get("item_id"): ids.add(e["item_id"])
+        if e.get("type") not in CORRECTION_TYPES:
+            errs.append(f"{tag}: `type` is required and must be one of {' / '.join(CORRECTION_TYPES)} (got {e.get('type')!r}); when in doubt use 事實更正")
+        if e.get("item_id"):
+            ids.add(e["item_id"])
+            types.setdefault(e["item_id"], set()).add(e.get("type"))
     cur = {i.get("id"): i for i in items}
     for iid in ids & set(cur):
         if not cur[iid].get("corrected"):
@@ -498,9 +505,14 @@ def corrections_errors(c, items):
         cr = i.get("corrected")
         if cr is None: continue
         if not (isinstance(cr, dict) and cr.get("date") and cr.get("note")):
-            errs.append(f"{i.get('id')}: `corrected` must be {{date, note}}")
+            errs.append(f"{i.get('id')}: `corrected` must be {{date, type, note}}")
         elif i.get("id") not in ids:
             errs.append(f"{i.get('id')}: marked `corrected` but no entry with this item_id in corrections.json (never silently edit)")
+        if isinstance(cr, dict):
+            if cr.get("type") not in CORRECTION_TYPES:
+                errs.append(f"{i.get('id')}: `corrected.type` is required and must be one of {' / '.join(CORRECTION_TYPES)} (got {cr.get('type')!r})")
+            elif "事實更正" in types.get(i.get("id"), ()) and cr["type"] != "事實更正":
+                errs.append(f"{i.get('id')}: corrections.json has a 事實更正 entry for this item, so `corrected.type` must be 事實更正 (never use 用語調整 to hide a factual fix)")
     return errs
 
 def now_tpe(a=None):

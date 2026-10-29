@@ -4,6 +4,7 @@
   "entries": [
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "日本11月1日起實施免稅新制　外國旅客先以含稅價購買、出境時審查後退稅",
       "item_id": "intl-japan-taxfree-1027",
       "url": "https://news.pts.org.tw/article/833181",
@@ -12,6 +13,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "國際油價收高布蘭特原油每桶115.32美元　歐洲天然氣升破每兆瓦時100歐元",
       "item_id": "intl-oil-gas-price-1029",
       "url": "https://www.ey.gov.tw/File/E618899A02A5287C?A=C",
@@ -20,6 +22,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "美國聯準會維持利率3.75%至4.00%不變　主席華許：通膨仍然過高",
       "item_id": "intl-fed-hold-1029",
       "url": "https://www.cna.com.tw/news/aopl/202610290011.aspx",
@@ -28,6 +31,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "事實更正",
       "item_title": "航空燃油價格約為伊朗戰事前兩倍　多家航空公司減少燃油避險並示警票價上漲",
       "item_id": "intl-airline-fuel-hedge-fares-1028",
       "url": "https://www.channelnewsasia.com/business/analysis-iran-war-drags-airlines-pull-back-fuel-hedges-and-warn-fares-6499631",
@@ -36,6 +40,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "非洲伊波拉疫情累計逾1萬例、近5千人死亡　非洲疾病管制中心籲各國提高防疫整備",
       "item_id": "intl-ebola-africa-10000-1028",
       "url": "https://www.theguardian.com/global-development/2026/oct/28/africa-ebola-outbreak-could-reach-uk-says-top-health-official",
@@ -44,6 +49,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "沙烏地阿拉伯擬自2027年下半年起在新加坡裕廊岩洞存放原油",
       "item_id": "intl-saudi-crude-singapore-1026",
       "url": "https://www.cna.com.tw/news/aopl/202610260142.aspx",
@@ -52,6 +58,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "布蘭特原油10月23日收每桶116.72美元　為4月以來最高",
       "item_id": "intl-oil-1023",
       "url": "https://www.cna.com.tw/news/afe/202610240011.aspx",
@@ -60,6 +67,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "日本外國旅客免稅制度11月1日起改為退稅制　先付含稅價、出境查驗後退稅",
       "item_id": "intl-japan-taxfree-refund-1023",
       "url": "https://www.cna.com.tw/news/aopl/202610230147.aspx",
@@ -68,6 +76,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "美國宣布80億美元農業紓困　因應柴油與肥料價格上漲",
       "item_id": "intl-us-farm-relief",
       "url": "https://www.cna.com.tw/news/aopl/202610210042.aspx",
@@ -76,6 +85,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "國際油價10月22日上漲　布蘭特原油結算每桶113.17美元為5月以來最高",
       "item_id": "intl-oil-1020",
       "url": "https://www.cna.com.tw/news/afe/202610230007.aspx",
@@ -84,6 +94,7 @@
     },
     {
       "date": "2026-10-29",
+      "type": "用語調整",
       "item_title": "印尼米價創歷史新高　報導指乾旱與肥料成本上升",
       "item_id": "intl-indonesia-rice",
       "url": "https://news.pts.org.tw/article/832225",

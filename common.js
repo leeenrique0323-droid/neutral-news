@@ -34,6 +34,9 @@ window.NN = (function(){
     if(!lab) return null;
     return {key, tag: lab.tag, desc: lab.desc, detail: best ? best.detail : "", basis: best ? best.basis : ""};
   }
+  // 更正類型 (corrections.json / item.corrected `type`): 事實更正 = prominent amber tag, 用語調整 = quiet outlined tag
+  function corrKind(t){ return t === "事實更正" ? "fact" : t === "用語調整" ? "wording" : ""; }
+  function corrTag(t){ const k = corrKind(t); return k ? `<span class="ctag ${k}">${esc(t)}</span>` : ""; }
   // small neutral tag; hover/long-press text = label meaning + this outlet's documented basis
   function fundTag(name){
     const f = fundingFor(name); if(!f) return "";
@@ -118,7 +121,7 @@ window.NN = (function(){
     const sectioned = !!(i.sections && i.sections.length);
     return `
           <h3>${esc(i.title)}</h3>
-          ${i.corrected ? `<p class="corrected-note"><strong>已更正</strong>（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
+          ${i.corrected ? `<p class="corrected-note ${corrKind(i.corrected.type)}"><strong>已更正</strong>${corrTag(i.corrected.type)}（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
           <p class="summary ${sectioned ? "lines" : ""}">${esc(i.summary)}</p>
           <dl class="facts">
             <dt>影響誰</dt><dd>${esc(i.who)}</dd>
@@ -192,7 +195,7 @@ window.NN = (function(){
             ${o.showCat === false ? "" : chip(i.category)}
           </div>
           <h3>${esc(i.title)}</h3>
-          ${i.corrected ? `<p class="corrected-note"><strong>已更正</strong>（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
+          ${i.corrected ? `<p class="corrected-note ${corrKind(i.corrected.type)}"><strong>已更正</strong>${corrTag(i.corrected.type)}（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
           <p class="summary teaser">${esc(head)}</p>
           <div class="card-meta">
             <span class="when-line">發布 ${fmt(first(i))}${i.updated ? `　更新 ${fmt(i.updated)}` : ""}</span>
@@ -237,5 +240,5 @@ window.NN = (function(){
   document.addEventListener("DOMContentLoaded", bannerDate);
 
   return {fmt, fmtDate, esc, first, validEnd, validLabel, sectionsHtml, bindToggles, itemBody, tp,
-          chip, chipIndex, cardHtml, fundingReady, fundingFor, fundTag, setRelatedIndex, relatedHtml, bindCards, setExpanded, splitSummary};
+          chip, chipIndex, cardHtml, corrKind, corrTag, fundingReady, fundingFor, fundTag, setRelatedIndex, relatedHtml, bindCards, setExpanded, splitSummary};
 })();
