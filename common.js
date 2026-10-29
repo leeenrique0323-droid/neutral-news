@@ -22,8 +22,36 @@ window.NN = (function(){
   const validLabel = i => { const e = validEnd(i); if(!e) return "";
     const t = tp(new Date(e.getTime() - 1)); return `有效至 ${p(t.getUTCMonth()+1)}/${p(t.getUTCDate())}`; };
 
+  // ---------- 資金來源標示 (data/source_funding.json is the single mapping; same matching rule as funding.py) ----------
+  let fund = null;
+  const fundingReady = fetch("data/source_funding.json", {cache:"no-store"}).then(r => r.json()).then(j => { fund = j; return j; }).catch(() => null);
+  const prefixOk = (name, p) => name.startsWith(p) && (name.length === p.length || !/^[A-Za-z0-9]/.test(name.slice(p.length)));
+  function fundingFor(name){
+    if(!fund) return null;
+    name = String(name || ""); let best = null, blen = -1;
+    (fund.outlets || []).forEach(o => (o.match || []).forEach(p => { if(p.length > blen && prefixOk(name, p)){ best = o; blen = p.length; } }));
+    const key = best ? best.label : "unlabeled", lab = (fund.labels || {})[key];
+    if(!lab) return null;
+    return {key, tag: lab.tag, desc: lab.desc, detail: best ? best.detail : "", basis: best ? best.basis : ""};
+  }
+  // small neutral tag; hover/long-press text = label meaning + this outlet's documented basis
+  function fundTag(name){
+    const f = fundingFor(name); if(!f) return "";
+    const tip = `資金來源：${f.tag}。${f.detail || f.desc}（說明見頁尾「資金來源標示」；此標示不代表報導品質或立場）`;
+    return `<span class="fund fund-${esc(f.key)}" title="${esc(tip)}">${esc(f.tag)}</span>`;
+  }
+  // footer legend (element #fund-legend): every label + meaning, link to the mapping file
+  function renderFundLegend(){
+    const el = document.getElementById("fund-legend"); if(!el || !fund) return;
+    el.innerHTML = `<h2>資金來源標示</h2>
+      <p class="small">來源名稱旁的小標籤，只說明該媒體<strong>自己公開的資金來源</strong>（依其官網或官方文件），不代表報導品質或立場；無法確認者標「未標示」。</p>
+      <ul class="fund-list">${Object.keys(fund.labels).map(k => `<li><span class="fund fund-${esc(k)}">${esc(fund.labels[k].tag)}</span>${esc(fund.labels[k].desc)}</li>`).join("")}</ul>
+      <p class="small">各媒體的分類依據與出處：<a href="data/source_funding.json">source_funding.json</a>（檢查日 ${esc(fund.checked || "")}）。</p>`;
+  }
+  fundingReady.then(renderFundLegend);
+
   const sourceList = i => `<ul>${i.sources.map(s =>
-    `<li>${esc(s.name)}：<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>`;
+    `<li>${esc(s.name)}${fundTag(s.name)}：<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a></li>`).join("")}</ul>`;
 
   function refs(links, byUrl){
     const ss = links.map(u => byUrl[u]).filter(Boolean);
@@ -140,7 +168,7 @@ window.NN = (function(){
       if(g) g.n++; else groups.push({name: x.name, url: x.url, title: x.title, n: 1});
     });
     const shown = groups.slice(0, 4).map(g =>
-      `<a href="${esc(g.url)}" target="_blank" rel="noopener" title="${esc(g.title)}">${esc(g.name)}${g.n > 1 ? `<span class="n">×${g.n}</span>` : ""}</a>`).join("");
+      `<span class="src-item"><a href="${esc(g.url)}" target="_blank" rel="noopener" title="${esc(g.title)}">${esc(g.name)}${g.n > 1 ? `<span class="n">×${g.n}</span>` : ""}</a>${fundTag(g.name)}</span>`).join("");
     const more = groups.length > 4 ? `<span class="src-more">等 ${(i.sources || []).length} 則</span>` : "";
     return shown + more;
   }
@@ -209,5 +237,5 @@ window.NN = (function(){
   document.addEventListener("DOMContentLoaded", bannerDate);
 
   return {fmt, fmtDate, esc, first, validEnd, validLabel, sectionsHtml, bindToggles, itemBody, tp,
-          chip, chipIndex, cardHtml, setRelatedIndex, relatedHtml, bindCards, setExpanded, splitSummary};
+          chip, chipIndex, cardHtml, fundingReady, fundingFor, fundTag, setRelatedIndex, relatedHtml, bindCards, setExpanded, splitSummary};
 })();

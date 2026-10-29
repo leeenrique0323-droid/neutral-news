@@ -126,6 +126,13 @@ main.wrap{padding-top:18px;padding-bottom:8px}
 .src-label::after{content:"：";}
 .src-line .n{font-size:11px;margin-left:2px;color:var(--sub)}
 .src-more{color:var(--sub)}
+.src-item{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:0 5px}
+/* 資金來源標示: small neutral grey tag, no colour judgement (all labels look alike on purpose) */
+.fund{display:inline-block;font-size:11px;line-height:1.5;font-weight:400;color:var(--sub);background:#f1f4f6;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-left:5px;white-space:nowrap;vertical-align:baseline;cursor:help}
+.src-item .fund{margin-left:0}
+.fund-list{list-style:none;margin:6px 0;padding:0}
+.fund-list li{margin:6px 0;font-size:var(--fs-sm);line-height:1.6}
+.fund-list .fund{margin:0 8px 0 0}
 .src-line a{color:var(--brand);text-decoration:underline;text-underline-offset:2px}
 .card-toggle{appearance:none;font:inherit;font-size:var(--fs-sm);cursor:pointer;display:inline-flex;align-items:center;gap:8px;
   min-height:44px;padding:4px 14px 4px 0;margin:0;border:0;background:none;color:var(--brand);font-weight:700}

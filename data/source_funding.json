@@ -1,0 +1,449 @@
+{
+ "version": 1,
+ "checked": "2026-10-29",
+ "note": "媒體資金來源標示的唯一對照表（前端 common.js、fetch.py、update.py validate 共用）。只依各媒體自家網站或官方公開文件的說明分類；無法確認者標「未標示」。標示說明資金來源，不代表報導品質或立場。match 為來源名稱前綴（同一媒體的各分類來源通用，最長前綴優先；前綴後須為字串結尾或非英數字元）。",
+ "labels": {
+  "public": {
+   "tag": "公共出資",
+   "desc": "經費主要來自公共預算、執照費或政府／公共機構給付，或依法由公共資金支應。"
+  },
+  "mixed": {
+   "tag": "商業＋公共",
+   "desc": "同時載明商業收入與公共資金（補助、執照費或政府給付），且公共資金並非明確的主要來源。"
+  },
+  "commercial": {
+   "tag": "商業",
+   "desc": "民營營利事業，收入來自廣告、訂閱、銷售或授權等商業來源（出處為該媒體自述或官方公開文件）。"
+  },
+  "independent": {
+   "tag": "信託／捐助",
+   "desc": "由信託、非營利組織或讀者捐助支持，無外部股東或政府出資。"
+  },
+  "government": {
+   "tag": "政府機關",
+   "desc": "政府機關自行發布的資料，非新聞媒體。"
+  },
+  "unlabeled": {
+   "tag": "未標示",
+   "desc": "該媒體自家網站或官方文件未載明資金來源，或我們尚未取得可驗證的依據；不代表沒有資金來源。"
+  }
+ },
+ "outlets": [
+  {
+   "id": "cna",
+   "name": "中央社",
+   "match": [
+    "中央社",
+    "中央通訊社"
+   ],
+   "label": "mixed",
+   "detail": "國家通訊社，依《中央通訊社設置條例》運作；官網稱政府補助約占總預算 47%，其餘靠新聞銷售與授權自籌。",
+   "basis": "https://www.cna.com.tw/missions/faq/"
+  },
+  {
+   "id": "pts",
+   "name": "公視（公共電視）",
+   "match": [
+    "公視",
+    "公共電視"
+   ],
+   "label": "public",
+   "detail": "公視基金會依《公共電視法》，經費來自文化發展基金核撥、政府預算捐贈與補助，另有營運收入與社會捐贈。",
+   "basis": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=P0050025"
+  },
+  {
+   "id": "gov",
+   "name": "政府機關／官方資料",
+   "match": [
+    "行政院",
+    "中央氣象署",
+    "氣象署",
+    "勞動部",
+    "農業部",
+    "衛生福利部",
+    "疾病管制署",
+    "內政部",
+    "經濟部",
+    "財政部",
+    "交通部",
+    "教育部",
+    "環境部",
+    "數位發展部",
+    "國家發展委員會",
+    "行政院主計總處",
+    "主計總處",
+    "中央銀行",
+    "金融監督管理委員會",
+    "金管會",
+    "國家通訊傳播委員會",
+    "消防署",
+    "核能安全委員會",
+    "公平交易委員會",
+    "美國農業部"
+   ],
+   "label": "government",
+   "detail": "由政府機關自行發布的資料（非新聞媒體），不適用媒體資金分類。",
+   "basis": "https://www.ey.gov.tw/"
+  },
+  {
+   "id": "bbc",
+   "name": "BBC",
+   "match": [
+    "BBC",
+    "英國廣播公司",
+    "BBC 中文"
+   ],
+   "label": "public",
+   "detail": "主要經費為英國電視執照費，另有旗下商業子公司（如 BBC Studios）收入。",
+   "basis": "https://www.bbc.com/aboutthebbc/governance/licencefee"
+  },
+  {
+   "id": "nhk",
+   "name": "NHK",
+   "match": [
+    "NHK",
+    "日本放送協會",
+    "NHK World"
+   ],
+   "label": "public",
+   "detail": "依《放送法》設立，主要經費為收視費（收視契約費）。",
+   "basis": "http://www.nhk.or.jp/corporateinfo/viewer/receivingfee/"
+  },
+  {
+   "id": "dw",
+   "name": "德國之聲 DW",
+   "match": [
+    "DW",
+    "德國之聲",
+    "Deutsche Welle"
+   ],
+   "label": "public",
+   "detail": "公法非營利國際廣播機構，經費來自德國聯邦預算。",
+   "basis": "https://corporate.dw.com/en/mission-financing-users/a-68756348"
+  },
+  {
+   "id": "fmm",
+   "name": "France 24（France Médias Monde）",
+   "match": [
+    "France 24",
+    "France24",
+    "法國24"
+   ],
+   "label": "public",
+   "detail": "France Médias Monde 由法國政府公共資金支應（含指定的營業稅收分配及外交部撥款）。",
+   "basis": "https://www.francemediasmonde.com/en/the-group/financing/"
+  },
+  {
+   "id": "aje",
+   "name": "半島電視台 Al Jazeera English",
+   "match": [
+    "Al Jazeera",
+    "半島電視台"
+   ],
+   "label": "public",
+   "detail": "官網自述「接受公共資金」並稱非由卡達政府所有、為依卡達法設立的私人公益基金會；公共資金占比未載明。",
+   "basis": "https://www.aljazeera.com/news/2019/6/20/al-jazeera-rebuts-renewed-push-for-foreign-agent-registration"
+  },
+  {
+   "id": "guardian",
+   "name": "衛報 Guardian",
+   "match": [
+    "Guardian",
+    "The Guardian",
+    "衛報"
+   ],
+   "label": "independent",
+   "detail": "由 Scott Trust 持有，官網稱由全球讀者支持（reader funded），以確保財務與編輯獨立。",
+   "basis": "https://www.theguardian.com/about"
+  },
+  {
+   "id": "cnasg",
+   "name": "CNA 新加坡（Mediacorp）",
+   "match": [
+    "CNA Singapore",
+    "CNA 新加坡",
+    "Channel NewsAsia",
+    "CNA（新加坡）",
+    "CNA(新加坡)"
+   ],
+   "label": "mixed",
+   "detail": "新加坡政府每年約撥 3.1 億新元支持公共服務廣播節目（通訊及新聞部 2020 年答覆），另有廣告等商業收入。",
+   "basis": "https://www.mddi.gov.sg/newsroom/mci-response-to-pq-on-psb-programmes-funding/"
+  },
+  {
+   "id": "st",
+   "name": "海峽時報 Straits Times",
+   "match": [
+    "Straits Times",
+    "The Straits Times",
+    "海峽時報"
+   ],
+   "label": "mixed",
+   "detail": "SPH Media Trust 為非營利擔保有限公司；新加坡政府承諾五年內每年最多 1.8 億新元補助（FY2024 實撥 2.606 億新元），營運另含商業收入。",
+   "basis": "https://www.mddi.gov.sg/newsroom/sph-media-trust-funding-support-and-measures/"
+  },
+  {
+   "id": "jt",
+   "name": "日本時報 Japan Times",
+   "match": [
+    "Japan Times",
+    "日本時報"
+   ],
+   "label": "commercial",
+   "detail": "由 News2u Holdings 全資持有的營利公司；官網提供數位／紙本訂閱。",
+   "basis": "https://www.japantimes.co.jp/comfacts/notice-of-closing-of-acquisition-of-the-japan-times-ltd/"
+  },
+  {
+   "id": "kh",
+   "name": "韓國先驅報 Korea Herald",
+   "match": [
+    "Korea Herald",
+    "韓國先驅報"
+   ],
+   "label": "unlabeled",
+   "detail": "由 Herald Corp. 發行（2019 年起最大股東為中興集團）；官網未載明收入來源。",
+   "basis": "https://www.koreaherald.com/article/2037760"
+  },
+  {
+   "id": "yna",
+   "name": "聯合通訊社 Yonhap",
+   "match": [
+    "Yonhap",
+    "韓聯社",
+    "聯合通訊社"
+   ],
+   "label": "unlabeled",
+   "detail": "官網載明為依法指定的「國家通訊社」，最大股東為依法設立的新聞通訊社振興會（30.77%），但未載明經費來源。",
+   "basis": "https://en.yna.co.kr/aboutus/yonhapnews"
+  },
+  {
+   "id": "scmp",
+   "name": "南華早報 SCMP",
+   "match": [
+    "SCMP",
+    "南華早報"
+   ],
+   "label": "commercial",
+   "detail": "阿里巴巴集團旗下；官網發布公告推出數位訂閱方案（計量式付費牆）。",
+   "basis": "https://corp.scmp.com/scmp-launches-new-digital-subscription-service-to-advance-independent-journalism-in-the-digital-age/"
+  },
+  {
+   "id": "rappler",
+   "name": "Rappler",
+   "match": [
+    "Rappler"
+   ],
+   "label": "commercial",
+   "detail": "營利公司；官網設有付費會員 Rappler+ 與眾籌，各項收入占比未載明。",
+   "basis": "https://www.rappler.com/plus/"
+  },
+  {
+   "id": "bkp",
+   "name": "曼谷郵報 Bangkok Post",
+   "match": [
+    "Bangkok Post",
+    "曼谷郵報"
+   ],
+   "label": "commercial",
+   "detail": "Post Publishing 為上市公司，年報列示廣告、報刊銷售與電視／數位收入。",
+   "basis": "https://www.bangkokpost.co.th/annualreport/annual2025/annual_report_2025_eng.pdf"
+  },
+  {
+   "id": "abc",
+   "name": "ABC 澳洲廣播公司",
+   "match": [
+    "ABC Australia",
+    "ABC",
+    "澳洲廣播公司"
+   ],
+   "label": "public",
+   "detail": "主要經費為澳洲政府預算撥款（五年期撥款安排）。",
+   "basis": "https://www.infrastructure.gov.au/media-communications-arts/national-broadcasters/australian-broadcasting-corporation-abc"
+  },
+  {
+   "id": "aa",
+   "name": "安納杜魯通訊社 Anadolu Agency",
+   "match": [
+    "Anadolu",
+    "安納杜魯"
+   ],
+   "label": "public",
+   "detail": "土耳其憲法法院新聞稿載明：該社為私法股份公司，收入「主要」來自通訊總局預算中的撥款，並接受公共機構給付。",
+   "basis": "https://www.anayasa.gov.tr/en/news/constitutionality-review/press-release-concerning-the-decision-annulling-certain-provisions-of-the-presidential-decree-on-the-organisation-of-the-directorate-of-communications/"
+  },
+  {
+   "id": "dne",
+   "name": "Daily News Egypt",
+   "match": [
+    "Daily News Egypt"
+   ],
+   "label": "unlabeled",
+   "detail": "官網「所有權與資金」頁載明由 Business News 公司持有，但未載明收入來源。",
+   "basis": "https://www.dailynewsegypt.com/daily-news-egypt-ownership-and-funding-information/"
+  },
+  {
+   "id": "aawsat",
+   "name": "中東報 Asharq Al-Awsat",
+   "match": [
+    "Asharq Al-Awsat"
+   ],
+   "label": "commercial",
+   "detail": "由沙烏地研究與媒體集團（SRMG，沙烏地交易所上市）持有；集團年報列示廣告與出版／數位內容收入。",
+   "basis": "https://www.srmg.com/en/reports/all/annual-report"
+  },
+  {
+   "id": "tehran",
+   "name": "德黑蘭時報 Tehran Times",
+   "match": [
+    "Tehran Times"
+   ],
+   "label": "unlabeled",
+   "detail": "官網自述為伊朗首份英文日報、與 Mehr 通訊社同一管理體系；未載明資金來源。",
+   "basis": "https://www.tehrantimes.com/news/300000/"
+  },
+  {
+   "id": "dawn",
+   "name": "Dawn（巴基斯坦）",
+   "match": [
+    "Dawn"
+   ],
+   "label": "unlabeled",
+   "detail": "官網或可查官方文件未載明資金來源；依「無法確認就標未標示」原則不作推測。",
+   "basis": "https://www.dawn.com/"
+  },
+  {
+   "id": "toi",
+   "name": "Times of India",
+   "match": [
+    "Times of India"
+   ],
+   "label": "unlabeled",
+   "detail": "官網或可查官方文件未載明資金來源；依「無法確認就標未標示」原則不作推測。",
+   "basis": "https://timesofindia.indiatimes.com/"
+  },
+  {
+   "id": "dstar",
+   "name": "Daily Star（孟加拉）",
+   "match": [
+    "Daily Star Bangladesh",
+    "Daily Star"
+   ],
+   "label": "unlabeled",
+   "detail": "官網 About 頁載明創辦人為多位企業家，但未載明收入來源。",
+   "basis": "https://www.thedailystar.net/about-us"
+  },
+  {
+   "id": "etrib",
+   "name": "Express Tribune（巴基斯坦）",
+   "match": [
+    "Express Tribune"
+   ],
+   "label": "unlabeled",
+   "detail": "官網或可查官方文件未載明資金來源；依「無法確認就標未標示」原則不作推測。",
+   "basis": "https://tribune.com.pk/"
+  },
+  {
+   "id": "econext",
+   "name": "EconomyNext（斯里蘭卡）",
+   "match": [
+    "EconomyNext"
+   ],
+   "label": "commercial",
+   "detail": "官網 About 頁自述為獨立、私人持有，以廣告收入支持營運。",
+   "basis": "https://www.economynext.com/about-us/"
+  },
+  {
+   "id": "merco",
+   "name": "MercoPress",
+   "match": [
+    "MercoPress"
+   ],
+   "label": "unlabeled",
+   "detail": "官網未公開載明所有權與資金來源（僅有廣告刊登頁）。",
+   "basis": "https://en.mercopress.com/about-mercopress"
+  },
+  {
+   "id": "rio",
+   "name": "The Rio Times",
+   "match": [
+    "Rio Times"
+   ],
+   "label": "commercial",
+   "detail": "官網自述由發行人全資持有，資金來自付費會員與標示清楚的贊助文章，不接受展示／程式化廣告。",
+   "basis": "https://www.riotimesonline.com/about-us/"
+  },
+  {
+   "id": "colone",
+   "name": "ColombiaOne",
+   "match": [
+    "Colombia One",
+    "ColombiaOne"
+   ],
+   "label": "unlabeled",
+   "detail": "官網載明由私人集團 Libra Group 多數持股，但未載明收入來源。",
+   "basis": "https://colombiaone.com/about/"
+  },
+  {
+   "id": "africanews",
+   "name": "Africanews",
+   "match": [
+    "Africanews"
+   ],
+   "label": "commercial",
+   "detail": "官網新聞室自述為 Euronews 全資子公司，資金來自廣告、發行、製作與合作夥伴收入。",
+   "basis": "https://www.africanews.com/page/pressroom/"
+  },
+  {
+   "id": "premium",
+   "name": "Premium Times（奈及利亞）",
+   "match": [
+    "Premium Times"
+   ],
+   "label": "unlabeled",
+   "detail": "官網 About 頁載明由 Premium Times Services Limited 發行，但未載明資金來源。",
+   "basis": "https://www.premiumtimesng.com/about"
+  },
+  {
+   "id": "punch",
+   "name": "Punch（奈及利亞）",
+   "match": [
+    "Punch"
+   ],
+   "label": "commercial",
+   "detail": "官網自述為「以營利為目的的企業實體」。",
+   "basis": "https://punchng.com/about-us/"
+  },
+  {
+   "id": "sabc",
+   "name": "SABC（南非公共廣播）",
+   "match": [
+    "SABC"
+   ],
+   "label": "mixed",
+   "detail": "南非國有公共廣播機構；資金含廣告與贊助、電視執照費與政府轉撥，其中廣告為最大宗。",
+   "basis": "https://www.dcdt.gov.za/portofolio-organizations/sabc.html"
+  },
+  {
+   "id": "citizen",
+   "name": "The Citizen（南非）",
+   "match": [
+    "The Citizen",
+    "Citizen"
+   ],
+   "label": "commercial",
+   "detail": "由上市公司 Caxton & CTP 發行；集團年報列示報紙廣告與發行收入。",
+   "basis": "https://caxton.co.za/annual-financial-statements"
+  },
+  {
+   "id": "graphic",
+   "name": "Graphic Online（迦納）",
+   "match": [
+    "Graphic Online",
+    "Daily Graphic"
+   ],
+   "label": "commercial",
+   "detail": "國有企業（政府 100% 持股），但公司向國會帳目委員會說明不領政府補助、營運資金來自自身收入。",
+   "basis": "https://www.graphic.com.gh/news/general-news/graphic-doesnt-enjoy-government-subvention-director-of-finance-tells-pac.html"
+  }
+ ]
+}

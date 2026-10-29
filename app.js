@@ -168,7 +168,8 @@
   // related links: also load archive.json (optional; links to archived items fall back to the given title if it is unavailable)
   Promise.all([
     fetch("data/news.json", {cache:"no-store"}).then(r => r.json()),
-    fetch("data/archive.json", {cache:"no-store"}).then(r => r.json()).catch(() => ({items: []}))
+    fetch("data/archive.json", {cache:"no-store"}).then(r => r.json()).catch(() => ({items: []})),
+    NN.fundingReady   // never rejects (null when the mapping cannot be loaded -> no tags)
   ]).then(([j, arch]) => { data = j; NN.setRelatedIndex(j.items, arch.items); render(current()); })
     .catch(() => { document.getElementById("content").innerHTML = '<p class="empty">無法載入資料。請以本機伺服器開啟（例如 python3 -m http.server）。</p>'; });
 })();

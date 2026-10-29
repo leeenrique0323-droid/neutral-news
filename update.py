@@ -182,7 +182,7 @@ def cmd_log(a):
 def print_new_list(new):
     for x in new:
         tag = "國際" if x["tab"] == "intl" else "台灣"
-        print(f"- [{x['tab']}] {tag} | {x.get('source', '?')} | {','.join(x['categories'])} | {x['title']} | {x['link']}")
+        print(f"- [{x['tab']}] {tag} | {x.get('source', '?')} [資金:{x.get('funding', '?')}] | {','.join(x['categories'])} | {x['title']} | {x['link']}")
 
 def mix_line():
     """Informational only: current 國際 share in news.json vs. the editorial target (about one third). Never fatal."""
@@ -373,7 +373,48 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
     corr = load_corrections()
     errs += corrections_errors(corr, d["items"])
     errs += duplicate_errors(d["items"], load_archive()["items"] if check_archive else [])
+    errs += funding_errors()
     return errs
+
+# --- funding labels (資金來源標示): single mapping data/source_funding.json, see funding.py ---
+def funding_errors():
+    """Mapping integrity + every FEEDS source in fetch.py must match an explicit outlet entry (no silent 未標示 fallback)."""
+    import funding
+    errs = []
+    try:
+        m = funding.load()
+    except (OSError, ValueError) as e:
+        return [f"source_funding.json: unreadable ({e})"]
+    labels = m.get("labels") or {}
+    if "unlabeled" not in labels: errs.append("source_funding.json: labels must include `unlabeled` (未標示)")
+    for k, v in labels.items():
+        if not (isinstance(v, dict) and v.get("tag") and v.get("desc")): errs.append(f"source_funding.json: label {k!r} needs tag and desc")
+    ids = set()
+    for o in m.get("outlets") or []:
+        t = f"source_funding.json outlet {o.get('id', '?')!r}"
+        if o.get("id") in ids: errs.append(f"{t}: duplicate id")
+        ids.add(o.get("id"))
+        if o.get("label") not in labels: errs.append(f"{t}: unknown label {o.get('label')!r}")
+        if not (isinstance(o.get("match"), list) and o["match"] and all(isinstance(x, str) and x for x in o["match"])): errs.append(f"{t}: `match` must be a non-empty list of strings")
+        if not o.get("detail"): errs.append(f"{t}: missing detail")
+        if not re.match(r"^https?://", o.get("basis") or ""): errs.append(f"{t}: basis must be an http(s) URL")
+    try:
+        import fetch as _fetch
+        for name, tab, url in _fetch.FEEDS:
+            if not funding.funding_for(name)["explicit"]:
+                errs.append(f"fetch.py feed {name!r}: no entry in data/source_funding.json (add an outlet; use label `unlabeled` if its funding is not documented)")
+    except Exception as e:
+        errs.append(f"funding check could not import fetch.py: {e}")
+    return errs
+
+def funding_warnings(items):
+    """Non-fatal: item source names that match no outlet entry (they show as 未標示 on the site)."""
+    import funding
+    seen = {}
+    for i in items:
+        for s in i.get("sources", []):
+            if not funding.funding_for(s.get("name", ""))["explicit"]: seen.setdefault(s.get("name", ""), i.get("id"))
+    return [f"[funding] source {n!r} (e.g. in {iid}) has no entry in data/source_funding.json -> shown as 未標示; add it to `outlets`" for n, iid in seen.items()]
 
 def norm_primary_url(i):
     """Normalized primary (first) source URL: no scheme/www/query/fragment/trailing slash, lowercase host."""
@@ -467,7 +508,9 @@ def now_tpe(a=None):
     return datetime.fromisoformat(n) if n else datetime.now(TPE)
 
 def cmd_validate(a):
-    errs = validate(load(), now_tpe(a), a.keep_hours)
+    d = load()
+    errs = validate(d, now_tpe(a), a.keep_hours)
+    for w in funding_warnings(d["items"] + load_archive()["items"]): print(w)
     print("\n".join(errs) if errs else "OK")
     return 1 if errs else 0
 

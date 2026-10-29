@@ -2,7 +2,8 @@
   const {fmt, fmtDate, esc, first, itemBody, bindToggles} = NN;
   Promise.all([
     fetch("data/archive.json", {cache:"no-store"}).then(r => r.json()),
-    fetch("data/news.json", {cache:"no-store"}).then(r => r.json()).catch(() => ({items: []}))
+    fetch("data/news.json", {cache:"no-store"}).then(r => r.json()).catch(() => ({items: []})),
+    NN.fundingReady
   ]).then(([a, news]) => {
     NN.setRelatedIndex(news.items, a.items);
     const items = (a.items||[]).slice().sort((x,y) => new Date(first(y)) - new Date(first(x)));

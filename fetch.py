@@ -7,6 +7,7 @@ Output candidates are for an editor to curate; summaries are written by hand
 (or a later pipeline) into data/news.json.
 """
 import argparse, json, re, sys, time, urllib.request, email.utils
+from funding import funding_for   # 資金來源標示：單一對照表 data/source_funding.json
 import xml.etree.ElementTree as ET
 from datetime import datetime, timezone, timedelta
 
@@ -54,6 +55,32 @@ FEEDS = [
     ("Rappler", "intl", "https://www.rappler.com/feed/"),
     ("Bangkok Post", "intl", "https://www.bangkokpost.com/rss/data/topstories.xml"),
     ("ABC Australia", "intl", "https://www.abc.net.au/news/feed/2942460/rss.xml"),
+    # --- source diversity round 2 (added 2026-10-29): Middle East, South Asia, Latin America, Africa. English-only, keyless;
+    # each verified 2026-10-29 with curl (HTTP 200, parseable, newest item < 10 h old, articles readable without sign-in/paywall).
+    # Rejected after testing (do not re-add without re-checking): Times of Israel (articles 403 / bot challenge), Al-Monitor (paywall),
+    # Buenos Aires Times (metered paywall), Mexico News Daily (leaky paywall + bot check), Daily Maverick (sign-in wall after N free
+    # articles; /feed/ 403), Nation Africa (premium content, some 403). See AUTOMATION.md for the full list.
+    ("Anadolu Agency World", "intl", "https://www.aa.com.tr/en/rss/default?cat=world"),
+    ("Daily News Egypt", "intl", "https://www.dailynewsegypt.com/feed/"),
+    ("Asharq Al-Awsat", "intl", "https://english.aawsat.com/feed"),
+    ("Tehran Times", "intl", "https://www.tehrantimes.com/rss"),
+    ("Dawn", "intl", "https://www.dawn.com/feeds/home"),
+    ("Dawn Business", "intl", "https://www.dawn.com/feeds/business"),
+    ("Times of India World", "intl", "https://timesofindia.indiatimes.com/rssfeeds/296589292.cms"),
+    ("Times of India Business", "intl", "https://timesofindia.indiatimes.com/rssfeeds/1898055.cms"),
+    ("Daily Star Bangladesh", "intl", "https://www.thedailystar.net/news/rss.xml"),
+    ("Daily Star Bangladesh Business", "intl", "https://www.thedailystar.net/business/rss.xml"),
+    ("Express Tribune", "intl", "https://tribune.com.pk/feed/home"),
+    ("EconomyNext", "intl", "https://economynext.com/feed/"),
+    ("MercoPress", "intl", "https://en.mercopress.com/rss"),
+    ("Rio Times", "intl", "https://www.riotimesonline.com/feed/"),
+    ("Colombia One", "intl", "https://colombiaone.com/feed/"),
+    ("Africanews", "intl", "https://www.africanews.com/feed/rss"),   # item links are http:// (500 there); parse() upgrades them to https
+    ("Premium Times", "intl", "https://www.premiumtimesng.com/feed"),
+    ("Punch Nigeria", "intl", "https://punchng.com/feed/"),
+    ("SABC News", "intl", "https://www.sabcnews.com/sabcnews/feed/"),
+    ("The Citizen South Africa", "intl", "https://www.citizen.co.za/feed/"),
+    ("Graphic Online Ghana", "intl", "https://www.graphic.com.gh/news.feed?type=rss"),
 ]
 TAB_TAG = {"tw": "台灣", "intl": "國際"}   # tag shown in the candidate list
 INTL_MAX_PER_FEED = 12   # keep the newest N matching items per 國際 feed so the broad English feeds cannot flood the list
@@ -127,6 +154,8 @@ def parse(raw):
         if not link:
             l = it.find(f"{atom}link")
             link = l.get("href") if l is not None else ""
+        if link.startswith("http://www.africanews.com/"):
+            link = "https://" + link[len("http://"):]   # their feed emits http:// links, which answer 500; https works
         out.append({
             "title": text(it, "title", f"{atom}title", f"{rdf}title"),
             "link": link,
@@ -169,7 +198,8 @@ def main():
             items = parse(fetch(url))
             if not items:
                 raise ValueError("feed parsed but contains 0 items (format changed or empty)")
-            status.append({"feed": name, "url": url, "ok": True, "items": len(items), "tab": tab, "tag": TAB_TAG.get(tab, tab)})
+            status.append({"feed": name, "url": url, "ok": True, "items": len(items), "tab": tab, "tag": TAB_TAG.get(tab, tab),
+                           "funding": funding_for(name)["label"]})
         except Exception as e:
             status.append({"feed": name, "url": url, "ok": False, "error": str(e)[:200]})
             print(f"[FAIL] {name}: {e}", file=sys.stderr)
@@ -184,7 +214,8 @@ def main():
                 if tab == "intl" and kept >= INTL_MAX_PER_FEED and not a.all:
                     continue   # feeds are newest-first; cap how many items one broad 國際 feed contributes
                 kept += 1
-                cands.append({**it, "source": name, "tab": tab, "tag": TAB_TAG.get(tab, tab), "categories": cats})
+                cands.append({**it, "source": name, "tab": tab, "tag": TAB_TAG.get(tab, tab), "categories": cats,
+                              "funding": funding_for(name)["label"]})
         print(f"[OK] {name}: {len(items)} items", file=sys.stderr)
         time.sleep(1.5)  # be polite
     json.dump({"generated": datetime.now(timezone.utc).isoformat(), "feeds": status, "candidates": cands},
