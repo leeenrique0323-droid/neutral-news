@@ -104,6 +104,13 @@
       listSection(`today-${tab}`, "今日新聞", today, filtering && allToday.length ? emptyFiltered : "今天還沒有新的重大民生新聞", "台灣時間今日首次發布；進行中的事件會保留於此", true) +
       (allOther.length ? listSection(`other-${tab}`, "其他新聞", other, emptyFiltered, "") : "");
     bindToggles(el); NN.bindCards(el);
+    // 相關報導 links to another card on this page: expand + scroll (works even when the hash is already set)
+    el.querySelectorAll("a.rel-link[data-local='1']").forEach(a => a.addEventListener("click", e => {
+      e.preventDefault();
+      const id = a.dataset.rel;
+      history.replaceState(null, "", "#" + encodeURIComponent(id));
+      goTo(id);
+    }));
     el.querySelectorAll(".filter-btn").forEach(b => b.addEventListener("click", () => {
       filter = b.dataset.filter;
       render(tab, true);
@@ -158,6 +165,10 @@
     render(b.dataset.tab); window.scrollTo(0,0);
   }));
 
-  fetch("data/news.json", {cache:"no-store"}).then(r => r.json()).then(j => { data = j; render(current()); })
+  // related links: also load archive.json (optional; links to archived items fall back to the given title if it is unavailable)
+  Promise.all([
+    fetch("data/news.json", {cache:"no-store"}).then(r => r.json()),
+    fetch("data/archive.json", {cache:"no-store"}).then(r => r.json()).catch(() => ({items: []}))
+  ]).then(([j, arch]) => { data = j; NN.setRelatedIndex(j.items, arch.items); render(current()); })
     .catch(() => { document.getElementById("content").innerHTML = '<p class="empty">無法載入資料。請以本機伺服器開啟（例如 python3 -m http.server）。</p>'; });
 })();

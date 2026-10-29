@@ -1,6 +1,10 @@
 (function(){
   const {fmt, fmtDate, esc, first, itemBody, bindToggles} = NN;
-  fetch("data/archive.json", {cache:"no-store"}).then(r => r.json()).then(a => {
+  Promise.all([
+    fetch("data/archive.json", {cache:"no-store"}).then(r => r.json()),
+    fetch("data/news.json", {cache:"no-store"}).then(r => r.json()).catch(() => ({items: []}))
+  ]).then(([a, news]) => {
+    NN.setRelatedIndex(news.items, a.items);
     const items = (a.items||[]).slice().sort((x,y) => new Date(first(y)) - new Date(first(x)));
     document.getElementById("updated").textContent = `共 ${items.length} 則` + (a.updated ? `　最後整理：${fmt(a.updated)}` : "");
     const el = document.getElementById("content");
@@ -11,7 +15,7 @@
       <section class="cat">
         <h2>${esc(day)}</h2>
         ${groups[day].map(i => `
-        <details class="arch-item">
+        <details class="arch-item" id="${esc(i.id)}">
           <summary>
             <span class="arch-title">${esc(i.title)}</span>
             <span class="arch-meta">${NN.chip(i.category)}<span>${i.tab==="intl" ? "國際" : "台灣"}・發布 ${fmt(first(i))}${i.valid_until && NN.validLabel(i) ? `・${esc(NN.validLabel(i))}` : ""}${i.archived ? `・移入 ${fmtDate(i.archived)}` : ""}</span></span>
@@ -20,5 +24,16 @@
         </details>`).join("")}
       </section>`).join("");
     bindToggles(el);
+    // deep link archive.html#id: open the entry, highlight it and scroll to it
+    function goTo(){
+      const id = decodeURIComponent(location.hash.slice(1));
+      const t = id && document.getElementById(id);
+      document.querySelectorAll("details.arch-item.target").forEach(x => x.classList.remove("target"));
+      if(!t || !t.classList.contains("arch-item")) return;
+      t.open = true; t.classList.add("target"); t.scrollIntoView();
+    }
+    el.querySelectorAll("a.rel-link[data-local='1']").forEach(l => l.addEventListener("click", () => setTimeout(goTo, 0)));
+    window.addEventListener("hashchange", goTo);
+    goTo();
   }).catch(() => { document.getElementById("content").innerHTML = '<p class="empty">無法載入資料。</p>'; });
 })();

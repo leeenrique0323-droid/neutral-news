@@ -181,7 +181,8 @@ def cmd_log(a):
 
 def print_new_list(new):
     for x in new:
-        print(f"- [{x['tab']}] {','.join(x['categories'])} | {x['title']} | {x['link']}")
+        tag = "國際" if x["tab"] == "intl" else "台灣"
+        print(f"- [{x['tab']}] {tag} | {x.get('source', '?')} | {','.join(x['categories'])} | {x['title']} | {x['link']}")
 
 def fetch_summary_line(tag, new, feeds, cwa, extra=""):
     bad = [f for f in feeds if not f["ok"]]
@@ -252,6 +253,7 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
     cats = set(d.get("categories", []))
     ids = set()
     prev = git_first_published() if check_git else {}
+    known_ids = {x.get("id") for x in d["items"]} | {x.get("id") for x in (load_archive()["items"] if check_archive else [])}
     for i in d["items"]:
         tag = i.get("id", "?")
         for k in REQUIRED:
@@ -333,6 +335,21 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
         if i.get("evergreen") is not None:
             if not isinstance(i["evergreen"], bool): errs.append(f"{tag}: evergreen must be true/false")
             elif i["evergreen"] and not vu: errs.append(f"{tag}: evergreen requires valid_until (it is listed in 本週有效 only while valid_until is in the future)")
+        # --- related (follow-up stories): [{id, title?}], ids must exist in news.json or archive.json ---
+        rel = i.get("related")
+        if rel is not None:
+            if not isinstance(rel, list) or not rel: errs.append(f"{tag}: related must be a non-empty list of {{id, title?}}")
+            else:
+                seen_rel = set()
+                for r in rel:
+                    if not (isinstance(r, dict) and isinstance(r.get("id"), str) and r["id"].strip()):
+                        errs.append(f"{tag}: each related entry must be an object with a string id"); continue
+                    if r.get("title") is not None and not isinstance(r["title"], str): errs.append(f"{tag}: related title must be a string")
+                    rid = r["id"]
+                    if rid == i.get("id"): errs.append(f"{tag}: related points to itself")
+                    elif rid in seen_rel: errs.append(f"{tag}: related lists {rid} twice")
+                    elif rid not in known_ids: errs.append(f"{tag}: related id {rid!r} not found in news.json or archive.json")
+                    seen_rel.add(rid)
         # --- expiry (based on first_published only) ---
         if now is not None and not (bad_dt & {"first_published"}) and i.get("first_published"):
             try:

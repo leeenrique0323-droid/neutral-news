@@ -52,6 +52,30 @@ window.NN = (function(){
     </div>`;
   }
 
+
+  // ---------- related stories (`related: [{id, title?}]`) ----------
+  // Targets live in news.json (same page: #id) or archive.json (archive.html#id). Call NN.setRelatedIndex() once data is loaded.
+  let relIndex = {news: {}, archive: {}};
+  function setRelatedIndex(newsItems, archiveItems){
+    const m = (l, o) => { (l || []).forEach(x => { if(x && x.id) o[x.id] = x; }); return o; };
+    relIndex = {news: m(newsItems, {}), archive: m(archiveItems, {})};
+  }
+  // `page` = the page being rendered ("index" or "archive"): decides whether a link stays on the page.
+  function relatedHtml(i, page){
+    const rel = Array.isArray(i.related) ? i.related : [];
+    const links = rel.filter(r => r && r.id).map(r => {
+      const inNews = relIndex.news[r.id], inArch = relIndex.archive[r.id];
+      const target = inNews || inArch;
+      const title = (target && target.title) || r.title || r.id;
+      const here = (inNews && page === "index") || (!inNews && page === "archive");
+      const base = inNews ? (page === "index" ? "" : "./") : (page === "archive" ? "" : "archive.html");
+      const href = base + "#" + encodeURIComponent(r.id);
+      const tag = inNews ? "" : (inArch ? `<span class="rel-tag">過往新聞</span>` : "");
+      return `<li><a class="rel-link" href="${esc(href)}" data-rel="${esc(r.id)}" data-local="${here ? "1" : ""}">${esc(title)}</a>${tag}</li>`;
+    });
+    return links.length ? `<div class="related"><strong>相關報導</strong><ul>${links.join("")}</ul></div>` : "";
+  }
+
   function bindToggles(root){
     root.querySelectorAll(".sec-toggle").forEach(btn => btn.addEventListener("click", () => {
       const open = btn.dataset.open !== "1";
@@ -74,6 +98,7 @@ window.NN = (function(){
             <dt>何時開始</dt><dd>${esc(i.when)}</dd>
           </dl>
           ${i.taiwanImpact ? `<p class="tw-impact"><strong>對台灣的影響</strong>${esc(i.taiwanImpact)}</p>` : ""}
+          ${relatedHtml(i, opts.page || "archive")}
           ${sectionsHtml(i, opts.openFirst !== false)}
           ${sectioned
             ? `<details class="sources all-sources"><summary>全部來源（${i.sources.length}）</summary>${sourceList(i)}</details>`
@@ -153,6 +178,7 @@ window.NN = (function(){
               <dt>何時開始</dt><dd>${esc(i.when)}</dd>
             </dl>
             ${i.taiwanImpact ? `<p class="tw-impact"><strong>對台灣的影響</strong>${esc(i.taiwanImpact)}</p>` : ""}
+            ${relatedHtml(i, "index")}
             ${sectionsHtml(i, true)}
             <details class="sources all-sources"><summary>原始報導與資料來源（${(i.sources || []).length}）</summary>${sourceList(i)}</details>
           </div>
@@ -183,5 +209,5 @@ window.NN = (function(){
   document.addEventListener("DOMContentLoaded", bannerDate);
 
   return {fmt, fmtDate, esc, first, validEnd, validLabel, sectionsHtml, bindToggles, itemBody, tp,
-          chip, chipIndex, cardHtml, bindCards, setExpanded, splitSummary};
+          chip, chipIndex, cardHtml, setRelatedIndex, relatedHtml, bindCards, setExpanded, splitSummary};
 })();
