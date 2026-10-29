@@ -128,6 +128,8 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 更新內容、增加來源都不會延長期限。過期項目由 `update.py archive`／`finalize` **移到過往新聞（`data/archive.json`），不刪除**，
 前端 `archive.html` 依發布日期列出標題、可展開看原文與來源；日後的更正紀錄（更正紀錄）可直接引用封存內容。
 
+> **2026-10-29 一次性清理（使用者要求）**：在 copycheck 規則建立前寫成、`python3 update.py copycheck --archive` 結果為 FAIL 或 WARN 的過往新聞共 14 則（13 FAIL、1 WARN）已從 `data/archive.json` 移除，指向它們的 `related` 連結一併移除；通過檢查的過往新聞保留。這是唯一一次刪除封存項目的例外，其他情況仍照本節「不刪除」。**從此之後，所有項目發布前都必須通過 copycheck**（見「摘要寫法與相似度檢查」），不得再以刪除代替更正。
+
 | 類型 | 何時移入過往新聞 |
 |---|---|
 | 一般項目 | `first_published` 起 **48 小時**（2 天） |
