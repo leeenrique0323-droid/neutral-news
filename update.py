@@ -8,6 +8,7 @@
   python3 update.py finalize   # archive expired, validate, stamp `updated`, screenshots, zip
   python3 update.py log [-n N] # print the last N (default 10) entries of data/fetch_log.jsonl
   python3 update.py feedhealth # per-feed success rate + consecutive failures from the fetch log (>=3 in a row listed first)
+  python3 update.py copycheck [--new | --ids a,b]  # flag 20+ identical characters vs. source pages (needs network; see copycheck.py)
 
 Writing/curating summaries into data/news.json is an editorial step between
 `fetch` and `finalize` (see AUTOMATION.md). This script never invents content.
@@ -36,7 +37,7 @@ WRAPUP_HOURS = 24          # ongoing stories: upper bound for the post-event wra
 ONGOING_MAX_HOURS = 168    # safety cap: even an "ongoing" item is archived 7 days after first_published
 VALID_MAX_DAYS = 14        # items with `valid_until`: hard cap after first_published (nothing lingers forever)
 ONGOING_CATEGORY = "天災與公共安全"
-SUMMARY_MAX = 300          # normal summary (characters)
+SUMMARY_MAX = 250          # normal summary (characters; 2026-10-29: was 300)
 SUMMARY_MAX_SECTIONED = 200  # items with `sections`: short status block
 SUMMARY_MAX_LINES = 4      # newline-separated lines
 FACT_MAX = 200             # who / what / when (characters)
@@ -598,6 +599,12 @@ def cmd_validate(a):
     print("\n".join(errs) if errs else "OK")
     return 1 if errs else 0
 
+def cmd_copycheck(a):
+    import copycheck
+    items = load()["items"] + (load_archive()["items"] if a.archive else [])
+    ids = [x.strip() for x in (a.ids or "").split(",") if x.strip()]
+    return copycheck.run(items, ids=ids or None, new=a.new, minlen=a.min, refresh=a.refresh)
+
 def cmd_archive(a):
     d = load()
     now = now_tpe(a)
@@ -649,13 +656,19 @@ def main():
     fh.add_argument("--recent", type=int, default=FEED_RECENT_RUNS, help=f"runs in the 'recent' success rate (default {FEED_RECENT_RUNS})")
     fh.add_argument("--all", action="store_true", help="also list feeds that never failed")
     fh.add_argument("--log-file", help="read this log instead of data/fetch_log.jsonl (testing)")
+    cc = sp.add_parser("copycheck", help="compare our text with source pages (network; never part of validate)")
+    cc.add_argument("--ids", help="comma-separated item ids to check")
+    cc.add_argument("--new", action="store_true", help="only items new or changed vs. git HEAD")
+    cc.add_argument("--min", type=int, default=20, help="minimum identical run length (default 20)")
+    cc.add_argument("--refresh", action="store_true", help="ignore the page cache (raw/copycheck/)")
+    cc.add_argument("--archive", action="store_true", help="also check data/archive.json items")
     fn = sp.add_parser("finalize")
     fn.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
     fn.add_argument("--now", help="ISO time override (testing)")
     fn.add_argument("--no-screens", action="store_true")
     fn.add_argument("--no-zip", action="store_true")
     a = ap.parse_args()
-    sys.exit({"fetch": cmd_fetch, "validate": cmd_validate, "archive": cmd_archive, "finalize": cmd_finalize, "log": cmd_log, "feedhealth": cmd_feedhealth}[a.cmd](a) or 0)
+    sys.exit({"fetch": cmd_fetch, "validate": cmd_validate, "archive": cmd_archive, "finalize": cmd_finalize, "log": cmd_log, "feedhealth": cmd_feedhealth, "copycheck": cmd_copycheck}[a.cmd](a) or 0)
 
 if __name__ == "__main__":
     main()
