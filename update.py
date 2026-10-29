@@ -265,7 +265,7 @@ def mix_line():
         n_intl = sum(1 for i in items if i.get("tab") == "intl")
         need = max(0, -(-(len(items) - 3 * n_intl) // 2))   # extra 國際 items m so that (k+m)/(t+m) = 1/3 -> m = (t-3k)/2
         return (f"[mix] 國際 {n_intl}/{len(items)} items on site now ({(100 * n_intl / len(items)) if items else 0:.0f}%), target about 1/3"
-                + (f" - roughly {need} more 國際 item(s) needed; prefer 國際 candidates this run" if n_intl * 3 < len(items) else " - target met"))
+                + (f" - about {need} below the 1/3 goal (goal only: same selection rules and daily caps, do not pad or prefer 國際 candidates)" if n_intl * 3 < len(items) else " - target met"))
     except Exception as e:
         return f"[mix] unavailable ({e})"
 
