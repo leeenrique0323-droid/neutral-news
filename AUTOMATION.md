@@ -10,6 +10,7 @@
 | `fetch.py` | 抓取 RSS（台灣＋多國國際來源），輸出候選清單 `candidates.json`（含關鍵字初步分類、排除犯罪/娛樂等；每筆有 `source` 來源名稱與 `tab`／`tag`＝台灣／國際） |
 | `cwa.py` | 抓取中央氣象署（CWA）官方警特報、颱風位置、近期地震 → `cwa_alerts.json`（並印出摘要） |
 | `update.py fetch` | 執行 fetch.py 與 cwa.py，並列出**尚未收錄**的候選 → `data/new_candidates.json`（含 `cwa` 欄位） |
+| `data/source_funding.json` + `funding.py` | **資金來源標示的唯一對照表**（見下方「資金來源標示」）；`fetch.py`、`update.py validate`、前端 `common.js` 共用 |
 | `data/fetch_log.jsonl` | 抓取紀錄（見下方「抓取紀錄」）；只存在這台電腦上，已加入 .gitignore，不需提交 |
 | `update.py log` | 印出抓取紀錄最後 N 筆（`python3 update.py log -n 20`，預設 10） |
 | `data/news.json` | 網站唯一資料來源（含 `updated` 時間戳，頁面上的「最後更新」即讀取此欄位） |
@@ -244,9 +245,8 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 - 重大旅遊與航空變動（航線、簽證、入出境規定、機場／航空公司重大異動）
 - 海外重大災害，且與台灣有關（台灣人受影響、供應鏈、救援、旅遊）
 
-**每則國際項目都必須有「對台灣的影響」（`taiwanImpact`）一句。寫不出誠實、有依據的影響途徑，就不要收錄這則新聞**（不要寫成「對台灣沒有影響」之類的空話來湊數；`validate` 只檢查欄位有無，這條由編輯負責）。寫法：
-- 用「可能」「間接」等審慎用語描述**可能的影響途徑**（進口成本、出口、物價、匯率、旅遊、防疫、供應鏈），**不得捏造數字**；
-- 引用的台灣數據（進口依賴度、出口額、旅客人數等）必須來自實際開啟過的公開資料（政府統計、官方報告），註明出處並加入 `sources`；沒有可查證的數字就只寫影響途徑，不寫數字；
+**每則國際項目都必須有「對台灣的影響」（`taiwanImpact`）一句。寫不出有依據的內容，就不要收錄這則新聞**（`validate` 只檢查欄位有無，用語規則由編輯負責）。寫法見下方 §8「對台灣的影響」規則（2026-10-29 起較以往更嚴）：只寫有出處的事實，不做預測。
+- 引用的台灣數據（進口依賴度、出口額、旅客人數等）必須來自實際開啟過的公開資料（政府統計、官方報告），註明出處並加入 `sources`；沒有可查證的數字就不寫數字；
 - 官方已有說法時優先引用（例如疾管署、經濟部、央行對該事件的評估）。
 
 仍不收錄：名人／娛樂／體育、一般犯罪與個別事故、他國內政與選舉政治（除非與台灣有明確連結並符合上列範圍）。
@@ -265,10 +265,13 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 7. **三行影響說明**（每則必填）：
    - `who` 影響誰；`what` 影響什麼；`when` 何時開始。
    - 原文未載明者，直接寫「原報導未載明…」，不得自行推定。
-8. **國際新聞的「對台灣的影響」**（`taiwanImpact`，**每則國際項目必填**）：
-   - **寫不出誠實、有依據的影響途徑，這則國際新聞就不收錄**（不要用「目前無可查證的關聯」之類的句子硬收）；原報導未提及台灣時，可寫「原報導未述及對台灣的直接影響」，但前面仍須有可能的間接途徑說明。
-   - 以「可能」「間接」等審慎用語描述可能的影響途徑（進口、出口、物價、能源、匯率、旅遊防疫、供應鏈等），不得捏造數字。
-   - 引用的數據須註明出處（實際開啟過的公開資料），並將該資料來源加入 `sources`。
+8. **國際新聞的「對台灣的影響」**（`taiwanImpact`，**每則國際項目必填**；2026-10-29 起規則）：
+   - **允許**：有出處的事實，並在句中註明出處，例如「據經濟部資料，…」「依行政院院會能源署報告，2025年台灣進口原油經荷姆茲海峽的比例為62%」「疾管署公布，…」；以及如實寫明「原報導未述及對台灣的影響」「本站未查得可引用的官方資料」。
+   - **不允許**：預測或推測性用語，如「恐將」「可能衝擊」「預料會」「勢必」「將導致」「可能增加…成本」這類沒有出處的推論；以「可能」包裝原報導已有的事實；沒有出處的泛稱（例如「台灣能源大多仰賴進口」而未註明資料）。
+   - **間接推論**只能這樣寫：句首用「可能間接影響」，後接「理由：…」並寫明理由與出處（例如進口比例、官方評估）；理由寫不出來就不要寫這句，改寫上面「允許」的事實或「原報導未述及」。程度無法判斷時可寫「可能間接影響（程度目前無法判斷）」。
+   - **不得捏造數字**；引用的數據須來自實際開啟過的公開資料，並將該資料來源加入 `sources`。
+   - 寫不出有依據的內容時，這則國際新聞就不收錄；原報導與可查證資料都未述及台灣時，可直接如實寫「原報導未述及對台灣的影響；本站亦未查得…」，但不要用這類句子硬湊數量。
+   - 修改已刊登的 `taiwanImpact`（用語不合規則也算）一律走下方「更正紀錄」流程（新增 corrections 一筆＋`corrected` 標示），不得悄悄改。2026-10-29 已依本規則檢查全部國際項目（news.json 與 archive.json 共 12 則）：11 則已改寫並記入更正紀錄，1 則（intl-ebola-nigeria，內容全為疾管署公布的事實）維持不變。
 9. **狀態標示**：
    - `快訊・初步資訊`：事件發展中、官方尚未完整說明、數字可能變動。會固定顯示於分頁最上方的「快訊」區。
    - `完整版`：主要事實已確認。顯示於各分類區。
@@ -300,17 +303,36 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 
 `data/archive.json`：`{"updated": "...", "items": [ 與 news.json 相同格式的項目，另加 "archived"（移入時間）、"archive_reason" ]}`。
 
-## 國際來源（fetch.py，2026-10-29 擴充）
+## 國際來源（fetch.py，2026-10-29 擴充；共 57 個 feed）
 
 全部免金鑰公開 RSS，抓取時標為 `國際`（候選清單的第二欄），各來源每次最多取最新 12 筆符合關鍵字者；英文來源用單字邊界的英文關鍵字分類（只是提示）。
 - 既有：中央社 國際、BBC World、BBC Business、NHK（NHK RSS 仍只有 2026 年 8 月的舊資料，保留但無新候選）。
 - 新增：BBC Technology／Science（英）、DW World／Business／Asia（德）、Al Jazeera English（卡達／中東）、Guardian World／Business（英）、France 24（法）、
   CNA Singapore World／Asia／Business（新加坡）、Straits Times Asia／Business（新加坡）、Japan Times（日）、Korea Herald World／Business（韓）、Yonhap English（韓）、
   SCMP Asia／Economy（香港）、Rappler（菲）、Bangkok Post（泰）、ABC Australia（澳）。
+- 再新增（2026-10-29 第二輪，補中東、南亞、拉丁美洲、非洲；英文、免金鑰，皆以 curl 驗證 HTTP 200、可解析、最新一則在 10 小時內、文章免登入可讀）：
+  - 中東：Anadolu Agency World（土）、Daily News Egypt（埃）、Asharq Al-Awsat（沙）、Tehran Times（伊）；Al Jazeera English 為既有。
+  - 南亞：Dawn、Dawn Business（巴）、Times of India World／Business（印）、Daily Star Bangladesh／Business（孟）、Express Tribune（巴）、EconomyNext（斯里蘭卡）。
+  - 拉丁美洲：MercoPress（烏拉圭／南大西洋）、Rio Times（巴西）、Colombia One（哥）。
+  - 非洲：Africanews（其 feed 的文章連結為 http://，會回 500，fetch.py 改寫為 https）、Premium Times／Punch（奈）、SABC News／The Citizen（南非）、Graphic Online（迦納）。
+  - **測試後拒絕（日後勿未重新檢查就加入）**：Times of Israel（文章回 403 並出現機器人驗證，不繞過）、Al-Monitor（官網 FAQ 載明有付費牆）、Buenos Aires Times（計量式付費牆）、Mexico News Daily（會員牆＋機器人驗證）、Daily Maverick（`/feed/` 403；`/dmrss/` 可抓但文章達免費篇數後要登入）、Nation Africa（含付費專屬內容、部分文章 403）；另有多個 feed 過期、無法解析或回 404 而未採用。
+  - 注意：既有的 SCMP、海峽時報（Straits Times）網站亦有計量式付費牆，部分文章可能無法完整閱讀；採用其報導前請先確認內容可讀，必要時改用其他來源交叉確認。
 - 已測試但不使用：Reuters（連不上）、NHK World／NHK 各分類 RSS 與 all.json（資料停在 2026 年 8 月／9 月）、Nikkei Asia（RSS 無日期）、
   Yonhap economy、The Hindu、VOA 中文（無法解析／404）、DW 中文、RFI 中文（簡體，關鍵字分類無效）。
 - 某個來源暫時失敗（如 Korea Herald 偶爾回 403）會在輸出標示 `[FEED FAIL]` 並記入抓取紀錄，其餘來源照常；不要用繞過封鎖的方式重試，下一輪再抓。
 - 來源回傳 0 筆資料會被視為失敗（`[FEED FAIL] … 0 items`），以免來源格式改變時悄悄沒有候選。
+
+## 資金來源標示（2026-10-29 起）
+
+每個來源名稱旁（卡片收合區、展開後的來源清單、過往新聞頁）顯示一個小標籤，說明**該媒體自己公開的資金來源**，並在頁尾有說明。標籤**不代表報導品質或立場**，所有標籤外觀相同，不做顏色評價。
+
+- **唯一對照表**：`data/source_funding.json`。結構：`labels`（標籤 key → `tag` 短標籤、`desc` 說明）、`outlets`（`id`、`name`、`match`＝來源名稱前綴清單、`label`、`detail`＝一句依據、`basis`＝出處網址）。`funding.py` 的 `funding_for(name)` 與 `common.js` 的 `fundingFor(name)` 用同一規則比對：**最長前綴優先**，前綴後須為字串結尾或非英數字元（所以 `Dawn` 可比對 `Dawn Business`，`中央社` 可比對 `中央社 政治`、`CNA（新加坡）` 可比對 `CNA（新加坡）／路透社`）。**既有項目不需逐筆修改**，標籤由 `sources[].name` 即時推導。
+- **標籤**（`labels`）：`public` 公共出資（主要經費來自公共預算、執照費或政府給付）；`mixed` 商業＋公共（同時載明商業收入與公共資金，公共資金非明確主要來源）；`commercial` 商業（民營營利事業）；`independent` 信託／捐助；`government` 政府機關（官方資料，非媒體）；`unlabeled` 未標示。
+- **分類原則**：只依該媒體**自家網站（About／funding／subscribe 頁）或官方公開文件**（法律、年報、政府答覆、法院文件）的說明；**無法確認就用 `unlabeled`（未標示），不得憑印象或第三方評論推測**。`detail` 只寫查得到的事實，數字須與出處一致。
+- **fetch.py**：每個 feed 的狀態（`feeds[].funding`）與每筆候選（`candidates[].funding`）都帶標籤 key；`update.py fetch` 的候選清單以 `[資金:key]` 顯示。
+- **新增來源時**：① 在 `data/source_funding.json` 加（或沿用）一筆 outlet，`match` 含新來源名稱前綴；② 去該媒體官網找資金說明並填 `basis`，找不到就標 `unlabeled`；③ `update.py validate` 會檢查：標籤 key 存在、`match`／`detail` 非空、`basis` 為網址、**`fetch.py` 的每個 FEEDS 來源都能對到明確的 outlet（否則失敗）**。
+- **新聞項目 `sources[].name` 若對不到任何 outlet**（例如新的政府機關名稱、新的外媒），`validate` 會印出 `[funding] …` 警告（不失敗），網站暫顯示「未標示」；請補進 `outlets`（政府機關加到 `gov` 的 `match`）。
+- 目前的對照（2026-10-29 檢查）：公共出資＝BBC、NHK、DW、France 24、半島（官網自述接受公共資金）、ABC 澳洲、公視、Anadolu；商業＋公共＝中央社（官網稱政府補助約 47%）、CNA 新加坡／Mediacorp、海峽時報、SABC；商業＝日本時報、SCMP、Rappler、曼谷郵報、EconomyNext、Rio Times、Africanews、Punch、The Citizen、Graphic Online、Asharq Al-Awsat；信託／捐助＝衛報（Scott Trust）；其餘（Yonhap、Korea Herald、Daily News Egypt、Tehran Times、Dawn、Times of India、Daily Star、Express Tribune、MercoPress、ColombiaOne、Premium Times）＝未標示。詳細依據見 JSON。
 
 ## 已知的來源狀況（2026-10-21）
 
