@@ -184,6 +184,17 @@ def print_new_list(new):
         tag = "國際" if x["tab"] == "intl" else "台灣"
         print(f"- [{x['tab']}] {tag} | {x.get('source', '?')} | {','.join(x['categories'])} | {x['title']} | {x['link']}")
 
+def mix_line():
+    """Informational only: current 國際 share in news.json vs. the editorial target (about one third). Never fatal."""
+    try:
+        items = load()["items"]
+        n_intl = sum(1 for i in items if i.get("tab") == "intl")
+        need = max(0, -(-(len(items) - 3 * n_intl) // 2))   # extra 國際 items m so that (k+m)/(t+m) = 1/3 -> m = (t-3k)/2
+        return (f"[mix] 國際 {n_intl}/{len(items)} items on site now ({(100 * n_intl / len(items)) if items else 0:.0f}%), target about 1/3"
+                + (f" - roughly {need} more 國際 item(s) needed; prefer 國際 candidates this run" if n_intl * 3 < len(items) else " - target met"))
+    except Exception as e:
+        return f"[mix] unavailable ({e})"
+
 def fetch_summary_line(tag, new, feeds, cwa, extra=""):
     bad = [f for f in feeds if not f["ok"]]
     urgent = "n/a" if cwa is None else ("YES" if cwa.get("urgent") else "no")
@@ -203,6 +214,7 @@ def cmd_fetch(a):
                 print(f"[fetch REUSED] already fetched this run ({age_min:.1f} min ago, < {FETCH_REUSE_MINUTES} min); "
                       f"reusing {NEWC} - no network requests made. Use `update.py fetch --force` to fetch again.")
                 print(fetch_summary_line("REUSED", new, prev["feeds"], prev.get("cwa"), f" | generated: {prev['generated']}"))
+                print(mix_line())
                 for f in prev["feeds"]:
                     if not f["ok"]: print(f"[FEED FAIL] {f['feed']}: {f.get('error')}")
                 if os.path.exists(CWA):
@@ -243,6 +255,7 @@ def cmd_fetch(a):
     bad = [f for f in c["feeds"] if not f["ok"]]
     log_fetch("forced" if a.force else "fresh", new, c["feeds"], cwa)
     print(fetch_summary_line("FRESH", new, c["feeds"], cwa))
+    print(mix_line())
     print(f"{len(new)} new candidates -> {NEWC}")
     for f in bad:
         print(f"[FEED FAIL] {f['feed']}: {f.get('error')}")
