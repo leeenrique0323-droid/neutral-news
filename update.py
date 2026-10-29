@@ -8,7 +8,7 @@
   python3 update.py finalize   # archive expired, validate, stamp `updated`, screenshots, zip
   python3 update.py log [-n N] # print the last N (default 10) entries of data/fetch_log.jsonl
   python3 update.py feedhealth # per-feed success rate + consecutive failures from the fetch log (>=3 in a row listed first)
-  python3 update.py copycheck [--new | --ids a,b]  # flag 20+ identical characters vs. source pages (needs network; see copycheck.py)
+  python3 update.py copycheck [--new | --ids a,b]  # flag 20+ identical characters (FAIL) and >40% overlap in 12+ char runs (WARN) vs. source pages (needs network; see copycheck.py)
 
 Writing/curating summaries into data/news.json is an editorial step between
 `fetch` and `finalize` (see AUTOMATION.md). This script never invents content.

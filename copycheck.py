@@ -14,6 +14,10 @@ with our text fields (title, summary, who, what, when, taiwanImpact, section bul
     (terms quoted in the source or our text, source/outlet names, and the item's `copycheck_names` list, optional),
     fewer than MIN_SUBSTANTIVE characters remain.
 Media sources: hit = FAIL (exit 1). Government sources (data/source_funding.json label `government`, 政府機關): WARN only.
+Overall similarity (2026-10-29): for each text field (>= SHARE_MIN_FIELD normalized characters), the share of its
+characters covered by shared runs of SHARE_RUN+ characters with any *media* source (same normalization, quotes masked,
+runs that are mostly digits/dates/units/Latin/names excluded) is computed; above SHARE_PCT % -> WARN with the
+percentage ("SHARE"). WARN never fails, but routines must rewrite WARN-flagged summaries before publishing new items.
 Network failures are SKIPPED (not failures). This command needs network; `validate` never calls it.
 """
 import hashlib, html, json, os, re, subprocess, sys, time, unicodedata, urllib.request
@@ -24,6 +28,9 @@ CACHE_DIR = os.path.join(ROOT, "raw", "copycheck")      # raw/ is gitignored
 CACHE_HOURS = 72
 MIN_RUN = 20
 MIN_SUBSTANTIVE = 10
+SHARE_RUN = 12          # overall-similarity check: shared runs of >= 12 characters ...
+SHARE_PCT = 40          # ... covering more than 40% of a field -> WARN (never FAIL)
+SHARE_MIN_FIELD = 30    # fields shorter than this (normalized) are not percentage-checked (short titles/when lines)
 TIMEOUT = 20
 DELAY = 1.5   # seconds between network requests (same politeness as fetch.py)
 UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -153,11 +160,36 @@ def our_texts(item):
             if b.get("text"): out.append((f"sections/{s.get('id')}#{n}", b["text"]))
     return out
 
-def check_item(item, minlen=MIN_RUN, refresh=False, log=print):
-    """-> list of (level, url, field, run) with level FAIL/WARN, and list of skipped (url, why)."""
+def _counts(run, names, minsub):
+    """Same exclusion idea as the 20-char check: a run that is mostly digits/dates/units/Latin/names is ignored.
+    For the shorter SHARE_RUN runs the bar is min(MIN_SUBSTANTIVE, half the run length)."""
+    return substantive(run, names) >= min(minsub, (len(run) + 1) // 2)
+
+def share_of(text, body_norm, names, run=SHARE_RUN):
+    """-> (covered characters, total characters) of our normalized text (quotes masked, not counted)."""
+    a = norm_keep_map(text, mask_quotes=True)
+    total = sum(1 for ch in a if ch != SEP)
+    covered = [False] * len(a)
+    i = 0
+    while i <= len(a) - run:
+        chunk = a[i:i + run]
+        if SEP not in chunk and chunk in body_norm:
+            L = run
+            while i + L < len(a) and a[i + L] != SEP and a[i:i + L + 1] in body_norm: L += 1
+            if _counts(a[i:i + L], names, MIN_SUBSTANTIVE):
+                for k in range(i, i + L): covered[k] = True
+            i += L
+        else:
+            i += 1
+    return covered, total, a
+
+def check_item(item, minlen=MIN_RUN, refresh=False, log=print, shares=None):
+    """-> list of (level, url, field, run) with level FAIL/WARN, and list of skipped (url, why).
+    If `shares` is a list, appends (field, pct, urls) for fields whose media-source coverage exceeds SHARE_PCT."""
     import funding
     hits, skipped = [], []
     fields = our_texts(item)
+    cover = {}   # field -> (covered flags union over media sources, total, urls)
     for s in item.get("sources") or []:
         url = s.get("url") or ""
         gov = funding.funding_for(s.get("name", ""))["label"] == "government"
@@ -171,6 +203,20 @@ def check_item(item, minlen=MIN_RUN, refresh=False, log=print):
             for run in common_runs(norm_keep_map(text, mask_quotes=True), b, minlen):
                 if substantive(run, names) >= MIN_SUBSTANTIVE:
                     hits.append(("WARN" if gov else "FAIL", url, fld, run))
+            if not gov:
+                flags, total, _ = share_of(text, b, names)
+                if fld in cover:
+                    old, _, urls = cover[fld]
+                    flags = [x or y for x, y in zip(old, flags)]
+                else:
+                    urls = []
+                if any(flags): urls = urls + [url]
+                cover[fld] = (flags, total, urls)
+    if shares is not None:
+        for fld, (flags, total, urls) in cover.items():
+            if total >= SHARE_MIN_FIELD:
+                pct = 100.0 * sum(flags) / total
+                if pct > SHARE_PCT: shares.append((fld, pct, urls))
     return hits, skipped
 
 def changed_ids(items, root=ROOT):
@@ -191,15 +237,20 @@ def run(items, ids=None, new=False, minlen=MIN_RUN, refresh=False):
         want = set(ids); sel = [i for i in items if i["id"] in want]
         for m in want - {i["id"] for i in sel}: print(f"[copycheck] unknown id {m}")
     print(f"copycheck: {len(sel)} item(s), run >= {minlen} identical characters (media = FAIL, 政府機關 = WARN, network problems = SKIPPED)")
+    print(f"           + overall similarity: WARN when > {SHARE_PCT}% of a field's characters are in shared runs of >= {SHARE_RUN} characters with a media source")
     fails = warns = skips = 0
     for it in sel:
-        hits, skipped = check_item(it, minlen, refresh)
+        shares = []
+        hits, skipped = check_item(it, minlen, refresh, shares=shares)
         f = [h for h in hits if h[0] == "FAIL"]; w = [h for h in hits if h[0] == "WARN"]
-        fails += len(f); warns += len(w); skips += len(skipped)
-        state = "FAIL" if f else ("WARN" if w else "ok")
+        fails += len(f); warns += len(w) + len(shares); skips += len(skipped)
+        state = "FAIL" if f else ("WARN" if (w or shares) else "ok")
         print(f"[{state}] {it['id']}" + (f"  ({len(skipped)} source(s) skipped)" if skipped else ""))
         for lvl, url, fld, r in hits:
             print(f"    {lvl} {fld}: {len(r)} chars identical to {url}: {r}")
+        for fld, pct, urls in shares:
+            print(f"    WARN {fld}: {pct:.0f}% of characters in shared runs of >= {SHARE_RUN} chars with {', '.join(urls)}"
+                  + (" -> rewrite before publishing (先列事實再用自己的話寫)" if fld == "summary" else ""))
         for url, why in skipped:
             print(f"    SKIPPED {url}: {why}")
     print(f"copycheck done: {fails} fail, {warns} warn, {skips} skipped source(s)"
