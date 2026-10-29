@@ -444,6 +444,27 @@
    "label": "commercial",
    "detail": "國有企業（政府 100% 持股），但公司向國會帳目委員會說明不領政府補助、營運資金來自自身收入。",
    "basis": "https://www.graphic.com.gh/news/general-news/graphic-doesnt-enjoy-government-subvention-director-of-finance-tells-pac.html"
+  },
+  {
+   "id": "tvbs",
+   "name": "TVBS",
+   "match": [
+    "TVBS"
+   ],
+   "label": "commercial",
+   "detail": "官網公司介紹頁標示經營公司為聯利媒體股份有限公司，並設業務服務、節目版權銷售，公司願景含影視娛樂、電商通路、演藝經紀等商業布局。",
+   "basis": "https://www.tvbs.com.tw/ours/company"
+  },
+  {
+   "id": "udn",
+   "name": "聯合新聞網（聯合線上）",
+   "match": [
+    "聯合新聞網",
+    "udn"
+   ],
+   "label": "commercial",
+   "detail": "聯合報系旗下聯合線上公司經營；官網「關於 udn」自述提供以數據為基礎的廣告服務、發展多元商業模式，並有廣告刊登、新聞授權與訂閱服務。",
+   "basis": "https://co.udn.com/co/index"
   }
  ]
 }

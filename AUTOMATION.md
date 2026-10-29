@@ -452,7 +452,8 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 - **fetch.py**：每個 feed 的狀態（`feeds[].funding`）與每筆候選（`candidates[].funding`）都帶標籤 key；`update.py fetch` 的候選清單以 `[資金:key]` 顯示。
 - **新增來源時**：① 在 `data/source_funding.json` 加（或沿用）一筆 outlet，`match` 含新來源名稱前綴；② 去該媒體官網找資金說明並填 `basis`，找不到就標 `unlabeled`；③ `update.py validate` 會檢查：標籤 key 存在、`match`／`detail` 非空、`basis` 為網址、**`fetch.py` 的每個 FEEDS 來源都能對到明確的 outlet（否則失敗）**。
 - **新聞項目 `sources[].name` 若對不到任何 outlet**（例如新的政府機關名稱、新的外媒），`validate` 會印出 `[funding] …` 警告（不失敗），網站暫顯示「未標示」；請補進 `outlets`（政府機關加到 `gov` 的 `match`）。
-- 目前的對照（2026-10-29 檢查）：公共出資＝BBC、NHK、DW、France 24、半島（官網自述接受公共資金）、ABC 澳洲、公視、Anadolu；商業＋公共＝中央社（官網稱政府補助約 47%）、CNA 新加坡／Mediacorp、海峽時報、SABC；商業＝日本時報、SCMP、Rappler、曼谷郵報、EconomyNext、Rio Times、Africanews、Punch、The Citizen、Graphic Online、Asharq Al-Awsat；信託／捐助＝衛報（Scott Trust）；其餘（Yonhap、Korea Herald、Daily News Egypt、Tehran Times、Dawn、Times of India、Daily Star、Express Tribune、MercoPress、ColombiaOne、Premium Times）＝未標示。詳細依據見 JSON。
+- **排程手動加入不在 57 個 feed 內的來源時**：必須查 `data/source_funding.json` 是否有對應 outlet；沒有的話，在本次執行報告中列出該來源名稱（不得自行臆測標籤，未經官網／官方文件驗證前維持「未標示」）。
+- 目前的對照（2026-10-29 檢查）：公共出資＝BBC、NHK、DW、France 24、半島（官網自述接受公共資金）、ABC 澳洲、公視、Anadolu；商業＋公共＝中央社（官網稱政府補助約 47%）、CNA 新加坡／Mediacorp、海峽時報、SABC；商業＝日本時報、SCMP、Rappler、曼谷郵報、EconomyNext、Rio Times、Africanews、Punch、The Citizen、Graphic Online、Asharq Al-Awsat、TVBS、聯合新聞網；信託／捐助＝衛報（Scott Trust）；其餘（Yonhap、Korea Herald、Daily News Egypt、Tehran Times、Dawn、Times of India、Daily Star、Express Tribune、MercoPress、ColombiaOne、Premium Times）＝未標示。詳細依據見 JSON。
 
 ## 已知的來源狀況（2026-10-21）
 
