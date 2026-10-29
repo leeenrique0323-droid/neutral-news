@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-29T10:08:26+08:00",
+  "updated": "2026-10-29T10:36:38+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -563,6 +563,70 @@
           "name": "中央社",
           "title": "新北敬老卡擴大用途　116年納入健檢及超商消費",
           "url": "https://www.cna.com.tw/news/aloc/202610280290.aspx"
+        }
+      ]
+    },
+    {
+      "id": "intl-airline-fuel-hedge-fares-1028",
+      "tab": "intl",
+      "category": "交通",
+      "status": "快訊・初步資訊",
+      "title": "航空燃油價格約為伊朗戰事前兩倍　多家航空公司減少燃油避險並示警票價上漲",
+      "summary": "據路透社分析報導（新加坡CNA、海峽時報轉載），噴射燃油價格約為伊朗戰事爆發前的兩倍，多家航空公司不再新增燃油避險合約，改以調漲票價因應。報導指出，燃油占航空公司成本約30%至40%，戰前簽訂的避險合約將於2027年陸續到期。瑞安航空執行長歐萊利表示，歐洲航空公司在2027年夏季前避險都不足，票價恐上漲15%至20%；亞洲航空執行長費南德斯表示，各公司只能削減成本或調漲票價。",
+      "who": "搭乘國際航班的旅客與航空公司",
+      "what": "航空公司燃油成本上升、避險保護減少，業者示警機票價格可能上漲",
+      "when": "報導指出壓力可能於2027年戰前避險合約到期後加劇；個別航空公司調價時間原報導未載明",
+      "taiwanImpact": "台灣旅客搭乘國際航線時，機票或燃油附加費可能間接受到國際航油價格上漲影響；原報導未述及台灣航空公司的避險或票價安排。",
+      "first_published": "2026-10-28T18:54:00+08:00",
+      "published": "2026-10-28T18:54:00+08:00",
+      "updated": "2026-10-29T10:36:00+08:00",
+      "sources": [
+        {
+          "name": "CNA（新加坡）／路透社",
+          "title": "Analysis: As Iran war drags on, airlines pull back on fuel hedges and warn on fares",
+          "url": "https://www.channelnewsasia.com/business/analysis-iran-war-drags-airlines-pull-back-fuel-hedges-and-warn-fares-6499631"
+        },
+        {
+          "name": "海峽時報（新加坡）",
+          "title": "As Iran war drags on, airlines pull back on fuel hedges and warn of rising fares",
+          "url": "https://www.straitstimes.com/business/as-iran-war-drags-on-airlines-pull-back-on-fuel-hedges-and-warn-on-rising-fares"
+        }
+      ]
+    },
+    {
+      "id": "intl-ebola-africa-10000-1028",
+      "tab": "intl",
+      "category": "健保與醫療",
+      "status": "快訊・初步資訊",
+      "title": "非洲伊波拉疫情累計逾1萬例、近5千人死亡　非洲疾病管制中心籲各國提高防疫整備",
+      "summary": "據英國衛報報導，非洲疾病管制與預防中心（Africa CDC）主任卡塞亞表示，本波邦迪布焦伊波拉病毒疫情累計10,091例，其中剛果民主共和國10,060例、4,887人死亡，烏干達、肯亞各2人死亡，奈及利亞上週確診1例；這是首次有非洲三個區域受影響。他呼籲各國提高整備、在入出境點對來自疫區者篩檢。該病毒目前無核准療法，疫苗試驗結果預計3至6個月後出爐。",
+      "who": "往來非洲疫區的旅客、各國防疫單位",
+      "what": "疫情地理範圍擴大，非洲疾病管制中心呼籲各國加強入出境篩檢與醫療整備",
+      "when": "卡塞亞10月28日發言；剛果民主共和國5月15日宣布疫情",
+      "taiwanImpact": "疾管署10月27日更新國際旅遊疫情資料，列出肯亞、奈及利亞、剛果民主共和國伊波拉疫情，並引述WHO評估全球為低風險、但正重新評估；疾管署先前公布對剛果民主共和國的邊境暫行管制措施延長至11月28日，包括入境後自主健康管理21天。前往非洲的台灣旅客可能受防疫措施影響。",
+      "first_published": "2026-10-28T17:37:00+08:00",
+      "published": "2026-10-28T17:37:00+08:00",
+      "updated": "2026-10-29T10:36:00+08:00",
+      "sources": [
+        {
+          "name": "衛報（英國）",
+          "title": "Africa’s ‘unprecedented’ Ebola outbreak could reach UK, says top health official",
+          "url": "https://www.theguardian.com/global-development/2026/oct/28/africa-ebola-outbreak-could-reach-uk-says-top-health-official"
+        },
+        {
+          "name": "疾病管制署",
+          "title": "肯亞/奈及利亞/剛果民主共和國-伊波拉病毒感染（國際旅遊疫情）",
+          "url": "https://www.cdc.gov.tw/TravelEpidemic/Detail/G3PSay_dafdAwjsYNm3CCA?epidemicId=i8C4A3SVT2n7X2TRJx4kkQ"
+        },
+        {
+          "name": "疾病管制署",
+          "title": "因應伊波拉國際疫情 調整邊境暫行管制措施",
+          "url": "https://www.cdc.gov.tw/Bulletin/Detail/uI2ixUrSKfQMwAPZI1tK2Q?typeId=9"
+        }
+      ],
+      "related": [
+        {
+          "id": "intl-ebola-nigeria"
         }
       ]
     }
