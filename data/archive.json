@@ -1,6 +1,68 @@
 {
-  "updated": "2026-10-30T18:10:14+08:00",
+  "updated": "2026-10-30T19:04:04+08:00",
   "items": [
+    {
+      "id": "intl-airline-fuel-hedge-fares-1028",
+      "tab": "intl",
+      "category": "交通",
+      "status": "快訊・初步資訊",
+      "title": "航空燃油價格約為伊朗戰事前兩倍　多家航空公司減少燃油避險並示警票價上漲",
+      "summary": "據路透社分析報導（新加坡CNA、海峽時報轉載），噴射燃油價格約為伊朗戰事爆發前的兩倍，多家航空公司不再新增燃油避險合約，改以調漲票價因應。報導指出，燃油占航空公司成本約30%至40%，戰前簽訂的避險合約將於2027年陸續到期。瑞安航空執行長歐萊利表示，歐洲航空公司在2027年夏季前避險都不足，票價恐上漲15%至20%；亞洲航空執行長費南德斯表示，各公司只能削減成本或調漲票價。",
+      "who": "搭乘國際航班的旅客與航空公司",
+      "what": "航空公司燃油成本上升、避險保護減少，業者示警機票價格可能上漲",
+      "when": "報導指出壓力可能於2027年戰前避險合約到期後加劇；個別航空公司調價時間原報導未載明",
+      "taiwanImpact": "可能間接影響。理由：原報導指多家國際航空公司示警票價上漲；台灣旅客搭乘這些航空公司的國際航線時，機票價格可能間接受到影響。原報導未述及台灣航空公司的避險或票價安排。",
+      "first_published": "2026-10-28T18:54:00+08:00",
+      "published": "2026-10-28T18:54:00+08:00",
+      "updated": "2026-10-29T10:39:23+08:00",
+      "sources": [
+        {
+          "name": "CNA（新加坡）／路透社",
+          "title": "Analysis: As Iran war drags on, airlines pull back on fuel hedges and warn on fares",
+          "url": "https://www.channelnewsasia.com/business/analysis-iran-war-drags-airlines-pull-back-fuel-hedges-and-warn-fares-6499631"
+        },
+        {
+          "name": "海峽時報（新加坡）",
+          "title": "As Iran war drags on, airlines pull back on fuel hedges and warn of rising fares",
+          "url": "https://www.straitstimes.com/business/as-iran-war-drags-on-airlines-pull-back-on-fuel-hedges-and-warn-on-rising-fares"
+        }
+      ],
+      "corrected": {
+        "date": "2026-10-29",
+        "type": "事實更正",
+        "note": "「對台灣的影響」一句已改為「可能間接影響」並寫明理由，刪除原報導未提及的「燃油附加費」。"
+      },
+      "archived": "2026-10-30T19:04:04+08:00",
+      "archive_reason": "過期：逾首次發布後48小時"
+    },
+    {
+      "id": "tw-ntpc-senior-card-1028",
+      "tab": "tw",
+      "category": "稅務與補助",
+      "status": "快訊・初步資訊",
+      "title": "新北敬老愛心卡116年起擴大用途　1月起可用於市立聯醫及衛生所健檢",
+      "summary": "據中央社報導，新北市敬老愛心卡明年起陸續增加可折抵的項目。衛生局長陳潤秋28日表示，預計116年1月1日起，持卡可在市立聯合醫院與衛生所做健康檢查。社會局長李美珍在市政會議報告，116年上半年預計納入溫泉、觀光巴士與復康巴士；同年下半年，將有300點可在農會、藥局及超商使用。社會局說明，目前點數已增為600點，截至今年9月底持卡人數逾97萬人。",
+      "who": "新北市敬老愛心卡持卡長者（截至9月底超過97萬人）。",
+      "what": "可折抵項目增加：健康檢查、溫泉、觀光巴士、復康巴士，以及300點可用於農會、藥局、超商消費。",
+      "when": "健檢預計2027年1月1日起；溫泉、觀光巴士、復康巴士預計116年上半年；農會、藥局、超商預計116年下半年。",
+      "first_published": "2026-10-28T18:48:00+08:00",
+      "published": "2026-10-28T18:48:00+08:00",
+      "updated": "2026-10-29T11:59:35+08:00",
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "新北敬老卡擴大用途　116年納入健檢及超商消費",
+          "url": "https://www.cna.com.tw/news/aloc/202610280290.aspx"
+        }
+      ],
+      "corrected": {
+        "date": "2026-10-29",
+        "type": "用語調整",
+        "note": "摘要等文字與來源原文過於相近，已改以本站文字重寫，內容事實未變更。"
+      },
+      "archived": "2026-10-30T19:04:04+08:00",
+      "archive_reason": "過期：逾首次發布後48小時"
+    },
     {
       "id": "intl-spain-hsr-crash-1028",
       "tab": "intl",
