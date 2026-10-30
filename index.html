@@ -37,6 +37,11 @@
 </nav>
 
 <main class="wrap" id="main">
+  <!-- 吉祥物「小聞」大圖：只在寬螢幕（≥1280px）顯示於新聞內容右側空白處，在頁面最上方那一段，不跟著捲動；窄螢幕改用標題列裡的版本 -->
+  <picture class="mascot-side" data-size="lg" aria-hidden="true">
+    <source type="image/webp" srcset="assets/mascot/xiaowen-desk-2x.webp 1x, assets/mascot/xiaowen-desk-lg.webp 2x">
+    <img src="assets/mascot/xiaowen-desk-2x.png" srcset="assets/mascot/xiaowen-desk-2x.png 1x, assets/mascot/xiaowen-desk-lg.png 2x" alt="" decoding="async">
+  </picture>
   <nav class="cat-index" id="cat-index" aria-label="分類"></nav>
   <div id="content" role="tabpanel"></div>
 </main>

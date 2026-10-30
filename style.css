@@ -255,7 +255,7 @@ body[data-mascot="pending"] .mascot-head,body[data-mascot="alert"] .mascot-head{
   .banner-meta{text-align:left}
   .logo{font-size:24px}
   .brand{gap:10px}
-  .mascot-head,.mascot-head img{width:95px;height:120px}
+  .mascot-head,.mascot-head img{width:111px;height:140px}
   .mascot-head{margin-bottom:-14px}
   .banner-side{gap:10px;width:100%;justify-content:space-between}
   .mascot-about{padding:10px 12px;gap:12px}
@@ -283,3 +283,13 @@ body[data-mascot="pending"] .mascot-head,body[data-mascot="alert"] .mascot-head{
   .item.correction{padding:12px 14px 6px}
 }
 .mascot-head{cursor:pointer}
+
+/* 吉祥物大圖：寬螢幕放在內容右側空白（不跟著捲動），窄螢幕隱藏、改用標題列裡的 .mascot-head */
+.mascot-side{display:none}
+@media (min-width:1280px){
+  main.wrap{position:relative}
+  .mascot-side{display:block;position:absolute;z-index:1;top:14px;left:calc(100% - 4px);width:min(calc((100vw - var(--max))/2 - 12px),250px);cursor:pointer}
+  .mascot-side img{display:block;width:100%;height:auto}
+  .mascot-head{display:none}
+}
+body[data-mascot="pending"] .mascot-side,body[data-mascot="alert"] .mascot-side{display:none}

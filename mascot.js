@@ -17,19 +17,22 @@
   // 彩蛋：右上角主播台小聞平常是溫和表情，滑鼠移上去（手機點一下）才換成＞＜開心臉。
   // 有快訊／進行中災害時整個主播台小聞已被隱藏，所以不會在壞消息旁邊出現開心臉。
   NN.mascotHeadFun = function(){
-    const head = document.querySelector(".mascot-head");
-    if(!head || head.dataset.fun) return;
-    head.dataset.fun = "1";
-    const src = head.querySelector("source"), img = head.querySelector("img");
-    const set = b => {
-      src.srcset = `assets/mascot/${b}-1x.webp 1x, assets/mascot/${b}-2x.webp 2x`;
-      img.srcset = `assets/mascot/${b}-1x.png 1x, assets/mascot/${b}-2x.png 2x`;
-      img.src = `assets/mascot/${b}-1x.png`;
-    };
-    let on = false;
-    const fun = v => { if(v === on) return; on = v; set(v ? "xiaowen-desk-happy2" : "xiaowen-desk"); };
-    head.addEventListener("mouseenter", () => fun(true));
-    head.addEventListener("mouseleave", () => fun(false));
-    head.addEventListener("click", () => { fun(!on); if(on) setTimeout(() => fun(false), 1500); });
+    document.querySelectorAll(".mascot-head,.mascot-side").forEach(el => {
+      if(el.dataset.fun) return;
+      el.dataset.fun = "1";
+      const src = el.querySelector("source"), img = el.querySelector("img");
+      const lg = el.dataset.size === "lg";
+      const set = b => {
+        const one = lg ? `${b}-2x` : `${b}-1x`, two = lg ? `${b}-lg` : `${b}-2x`;
+        src.srcset = `assets/mascot/${one}.webp 1x, assets/mascot/${two}.webp 2x`;
+        img.srcset = `assets/mascot/${one}.png 1x, assets/mascot/${two}.png 2x`;
+        img.src = `assets/mascot/${one}.png`;
+      };
+      let on = false;
+      const fun = v => { if(v === on) return; on = v; set(v ? "xiaowen-desk-happy2" : "xiaowen-desk"); };
+      el.addEventListener("mouseenter", () => fun(true));
+      el.addEventListener("mouseleave", () => fun(false));
+      el.addEventListener("click", () => { fun(!on); if(on) setTimeout(() => fun(false), 1500); });
+    });
   };
 })();
