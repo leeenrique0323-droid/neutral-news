@@ -6,13 +6,20 @@
 <title>中立民生新聞　中立、清楚、與生活有關</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-mascot="pending">
 <a class="skip-link" href="#main">跳到主要內容</a>
 <header class="site-header">
   <div class="wrap banner">
     <div class="brand">
-      <h1 class="logo">中立民生新聞</h1>
-      <p class="tagline">中立、清楚、與生活有關</p>
+      <!-- 吉祥物「小聞」：小頭像，只在標題旁；有置頂快訊／進行中災害時由 mascot.js 隱藏 -->
+      <picture class="mascot-head" aria-hidden="true">
+        <source type="image/webp" srcset="assets/mascot/xiaowen-128.webp 1x, assets/mascot/xiaowen-256.webp 2x">
+        <img src="assets/mascot/xiaowen-128.png" srcset="assets/mascot/xiaowen-128.png 1x, assets/mascot/xiaowen-256.png 2x" width="44" height="44" alt="" decoding="async">
+      </picture>
+      <div class="brand-text">
+        <h1 class="logo">中立民生新聞</h1>
+        <p class="tagline">中立、清楚、與生活有關</p>
+      </div>
     </div>
     <div class="banner-meta">
       <p class="today-date" id="today-date"></p>
@@ -49,10 +56,23 @@
     <div id="fund-legend"></div>
     <h2>資料來源</h2>
     <p>公視新聞網（PTS）、中央通訊社（CNA）、行政院及所屬部會新聞稿（衛生福利部、疾病管制署、經濟部能源署）。背景數據引用農業部統計年報、美國農業部海外農業局（USDA FAS）報告。國際新聞以中央社國際新聞為主，並參考 BBC 等國際通訊社。</p>
+    <section class="mascot-about" id="mascot-about" aria-labelledby="mascot-about-h">
+      <picture class="mascot-pic">
+        <source id="mascot-src" type="image/webp" srcset="assets/mascot/xiaowen-128.webp 1x, assets/mascot/xiaowen-256.webp 2x">
+        <img id="mascot-img" src="assets/mascot/xiaowen-128.png" srcset="assets/mascot/xiaowen-128.png 1x, assets/mascot/xiaowen-256.png 2x" width="64" height="64" alt="主播小聞" loading="lazy" decoding="async">
+      </picture>
+      <div class="mascot-text">
+        <h2 id="mascot-about-h">主播小聞</h2>
+        <p>每天的民生懶人包短影片由主播小聞播報。</p>
+        <p class="small">本站吉祥物小聞為 AI 生成的原創角色。</p>
+        <!-- TODO(youtube): YouTube 頻道尚未開放。開放後可在此加一個「看影片」按鈕（class="mascot-btn"，使用 --mascot-gold），目前刻意不放任何連結。 -->
+      </div>
+    </section>
     <p class="small">本頁為原型展示。時間均為台灣時間（UTC+8）。　<a href="archive.html">過往新聞</a>　<a href="corrections.html">更正紀錄</a></p>
   </div>
 </footer>
 <script src="common.js"></script>
+<script src="mascot.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
