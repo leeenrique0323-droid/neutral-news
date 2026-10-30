@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-30T20:42:34+08:00",
+  "updated": "2026-10-30T21:41:12+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -456,43 +456,6 @@
         "type": "用語調整",
         "note": "摘要等文字與來源原文過於相近，已改以本站文字重寫，內容事實未變更。"
       }
-    },
-    {
-      "id": "intl-worldbank-commodity-outlook-1028",
-      "tab": "intl",
-      "category": "物價與薪資",
-      "status": "快訊・初步資訊",
-      "title": "世界銀行：2026年全球大宗商品價格預估上漲23%　能源漲32%、糧食約漲10%",
-      "summary": "世界銀行10月28日發布《大宗商品市場展望》報告，預估全球大宗商品價格今年上漲23%、2027年回落7%。分項來看，能源價格今年預估上漲32%，布蘭特原油全年均價預估每桶91美元（2025年為69美元）；糧食類今年約漲10%、明年再漲約7%；肥料漲14%；金屬漲25%並創新高。世銀指出，中東衝突消耗了石油庫存，若衝突升高、黑海穀物運輸再受攻擊並出現極強聖嬰現象，2027年布蘭特油價均價可能達每桶105美元。",
-      "who": "全球消費者與依賴進口能源、糧食、原物料的國家與企業。",
-      "what": "世界銀行對今明兩年能源、糧食、肥料與金屬價格的預測；屬預測，非實際價格。",
-      "when": "報告於2026年10月28日（美國時間）發布，預測期間為2026至2027年。",
-      "taiwanImpact": "世界銀行報告未述及台灣。台灣方面，據中央社報導，中央銀行總裁楊金龍10月28日在立法院表示，若中油、台電的能源補貼未持續且國際油價續漲，國內通膨率可能繼續上升（見本站相關報導）。國內油電價格實際調整以中油、台電與經濟部公告為準。",
-      "first_published": "2026-10-28T21:30:00+08:00",
-      "published": "2026-10-28T21:30:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "世界銀行",
-          "title": "Commodity Prices Set to Increase by 23% in 2026 as Global Shocks Mount",
-          "url": "https://www.worldbank.org/en/news/press-release/2026/10/28/commodity-markets-outlook-october-2026"
-        },
-        {
-          "name": "Dawn",
-          "title": "Global commodity prices to surge 23pc in 2026, warns World Bank",
-          "url": "https://www.dawn.com/news/2040654/global-commodity-prices-to-surge-23pc-in-2026-warns-world-bank"
-        },
-        {
-          "name": "中央社",
-          "title": "楊金龍：若無預算撥補與能源補貼　油價續漲通膨率恐升",
-          "url": "https://www.cna.com.tw/news/afe/202610280125.aspx"
-        }
-      ],
-      "related": [
-        {
-          "id": "tw-cbc-inflation-1028"
-        }
-      ]
     },
     {
       "id": "tw-teacher-exam-twice-yearly-1029",
