@@ -279,3 +279,4 @@ body[data-mascot="pending"] .mascot-head,body[data-mascot="alert"] .mascot-head{
   details.arch-item{padding:0 12px}
   .item.correction{padding:12px 14px 6px}
 }
+.mascot-head{cursor:pointer}
