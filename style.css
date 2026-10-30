@@ -237,8 +237,8 @@ details.arch-item .item p.summary{font-size:var(--fs-base)}
 /* ---- 吉祥物「小聞」(small & secondary) ---- */
 .brand{display:flex;align-items:center;gap:12px}
 .banner-side{display:flex;align-items:center;gap:14px}
-.mascot-head{flex:none;display:block;width:103px;height:130px;align-self:flex-end;margin:-6px 0 -20px}
-.mascot-head img{display:block;width:103px;height:130px}
+.mascot-head{flex:none;display:block;width:135px;height:170px;align-self:flex-end;margin:-16px 0 -20px}
+.mascot-head img{display:block;width:135px;height:170px}
 body[data-mascot="pending"] .mascot-head,body[data-mascot="alert"] .mascot-head{display:none}
 .mascot-about{display:flex;align-items:center;gap:14px;margin:22px 0 14px;padding:12px 16px;background:var(--mascot-tint);border:1px solid #ecd9bd;border-left:4px solid var(--mascot-gold);border-radius:var(--radius)}
 .mascot-pic{flex:none;display:block;width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:0 0 0 2px var(--mascot-gold);overflow:hidden}
@@ -255,7 +255,7 @@ body[data-mascot="pending"] .mascot-head,body[data-mascot="alert"] .mascot-head{
   .banner-meta{text-align:left}
   .logo{font-size:24px}
   .brand{gap:10px}
-  .mascot-head,.mascot-head img{width:71px;height:90px}
+  .mascot-head,.mascot-head img{width:95px;height:120px}
   .mascot-head{margin-bottom:-14px}
   .banner-side{gap:10px;width:100%;justify-content:space-between}
   .mascot-about{padding:10px 12px;gap:12px}
