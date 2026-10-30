@@ -11,19 +11,21 @@
 <header class="site-header">
   <div class="wrap banner">
     <div class="brand">
-      <!-- 吉祥物「小聞」：小頭像，只在標題旁；有置頂快訊／進行中災害時由 mascot.js 隱藏 -->
-      <picture class="mascot-head" aria-hidden="true">
-        <source type="image/webp" srcset="assets/mascot/xiaowen-128.webp 1x, assets/mascot/xiaowen-256.webp 2x">
-        <img src="assets/mascot/xiaowen-128.png" srcset="assets/mascot/xiaowen-128.png 1x, assets/mascot/xiaowen-256.png 2x" width="44" height="44" alt="" decoding="async">
-      </picture>
       <div class="brand-text">
         <h1 class="logo">中立民生新聞</h1>
         <p class="tagline">中立、清楚、與生活有關</p>
       </div>
     </div>
-    <div class="banner-meta">
-      <p class="today-date" id="today-date"></p>
-      <p class="meta-line" id="updated"></p>
+    <div class="banner-side">
+      <div class="banner-meta">
+        <p class="today-date" id="today-date"></p>
+        <p class="meta-line" id="updated"></p>
+      </div>
+      <!-- 吉祥物「小聞」：小頭像，放在右上角日期旁（不放標題旁，避免像新聞的頭貼）；有置頂快訊／進行中災害時由 mascot.js 隱藏 -->
+      <picture class="mascot-head" aria-hidden="true">
+        <source type="image/webp" srcset="assets/mascot/xiaowen-128.webp 1x, assets/mascot/xiaowen-256.webp 2x">
+        <img src="assets/mascot/xiaowen-128.png" srcset="assets/mascot/xiaowen-128.png 1x, assets/mascot/xiaowen-256.png 2x" width="52" height="52" alt="" decoding="async">
+      </picture>
     </div>
   </div>
 </header>
