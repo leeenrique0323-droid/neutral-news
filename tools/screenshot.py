@@ -30,7 +30,7 @@ def main():
             for w, h, scale, hash_, out in SHOTS:
                 pg = b.new_page(viewport={"width": w, "height": h}, device_scale_factor=scale)
                 pg.goto(f"http://127.0.0.1:{port}/{hash_}")
-                pg.wait_for_selector(".arch-item" if hash_.startswith("archive") else ".empty, .correction" if hash_.startswith("corrections") else ".item")
+                pg.wait_for_selector(".arch-item" if hash_.startswith("archive") else ".empty, .correction" if hash_.startswith("corrections") else ".item, .empty")
                 pg.screenshot(path=os.path.join(ROOT, out), full_page=True)
                 pg.close()
                 print("saved", out)
