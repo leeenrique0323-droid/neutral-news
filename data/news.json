@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T21:07:00+08:00",
+  "updated": "2026-11-05T07:24:07+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -472,6 +472,37 @@
           "name": "BBC News Mundo",
           "title": "Paraguay interviene Ueno Bank, uno de los mayores bancos del país, y deja congelados los ahorros de millones de clientes",
           "url": "https://www.bbc.com/mundo/articles/ckx2qj89lggxo"
+        }
+      ]
+    },
+    {
+      "id": "intl-oil-price-1105",
+      "tab": "intl",
+      "category": "能源與水電",
+      "status": "快訊・初步資訊",
+      "title": "國際油價4日下跌逾8%　布倫特原油每桶94.62美元、西德州原油88.12美元",
+      "summary": "美東時間4日，國際原油期貨收盤明顯走低：據中央社綜合外電，倫敦北海布倫特原油1月期貨每桶94.62美元，跌幅8.7%；紐約西德州中級原油12月期貨每桶88.12美元，跌幅8.3%。中央社報導指出，投資人押注民主黨贏得美國期中選舉後，美伊衝突有機會較快結束。巴基斯坦《快報論壇報》報導，布倫特原油盤中一度觸及9月4日以來最低。對照中央社先前報導，10月30日布倫特原油收盤為每桶117.64美元。",
+      "who": "仰賴進口原油與燃料的國家、企業與消費者。",
+      "what": "國際原油期貨單日跌幅超過8%，布倫特原油回落至每桶90多美元。",
+      "when": "2026年11月4日（美東時間）交易日收盤。",
+      "first_published": "2026-11-05T00:40:00+08:00",
+      "published": "2026-11-05T00:40:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "市場押注美伊衝突加快結束　國際油價大跌",
+          "url": "https://www.cna.com.tw/news/afe/202611050014.aspx"
+        },
+        {
+          "name": "Express Tribune",
+          "title": "Oil dips 9%, Wall Street rallies as Democrats sweep midterms",
+          "url": "https://tribune.com.pk/story/2638704/oil-dips-9-wall-street-rallies-as-democrats-sweep-midterms"
+        }
+      ],
+      "related": [
+        {
+          "id": "intl-oil-price-1031"
         }
       ]
     }
