@@ -183,8 +183,10 @@ window.NN = (function(){
   function pendingOfficial(i){
     const t = Date.parse(i.first_published || i.published || "");
     if(!t || Date.now() - t <= 3*24*3600*1000) return false;
+    if((i.pending_official || []).length) return true; // partially confirmed: listed parts still lack an official announcement
     return !(i.sources || []).some(s => s && isOfficialUrl(s.url));
   }
+  function pendingParts(i){ return (i.pending_official || []).filter(x => typeof x === "string" && x.trim()); }
 
   // Collapsible news card. Collapsed: badges, chip, title, 已更正 note, teaser, sources.
   // Expanded (button, aria-expanded): rest of summary, 影響誰/什麼/何時, 對台灣的影響, sections, full source list.
@@ -201,13 +203,14 @@ window.NN = (function(){
         <article class="${cls}" id="${esc(i.id)}">
           <div class="badges">
             <span class="badge ${breaking ? "prelim" : "full"}">${esc(i.status)}</span>
-            ${awaitOfficial ? `<span class="badge await">尚待官方公告</span>` : ""}
+            ${awaitOfficial ? `<span class="badge await">${pendingParts(i).length ? "部分尚待官方公告" : "尚待官方公告"}</span>` : ""}
             ${live ? `<span class="badge live">進行中</span>` : ""}
             ${i.valid_until && validLabel(i) ? `<span class="badge valid">${esc(validLabel(i))}</span>` : ""}
             ${o.showCat === false ? "" : chip(i.category)}
           </div>
           <h3>${esc(i.title)}</h3>
           ${i.corrected ? `<p class="corrected-note ${corrKind(i.corrected.type)}"><strong>已更正</strong>${corrTag(i.corrected.type)}（${esc(i.corrected.date)}）${esc(i.corrected.note)}　<a href="corrections.html">更正紀錄</a></p>` : ""}
+          ${awaitOfficial && pendingParts(i).length ? `<p class="await-note"><strong>尚待官方公告</strong>　${pendingParts(i).map(esc).join("；")}</p>` : ""}
           <p class="summary teaser">${esc(head)}</p>
           <div class="card-meta">
             <span class="when-line">發布 ${fmt(first(i))}${i.updated ? `　更新 ${fmt(i.updated)}` : ""}</span>
