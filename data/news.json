@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T16:25:30+08:00",
+  "updated": "2026-11-04T17:24:33+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -428,6 +428,32 @@
       "related": [
         {
           "id": "intl-ebola-africa-10000-1028"
+        }
+      ]
+    },
+    {
+      "id": "intl-paraguay-ueno-bank-1104",
+      "tab": "intl",
+      "category": "物價與薪資",
+      "status": "快訊・初步資訊",
+      "title": "巴拉圭央行接管Ueno Bank　約300萬客戶存款凍結、所有服務暫停",
+      "summary": "巴拉圭中央銀行董事會一致決議，對國內大型銀行Ueno Bank啟動處理程序，理由是該行償付能力指標已低於法定最低標準的一半；該行資產與負債全數凍結，App、金融卡與各項服務同步停止。據BBC Mundo與MercoPress報導，Ueno自稱有約300萬名客戶，相當於巴拉圭六成成年人，並管理逾8億美元公共資金，其中約3.8億美元屬於負責退休金與公共醫療的社會保險局（IPS）。存款保險每人保障上限為75個月最低工資，約2億2,830萬瓜拉尼（約3.82萬美元），超過部分要等銀行監理局清算結果。",
+      "who": "Ueno Bank約300萬名客戶、存放其中的公共資金（含社會保險局退休金相關資金）。",
+      "what": "帳戶與服務全面凍結；存款保險每人最多保障約2億2,830萬瓜拉尼，超額部分待清算結果決定。",
+      "when": "巴拉圭央行於當地時間11月3日（週二）宣布，服務即日起停止；原報導未載明恢復提款的日期。",
+      "first_published": "2026-11-04T16:27:00+08:00",
+      "published": "2026-11-04T16:27:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "MercoPress",
+          "title": "Paraguay takes over Ueno Bank, with 3 million customers, and freezes its deposits",
+          "url": "https://en.mercopress.com/2026/11/04/paraguay-takes-over-ueno-bank-with-3-million-customers-and-freezes-its-deposits"
+        },
+        {
+          "name": "BBC News Mundo",
+          "title": "Paraguay interviene Ueno Bank, uno de los mayores bancos del país, y deja congelados los ahorros de millones de clientes",
+          "url": "https://www.bbc.com/mundo/articles/ckx2qj89lggxo"
         }
       ]
     }
