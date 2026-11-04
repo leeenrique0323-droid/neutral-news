@@ -116,6 +116,7 @@ main.wrap{padding-top:18px;padding-bottom:8px}
 .badge.prelim{background:var(--amber-soft);border-color:#e6b768;color:var(--amber-ink);font-weight:700}
 .badge.live{background:var(--live);border-color:var(--live);color:#fff;font-weight:700}
 .badge.live::before{content:"";width:.55em;height:.55em;border-radius:50%;background:#fff;margin-right:6px}
+.badge.await{background:#fff;border-color:#e6b768;color:var(--amber-ink);font-weight:700}
 .badge.valid{background:var(--brand-soft);border-color:var(--brand);color:var(--brand-dark);font-weight:700}
 .card h3{font-size:var(--fs-lg);line-height:1.5;margin:0 0 8px;font-weight:700;color:var(--text)}
 .card p.summary{margin:0 0 10px;font-size:var(--fs-base);line-height:1.75;color:#26323e}

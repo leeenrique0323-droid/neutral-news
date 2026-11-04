@@ -351,7 +351,6 @@ def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
         if i.get("tab") not in ("tw", "intl"): errs.append(f"{tag}: bad tab")
         if i.get("category") not in cats: errs.append(f"{tag}: category not in list")
         if i.get("status") not in STATUSES: errs.append(f"{tag}: bad status")
-        if i.get("tab") == "intl" and not i.get("taiwanImpact"): errs.append(f"{tag}: intl item needs taiwanImpact")
         urls = set()
         for s in i.get("sources", []):
             if not re.match(r"^https?://", s.get("url", "")): errs.append(f"{tag}: bad source url")

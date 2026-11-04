@@ -176,11 +176,22 @@ window.NN = (function(){
     return shown + more;
   }
 
+  // 快訊 older than 3 days (from first_published) with no official (government-domain) source → 「尚待官方公告」.
+  function isOfficialUrl(u){
+    try { return /(^|\.)gov(\.[a-z]{2})?$/i.test(new URL(u).hostname); } catch(e){ return false; }
+  }
+  function pendingOfficial(i){
+    const t = Date.parse(i.first_published || i.published || "");
+    if(!t || Date.now() - t <= 3*24*3600*1000) return false;
+    return !(i.sources || []).some(s => s && isOfficialUrl(s.url));
+  }
+
   // Collapsible news card. Collapsed: badges, chip, title, 已更正 note, teaser, sources.
   // Expanded (button, aria-expanded): rest of summary, 影響誰/什麼/何時, 對台灣的影響, sections, full source list.
   function cardHtml(i, o){
     o = o || {};
     const breaking = String(i.status || "").startsWith("快訊");
+    const awaitOfficial = breaking && pendingOfficial(i);
     const live = !!(i.ongoing && !i.ongoing.ended);
     const sectioned = !!(i.sections && i.sections.length);
     const [head, rest] = splitSummary(i.summary);
@@ -190,6 +201,7 @@ window.NN = (function(){
         <article class="${cls}" id="${esc(i.id)}">
           <div class="badges">
             <span class="badge ${breaking ? "prelim" : "full"}">${esc(i.status)}</span>
+            ${awaitOfficial ? `<span class="badge await">尚待官方公告</span>` : ""}
             ${live ? `<span class="badge live">進行中</span>` : ""}
             ${i.valid_until && validLabel(i) ? `<span class="badge valid">${esc(validLabel(i))}</span>` : ""}
             ${o.showCat === false ? "" : chip(i.category)}
