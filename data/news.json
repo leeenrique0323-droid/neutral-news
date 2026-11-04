@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04T14:22:14+08:00",
+  "updated": "2026-11-04T15:18:08+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -397,6 +397,37 @@
           "name": "海峽時報（新加坡）",
           "title": "Australian central bank chief signals pause after split decision on latest rate hike",
           "url": "https://www.straitstimes.com/business/australian-central-bank-chief-signals-pause-after-split-decision-on-latest-rate-hike"
+        }
+      ]
+    },
+    {
+      "id": "intl-us-ebola-attestation-1104",
+      "tab": "intl",
+      "category": "健保與醫療",
+      "status": "快訊・初步資訊",
+      "title": "美國起飛入境航班新規：旅客須簽聲明21天內未到過剛果民主共和國",
+      "summary": "美東時間11月3日晚間11時59分（台灣時間4日中午12時59分）以後從外國飛往美國的航班，所有人登機前都要簽署聲明，確認過去21天內沒去過剛果民主共和國，美國公民、只在美國轉機者也不例外，在當地機場轉機也算到過。美國疾病管制暨預防中心（CDC）說明，未簽者不能登機，故意不實陳述可能被處罰金或徒刑；CDC稱此舉為降低伊波拉經航班傳入的風險，評估美國民眾整體風險仍低。Africanews引述非洲最高衛生機構，這波疫情已逾5,300人死亡，致病的Bundibugyo型病毒尚無核准疫苗或療法。",
+      "who": "所有搭機前往美國或經美國轉機的人（含美國公民與機組員），以及飛往美國的航空公司。",
+      "what": "登機前須簽署21天內未曾到過剛果民主共和國的聲明，未簽者不得登機；航空公司須保存聲明42天。",
+      "when": "適用於美東時間2026年11月3日晚間11時59分（台灣時間4日中午12時59分）以後從外國出發的航班。",
+      "first_published": "2026-11-04T14:32:13+08:00",
+      "published": "2026-11-04T14:32:13+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "美國疾病管制暨預防中心",
+          "title": "Order: Requirement for Attestation by All Persons Traveling by Air to the United States",
+          "url": "https://www.cdc.gov/port-health/legal-authorities/attestation-order.html"
+        },
+        {
+          "name": "Africanews",
+          "title": "US requires air passengers to attest they haven’t visited Ebola-hit DRC",
+          "url": "https://www.africanews.com/2026/11/04/us-requires-air-passengers-to-attest-they-havent-visited-ebola-hit-drc/"
+        }
+      ],
+      "related": [
+        {
+          "id": "intl-ebola-africa-10000-1028"
         }
       ]
     }
