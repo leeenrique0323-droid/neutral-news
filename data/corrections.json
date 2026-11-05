@@ -244,6 +244,15 @@
       "url": "https://www.cna.com.tw/news/afe/202611050014.aspx",
       "what_was_wrong": "原摘要末句：市場押注美國期中選舉後中東衝突升溫風險下降。　問題：未標示出處，且「中東衝突升溫風險下降」與中央社原文「美伊衝突加快結束」表述不同，易讀成編輯自行判斷。",
       "correction": "更正後末句：據中央社綜合外電，投資人押注：民主黨在美國期中選舉大勝後，美伊衝突有機會加快落幕（中央社指這場衝突一直擾亂能源市場）。　處理：依中央社綜合外電意旨改寫並標明出處，避免與原文連續雷同；另設 valid_until 2026-11-07（盤中價快訊短期有效）。"
+    },
+    {
+      "date": "2026-11-05",
+      "type": "事實更正",
+      "item_title": "WHO建議兩款Bundibugyo型伊波拉候選疫苗納入Tumaini臨床試驗",
+      "item_id": "intl-ebola-vaccine-trials-1104",
+      "url": "https://www.who.int/news/item/04-11-2026-two-new-candidate-vaccines-to-join-ebola-trial-as-treatment-research-advances",
+      "what_was_wrong": "原標題：WHO核准兩款針對Bundibugyo型伊波拉的新疫苗進行臨床試驗；原摘要開頭寫「同意讓兩款新伊波拉疫苗進入臨床試驗」；影響說明「什麼」寫「獲准加入臨床試驗」；「何時」寫「報導已獲核准」。　問題：WHO公告為專家小組「建議」納入進行中的Tumaini試驗，實際進場仍須該國主管機關核准，並非已核准進入試驗。",
+      "correction": "更正後標題：WHO建議兩款Bundibugyo型伊波拉候選疫苗納入Tumaini臨床試驗。摘要、影響說明改為：專家小組建議兩款Bundibugyo專用候選疫苗納入Tumaini試驗，進場仍須該國核准；並補上候選疫苗名稱與週一通知業者等WHO已載明事實。　處理：依WHO 11月4日公告更正「核准／同意」為「建議」。"
     }
   ]
 }
