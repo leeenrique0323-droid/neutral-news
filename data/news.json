@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T21:15:17+08:00",
+  "updated": "2026-11-05T22:20:53+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -574,6 +574,32 @@
           "name": "中央社 生活",
           "title": "台菲更新直接聘僱備忘錄　旅宿業可引進技術人力",
           "url": "https://www.cna.com.tw/news/ahel/202611050292.aspx"
+        }
+      ]
+    },
+    {
+      "id": "intl-boe-rate-1105",
+      "tab": "intl",
+      "category": "物價與薪資",
+      "status": "快訊・初步資訊",
+      "title": "英國央行升息一碼至4%　2023年8月以來首次調升",
+      "summary": "據BBC報導，英格蘭銀行（英國央行）5日把基準利率從3.75%調高到4%，是2023年8月後第一次升息；決策委員9人中有8人支持4%，另1人主張升到4.25%。總裁貝利表示，這次不必然是一連串升息的開端，但「除非中東衝突化解」，看來也不會是最後一次。英國9月通膨為3.5%，央行預估明年中會升到4.9%的高點，2028年才回到2%目標。英國銀行業公會UK Finance估計，約51萬戶追蹤型（tracker）房貸每月還款將多約31英鎊；固定利率房貸暫不受影響。",
+      "who": "英國的房貸、信用卡與其他貸款借款人，以及存款戶。",
+      "what": "英國基準利率升至4%，借貸成本提高、存款利息也可能隨之提高（BBC）。",
+      "when": "英國央行於11月5日公布決議；原報導未載明各銀行調整房貸利率的日期。",
+      "first_published": "2026-11-05T21:04:00+08:00",
+      "published": "2026-11-05T21:04:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "BBC Business",
+          "title": "Interest rates hiked to 4% in first increase in over three years",
+          "url": "https://www.bbc.co.uk/news/articles/ck5ynw45jrgqo"
+        },
+        {
+          "name": "Dawn",
+          "title": "Bank of England lifts rate for first time since 2023 to fight inflation",
+          "url": "https://www.dawn.com/news/2042350/bank-of-england-lifts-rate-for-first-time-since-2023-to-fight-inflation"
         }
       ]
     }
