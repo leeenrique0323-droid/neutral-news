@@ -525,6 +525,18 @@
    "label": "intl_org",
    "detail": "由會員國政府出資組成的國際金融組織，自行發布的資料（非新聞媒體）。",
    "basis": "https://www.worldbank.org/en/about"
+  },
+  {
+   "id": "who",
+   "name": "世界衛生組織",
+   "match": [
+    "世界衛生組織",
+    "WHO",
+    "World Health Organization"
+   ],
+   "label": "intl_org",
+   "detail": "由會員國組成的聯合國專門機構，自行發布的資料（非新聞媒體）。",
+   "basis": "https://www.who.int/"
   }
  ]
 }

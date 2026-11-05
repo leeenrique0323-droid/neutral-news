@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-05T20:21:27+08:00",
+  "updated": "2026-11-05T21:09:00+08:00",
   "categories": [
     "物價與薪資",
     "稅務與補助",
@@ -476,13 +476,13 @@
       "category": "能源與水電",
       "status": "快訊・初步資訊",
       "title": "國際油價連跌：5日布倫特盤中約93.82美元、西德州約86.92美元",
-      "summary": "國際原油5日延續跌勢。據巴基斯坦《快報論壇報》引述路透，布倫特期貨跌約0.85%至每桶93.82美元，西德州中級原油跌約1.36%至86.92美元（約格林威治時間06:46盤中價）。前一日收盤，中央社報導布倫特1月期貨收94.62美元（跌8.7%）、西德州12月期貨收88.12美元（跌8.3%），兩大指標都跌破100美元。市場押注美國期中選舉後中東衝突升溫風險下降。",
+      "summary": "國際原油5日延續跌勢。據巴基斯坦《快報論壇報》引述路透，布倫特期貨跌約0.85%至每桶93.82美元，西德州中級原油跌約1.36%至86.92美元（約格林威治時間06:46盤中價）。前一日收盤，中央社報導布倫特1月期貨收94.62美元（跌8.7%）、西德州12月期貨收88.12美元（跌8.3%），兩大指標都跌破100美元。據中央社綜合外電，投資人押注：民主黨在美國期中選舉大勝後，美伊衝突有機會加快落幕（中央社指這場衝突一直擾亂能源市場）。",
       "who": "仰賴進口原油與燃料的國家、企業與消費者。",
       "what": "原油期貨連日下跌；5日盤中布倫特約93.82美元、西德州約86.92美元，低於4日收盤價。",
       "when": "4日為美東收盤價；5日數字為路透約06:46 GMT盤中報價（據Express Tribune）。",
       "first_published": "2026-11-05T00:40:00+08:00",
       "published": "2026-11-05T00:40:00+08:00",
-      "updated": "2026-11-05T17:24:00+08:00",
+      "updated": "2026-11-05T21:09:00+08:00",
       "sources": [
         {
           "name": "中央社",
@@ -504,7 +504,13 @@
         {
           "id": "intl-oil-price-1031"
         }
-      ]
+      ],
+      "valid_until": "2026-11-07",
+      "corrected": {
+        "date": "2026-11-05",
+        "type": "用語調整",
+        "note": "末句原寫「市場押注…中東衝突升溫風險下降」未標示出處，易讀成本站判斷；已改依中央社綜合外電意旨改寫並標明出處。"
+      }
     },
     {
       "id": "intl-ebola-vaccine-trials-1104",
@@ -518,12 +524,17 @@
       "when": "WHO專家小組於11月2日（週一）建議加入試驗，半島電視台11月4日報導已獲核准；預估2027年初公布結果。",
       "first_published": "2026-11-05T03:22:09+08:00",
       "published": "2026-11-05T03:22:09+08:00",
-      "updated": null,
+      "updated": "2026-11-05T21:09:00+08:00",
       "sources": [
         {
           "name": "Al Jazeera English",
           "title": "WHO approves trials for two new Ebola vaccines",
           "url": "https://www.aljazeera.com/news/2026/11/4/who-approves-trials-for-two-new-ebola-vaccines"
+        },
+        {
+          "name": "世界衛生組織",
+          "title": "Two new candidate vaccines to join Ebola trial as treatment research advances",
+          "url": "https://www.who.int/news/item/04-11-2026-two-new-candidate-vaccines-to-join-ebola-trial-as-treatment-research-advances"
         }
       ],
       "related": [
