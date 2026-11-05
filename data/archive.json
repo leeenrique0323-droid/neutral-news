@@ -1,6 +1,34 @@
 {
-  "updated": "2026-11-05T10:17:33+08:00",
+  "updated": "2026-11-05T12:17:24+08:00",
   "items": [
+    {
+      "id": "intl-rba-rate-hike-1103",
+      "tab": "intl",
+      "category": "物價與薪資",
+      "status": "快訊・初步資訊",
+      "title": "澳洲央行今年第5度升息　基準利率調至4.85%",
+      "summary": "澳洲央行（RBA）11月3日把官方現金利率調高0.25個百分點至4.85%，衛報指出這是今年第5次升息，利率為2008年以來最高。據海峽時報轉載彭博報導，9名理事以6票對3票通過，另3人主張維持不變，會後聲明也拿掉了「必要時願意再升息」的字句。總裁布洛克（Michele Bullock）說通膨太高，「現在的一些痛苦能避免日後更糟的痛苦」。衛報引述比價網站Canstar估算，一筆70萬澳元房貸每月利息約多付107澳元。央行預測通膨年底前升到約4.5%，要到明年底才回到2%至3%的目標區間。",
+      "who": "澳洲有房貸的家庭（衛報稱超過330萬戶）與向銀行借款的企業。",
+      "what": "澳洲官方現金利率上調0.25個百分點至4.85%，借款利息成本隨之增加。",
+      "when": "澳洲央行2026年11月3日宣布；原報導未載明各銀行調整房貸利率的日期。",
+      "first_published": "2026-11-03T11:30:00+08:00",
+      "published": "2026-11-03T11:30:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "衛報（英國）",
+          "title": "RBA interest rates: Bullock says 'pain now' will prevent worse later as Reserve Bank hikes rates for fifth time",
+          "url": "https://www.theguardian.com/australia-news/2026/nov/03/rba-interest-rates-decision-cash-rate-november-reserve-bank-australia"
+        },
+        {
+          "name": "海峽時報（新加坡）",
+          "title": "Australian central bank chief signals pause after split decision on latest rate hike",
+          "url": "https://www.straitstimes.com/business/australian-central-bank-chief-signals-pause-after-split-decision-on-latest-rate-hike"
+        }
+      ],
+      "archived": "2026-11-05T12:17:24+08:00",
+      "archive_reason": "過期：逾首次發布後48小時"
+    },
     {
       "id": "tw-univ-admission-116-rules-1103",
       "tab": "tw",
