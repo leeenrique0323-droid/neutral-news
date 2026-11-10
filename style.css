@@ -295,3 +295,5 @@ body[data-mascot="pending"] .mascot-head,body[data-mascot="alert"] .mascot-head{
 }
 body[data-mascot="pending"] .mascot-side,body[data-mascot="alert"] .mascot-side{display:none}
 .await-note{margin:0 0 10px;padding:8px 12px;border-left:4px solid #e6b768;background:#fff;border-radius:0 6px 6px 0;font-size:var(--fs-sm);line-height:1.6;color:var(--amber-ink)}
+
+.schedule-note a{color:#fff;text-decoration:underline}
