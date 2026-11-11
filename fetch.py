@@ -97,6 +97,7 @@ CATEGORIES = {
     "天災與公共安全": ["颱風", "地震", "豪雨", "大雨", "淹水", "海嘯", "停班停課", "氣象署", "土石流", "typhoon", "earthquake", "flood"],
     "勞動與產業": ["罷工", "勞資", "工會", "裁員", "工安", "勞檢", "職災", "勞動部", "strike", "layoff"],
     "新法規": ["三讀", "修法", "新制", "上路", "草案", "法案", "立法院", "施行", "law", "bill"],
+    "政治": ["行政命令", "中選會", "大法官", "監察委員", "總預算", "同意權", "覆議"],
 }
 # 國際 hints (English feeds): whole-word / phrase regexes -> existing category. Only a hint; the editor decides whether an
 # item has a real (direct or indirect) Taiwan livelihood link. Used only for feeds with tab="intl".

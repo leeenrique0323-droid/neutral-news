@@ -138,9 +138,9 @@ window.NN = (function(){
 
   // ---------- v2: category chips (stable colour per category) ----------
   // Known categories keep a fixed slot (independent of what is on the page today); any new category
-  // (e.g. 政治) falls back to a stable hash of its name into the same palette. Chips always carry the text label.
-  const CHIP_KNOWN = ["物價與薪資","稅務與補助","健保與醫療","房價與租屋","能源與水電","交通","教育","天災與公共安全","勞動與產業","新法規"];
-  const CHIP_SLOTS = 10;
+  // falls back to a stable hash of its name into the same palette. Chips always carry the text label.
+  const CHIP_KNOWN = ["物價與薪資","稅務與補助","健保與醫療","房價與租屋","能源與水電","交通","教育","天災與公共安全","勞動與產業","新法規","政治"];
+  const CHIP_SLOTS = 11;
   function chipIndex(cat){
     const k = CHIP_KNOWN.indexOf(cat);
     if(k >= 0) return k;

@@ -71,6 +71,7 @@ main.wrap{padding-top:18px;padding-bottom:8px}
 .c7{color:#3a3a9a;background:#e5e6fb;border-color:#c1c3f0}.c7::before{background:none;border:2px solid currentColor}
 .c8{color:#00596e;background:#d3eff6;border-color:#9fd6e4}.c8::before{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:none;border:0;box-shadow:inset 0 0 0 2px currentColor}
 .c9{color:#7a2d2d;background:#f8dede;border-color:#e8b4b4}.c9::before{clip-path:polygon(0 100%,100% 100%,50% 0,50% 0)}
+.c10{color:#5c4a00;background:#efe6b8;border-color:#d4c57a}.c10::before{clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)}
 
 /* ---- section headings ---- */
 .day-sec{margin:28px 0 0}
