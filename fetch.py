@@ -87,32 +87,32 @@ INTL_MAX_PER_FEED = 12   # keep the newest N matching items per 國際 feed so t
 
 # keyword -> category (zh-TW). Simple first-pass filter; editor decides.
 CATEGORIES = {
-    "物價與薪資": ["物價", "CPI", "通膨", "薪資", "基本工資", "油價", "漲價", "調漲", "降價", "失業", "inflation", "wage", "price"],
-    "稅務與補助": ["稅", "補助", "津貼", "普發", "退稅", "補貼", "tax", "subsid"],
-    "健保與醫療": ["健保", "醫療", "疫苗", "流感", "醫院", "藥", "長照", "疫情", "health", "vaccine"],
-    "房價與租屋": ["房價", "租屋", "房貸", "社宅", "社會住宅", "打房", "信用管制", "租金", "housing", "mortgage"],
-    "能源與水電": ["電價", "水價", "台電", "停電", "供電", "缺水", "限水", "天然氣", "核", "能源", "energy", "electricity"],
-    "交通": ["高鐵", "台鐵", "捷運", "公車", "國道", "機場", "航班", "票價", "交通", "TPASS", "train", "airline"],
-    "教育": ["教育", "學費", "學生", "學校", "大學", "教育部", "school", "tuition"],
-    "天災與公共安全": ["颱風", "地震", "豪雨", "大雨", "淹水", "海嘯", "停班停課", "氣象署", "土石流", "typhoon", "earthquake", "flood"],
-    "勞動與產業": ["罷工", "勞資", "工會", "裁員", "工安", "勞檢", "職災", "勞動部", "strike", "layoff"],
-    "新法規": ["三讀", "修法", "新制", "上路", "草案", "法案", "立法院", "施行", "law", "bill"],
-    "政治": ["行政命令", "中選會", "大法官", "監察委員", "總預算", "同意權", "覆議"],
+    "政治": ["三讀", "行政命令", "中選會", "大法官", "監察委員", "總預算", "同意權", "覆議"],
+    "財經": ["物價", "CPI", "通膨", "油價", "漲價", "調漲", "降價", "稅", "補助", "津貼", "普發", "退稅", "補貼",
+            "房價", "租屋", "房貸", "社宅", "社會住宅", "打房", "信用管制", "租金", "匯率", "央行", "金管會",
+            "inflation", "tax", "subsid", "housing", "mortgage", "price"],
+    "生活": ["電價", "水價", "台電", "停電", "供電", "缺水", "限水", "天然氣", "核", "能源", "高鐵", "台鐵", "捷運",
+            "公車", "國道", "機場", "航班", "票價", "交通", "TPASS", "教育", "學費", "學生", "學校", "大學", "教育部",
+            "energy", "electricity", "train", "airline", "school", "tuition"],
+    "健康醫療": ["健保", "醫療", "疫苗", "流感", "醫院", "藥", "長照", "疫情", "health", "vaccine"],
+    "工作": ["薪資", "基本工資", "最低工資", "失業", "罷工", "勞資", "工會", "裁員", "工安", "勞檢", "職災", "勞動部",
+            "wage", "strike", "layoff"],
+    "安全": ["颱風", "地震", "豪雨", "大雨", "淹水", "海嘯", "停班停課", "氣象署", "土石流", "typhoon", "earthquake", "flood"],
 }
-# 國際 hints (English feeds): whole-word / phrase regexes -> existing category. Only a hint; the editor decides whether an
-# item has a real (direct or indirect) Taiwan livelihood link. Used only for feeds with tab="intl".
+# 國際 hints (English feeds): whole-word / phrase regexes -> the 6 shared categories. Only a hint; the editor decides.
+# Used only for feeds with tab="intl".
 INTL_CATEGORIES = {
-    "物價與薪資": [r"inflation", r"consumer prices?", r"central banks?", r"interest rates?", r"rate (cut|hike)s?", r"\bFed\b", r"Federal Reserve",
-                 r"currency", r"\byen\b", r"South Korean won", r"dollar", r"\beuro\b", r"wheat", r"\brice\b", r"grain", r"coffee", r"cocoa", r"food prices?",
-                 r"commodit", r"minimum wage", r"recession", r"\bGDP\b", r"unemployment"],
-    "稅務與補助": [r"tariffs?", r"\btax(es)?\b", r"subsid", r"customs dut", r"sanctions"],
-    "健保與醫療": [r"outbreak", r"epidemic", r"pandemic", r"virus", r"vaccine", r"\bWHO\b", r"\bFDA\b", r"drug approval", r"bird flu", r"avian", r"Ebola", r"measles", r"cholera", r"dengue", r"mpox", r"health (ministry|authorit)"],
-    "房價與租屋": [r"housing market", r"property market", r"home prices?", r"mortgage"],
-    "能源與水電": [r"\boil\b", r"crude", r"Brent", r"\bOPEC", r"natural gas", r"\bLNG\b", r"electricity", r"power (cuts?|outage|grid)", r"energy", r"Strait of Hormuz", r"nuclear"],
-    "交通": [r"airline", r"airport", r"aviation", r"\bflights?\b", r"Boeing", r"Airbus", r"shipping", r"container", r"port strike", r"high-speed (train|rail)", r"visa[- ]free", r"travel (ban|advisory|rules?)", r"cruise"],
-    "天災與公共安全": [r"earthquake", r"tsunami", r"typhoon", r"hurricane", r"cyclone", r"flood", r"wildfire", r"heat ?wave", r"drought", r"volcano", r"landslide", r"extreme weather", r"train crash", r"plane crash", r"climate"],
-    "勞動與產業": [r"semiconductor", r"\bchips?\b", r"\bTSMC\b", r"Nvidia", r"\bAI\b", r"artificial intelligence", r"supply chain", r"export controls?", r"\bstrikes?\b", r"layoffs?", r"job cuts", r"trade (deal|war|talks|curbs)", r"rare earth", r"\bEV\b", r"electric vehicles?", r"Samsung", r"Apple", r"Foxconn", r"Taiwan"],
-    "新法規": [r"new (law|rules?|regulation)s?", r"regulat", r"export ban", r"import ban", r"takes effect", r"comes into (force|effect)"],
+    "財經": [r"inflation", r"consumer prices?", r"central banks?", r"interest rates?", r"rate (cut|hike)s?", r"\bFed\b", r"Federal Reserve",
+            r"currency", r"\byen\b", r"South Korean won", r"dollar", r"\beuro\b", r"wheat", r"\brice\b", r"grain", r"coffee", r"cocoa", r"food prices?",
+            r"commodit", r"recession", r"\bGDP\b",
+            r"tariffs?", r"\btax(es)?\b", r"subsid", r"customs dut", r"sanctions", r"trade (deal|war|talks|curbs)",
+            r"housing market", r"property market", r"home prices?", r"mortgage",
+            r"\boil\b", r"crude", r"Brent", r"\bOPEC", r"natural gas", r"\bLNG\b", r"Strait of Hormuz"],
+    "生活": [r"airline", r"airport", r"aviation", r"\bflights?\b", r"Boeing", r"Airbus", r"shipping", r"container", r"port strike", r"high-speed (train|rail)", r"visa[- ]free", r"travel (ban|advisory|rules?)", r"cruise",
+            r"electricity", r"power (cuts?|outage|grid)", r"energy", r"nuclear"],
+    "健康醫療": [r"outbreak", r"epidemic", r"pandemic", r"virus", r"vaccine", r"\bWHO\b", r"\bFDA\b", r"drug approval", r"bird flu", r"avian", r"Ebola", r"measles", r"cholera", r"dengue", r"mpox", r"health (ministry|authorit)"],
+    "工作": [r"minimum wage", r"unemployment", r"semiconductor", r"\bchips?\b", r"\bTSMC\b", r"Nvidia", r"\bAI\b", r"artificial intelligence", r"supply chain", r"export controls?", r"\bstrikes?\b", r"layoffs?", r"job cuts", r"rare earth", r"\bEV\b", r"electric vehicles?", r"Samsung", r"Apple", r"Foxconn", r"Taiwan"],
+    "安全": [r"earthquake", r"tsunami", r"typhoon", r"hurricane", r"cyclone", r"flood", r"wildfire", r"heat ?wave", r"drought", r"volcano", r"landslide", r"extreme weather", r"train crash", r"plane crash", r"climate"],
 }
 EXCLUDE_INTL = [r"\bmurder", r"stabbing", r"celebrit", r"\bactress\b", r"\bactor\b", r"\bsinger\b", r"\bfootball\b", r"\bsoccer\b", r"\bcricket\b", r"\bNFL\b", r"\bNBA\b", r"\bMLB\b",
                 r"Premier League", r"\bgolf\b", r"\btennis\b", r"\brugby\b", r"royal family", r"\bhoroscope", r"\bK-pop\b"]

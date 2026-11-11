@@ -32,11 +32,13 @@ REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what"
             "first_published", "sources"]
 
 # --- expiry / length rules (keep in sync with AUTOMATION.md) ---
-KEEP_HOURS = 48            # normal items: archived 48h after first_published (never changes on update)
-WRAPUP_HOURS = 24          # ongoing stories: upper bound for the post-event wrap-up after `ongoing.ended`
-ONGOING_MAX_HOURS = 168    # safety cap: even an "ongoing" item is archived 7 days after first_published
+# Normal items: at the daily 18:30 (Asia/Taipei) run, archive anything first published
+# two calendar days ago or earlier (e.g. an 11/11 item is moved at the 11/13 run).
+# Cutoff is 18:00 that day so a slightly early 18:30 run still picks them up.
+ARCHIVE_CALENDAR_DAYS = 2
+ARCHIVE_RUN_HOUR = 18
 VALID_MAX_DAYS = 14        # items with `valid_until`: hard cap after first_published (nothing lingers forever)
-ONGOING_CATEGORY = "天災與公共安全"
+ONGOING_CATEGORY = "安全"  # active disaster alerts / 停班停課 (`ongoing` not yet ended) stay until officially lifted
 SUMMARY_MAX = 250          # normal summary (characters; 2026-10-29: was 300)
 SUMMARY_MAX_SECTIONED = 200  # items with `sections`: short status block
 SUMMARY_MAX_LINES = 4      # newline-separated lines
@@ -75,28 +77,47 @@ def valid_until_end(v):
     x = datetime.fromisoformat(v)
     return x if x.tzinfo else x.replace(tzinfo=TPE)
 
-def expiry(i, hours=KEEP_HOURS):
-    """Return the datetime after which the item must be archived, or None if it is
-    currently allowed to stay open-ended (active ongoing story, subject to the hard cap).
-    Always based on first_published (never on `updated`).
-    Items with `valid_until` stay until it has passed (hard cap: VALID_MAX_DAYS after
-    first_published); ongoing disaster items keep their own rules."""
-    first = dt(i["first_published"])
-    normal = first + timedelta(hours=hours)
-    og = i.get("ongoing")
-    if not og:
-        if i.get("valid_until"):
-            return min(valid_until_end(i["valid_until"]), first + timedelta(days=VALID_MAX_DAYS))
-        return normal
-    cap = first + timedelta(hours=ONGOING_MAX_HOURS)
-    if not og.get("ended"):
-        return cap                       # warning/event still active: stay (until the hard cap)
-    ended = dt(og["ended"])
-    after = ended if og.get("wrapup_done") else ended + timedelta(hours=WRAPUP_HOURS)
-    return min(max(normal, after), cap)
+def calendar_archive_at(first_published):
+    """Taiwan-time 18:00 on the calendar day two days after first_published.
+    Example: first published on 11/11 is due at the 11/13 18:30 run."""
+    fp = dt(first_published)
+    fp = fp.replace(tzinfo=TPE) if fp.tzinfo is None else fp.astimezone(TPE)
+    day = fp.date() + timedelta(days=ARCHIVE_CALENDAR_DAYS)
+    return datetime(day.year, day.month, day.day, ARCHIVE_RUN_HOUR, 0, tzinfo=TPE)
 
-def is_expired(i, now, hours=KEEP_HOURS):
-    return now >= expiry(i, hours)
+def normal_archive_at(i, hours=None):
+    """Calendar-day rule, or an explicit --keep-hours override (testing only)."""
+    if hours is not None:
+        first = dt(i["first_published"])
+        if first.tzinfo is None:
+            first = first.replace(tzinfo=TPE)
+        return first + timedelta(hours=hours)
+    return calendar_archive_at(i["first_published"])
+
+def expiry(i, hours=None):
+    """Return the datetime after which the item must be archived, or None if it may
+    stay open-ended. Always based on first_published (never on `updated`).
+    - Normal items: two calendar days later, at the daily 18:30 run (see calendar_archive_at).
+    - valid_until: stay until that deadline (hard cap: VALID_MAX_DAYS after first_published).
+    - Active disaster alerts / 停班停課 (`ongoing` without `ended`): stay until officially lifted.
+    - After `ongoing.ended` is set, the calendar-day rule applies (or immediately if already due)."""
+    first = dt(i["first_published"])
+    og = i.get("ongoing")
+    if og and not og.get("ended"):
+        return None
+    if i.get("valid_until") and not og:
+        return min(valid_until_end(i["valid_until"]), first + timedelta(days=VALID_MAX_DAYS))
+    normal = normal_archive_at(i, hours)
+    if og and og.get("ended"):
+        ended = dt(og["ended"])
+        if ended.tzinfo is None:
+            ended = ended.replace(tzinfo=TPE)
+        return max(normal, ended)
+    return normal
+
+def is_expired(i, now, hours=None):
+    exp = expiry(i, hours)
+    return False if exp is None else now >= exp
 
 def git_first_published():
     """first_published values as committed at HEAD (immutability check). {} if unavailable."""
@@ -112,7 +133,7 @@ def load_archive():
         return json.load(open(ARCHIVE, encoding="utf-8"))
     return {"updated": None, "items": []}
 
-def archive_expired(d, now, hours=KEEP_HOURS, reason=None, write=True):
+def archive_expired(d, now, hours=None, reason=None, write=True):
     """Remove expired items from d["items"]; with write=True also append them to
     data/archive.json (items are archived, never deleted). Returns the moved items
     (each already carrying `archived` / `archive_reason`)."""
@@ -122,9 +143,9 @@ def archive_expired(d, now, hours=KEEP_HOURS, reason=None, write=True):
             i = dict(i)
             i["archived"] = now.replace(microsecond=0).isoformat()
             i["archive_reason"] = reason or (
-                "過期：進行中事件已結束並完成總結（或達上限）" if i.get("ongoing")
+                "過期：進行中事件已官方解除" if i.get("ongoing")
                 else "過期：已過有效期限（或達%d天上限）" % VALID_MAX_DAYS if i.get("valid_until")
-                else "過期：逾首次發布後%d小時" % hours)
+                else "過期：首次發布日已滿兩個日曆日")
             moved.append(i)
         else:
             keep.append(i)
@@ -335,7 +356,7 @@ def cmd_fetch(a):
         print(f"[FEED FAIL] {f['feed']}: {f.get('error')}")
     print_new_list(new)
 
-def validate(d, now=None, hours=KEEP_HOURS, check_git=True, check_archive=True):
+def validate(d, now=None, hours=None, check_git=True, check_archive=True):
     errs = []
     cats = set(d.get("categories", []))
     ids = set()
@@ -623,7 +644,8 @@ def cmd_finalize(a):
     if moved: write_archive(moved, now)
     d["updated"] = now.replace(microsecond=0).isoformat()
     save(d)
-    print(f"kept {len(d['items'])}, archived {len(moved)} (expired: >{a.keep_hours}h after first_published, or ongoing story finished); updated={d['updated']}")
+    rule = f">{a.keep_hours}h after first_published" if a.keep_hours is not None else "two calendar days after first_published (18:30 run), valid_until deadline, or ongoing alert lifted"
+    print(f"kept {len(d['items'])}, archived {len(moved)} (expired: {rule}); updated={d['updated']}")
     for i in moved: print("  archived:", i["id"], i["title"])
     if not a.no_screens:
         subprocess.run([sys.executable, os.path.join(ROOT, "tools", "screenshot.py")], check=True)
@@ -647,7 +669,8 @@ def main():
     f.add_argument("--force", action="store_true", help=f"fetch again even if data/new_candidates.json is < {FETCH_REUSE_MINUTES} min old")
     for name in ("validate", "archive"):
         p = sp.add_parser(name)
-        p.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
+        p.add_argument("--keep-hours", type=float, default=None,
+                       help="test override: archive normal items this many hours after first_published (default: two calendar days, at the 18:30 run)")
         p.add_argument("--now", help="ISO time override (testing)")
     lg = sp.add_parser("log"); lg.add_argument("-n", type=int, default=10, help="number of entries (default 10)")
     fh = sp.add_parser("feedhealth")
@@ -662,7 +685,8 @@ def main():
     cc.add_argument("--refresh", action="store_true", help="ignore the page cache (raw/copycheck/)")
     cc.add_argument("--archive", action="store_true", help="also check data/archive.json items")
     fn = sp.add_parser("finalize")
-    fn.add_argument("--keep-hours", type=float, default=KEEP_HOURS)
+    fn.add_argument("--keep-hours", type=float, default=None,
+                    help="test override: archive normal items this many hours after first_published (default: two calendar days, at the 18:30 run)")
     fn.add_argument("--now", help="ISO time override (testing)")
     fn.add_argument("--no-screens", action="store_true")
     fn.add_argument("--no-zip", action="store_true")
