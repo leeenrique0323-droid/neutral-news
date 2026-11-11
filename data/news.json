@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-11T18:31:56+08:00",
+  "updated": "2026-11-11T18:40:45+08:00",
   "categories": [
     "政治",
     "財經",
@@ -192,27 +192,6 @@
           "name": "衛生福利部",
           "title": "兼顧資安與實務  今年12月起實施長照資訊系統強化身分驗證機制",
           "url": "https://www.mohw.gov.tw/cp-16-88432-1.html"
-        }
-      ]
-    },
-    {
-      "id": "intl-ghana-min-wage-2027",
-      "tab": "intl",
-      "category": "工作",
-      "status": "快訊・初步資訊",
-      "title": "迦納每日最低工資2027年起調至25.04塞地　2028年再調至28.79塞地",
-      "summary": "據迦納《Graphic Online》報導，迦納全國三方委員會發布公報，全國每日最低工資將從21.77塞地提高到25.04塞地，2027年1月1日生效，漲幅25.4%；2028年1月1日再升至28.79塞地。公報由勞動部長、財政部副部長、雇主協會與總工會代表共同簽署，要求目前低於新標準的雇主自明年1月起調整；委員會另建議政府讓最低工資免稅，並表示通膨、匯率等指標大幅變動時可再協商。",
-      "who": "迦納領取全國最低工資的勞工及其雇主。",
-      "what": "每日最低工資提高為25.04塞地（2027年）、28.79塞地（2028年）。",
-      "when": "2027年1月1日起；2028年1月1日再調整。",
-      "first_published": "2026-11-11T14:49:00+08:00",
-      "published": "2026-11-11T14:49:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "Graphic Online Ghana",
-          "title": "Minimum wage rises to GH¢25.04 in 2027 - GH¢28.79 for 2028",
-          "url": "https://www.graphic.com.gh/news/general-news/ghana-news-minimum-wage-rises-to-ghc25-04-in-2027-ghc28-79-for-2028.html"
         }
       ]
     }

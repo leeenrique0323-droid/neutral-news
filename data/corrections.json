@@ -271,6 +271,15 @@
       "url": "https://www.bbc.co.uk/news/articles/ck5ynw45jrgqo",
       "what_was_wrong": "「何時」欄原寫「英國央行於11月5日公布決議；原報導未載明各銀行調整房貸利率的日期。」，後半句「原報導未載明各銀行調整房貸利率的日期」為無資訊的填充句。",
       "correction": "改為「英國央行於11月5日公布決議。」事實未改變，只刪除空句。"
+    },
+    {
+      "date": "2026-11-11",
+      "type": "用語調整",
+      "item_title": "迦納每日最低工資2027年起調至25.04塞地　2028年再調至28.79塞地",
+      "item_id": "intl-ghana-min-wage-2027",
+      "url": "https://www.graphic.com.gh/news/general-news/ghana-news-minimum-wage-rises-to-ghc25-04-in-2027-ghc28-79-for-2028.html",
+      "what_was_wrong": "此則不應刊於國際分頁：不符國際收錄第一問（重大國際事件），且僅單一媒體來源。",
+      "correction": "已移至過往新聞，首頁不再刊登。事實內容未改。"
     }
   ]
 }

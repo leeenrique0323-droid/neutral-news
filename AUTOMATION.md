@@ -105,7 +105,7 @@
 
 ## 中央氣象署官方警特報（cwa.py）
 
-CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa.py` 改讀網頁本身載入的公開檔案（免金鑰）：
+CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa.py` 先讀網頁本身載入的公開檔案（免金鑰）：
 
 | 來源 | 內容 | 讀者可開啟的連結 |
 |---|---|---|
@@ -114,7 +114,15 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 | `https://www.cwa.gov.tw/Data/js/typhoon/TY_NEWS-Data.js` | 颱風名稱、強度、中心位置、暴風半徑 | `https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_NEWS.html` |
 | `https://www.cwa.gov.tw/V8/C/E/MOD/EQ_ROW.html` | 最近 15 筆有感地震（編號＝顯著有感地震） | 各地震報告頁 `.../V8/C/E/EQ/EQ115069-….html` |
 
-- 選用：若環境變數 `CWA_API_KEY` 有值，另抓開放資料平台 `W-C0034-005`（熱帶氣旋路徑）、`W-C0033-002`（特報內容與區域）、`E-A0015-001`（顯著有感地震報告），放在 `cwa_alerts.json` 的 `opendata` 欄位。無金鑰時自動略過，不影響其他步驟。
+部分網路環境對 `www.cwa.gov.tw` 會被 HiNetCDN 以 `X-Cache: RULE` 回 404（檔案其實仍在）。此時改抓官方開放資料平台（`opendata.cwa.gov.tw`）：
+
+| 來源 | 內容 | 讀者可開啟的連結 |
+|---|---|---|
+| `W-C0033-002` | 天氣特報內容與影響區域 | 對應的 `.../V8/C/P/Warning/W25.html` 等 |
+| `W-C0034-005` | 熱帶氣旋路徑與現況 | `https://www.cwa.gov.tw/V8/C/P/Typhoon/TY_NEWS.html` |
+| `E-A0015-001`、`E-A0016-001` | 顯著有感／小區域有感地震 | 報告頁（多為 `https://scweb.cwa.gov.tw/zh-tw/earthquake/details/…`） |
+
+授權優先用環境變數 `CWA_API_KEY`；未設定時使用政府資料開放平臺（data.gov.tw）資料集 9244、138041 公開 API 網址中的授權參數。地震另有免金鑰備援：`https://scweb.cwa.gov.tw/`（中央氣象署地震測報中心首頁列表）。
 - `cwa_alerts.json` 欄位：`active_alerts`（生效中警特報）、`typhoons`、`earthquakes`（預設 72 小時內，`--eq-hours` 可調）、`urgent`（是否有緊急項目）。每項皆有 `url`。
 - **用法**：「安全」分類中天災項目的官方數據（颱風位置、警報發布／解除時間、特報區域、地震規模與震度）以此為準；新聞報導與 CWA 不一致時採用 CWA 數字並註明「中央氣象署…」。
   `sources` 放 `url` 欄位中的 CWA 公開網頁網址（不要放 `.js`／`.xml` 資料檔網址）。CWA 已發布但新聞尚未報導的警報，可依 CWA 內容新增或更新快訊。
@@ -124,7 +132,7 @@ CWA 警特報網頁以 JavaScript 載入內容，直接讀頁面看不到。`cwa
 
 ## 夜間與即時災害
 
-自 2026-11-11 起，**沒有夜間災害守候排程**。網站標示「每日 18:30 更新，即時災害請看中央氣象署」；即時災害請讀者至[中央氣象署](https://www.cwa.gov.tw/)查詢。每天 18:30 的更新仍依 CWA 資料處理「安全」分類中的天災項目（見「中央氣象署官方警特報」）。
+自 2026-11-11 起，**沒有夜間災害守候排程**。網站標示「每日 18:30 更新，即時災害請看中央氣象署」；即時災害請讀者至[中央氣象署天氣警特報](https://www.cwa.gov.tw/V8/C/P/Warning/FIFOWS.html)查詢。每天 18:30 的更新仍依 CWA 資料處理「安全」分類中的天災項目（見「中央氣象署官方警特報」）。
 
 ## 過期與過往新聞（刪除／保留規則）
 
