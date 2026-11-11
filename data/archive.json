@@ -1,6 +1,29 @@
 {
-  "updated": "2026-11-10T18:37:09+08:00",
+  "updated": "2026-11-11T18:31:31+08:00",
   "items": [
+    {
+      "id": "intl-china-rare-earth-pause-0110",
+      "tab": "intl",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "中國商務部：稀土等出口管制暫停措施延長兩個月至明年1月10日",
+      "summary": "中國商務部9日宣布，原定本月到期的出口管制暫停措施延長兩個月，至2027年1月10日。這些管制涵蓋部分稀土、特定工業用鑽石與鋰電池技術，2025年4月起實施、同年10月擴大，2025年11月習近平與川普在韓國會面後暫停一年。商務部聲明未說明其他細節。此次延長是中國同日宣布暫停多項貿易反制與關稅措施的一部分。（據新加坡CNA轉引路透）",
+      "who": "仰賴中國稀土、鋰電池技術等出口的各國製造業。",
+      "what": "稀土等出口管制的暫停期延長兩個月。",
+      "when": "延長至2027年1月10日（中國商務部11月9日宣布）。",
+      "first_published": "2026-11-09T18:06:06+08:00",
+      "published": "2026-11-09T18:06:06+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "CNA（新加坡）／路透社",
+          "title": "China extends suspension of new rare earth controls until January",
+          "url": "https://www.channelnewsasia.com/east-asia/china-extends-suspensions-new-rare-earths-controls-6535736"
+        }
+      ],
+      "archived": "2026-11-11T18:31:31+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
     {
       "id": "intl-boe-rate-1105",
       "tab": "intl",

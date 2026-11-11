@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T18:37:39+08:00",
+  "updated": "2026-11-11T18:31:56+08:00",
   "categories": [
     "政治",
     "財經",
@@ -74,13 +74,13 @@
       "category": "財經",
       "status": "快訊・初步資訊",
       "title": "foodpanda調漲平台費：一般用戶11月15日起每單平均多4至6元",
-      "summary": "外送平台foodpanda宣布調整平台費：一般用戶11月15日起，每筆訂單預估平均增加新台幣4至6元；pandapro訂閱會員12月1日起，每筆平均增加2至4元。foodpanda表示，外送專法7月21日施行後，平台整體營運成本增加約32%，部分成本已無法長期自行吸收；實際收費會在結帳前顯示。（據中央社報導）",
+      "summary": "外送平台foodpanda宣布調整平台費：一般用戶11月15日起，每筆訂單預估平均增加新台幣4至6元；pandapro訂閱會員12月1日起，每筆平均增加2至4元。foodpanda表示，外送專法7月21日施行後，平台整體營運成本增加約32%，部分成本已無法長期自行吸收；實際收費會在結帳前顯示。外送產業權益協進聯盟則質疑平台誇大法規成本，呼籲公平會調查。（據中央社、公視報導）",
       "who": "使用foodpanda外送服務的消費者，含pandapro訂閱會員。",
       "what": "平台費調高，一般用戶每單平均多4至6元，pandapro會員每單平均多2至4元（foodpanda預估）。",
       "when": "一般用戶2026年11月15日起；pandapro會員2026年12月1日起。",
       "first_published": "2026-11-10T14:27:00+08:00",
       "published": "2026-11-10T14:27:00+08:00",
-      "updated": null,
+      "updated": "2026-11-11T10:32:00+08:00",
       "valid_until": "2026-11-15",
       "evergreen": true,
       "sources": [
@@ -88,6 +88,11 @@
           "name": "中央社 生活",
           "title": "foodpanda撐不住喊漲 11/15起調漲平台費2至6元",
           "url": "https://www.cna.com.tw/news/ahel/202611100153.aspx"
+        },
+        {
+          "name": "公視新聞",
+          "title": "foodpanda平台費11/15起調漲 每單預估多收4至6元",
+          "url": "https://news.pts.org.tw/article/835234"
         }
       ]
     },
@@ -103,33 +108,17 @@
       "when": "延長至2026年11月30日（原訂11月15日截止）。",
       "first_published": "2026-11-10T16:12:00+08:00",
       "published": "2026-11-10T16:12:00+08:00",
-      "updated": null,
+      "updated": "2026-11-11T10:32:00+08:00",
       "sources": [
         {
           "name": "中央社 生活",
           "title": "流感仍未脫流行期 公費抗病毒藥擴大使用延長至11/30",
           "url": "https://www.cna.com.tw/news/ahel/202611100211.aspx"
-        }
-      ]
-    },
-    {
-      "id": "intl-china-rare-earth-pause-0110",
-      "tab": "intl",
-      "category": "工作",
-      "status": "快訊・初步資訊",
-      "title": "中國商務部：稀土等出口管制暫停措施延長兩個月至明年1月10日",
-      "summary": "中國商務部9日宣布，原定本月到期的出口管制暫停措施延長兩個月，至2027年1月10日。這些管制涵蓋部分稀土、特定工業用鑽石與鋰電池技術，2025年4月起實施、同年10月擴大，2025年11月習近平與川普在韓國會面後暫停一年。商務部聲明未說明其他細節。此次延長是中國同日宣布暫停多項貿易反制與關稅措施的一部分。（據新加坡CNA轉引路透）",
-      "who": "仰賴中國稀土、鋰電池技術等出口的各國製造業。",
-      "what": "稀土等出口管制的暫停期延長兩個月。",
-      "when": "延長至2027年1月10日（中國商務部11月9日宣布）。",
-      "first_published": "2026-11-09T18:06:06+08:00",
-      "published": "2026-11-09T18:06:06+08:00",
-      "updated": null,
-      "sources": [
+        },
         {
-          "name": "CNA（新加坡）／路透社",
-          "title": "China extends suspension of new rare earth controls until January",
-          "url": "https://www.channelnewsasia.com/east-asia/china-extends-suspensions-new-rare-earths-controls-6535736"
+          "name": "衛生福利部",
+          "title": "國內流感疫情下降 但重症死亡數仍高且大多數未接種疫苗 呼籲民眾儘速接種",
+          "url": "https://www.mohw.gov.tw/cp-16-88421-1.html"
         }
       ]
     },
@@ -156,6 +145,74 @@
           "name": "CNA（新加坡）／路透社",
           "title": "Oil falls below $90 as Trump downplays prospect of escalation with Iran",
           "url": "https://www.channelnewsasia.com/business/oil-falls-below-90-trump-downplays-prospect-escalation-iran-6537826"
+        }
+      ]
+    },
+    {
+      "id": "tw-wage-sep-1111",
+      "tab": "tw",
+      "category": "工作",
+      "status": "完整版",
+      "title": "主計總處：9月全時員工經常性薪資中位數41,356元　年增3.22%",
+      "summary": "行政院主計總處11月11日公布今年9月薪資統計。本國籍全時員工約753萬9千人，每月經常性薪資中位數為41,356元、平均數52,522元，比去年同月分別增加3.22%與3.14%；再加上獎金、紅利與加班費等，總薪資平均為63,869元，年增4.84%。若把部分工時員工與產業移工一起計算，全體受僱員工經常性薪資中位數為39,793元，年增2.93%。",
+      "who": "工業及服務業受僱員工。",
+      "what": "官方公布9月薪資水準：全時員工經常性薪資中位數41,356元、平均數52,522元（主計總處）。",
+      "when": "統計月份為2026年9月，主計總處2026年11月11日公布。",
+      "first_published": "2026-11-11T16:00:00+08:00",
+      "published": "2026-11-11T16:00:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "行政院主計總處",
+          "title": "115年9月薪資及生產力統計新聞稿（PDF）",
+          "url": "https://ws.dgbas.gov.tw/001/Upload/463/relfile/10980/236856/%E8%96%AA%E8%B3%87%E5%8F%8A%E7%94%9F%E7%94%A2%E5%8A%9B%E7%B5%B1%E8%A8%88%E6%96%B0%E8%81%9E%E7%A8%BF11509.pdf"
+        },
+        {
+          "name": "行政院主計總處",
+          "title": "115年9月工業及服務業本國籍全時員工人數為753萬9千人，經常性薪資中位數為41,356元，平均數為52,522元，分別年增3.22%及3.14%",
+          "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236856"
+        }
+      ]
+    },
+    {
+      "id": "tw-ltc-login-card-1201",
+      "tab": "tw",
+      "category": "健康醫療",
+      "status": "完整版",
+      "title": "衛福部：長照資訊系統12月1日起須用自然人憑證或健保卡登入",
+      "summary": "12月1日起，長照人員登入「照顧服務管理資訊平台」及「長照機構暨長照人員相關管理資訊系統」時，須以自然人憑證或健保卡等實體卡證驗證身分。衛福部表示，系統存有大量長照服務使用者的個人資料，為加強資安而調整，113年起已多次請地方政府宣導，並給第一線單位時間完成訓練與設備調整；之後也會評估雙因子驗證、行動自然人憑證等其他登入方式。",
+      "who": "使用衛福部長照資訊系統的地方政府、長照機構與長照人員。",
+      "what": "系統登入改為實體卡證（自然人憑證或健保卡）驗證。",
+      "when": "2026年12月1日起。",
+      "first_published": "2026-11-10T19:12:00+08:00",
+      "published": "2026-11-10T19:12:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "衛生福利部",
+          "title": "兼顧資安與實務  今年12月起實施長照資訊系統強化身分驗證機制",
+          "url": "https://www.mohw.gov.tw/cp-16-88432-1.html"
+        }
+      ]
+    },
+    {
+      "id": "intl-ghana-min-wage-2027",
+      "tab": "intl",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "迦納每日最低工資2027年起調至25.04塞地　2028年再調至28.79塞地",
+      "summary": "據迦納《Graphic Online》報導，迦納全國三方委員會發布公報，全國每日最低工資將從21.77塞地提高到25.04塞地，2027年1月1日生效，漲幅25.4%；2028年1月1日再升至28.79塞地。公報由勞動部長、財政部副部長、雇主協會與總工會代表共同簽署，要求目前低於新標準的雇主自明年1月起調整；委員會另建議政府讓最低工資免稅，並表示通膨、匯率等指標大幅變動時可再協商。",
+      "who": "迦納領取全國最低工資的勞工及其雇主。",
+      "what": "每日最低工資提高為25.04塞地（2027年）、28.79塞地（2028年）。",
+      "when": "2027年1月1日起；2028年1月1日再調整。",
+      "first_published": "2026-11-11T14:49:00+08:00",
+      "published": "2026-11-11T14:49:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "Graphic Online Ghana",
+          "title": "Minimum wage rises to GH¢25.04 in 2027 - GH¢28.79 for 2028",
+          "url": "https://www.graphic.com.gh/news/general-news/ghana-news-minimum-wage-rises-to-ghc25-04-in-2027-ghc28-79-for-2028.html"
         }
       ]
     }
