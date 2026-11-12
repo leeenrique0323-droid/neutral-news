@@ -1,7 +1,7 @@
 # 民生新聞（原型）
 靜態網站：index.html / style.css / app.js，資料在 data/news.json。
 - 預覽：`python3 -m http.server 8000` 後開啟 http://localhost:8000/ （國際分頁：#intl）
-- 過期規則：每日 18:30 更新時，把首次發布日為兩個日曆日以前（含）的項目移入 `archive.html`（不刪除；例如 11/11 的項目在 11/13 那次更新移出）。有 `valid_until` 的項目留到有效期限過後（上限 14 天）；生效中的災害警報與停班停課留到官方解除。更正紀錄見 `corrections.html`（資料 `data/corrections.json`）。
+- 過期規則：每日 18:30 更新時，把首次發布日為兩個日曆日以前（含）的項目移入 `archive.html`（不刪除；例如 11/11 的項目在 11/13 那次更新移出）。有 `valid_until` 的項目同樣依兩個日曆日規則移出（若有效期限更早到期則提早移出；此欄位只供「本週有效」顯示，不延長首頁停留時間）；生效中的災害警報與停班停課留到官方解除。更正紀錄見 `corrections.html`（資料 `data/corrections.json`）。
 - 更新流程：見 AUTOMATION.md（`python3 update.py fetch` → 編輯 data/news.json → `python3 update.py validate` → `python3 update.py finalize`）。
 - 首頁分區：「本週有效」下方分為「今日新聞」（`first_published` 為台灣時間今日）與「其他新聞」，由前端依日曆日推導、隔天自動移動；進行中（`ongoing` 未解除）的事件留在今日新聞。詳見 AUTOMATION.md。
 - 分類篩選：首頁「本週有效」下方的按鈕列（全部＋各分類與則數）會同時篩選今日新聞與其他新聞；按鈕由各項目的 `category` 欄位自動產生，新增分類（例如「政治」）不需改前端。進行中事件不受篩選影響。詳見 AUTOMATION.md。

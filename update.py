@@ -37,7 +37,7 @@ REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what"
 # Cutoff is 18:00 that day so a slightly early 18:30 run still picks them up.
 ARCHIVE_CALENDAR_DAYS = 2
 ARCHIVE_RUN_HOUR = 18
-VALID_MAX_DAYS = 14        # items with `valid_until`: hard cap after first_published (nothing lingers forever)
+VALID_MAX_DAYS = 14        # validate only: `valid_until` may not be more than 14 days after first_published; does not extend front-page life
 ONGOING_CATEGORY = "安全"  # active disaster alerts / 停班停課 (`ongoing` not yet ended) stay until officially lifted
 SUMMARY_MAX = 250          # normal summary (characters; 2026-10-29: was 300)
 SUMMARY_MAX_SECTIONED = 200  # items with `sections`: short status block
@@ -98,21 +98,23 @@ def expiry(i, hours=None):
     """Return the datetime after which the item must be archived, or None if it may
     stay open-ended. Always based on first_published (never on `updated`).
     - Normal items: two calendar days later, at the daily 18:30 run (see calendar_archive_at).
-    - valid_until: stay until that deadline (hard cap: VALID_MAX_DAYS after first_published).
+    - valid_until does not extend front-page life past that two-day cutoff. If the
+      deadline comes sooner than the cutoff, use the sooner of the two (already-expired
+      items do not stay on the front page). VALID_MAX_DAYS is a validate cap on the
+      field itself, not a stay-until expiry.
     - Active disaster alerts / 停班停課 (`ongoing` without `ended`): stay until officially lifted.
     - After `ongoing.ended` is set, the calendar-day rule applies (or immediately if already due)."""
-    first = dt(i["first_published"])
     og = i.get("ongoing")
     if og and not og.get("ended"):
         return None
-    if i.get("valid_until") and not og:
-        return min(valid_until_end(i["valid_until"]), first + timedelta(days=VALID_MAX_DAYS))
     normal = normal_archive_at(i, hours)
     if og and og.get("ended"):
         ended = dt(og["ended"])
         if ended.tzinfo is None:
             ended = ended.replace(tzinfo=TPE)
         return max(normal, ended)
+    if i.get("valid_until"):
+        return min(valid_until_end(i["valid_until"]), normal)
     return normal
 
 def is_expired(i, now, hours=None):
@@ -142,10 +144,15 @@ def archive_expired(d, now, hours=None, reason=None, write=True):
         if is_expired(i, now, hours):
             i = dict(i)
             i["archived"] = now.replace(microsecond=0).isoformat()
-            i["archive_reason"] = reason or (
-                "過期：進行中事件已官方解除" if i.get("ongoing")
-                else "過期：已過有效期限（或達%d天上限）" % VALID_MAX_DAYS if i.get("valid_until")
-                else "過期：首次發布日已滿兩個日曆日")
+            if reason:
+                i["archive_reason"] = reason
+            elif i.get("ongoing"):
+                i["archive_reason"] = "過期：進行中事件已官方解除"
+            elif i.get("valid_until") and valid_until_end(i["valid_until"]) < normal_archive_at(i, hours):
+                # only when valid_until already passed within the two-day window
+                i["archive_reason"] = "過期：已過有效期限（或達%d天上限）" % VALID_MAX_DAYS
+            else:
+                i["archive_reason"] = "過期：首次發布日已滿兩個日曆日"
             moved.append(i)
         else:
             keep.append(i)
@@ -644,7 +651,7 @@ def cmd_finalize(a):
     if moved: write_archive(moved, now)
     d["updated"] = now.replace(microsecond=0).isoformat()
     save(d)
-    rule = f">{a.keep_hours}h after first_published" if a.keep_hours is not None else "two calendar days after first_published (18:30 run), valid_until deadline, or ongoing alert lifted"
+    rule = f">{a.keep_hours}h after first_published" if a.keep_hours is not None else "two calendar days after first_published (18:30 run; sooner if valid_until already passed), or ongoing alert lifted"
     print(f"kept {len(d['items'])}, archived {len(moved)} (expired: {rule}); updated={d['updated']}")
     for i in moved: print("  archived:", i["id"], i["title"])
     if not a.no_screens:

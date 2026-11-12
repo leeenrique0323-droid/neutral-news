@@ -10,67 +10,6 @@
   ],
   "items": [
     {
-      "id": "tw-tra-app-post-atm-1110",
-      "tab": "tw",
-      "category": "生活",
-      "status": "完整版",
-      "title": "台鐵APP訂票放寬至開車前5分鐘、郵局ATM單筆存款上限提高為10萬元",
-      "summary": "11月10日起，在台鐵官網或「台鐵e訂通」APP買當天的車票，最晚可訂到開車前5分鐘，原本只能訂開車30分鐘以後的班次；線上換票期限也由發車前1小時放寬為30分鐘，APP「一機多票」不再限制取票票種（據臺鐵公司公告）。另外，中華郵政11月12日起把ATM每筆可存入的現金由6萬元提高到10萬元，每筆最多100張鈔票的限制不變，適用以郵局卡或他行卡存入該卡本身帳號；中華郵政說明，民眾存款多為千元鈔，整捆習慣為10萬元。",
-      "who": "在台鐵官網或「台鐵e訂通」APP購票、換票的旅客；在郵局ATM以郵局卡或他行卡存現金到該卡本身帳號的民眾。",
-      "what": "線上購買當日車票的時限由開車前30分鐘縮短為5分鐘，線上換票由發車前1小時縮短為30分鐘；郵局ATM單筆存款上限由6萬元調為10萬元，鈔券張數上限仍為100張。",
-      "when": "台鐵APP為2026年11月10日起；郵局ATM為2026年11月12日起。",
-      "first_published": "2026-11-01T15:27:00+08:00",
-      "published": "2026-11-01T15:27:00+08:00",
-      "updated": "2026-11-10T18:37:00+08:00",
-      "sources": [
-        {
-          "name": "中央社 生活",
-          "title": "11月新制　台鐵APP訂票時間放寬、郵局ATM單筆存款上限調整",
-          "url": "https://www.cna.com.tw/news/ahel/202611010086.aspx"
-        },
-        {
-          "name": "中華郵政",
-          "title": "本公司自115年11月12日起，ATM單筆存款金額由新臺幣「6萬元」調整為「10萬元」。",
-          "url": "https://www.post.gov.tw/post/internet/B_saving/index.jsp?ID=305&control_type=page&group_name=&news_cat=5&news_no=75234"
-        },
-        {
-          "name": "臺鐵公司",
-          "title": "「台鐵e訂通」APP再優化，11月10日起開車前5分鐘可訂票",
-          "url": "https://www.railway.gov.tw/tra-tip-web/tip/tip009/tip911/newsDtl?newsNo=8ae4cac2a1b24dc901a1bf6b20ae3c97"
-        }
-      ],
-      "valid_until": "2026-11-12",
-      "evergreen": true
-    },
-    {
-      "id": "tw-foodpanda-platform-fee-1115",
-      "tab": "tw",
-      "category": "財經",
-      "status": "快訊・初步資訊",
-      "title": "foodpanda調漲平台費：一般用戶11月15日起每單平均多4至6元",
-      "summary": "外送平台foodpanda宣布調整平台費：一般用戶11月15日起，每筆訂單預估平均增加新台幣4至6元；pandapro訂閱會員12月1日起，每筆平均增加2至4元。foodpanda表示，外送專法7月21日施行後，平台整體營運成本增加約32%，部分成本已無法長期自行吸收；實際收費會在結帳前顯示。外送產業權益協進聯盟則質疑平台誇大法規成本，呼籲公平會調查。（據中央社、公視報導）",
-      "who": "使用foodpanda外送服務的消費者，含pandapro訂閱會員。",
-      "what": "平台費調高，一般用戶每單平均多4至6元，pandapro會員每單平均多2至4元（foodpanda預估）。",
-      "when": "一般用戶2026年11月15日起；pandapro會員2026年12月1日起。",
-      "first_published": "2026-11-10T14:27:00+08:00",
-      "published": "2026-11-10T14:27:00+08:00",
-      "updated": "2026-11-11T18:32:00+08:00",
-      "valid_until": "2026-11-15",
-      "evergreen": true,
-      "sources": [
-        {
-          "name": "中央社 生活",
-          "title": "foodpanda撐不住喊漲 11/15起調漲平台費2至6元",
-          "url": "https://www.cna.com.tw/news/ahel/202611100153.aspx"
-        },
-        {
-          "name": "公視新聞",
-          "title": "foodpanda平台費11/15起調漲 每單預估多收4至6元",
-          "url": "https://news.pts.org.tw/article/835234"
-        }
-      ]
-    },
-    {
       "id": "tw-wage-sep-1111",
       "tab": "tw",
       "category": "工作",
