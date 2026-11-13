@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12T18:30:17+08:00",
+  "updated": "2026-11-13T18:36:40+08:00",
   "categories": [
     "政治",
     "財經",
@@ -10,30 +10,177 @@
   ],
   "items": [
     {
-      "id": "tw-wage-sep-1111",
+      "id": "tw-gender-equality-leave-law-1113",
       "tab": "tw",
-      "category": "工作",
+      "category": "政治",
       "status": "完整版",
-      "title": "主計總處：9月全時員工經常性薪資中位數41,356元　年增3.22%",
-      "summary": "行政院主計總處11月11日公布今年9月薪資統計。本國籍全時員工約753萬9千人，每月經常性薪資中位數為41,356元、平均數52,522元，比去年同月分別增加3.22%與3.14%；再加上獎金、紅利與加班費等，總薪資平均為63,869元，年增4.84%。若把部分工時員工與產業移工一起計算，全體受僱員工經常性薪資中位數為39,793元，年增2.93%。",
-      "who": "工業及服務業受僱員工。",
-      "what": "官方公布9月薪資水準：全時員工經常性薪資中位數41,356元、平均數52,522元（主計總處）。",
-      "when": "統計月份為2026年9月，主計總處2026年11月11日公布。",
-      "first_published": "2026-11-11T16:00:00+08:00",
-      "published": "2026-11-11T16:00:00+08:00",
-      "updated": null,
+      "title": "立法院三讀性平工作法與就保法修正　產假延為14週、育兒留停放寬至子女滿9歲前",
+      "summary": "《性別平等工作法》與《就業保險法》的修正案，11月13日在立法院完成三讀。依勞動部說明，產假由8週改為14週（第9至14週可自願提前銷假），陪產檢及陪產假由7日改為14日；育兒留職停薪的子女年齡由未滿3歲放寬到滿9歲前，期間仍以2年為限；原本30日的以日育嬰留停改為60日育兒假。雙親都領滿6個月育兒留停津貼後，各可再領3個月。勞動部表示，施行日期由行政院另定。",
+      "who": "受僱勞工與其配偶、育有未滿9歲子女的家長，以及雇主（新增假期的薪資可向政府申請補貼，據勞動部）。",
+      "what": "產假14週、陪產檢及陪產假14日、育兒留停與60日育兒假適用到子女滿9歲前、津貼最長各9個月；就保法另刪除65歲投保年齡上限、失業給付等待期由14日縮為7日（勞動部）。",
+      "when": "2026年11月13日三讀；送總統公布後，施行日期由行政院另定（勞動部）。",
+      "first_published": "2026-11-13T15:25:00+08:00",
       "sources": [
         {
-          "name": "行政院主計總處",
-          "title": "115年9月薪資及生產力統計新聞稿（PDF）",
-          "url": "https://ws.dgbas.gov.tw/001/Upload/463/relfile/10980/236856/%E8%96%AA%E8%B3%87%E5%8F%8A%E7%94%9F%E7%94%A2%E5%8A%9B%E7%B5%B1%E8%A8%88%E6%96%B0%E8%81%9E%E7%A8%BF11509.pdf"
+          "name": "勞動部",
+          "title": "立法院三讀通過《性別平等工作法》與《就業保險法》修正案 友善職場修法工程『五大突破』",
+          "url": "https://www.mol.gov.tw/1607/1632/1633/100107/"
         },
         {
-          "name": "行政院主計總處",
-          "title": "115年9月工業及服務業本國籍全時員工人數為753萬9千人，經常性薪資中位數為41,356元，平均數為52,522元，分別年增3.22%及3.14%",
-          "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236856"
+          "name": "中央社 政治",
+          "title": "立院三讀育兒留停延至子女滿9歲　雙親都請各可多領3個月津貼",
+          "url": "https://www.cna.com.tw/news/aipl/202611130192.aspx"
+        },
+        {
+          "name": "中央社 政治",
+          "title": "立院三讀產假延長至14週　陪產及陪產檢假增至14天",
+          "url": "https://www.cna.com.tw/news/aipl/202611130172.aspx"
         }
-      ]
+      ],
+      "published": "2026-11-13T15:25:00+08:00",
+      "updated": null
+    },
+    {
+      "id": "tw-election-day-leave-1128",
+      "tab": "tw",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "勞動部：11月28日投票日原本要上班的有投票權勞工放假1日、工資照給",
+      "summary": "11月28日是地方選舉與第22案公投的投票日。據中央社報導，勞動部提醒，已將這天指定為勞基法第37條的放假日：有投票權、且當天原本是工作日的勞工，雇主要讓他放假一天並照付工資；若勞工同意當天上班，雇主不得妨礙投票，並須加發出勤時數的工資。當天原本就是休息日或例假的勞工不另給假，投票日也不能與其他工作日對調。遇到違規可向地方勞工主管機關或1955專線申訴。",
+      "who": "有投票權、11月28日原本要上班的勞工，以及雇主。",
+      "what": "放假一日（零時至24時）、工資照給；同意出勤者，出勤時數工資加倍發給（據中央社引述勞動部）。",
+      "when": "2026年11月28日（星期六）。",
+      "first_published": "2026-11-13T14:57:00+08:00",
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "九合一大選11/28登場　勞動部：具投票權勞工放假1日",
+          "url": "https://www.cna.com.tw/news/ahel/202611130161.aspx"
+        }
+      ],
+      "published": "2026-11-13T14:57:00+08:00",
+      "updated": null
+    },
+    {
+      "id": "tw-tra-extra-trains-1120",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "台鐵11月20日起週五至週日加開24列次　投票日前後再加開12列次16日開放訂票",
+      "summary": "據中央社報導，台鐵13日公布兩批加開列車。第一批為年底旅遊旺季，11月20日至12月20日每逢週五到週日加開東線自強號8列次、西線自強號16列次，共24列次，已可訂票。第二批為返鄉投票，11月27日至29日再加開東線自強號6列次、西線自強號4列次與區間快車2列次，共12列次（先前已公告加開16列次），11月16日零時起開放網路、e訂通、超商與電話訂票；車次與時刻預計14日起可在台鐵官網與e訂通App查詢。",
+      "who": "年底與選舉期間搭乘台鐵的旅客。",
+      "what": "旺季加開24列次、投票疏運再加開12列次（據中央社引述台鐵）。",
+      "when": "旺季班次2026年11月20日至12月20日；投票疏運班次11月27日至29日，11月16日零時開放訂票。",
+      "first_published": "2026-11-13T11:27:00+08:00",
+      "valid_until": "2026-11-20",
+      "evergreen": true,
+      "related": [
+        {
+          "id": "tw-election-transport-1127"
+        }
+      ],
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "年底旅遊旺季　台鐵11/20起連5週五六日加開24列次",
+          "url": "https://www.cna.com.tw/news/ahel/202611130086.aspx"
+        },
+        {
+          "name": "中央社 生活",
+          "title": "疏運投票旅客　台鐵再加開12列次",
+          "url": "https://www.cna.com.tw/news/ahel/202611130238.aspx"
+        }
+      ],
+      "published": "2026-11-13T11:27:00+08:00",
+      "updated": null
+    },
+    {
+      "id": "tw-picc-catheter-recall-1211",
+      "tab": "tw",
+      "category": "健康醫療",
+      "status": "快訊・初步資訊",
+      "title": "食藥署要求一級回收泰利福亞諾中央靜脈導管組8641組　12月11日前完成",
+      "summary": "據中央社報導，食藥署公布「“泰利福亞諾”壓力注射型週邊置入中央靜脈導管組」（衛部醫器輸字第034304號）原廠通報，導引線的親水性塗層遇生理食鹽水可能膨脹不均、結塊或剝落，可能增加發炎、血栓等風險。國內受影響7個型號、50個批號，共8641組，已出貨到72家醫事機構、以大型醫院為主。食藥署11日要求第一級回收、立即停用下架，12月11日前完成。食藥署表示，國內目前未接獲不良反應通報，另有同類產品可替代。",
+      "who": "使用中央靜脈導管進行化療、顯影劑注射或輸液的病人，以及72家醫事機構。",
+      "what": "受影響產品停用下架並第一級回收；未依規定回收可處20萬至500萬元罰鍰（據中央社引述食藥署）。",
+      "when": "2026年11月11日啟動回收，須於12月11日前完成。",
+      "first_published": "2026-11-13T14:30:00+08:00",
+      "copycheck_names": [
+        "泰利福亞諾"
+      ],
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "化療、顯影劑常用給藥導管出包　12/11前回收8641組",
+          "url": "https://www.cna.com.tw/news/ahel/202611130151.aspx"
+        }
+      ],
+      "published": "2026-11-13T14:30:00+08:00",
+      "updated": null
+    },
+    {
+      "id": "intl-nvidia-huang-resigns-1112",
+      "tab": "intl",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "輝達執行長黃仁勳請辭　財務長克瑞斯暫代執行長",
+      "summary": "輝達（Nvidia）董事會11月12日（美國時間）宣布，共同創辦人黃仁勳辭去總裁、執行長與董事職務，由任職13年的財務長克瑞斯（Colette Kress）暫代執行長，公司將從內外部尋找正式人選，並由董事瓊斯（Harvey Jones）擔任首位董事長。據BBC與CNA（新加坡）報導，請辭前美國媒體報導他有兩段婚外情，其中一名女子被美方官員懷疑替中國情報單位工作，中國否認此說。據BBC報導，美國國會數個委員會要求他11月18日出席閉門簡報。",
+      "who": "輝達員工與投資人，以及使用其AI晶片的科技業者。",
+      "what": "執行長更換：黃仁勳離開管理層與董事會，克瑞斯暫代（據BBC、CNA新加坡報導）。",
+      "when": "2026年11月12日（美國時間）宣布；正式繼任人選原報導未載明時程。",
+      "first_published": "2026-11-12T22:01:00+08:00",
+      "copycheck_names": [
+        "Colette Kress",
+        "Harvey Jones",
+        "Nvidia"
+      ],
+      "sources": [
+        {
+          "name": "CNA（新加坡）",
+          "title": "Nvidia CEO Jensen Huang resigns amid deepening scandal, leaving AI chip giant at crossroads",
+          "url": "https://www.channelnewsasia.com/world/nvidia-ceo-jensen-huang-resigns-6546526"
+        },
+        {
+          "name": "BBC",
+          "title": "What we know as Nvidia CEO Jensen Huang resigns over affair allegations",
+          "url": "https://www.bbc.co.uk/news/articles/ckgel338xql3o"
+        }
+      ],
+      "published": "2026-11-12T22:01:00+08:00",
+      "updated": null
+    },
+    {
+      "id": "intl-microsoft-365-outage-1113",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "微軟Outlook、Teams等服務全球中斷　Downdetector顯示74國受影響",
+      "summary": "微軟Outlook、Teams、Copilot等Microsoft 365服務12日（美國時間）起發生大範圍中斷。據南非《The Citizen》報導，Downdetector上Outlook的問題回報一度約13萬件，涵蓋74個國家和地區。據BBC報導，微軟表示原因是部分伺服器無法使用、其餘伺服器負荷過高，並排除網路攻擊，系統已出現初步穩定跡象；英國部分診所、警方線上表單與學校電子郵件受影響，主要機場運作正常。",
+      "who": "使用Outlook、Teams、Copilot等Microsoft 365服務的個人、企業與公共機關。",
+      "what": "電子郵件、通訊與雲端檔案一度無法使用或延遲（據BBC、The Citizen報導）。",
+      "when": "2026年11月12日（美國時間）起；完全恢復時間原報導未載明。",
+      "first_published": "2026-11-13T12:05:00+08:00",
+      "copycheck_names": [
+        "Outlook",
+        "Teams",
+        "Copilot",
+        "Downdetector",
+        "Microsoft 365"
+      ],
+      "sources": [
+        {
+          "name": "BBC",
+          "title": "GPs, police and pharmacies among UK services affected by Microsoft outage",
+          "url": "https://www.bbc.co.uk/news/articles/c6vg2ljjpj32o"
+        },
+        {
+          "name": "The Citizen South Africa",
+          "title": "Microsoft outage hits Outlook, Teams and Copilot across 74 countries",
+          "url": "https://www.citizen.co.za/lifestyle/technology/microsoft-outage-hits-outlook-teams-copilot/"
+        }
+      ],
+      "published": "2026-11-13T12:05:00+08:00",
+      "updated": null
     },
     {
       "id": "tw-referendum-22-1128",
@@ -59,48 +206,6 @@
         }
       ],
       "published": "2026-11-12T16:05:00+08:00",
-      "updated": null
-    },
-    {
-      "id": "tw-old-vehicle-subsidy-extend-draft-1111",
-      "tab": "tw",
-      "category": "財經",
-      "status": "快訊・初步資訊",
-      "title": "擬議中：環境部預告老舊車輛汰舊換新補助期限延長至2030年底",
-      "summary": "擬議中：環境部11月11日預告修正「老舊車輛汰舊換新空氣污染物減量補助辦法」，把原訂今年（115年）底到期的補助期限延長到119年（2030年）12月31日。這項補助適用機車、小客貨車與大客貨車，車主淘汰老車並改買電動車或低污染車後，可把減量效益交給環境部換取補助，或參加媒合賣給環評開發單位。環境部表示，至今已有超過13萬輛老車淘汰。草案尚未定案。",
-      "who": "打算淘汰老舊機車、小客貨車或大客貨車並換購電動或低污染車的車主。",
-      "what": "補助申請期限擬由2026年底延長至2030年12月31日（環境部預告草案）。",
-      "when": "目前為預告階段，尚未公告施行；原報導未載明定案日期。",
-      "first_published": "2026-11-11T07:48:00+08:00",
-      "sources": [
-        {
-          "name": "環境部",
-          "title": "環境部預告「老舊車輛汰舊換新空氣污染物減量補助辦法」修正草案",
-          "url": "https://enews.moenv.gov.tw/moenv-news/zh-tw/News/14474"
-        }
-      ],
-      "published": "2026-11-11T07:48:00+08:00",
-      "updated": null
-    },
-    {
-      "id": "intl-spain-general-strike-1111",
-      "tab": "intl",
-      "category": "工作",
-      "status": "快訊・初步資訊",
-      "title": "西班牙11月11日舉行14年來首次全國大罷工　訴求住房負擔",
-      "summary": "西班牙11月11日舉行為期24小時的全國總罷工，是14年來首次，由租屋者團體發起、工會加入支持，訴求聚焦住房費用。據衛報報導，租屋者協會聯合會稱中午前約400萬人參與；工會說汽車與港口業參與率達90%、垃圾清運82%，但各地不一。巴塞隆納大眾運輸幾近停擺，多所學校停課或縮減運作。馬德里政府官員估計當地遊行約12萬人；全國逾50人因輕微事件被捕。西班牙將於11月29日舉行國會大選。",
-      "who": "西班牙勞工、租屋者與使用大眾運輸、學校等服務的民眾。",
-      "what": "一天的全國罷工造成交通、學校與部分產業停擺；參與人數為各方各自公布的數字。",
-      "when": "2026年11月11日（當地時間）起24小時。",
-      "first_published": "2026-11-11T21:54:00+08:00",
-      "sources": [
-        {
-          "name": "Guardian World",
-          "title": "Millions join Spain’s first general strike in 14 years in protest at housing crisis",
-          "url": "https://www.theguardian.com/world/2026/nov/11/spain-general-strike-housing-costs"
-        }
-      ],
-      "published": "2026-11-11T21:54:00+08:00",
       "updated": null
     },
     {
