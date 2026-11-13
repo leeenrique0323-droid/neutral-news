@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T18:36:40+08:00",
+  "updated": "2026-11-13T18:40:53+08:00",
   "categories": [
     "政治",
     "財經",
@@ -122,32 +122,39 @@
       "id": "intl-nvidia-huang-resigns-1112",
       "tab": "intl",
       "category": "工作",
-      "status": "快訊・初步資訊",
-      "title": "輝達執行長黃仁勳請辭　財務長克瑞斯暫代執行長",
-      "summary": "輝達（Nvidia）董事會11月12日（美國時間）宣布，共同創辦人黃仁勳辭去總裁、執行長與董事職務，由任職13年的財務長克瑞斯（Colette Kress）暫代執行長，公司將從內外部尋找正式人選，並由董事瓊斯（Harvey Jones）擔任首位董事長。據BBC與CNA（新加坡）報導，請辭前美國媒體報導他有兩段婚外情，其中一名女子被美方官員懷疑替中國情報單位工作，中國否認此說。據BBC報導，美國國會數個委員會要求他11月18日出席閉門簡報。",
-      "who": "輝達員工與投資人，以及使用其AI晶片的科技業者。",
-      "what": "執行長更換：黃仁勳離開管理層與董事會，克瑞斯暫代（據BBC、CNA新加坡報導）。",
-      "when": "2026年11月12日（美國時間）宣布；正式繼任人選原報導未載明時程。",
+      "status": "完整版",
+      "title": "輝達執行長黃仁勳請辭　財務長克瑞斯暫代執行長、瓊斯任首位董事長",
+      "summary": "輝達（Nvidia）美國證管會8-K記載，董事會於11月11日（美國時間）接受黃仁勳辭去總裁、執行長與董事職務，即日生效；同日任命財務長克瑞斯（Colette Kress）暫代執行長，並由瓊斯（Harvey Jones）擔任首位董事長。輝達於11月12日發布新聞稿公布此事，克瑞斯在正式人選產生前仍兼任財務長，董事會將從內部與外部尋找繼任執行長。",
+      "who": "輝達員工、客戶、合作夥伴與股東。",
+      "what": "黃仁勳離開總裁、執行長與董事職務，財務長克瑞斯暫代執行長並續任財務長，瓊斯擔任首位董事長（據輝達官方公告與美國證管會8-K）。",
+      "when": "董事會於2026年11月11日（美國時間）接受請辭並完成任命；公司於11月12日公布。",
       "first_published": "2026-11-12T22:01:00+08:00",
       "copycheck_names": [
         "Colette Kress",
         "Harvey Jones",
-        "Nvidia"
+        "Nvidia",
+        "Jen-Hsun Huang",
+        "Jensen Huang"
       ],
       "sources": [
         {
-          "name": "CNA（新加坡）",
-          "title": "Nvidia CEO Jensen Huang resigns amid deepening scandal, leaving AI chip giant at crossroads",
-          "url": "https://www.channelnewsasia.com/world/nvidia-ceo-jensen-huang-resigns-6546526"
+          "name": "輝達官方新聞室",
+          "title": "NVIDIA Announces CEO Transition",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
         },
         {
-          "name": "BBC",
-          "title": "What we know as Nvidia CEO Jensen Huang resigns over affair allegations",
-          "url": "https://www.bbc.co.uk/news/articles/ckgel338xql3o"
+          "name": "美國證管會 8-K",
+          "title": "NVIDIA Corporation Form 8-K（事件日 2026-11-11）",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm"
         }
       ],
       "published": "2026-11-12T22:01:00+08:00",
-      "updated": null
+      "updated": "2026-11-13T18:40:53+08:00",
+      "corrected": {
+        "date": "2026-11-13",
+        "type": "用語調整",
+        "note": "依審稿意見改用輝達官方公告與美國證管會8-K為來源，移除個人指控相關內容，僅保留人事異動。"
+      }
     },
     {
       "id": "intl-microsoft-365-outage-1113",

@@ -280,6 +280,15 @@
       "url": "https://www.graphic.com.gh/news/general-news/ghana-news-minimum-wage-rises-to-ghc25-04-in-2027-ghc28-79-for-2028.html",
       "what_was_wrong": "此則不應刊於國際分頁：不符國際收錄第一問（重大國際事件），且僅單一媒體來源。",
       "correction": "已移至過往新聞，首頁不再刊登。事實內容未改。"
+    },
+    {
+      "date": "2026-11-13",
+      "type": "用語調整",
+      "item_title": "輝達執行長黃仁勳請辭　財務長克瑞斯暫代執行長",
+      "item_id": "intl-nvidia-huang-resigns-1112",
+      "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+      "what_was_wrong": "原摘要後段寫：「據BBC與CNA（新加坡）報導，請辭前美國媒體報導他有兩段婚外情，其中一名女子被美方官員懷疑替中國情報單位工作，中國否認此說。據BBC報導，美國國會數個委員會要求他11月18日出席閉門簡報。」來源僅列BBC與CNA（新加坡）。　問題：此段為個人指控，不宜放在人事異動報導中；主要人事事實應改以公司官方公告與美國證管會文件為據。",
+      "correction": "依審稿意見改用輝達官方公告與美國證管會8-K為來源，移除婚外情、情報單位與國會簡報等個人指控相關內容，僅保留請辭職務、董事會接受與公布日期、暫代執行長與首位董事長等人事異動。已刊登的日期與職務並未發現與官方文件不符，本次為用語與來源調整。"
     }
   ]
 }
