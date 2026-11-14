@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T18:40:53+08:00",
+  "updated": "2026-11-14T18:30:59+08:00",
   "categories": [
     "政治",
     "財經",
@@ -9,6 +9,58 @@
     "安全"
   ],
   "items": [
+    {
+      "id": "tw-cpc-oil-1116",
+      "tab": "tw",
+      "category": "財經",
+      "status": "完整版",
+      "title": "中油：11月16日至22日汽柴油價格不調整　92無鉛每公升31.2元",
+      "summary": "下週一（16日）凌晨零時起到11月22日深夜，國內汽、柴油牌價都不變：92無鉛31.2元、95無鉛32.7元、98無鉛34.7元、超級柴油29.9元（每公升）。台灣中油14日公告指出，這一週政府擴大貨物稅減徵，汽油、柴油分別吸收3.7元與2.1元，中油再各加碼吸收2.3元與3.7元，合計每公升汽油吸收6.0元、柴油5.8元。中油表示，2月28日至11月15日的平穩措施累計吸收約353.6億元。",
+      "who": "全國加油的汽機車駕駛與使用柴油的業者。",
+      "what": "汽、柴油零售牌價維持不變；實際售價以各加油站公告為準（據台灣中油）。",
+      "when": "2026年11月16日0時起至11月22日24時。",
+      "first_published": "2026-11-14T17:00:00+08:00",
+      "published": "2026-11-14T17:00:00+08:00",
+      "updated": null,
+      "valid_until": "2026-11-22",
+      "evergreen": true,
+      "sources": [
+        {
+          "name": "經濟部（台灣中油新聞稿）",
+          "title": "平穩物價 照顧民生 中油汽、柴油吸收6.0元及5.8元 11/16-11/22汽、柴油價格維持不調整",
+          "url": "https://www.moea.gov.tw/MNS/populace/news/News.aspx?kind=1&menu_id=40&news_id=124565"
+        }
+      ]
+    },
+    {
+      "id": "intl-us-ground-stop-1113",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "美國航管通訊故障全美航班暫停起飛逾4小時　FAA已解除禁令",
+      "summary": "美國當地時間13日，航空管制系統通訊出現故障，聯邦航空總署（FAA）下令全國航班暫停起飛，4小時多後解除。中央社綜合法新社、路透社報導，引述航班追蹤網站FlightRadar24資料，13日取消的航班超過4700架次、延誤約1萬架次，14日也已有約700架次取消；航空業分析師表示，恢復正常班表可能需要數天。美國交通部長達菲把原因指向老舊硬體設備，國土安全部表示目前沒有跡象顯示是網路攻擊。",
+      "who": "13、14日搭乘美國國內航班或由美國起飛航班的旅客與航空公司。",
+      "what": "全美航班一度停飛，數千架次取消、上萬架次延誤；原報導未載明旅客補償安排。",
+      "when": "美國當地時間2026年11月13日停飛，4小時多後解除，班表恢復仍需時間。",
+      "first_published": "2026-11-14T11:56:00+08:00",
+      "published": "2026-11-14T11:56:00+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "FlightRadar24"
+      ],
+      "sources": [
+        {
+          "name": "中央社 國際",
+          "title": "美解除航班暫停起飛令　全美逾4700航班取消、1萬航班延誤",
+          "url": "https://www.cna.com.tw/news/aopl/202611140072.aspx"
+        },
+        {
+          "name": "Guardian World",
+          "title": "Airport chaos continues after US ground stop lifted – as it happened",
+          "url": "https://www.theguardian.com/world/live/2026/nov/13/us-flight-outage-live-updates-faa-lifts-nationwide-ground-stop-as-airport-chaos-continues"
+        }
+      ]
+    },
     {
       "id": "tw-gender-equality-leave-law-1113",
       "tab": "tw",
@@ -119,44 +171,6 @@
       "updated": null
     },
     {
-      "id": "intl-nvidia-huang-resigns-1112",
-      "tab": "intl",
-      "category": "工作",
-      "status": "完整版",
-      "title": "輝達執行長黃仁勳請辭　財務長克瑞斯暫代執行長、瓊斯任首位董事長",
-      "summary": "輝達（Nvidia）美國證管會8-K記載，董事會於11月11日（美國時間）接受黃仁勳辭去總裁、執行長與董事職務，即日生效；同日任命財務長克瑞斯（Colette Kress）暫代執行長，並由瓊斯（Harvey Jones）擔任首位董事長。輝達於11月12日發布新聞稿公布此事，克瑞斯在正式人選產生前仍兼任財務長，董事會將從內部與外部尋找繼任執行長。",
-      "who": "輝達員工、客戶、合作夥伴與股東。",
-      "what": "黃仁勳離開總裁、執行長與董事職務，財務長克瑞斯暫代執行長並續任財務長，瓊斯擔任首位董事長（據輝達官方公告與美國證管會8-K）。",
-      "when": "董事會於2026年11月11日（美國時間）接受請辭並完成任命；公司於11月12日公布。",
-      "first_published": "2026-11-12T22:01:00+08:00",
-      "copycheck_names": [
-        "Colette Kress",
-        "Harvey Jones",
-        "Nvidia",
-        "Jen-Hsun Huang",
-        "Jensen Huang"
-      ],
-      "sources": [
-        {
-          "name": "輝達官方新聞室",
-          "title": "NVIDIA Announces CEO Transition",
-          "url": "https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition"
-        },
-        {
-          "name": "美國證管會 8-K",
-          "title": "NVIDIA Corporation Form 8-K（事件日 2026-11-11）",
-          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm"
-        }
-      ],
-      "published": "2026-11-12T22:01:00+08:00",
-      "updated": "2026-11-13T18:40:53+08:00",
-      "corrected": {
-        "date": "2026-11-13",
-        "type": "用語調整",
-        "note": "依審稿意見改用輝達官方公告與美國證管會8-K為來源，移除個人指控相關內容，僅保留人事異動。"
-      }
-    },
-    {
       "id": "intl-microsoft-365-outage-1113",
       "tab": "intl",
       "category": "生活",
@@ -187,79 +201,6 @@
         }
       ],
       "published": "2026-11-13T12:05:00+08:00",
-      "updated": null
-    },
-    {
-      "id": "tw-referendum-22-1128",
-      "tab": "tw",
-      "category": "政治",
-      "status": "完整版",
-      "title": "第22案公投11月28日與地方選舉同日投票　通過須同意票達投票權人四分之一",
-      "summary": "中選會8月28日公告，全國性公民投票案第22案於11月28日（星期六）上午8時至下午4時投票，主文為「你是否支持政府使用『核電』振興經濟，以廢除『非核家園』的能源政策？」，與九合一地方選舉同日舉行。年滿18歲、未受監護宣告、在國內繼續居住6個月以上的國民可投票。依公投法，有效同意票須多於不同意票，且達投票權人總數四分之一以上才算通過。據中央社報導，中選會12日表示初步統計投票權人為2000萬7484人，門檻約500萬1871票，確切人數待選前公告。",
-      "who": "有公投投票權的國民：滿18歲、沒有受監護宣告，且已在國內連續住滿6個月。",
-      "what": "11月28日可領公投票表示「同意」或「不同意」；結果須同意票多於不同意票且達投票權人四分之一才通過（公投法）。",
-      "when": "2026年11月28日上午8時至下午4時投票；中選會公告的電視意見發表會期間為11月9日至21日。",
-      "first_published": "2026-11-12T16:05:00+08:00",
-      "sources": [
-        {
-          "name": "中央選舉委員會",
-          "title": "公告全國性公民投票案第22案投票日期、投票起、止時間、編號、主文、理由書等事項（中選務字第1153150284號）",
-          "url": "https://gazette.nat.gov.tw/egFront/eguploadpubWrapper?file=%2FEG_FileManager%2Feguploadpub%2Feg032161%2Fch02%2Ftype3%2Fgov15%2Fnum3%2FEg.htm&metaid=167991"
-        },
-        {
-          "name": "中央社 政治",
-          "title": "11/28「廢除非核家園」公投案　通過門檻、怎麼投一次看",
-          "url": "https://www.cna.com.tw/news/aipl/202611120231.aspx"
-        }
-      ],
-      "published": "2026-11-12T16:05:00+08:00",
-      "updated": null
-    },
-    {
-      "id": "intl-portugal-storm-charles-1111",
-      "tab": "intl",
-      "category": "安全",
-      "status": "快訊・初步資訊",
-      "title": "風暴查爾斯登陸葡萄牙　逾200航班取消、學校停課",
-      "summary": "風暴查爾斯（Storm Charles）11月11日從南部阿爾加維登陸葡萄牙，航空公司取消進出葡萄牙的航班超過200班，學校停課，數百家超市與商店暫停營業。葡萄牙氣象局表示，風暴眼在大西洋上分裂，強度比預期減弱；民防單位自當天午夜起已登記538起事件，未傳出傷亡。鄰國西班牙中部因水壩可能溢流，已撤離皮耶德拉拉韋斯逾3000人。",
-      "who": "葡萄牙與西班牙西南部居民，以及進出葡萄牙的航空旅客。",
-      "what": "航班取消逾200班、學校停課與部分公共服務暫停（據新加坡CNA報導）。",
-      "when": "2026年11月11日（當地時間）起。",
-      "first_published": "2026-11-12T01:35:00+08:00",
-      "sources": [
-        {
-          "name": "CNA Singapore World",
-          "title": "Portugal cancels 200-plus flights, shuts schools as Storm Charles hits",
-          "url": "https://www.channelnewsasia.com/world/portugal-storm-charles-flights-cancelled-schools-shut-6543581"
-        }
-      ],
-      "published": "2026-11-12T01:35:00+08:00",
-      "updated": null
-    },
-    {
-      "id": "intl-drc-ebola-11000-1112",
-      "tab": "intl",
-      "category": "健康醫療",
-      "status": "快訊・初步資訊",
-      "title": "剛果民主共和國伊波拉確診破1萬1000例　死亡5387人",
-      "summary": "據剛果民主共和國國家公共衛生研究所11月11日的數字，該國這波伊波拉疫情確診11,042例、死亡5,387例，約2,990人康復，是當地有紀錄以來最嚴重的一次。疫情5月正式宣布，從東北部伊圖里省擴散到另外7個省，烏干達、肯亞與奈及利亞也有病例。這次病毒為本迪布焦（Bundibugyo）型，目前沒有核准的疫苗或療法；世界衛生組織上月宣布將在當地試驗另一型的疫苗Ervebo。",
-      "who": "剛果民主共和國東部與周邊國家居民、醫護與防疫人員。",
-      "what": "官方累計確診11,042例、死亡5,387例（剛果國家公共衛生研究所，據非洲新聞網報導）。",
-      "when": "數字為2026年11月11日公布。",
-      "first_published": "2026-11-12T16:40:00+08:00",
-      "related": [
-        {
-          "id": "intl-ebola-africa-10000-1028"
-        }
-      ],
-      "sources": [
-        {
-          "name": "Africanews",
-          "title": "DR Congo Ebola outbreak surpasses 11,000 cases as conflict hampers response",
-          "url": "https://www.africanews.com/2026/11/12/dr-congo-ebola-outbreak-surpasses-11000-cases-as-conflict-hampers-response/"
-        }
-      ],
-      "published": "2026-11-12T16:40:00+08:00",
       "updated": null
     }
   ]
