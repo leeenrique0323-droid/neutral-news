@@ -134,7 +134,12 @@
     let t = document.getElementById(id);
     if(!t || !t.classList.contains("card")){
       const it = data && data.items.find(x => x.id === id);
-      if(!it) return;
+      if(!it){
+        // Item has moved off the front page: send old deep links (e.g. from video descriptions) to 過往新聞.
+        if(data && id !== "tw" && id !== "intl" && !/^(today|other)-/.test(id) && /^[a-z0-9-]+$/.test(id))
+          location.replace("archive.html#" + encodeURIComponent(id));
+        return;
+      }
       filter = "all"; render(it.tab, true);
       t = document.getElementById(id);
     }
