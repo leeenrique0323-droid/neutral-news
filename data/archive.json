@@ -1,6 +1,68 @@
 {
-  "updated": "2026-11-15T18:37:09+08:00",
+  "updated": "2026-11-16T18:27:59+08:00",
   "items": [
+    {
+      "id": "tw-cpc-oil-1116",
+      "tab": "tw",
+      "category": "財經",
+      "status": "完整版",
+      "title": "中油：11月16日至22日汽柴油價格不調整　92無鉛每公升31.2元",
+      "summary": "下週一（16日）凌晨零時起到11月22日深夜，國內汽、柴油牌價都不變：92無鉛31.2元、95無鉛32.7元、98無鉛34.7元、超級柴油29.9元（每公升）。台灣中油14日公告指出，這一週政府擴大貨物稅減徵，汽油、柴油分別吸收3.7元與2.1元，中油再各加碼吸收2.3元與3.7元，合計每公升汽油吸收6.0元、柴油5.8元。中油表示，2月28日至11月15日的平穩措施累計吸收約353.6億元。",
+      "who": "全國加油的汽機車駕駛與使用柴油的業者。",
+      "what": "汽、柴油零售牌價維持不變；實際售價以各加油站公告為準（據台灣中油）。",
+      "when": "2026年11月16日0時起至11月22日24時。",
+      "first_published": "2026-11-14T17:00:00+08:00",
+      "published": "2026-11-14T17:00:00+08:00",
+      "updated": null,
+      "valid_until": "2026-11-22",
+      "evergreen": true,
+      "sources": [
+        {
+          "name": "經濟部（台灣中油新聞稿）",
+          "title": "平穩物價 照顧民生 中油汽、柴油吸收6.0元及5.8元 11/16-11/22汽、柴油價格維持不調整",
+          "url": "https://www.moea.gov.tw/MNS/populace/news/News.aspx?kind=1&menu_id=40&news_id=124565"
+        }
+      ],
+      "archived": "2026-11-16T18:27:59+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "intl-us-ground-stop-1113",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "美國航管通訊故障全美航班暫停起飛逾4小時　FAA已解除禁令",
+      "summary": "美國當地時間13日下午，聯邦航空總署（FAA）因航管系統通訊故障，下令全國航班暫停起飛約4小時，BBC指出這是2001年911事件以來最長的一次。據BBC報導，交通部長達菲14日說明，承包商L3Harris正把航管通訊線路由銅線汰換為光纖，施工中一台路由器干擾其他航管系統；究竟是施工問題或設備故障仍在調查，FAA署長表示沒有證據顯示有惡意攻擊或與AI有關。依航班追蹤網站資料，13日延誤或取消逾1萬5000架次，14日再取消逾5900架次；FAA預估15日（美國時間）結束前班表恢復正常。",
+      "who": "13、14日搭乘美國國內航班或由美國起飛航班的旅客與航空公司。",
+      "what": "全美航班一度停飛，上萬架次取消或延誤，影響延續到14日；原報導未載明旅客補償安排。",
+      "when": "美國當地時間2026年11月13日停飛約4小時後解除；FAA預估15日結束前班表恢復正常。",
+      "first_published": "2026-11-14T11:56:00+08:00",
+      "published": "2026-11-14T11:56:00+08:00",
+      "updated": "2026-11-15T18:37:00+08:00",
+      "copycheck_names": [
+        "FlightRadar24",
+        "L3Harris"
+      ],
+      "sources": [
+        {
+          "name": "中央社 國際",
+          "title": "美解除航班暫停起飛令　全美逾4700航班取消、1萬航班延誤",
+          "url": "https://www.cna.com.tw/news/aopl/202611140072.aspx"
+        },
+        {
+          "name": "Guardian World",
+          "title": "Airport chaos continues after US ground stop lifted – as it happened",
+          "url": "https://www.theguardian.com/world/live/2026/nov/13/us-flight-outage-live-updates-faa-lifts-nationwide-ground-stop-as-airport-chaos-continues"
+        },
+        {
+          "name": "BBC World",
+          "title": "Copper wire upgrade behind US flight suspension, transport secretary says",
+          "url": "https://www.bbc.co.uk/news/articles/c6wy9lynq4qno"
+        }
+      ],
+      "archived": "2026-11-16T18:27:59+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
     {
       "id": "tw-gender-equality-leave-law-1113",
       "tab": "tw",
