@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-16T18:28:15+08:00",
+  "updated": "2026-11-17T18:35:12+08:00",
   "categories": [
     "政治",
     "財經",
@@ -9,6 +9,295 @@
     "安全"
   ],
   "items": [
+    {
+      "id": "tw-childcare-reduced-hours-subsidy-0101",
+      "tab": "tw",
+      "category": "工作",
+      "status": "完整版",
+      "title": "勞動部育兒彈性工作補助明年元旦上路　子女未滿12歲減工時1小時不扣薪由政府全額補貼",
+      "summary": "勞動部11月17日訂定育兒彈性工作安排的獎勵及補助要點，2027年1月1日起實施。企業讓有未滿12歲子女的員工每天少做至少連續1小時且照付薪水，每月至少10天、累計滿3個月且減少滿30小時，即可依實付工資申請補助，每名員工一年最多4萬5000元、每家企業一年最多135萬元。同事代理請假者並領到職代津貼，政府按日最高800元、每人每月最高1萬7600元補助企業；未滿200人企業新聘替代人力可獲2萬元。公立學校、政府機關與國營事業不適用。",
+      "who": "有未滿12歲子女的受僱者、代理職務的同事，以及適用性平工作法的企業（不分規模）。",
+      "what": "三項補助：減工時工資全額補貼、職代津貼補助、新聘替代人力補助；另有中小企業建立五項育兒制度的獎勵（每項2萬元，29人以下每項3萬元）。企業可於「友善職場育兒補助系統」線上或以紙本申請（勞動部）。",
+      "when": "勞動部2026年11月17日發布；2027年1月1日起受理申請，首次撥款須等2027年度預算完成法定程序。",
+      "first_published": "2026-11-17T13:10:00+08:00",
+      "published": "2026-11-17T13:10:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "tw-gender-equality-leave-law-1113"
+        }
+      ],
+      "sources": [
+        {
+          "name": "勞動部",
+          "title": "勞動部推出【友善職場育兒彈性工作安排措施】，『三大補助』支持企業育兒勞工減時不扣薪、同事職務代理加津貼，輔以『五項建立制度獎勵』，鼓勵企業友善職場，116年元旦上路",
+          "url": "https://www.mol.gov.tw/1607/1632/1633/101248/"
+        },
+        {
+          "name": "中央社 生活",
+          "title": "育兒減工時薪資明年起全額補助　適用對象、職代津貼一次看",
+          "url": "https://www.cna.com.tw/news/ahel/202611170116.aspx"
+        }
+      ]
+    },
+    {
+      "id": "tw-ridehailing-platform-rules-1119",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "網路叫車平台11月19日起納入計程車業管理　1年內須取得營業執照、計程車可加入多個車隊",
+      "summary": "據中央社報導，交通部11月17日公告，計程車客運服務業的申請核准經營辦法已完成修正，本月19日起施行。實際從事計程車派遣的網路叫車平台改列計程車客運服務業，須在明年11月17日前完成籌設並取得執照，否則可依公路法處10萬至2500萬元罰鍰並勒令歇業。平台向駕駛收的服務費須經主管機關同意，派遣確認後無正當理由不得任意取消，並須揭露車輛與駕駛資訊。同一輛計程車也開放可同時接多家車隊派遣。",
+      "who": "使用叫車App的乘客、計程車駕駛與叫車平台業者。",
+      "what": "平台須負責駕駛訓練（每半年至少3小時）、確認投保第三人責任險、處理消費爭議；半年內重大違規2次的駕駛須回訓才能再接單（據中央社引述交通部）。",
+      "when": "交通部2026年11月17日公告，11月19日起施行；平台須於2027年11月17日前取得執照。",
+      "valid_until": "2026-11-19",
+      "evergreen": true,
+      "first_published": "2026-11-17T13:32:00+08:00",
+      "published": "2026-11-17T13:32:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "網路叫車平台19日起納管　1年內須取得營業執照",
+          "url": "https://www.cna.com.tw/news/ahel/202611170125.aspx"
+        }
+      ]
+    },
+    {
+      "id": "tw-taxi-third-party-insurance-1219",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "計程車12月19日起須投保第三人責任險　每人傷害最低150萬元",
+      "summary": "配合公路法第65條修正，計程車客運業者除旅客責任險外，還要投保汽車第三人責任險，12月19日生效。產險公會11月17日說明，依交通部公告的最低保額為每人傷害150萬元、每一事故傷害合計300萬元、財損20萬元。業者可選「計程車專用」或可用於營業用途的一般第三人責任險；專用保單產險公司不得拒保，自負額依次為3000、5000、8000元，一般保單範本未設自負額。已有保單者可先向保險公司確認用途、保額與期間是否符合。",
+      "who": "計程車客運業者與駕駛；車外遭計程車事故波及的第三人。",
+      "what": "新增強制投保第三人責任險，最低保額每人150萬元、每事故傷害300萬元、財損20萬元（據中央社引述產險公會與交通部公告）。",
+      "when": "2026年12月19日生效；產險公會11月17日說明。",
+      "first_published": "2026-11-17T15:44:00+08:00",
+      "published": "2026-11-17T15:44:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "tw-ridehailing-platform-rules-1119"
+        }
+      ],
+      "sources": [
+        {
+          "name": "中央社 產經",
+          "title": "產險公會：計程車12/19起須保第三人責任險　兩類保單可選",
+          "url": "https://www.cna.com.tw/news/afe/202611170177.aspx"
+        }
+      ]
+    },
+    {
+      "id": "tw-thsr-election-redeye-1127",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "高鐵選舉疏運再加開22班、11月18日凌晨開賣　10班紅眼列車對號座77折、27日傍晚北部3站自由座管制",
+      "summary": "11月28日地方選舉與公投投票前車票將售罄，台灣高鐵再加開22班，11月18日凌晨0時開放購票；其中10班抵達終點站晚於午夜12時30分的紅眼列車，對號座一律77折，最晚凌晨1時55分收班。高鐵預估27日下午5時至晚間8時南港、台北、板橋南下自由座人潮爆滿，將首度實施閘門管制：每放行10分鐘暫停5分鐘，對號座不受影響。高鐵表示整個疏運期共加開71班。",
+      "who": "11月27至29日搭高鐵返鄉投票或出遊的旅客。",
+      "what": "新增22班、10班紅眼列車77折；27日傍晚及28日上午共規劃20班全車自由座（商務車廂除外）；自由座旅客尖峰時段預估至少等45至60分鐘（據中央社引述台灣高鐵）。",
+      "when": "2026年11月17日公布；11月18日0時起購票；管制時段為11月27日17時至20時。",
+      "valid_until": "2026-11-27",
+      "evergreen": true,
+      "first_published": "2026-11-17T11:02:00+08:00",
+      "published": "2026-11-17T11:02:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "tw-election-transport-1127"
+        },
+        {
+          "id": "tw-hsr-election-2026-extra-trains"
+        }
+      ],
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "高鐵選舉疏運加開22班　27日南下尖峰3站自由座擬實施管制",
+          "url": "https://www.cna.com.tw/news/ahel/202611170052.aspx"
+        },
+        {
+          "name": "公視新聞",
+          "title": "高鐵11/27加開10班「紅眼列車」 疏運大選返鄉投票人潮",
+          "url": "https://news.pts.org.tw/article/836115"
+        }
+      ]
+    },
+    {
+      "id": "tw-cdc-us-measles-alert-1117",
+      "tab": "tw",
+      "category": "健康醫療",
+      "status": "完整版",
+      "title": "疾管署將美國全境旅遊疫情建議升至第2級警示　孕婦與未滿1歲嬰兒避免前往麻疹流行區",
+      "summary": "疾管署11月17日宣布，美國全境國際旅遊疫情建議即起升為第2級警示（Alert），不分州別。疾管署引述美國CDC資料，美國今年至11月12日已有5412例麻疹確定病例、6人死亡，約為去年全年的2.4倍，九成以上患者未接種或接種史不明。疾管署建議孕婦與未滿1歲嬰兒避免前往流行地區；6個月至未滿1歲確需出國者先諮詢醫師是否提前接種，因疫苗需數週才有保護力。疾管署表示台灣幼兒MMR兩劑接種率長年逾97%，評估對國內影響較低。",
+      "who": "計畫赴美的民眾，特別是孕婦與嬰幼兒家長。",
+      "what": "美國全境列第2級旅遊疫情警示；出發前確認自己的麻疹疫苗接種與免疫狀況（疾管署）。",
+      "when": "疾管署2026年11月17日宣布，即日起生效。",
+      "first_published": "2026-11-17T14:59:00+08:00",
+      "published": "2026-11-17T14:59:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "intl-us-measles-status-1115"
+        }
+      ],
+      "copycheck_names": [
+        "MMR",
+        "Alert",
+        "CDC",
+        "PAHO"
+      ],
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "美國麻疹疫情升溫疾管署升級旅遊警示　孕婦嬰兒避免前往",
+          "url": "https://www.cna.com.tw/news/ahel/202611170156.aspx"
+        }
+      ]
+    },
+    {
+      "id": "tw-taiwan-pass-shuttle-1117",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "Taiwan PASS即日起新增太魯閣線等7條台灣好行　景區接駁選項增至22項",
+      "summary": "據中央社報導，交通部觀光署11月17日表示，Taiwan PASS即日起可選用太魯閣線、溪頭線、關子嶺線、東部海岸線、縱谷鹿野線、玉長豐濱線及日月潭阿里山線等7條台灣好行，景區接駁選項由此增加到22項，持票者依行程擇一使用；清境線也改為App內QR Code電子票可直接搭乘。已購買但尚未開通，或已開通但還沒兌換任何交通項目的票券，同樣可選新路線。原價5折方案加碼4.24萬套，賣到今年底。",
+      "who": "已購買或打算購買Taiwan PASS的國內旅客。",
+      "what": "新增7條台灣好行路線可選；平日國旅「雙省方案」累計售出逾6萬張（據中央社引述觀光署）。",
+      "when": "2026年11月17日起；5折方案銷售至2026年底。",
+      "first_published": "2026-11-17T10:20:00+08:00",
+      "published": "2026-11-17T10:20:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "tw-guolv-weekday-extend-1231"
+        }
+      ],
+      "copycheck_names": [
+        "Taiwan PASS",
+        "QR Code"
+      ],
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "Taiwan PASS新納7條台灣好行　接駁服務增加到22項",
+          "url": "https://www.cna.com.tw/news/ahel/202611170041.aspx"
+        }
+      ]
+    },
+    {
+      "id": "intl-us-ai-chip-license-rule-1117",
+      "tab": "intl",
+      "category": "財經",
+      "status": "快訊・初步資訊",
+      "title": "美國商務部新規：先進AI晶片輸往新加坡、馬來西亞、泰國、印尼、巴西須申請許可",
+      "summary": "美國商務部工業與安全局（BIS）11月16日宣布暫行新規，將新加坡、馬來西亞、泰國、印尼與巴西列為晶片轉移風險偏高的地區，先進AI晶片出口到這五國須先取得許可，逐案審查。BIS表示，目的是防止中國企業透過租用第三國資料中心的運算力，繞過既有出口管制。中國外交部稱此為「經濟脅迫」，表示將採取必要措施；新加坡政府表示正研究細節並與受影響企業及美方聯繫（據BBC、半島電視台）。",
+      "who": "上述五國的資料中心業者、晶片供應商，以及租用海外算力的中國AI企業。",
+      "what": "出口至五國的先進AI晶片改須申請許可、逐案核發（BIS）。",
+      "when": "2026年11月16日（美國時間）宣布。",
+      "first_published": "2026-11-17T10:52:00+08:00",
+      "published": "2026-11-17T10:52:00+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "BIS",
+        "Bureau of Industry and Security",
+        "Megaspeed",
+        "Nvidia"
+      ],
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "title": "US moves to block China’s remote access to AI chips amid Nvidia scandal",
+          "url": "https://www.aljazeera.com/economy/2026/11/17/us-moves-to-block-chinas-remote-access-to-ai-chips-amid-nvidia-scandal"
+        },
+        {
+          "name": "BBC Technology",
+          "title": "How new US chip restrictions on South East Asia will hit China",
+          "url": "https://www.bbc.co.uk/news/articles/cwq6e2qgvmlgo"
+        }
+      ]
+    },
+    {
+      "id": "intl-canada-china-tariff-relief-1117",
+      "tab": "intl",
+      "category": "財經",
+      "status": "快訊・初步資訊",
+      "title": "加拿大與中國同意擴大關稅減免　中方對約4億加元加國豬肉、海鮮等出口降稅",
+      "summary": "加拿大總理卡尼11月17日在深圳APEC峰會前與中國國家主席習近平會面。卡尼辦公室表示，雙方同意延長並擴大改善加拿大農漁產品進入中國市場的初步安排，中方將對約4億加元（約2.8億美元）的加國出口提供額外關稅減免，包括冷凍豬肉與魚類海鮮；加方則同意把部分中國鋼鋁產品的現行減免措施延長兩年（據新加坡CNA）。",
+      "who": "加拿大農漁業出口商、輸加的中國鋼鋁業者。",
+      "what": "中方額外關稅減免約4億加元出口；加方延長部分中國鋼鋁產品減免兩年（據CNA引述加拿大總理辦公室）。",
+      "when": "2026年11月17日宣布；原報導未載明降稅生效日。",
+      "first_published": "2026-11-17T12:24:00+08:00",
+      "published": "2026-11-17T12:24:00+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "Carney",
+        "APEC",
+        "Shenzhen"
+      ],
+      "sources": [
+        {
+          "name": "CNA Singapore Asia",
+          "title": "Canada and China extend trade deals as Xi meets Carney ahead of APEC summit",
+          "url": "https://www.channelnewsasia.com/east-asia/apec-summit-china-canada-carney-xi-6557766"
+        }
+      ]
+    },
+    {
+      "id": "intl-france-public-sector-strike-1117",
+      "tab": "intl",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "法國公部門11月17日全國罷工要求調薪　警方估全國20多萬人上街",
+      "summary": "法國工會號召580萬公部門員工於11月17日全國罷工，要求政府解凍計算基本薪資的薪點；總理勒科爾尼上週五與工會會談未獲共識。這是9月以來第三次公部門聯合行動。政府預算草案連續第四年未編全面調薪，工會估計公務員購買力自2017年來減少16%。AFP引述警方消息估計，巴黎可能有4萬至8萬人、全國22萬至30萬人上街；巴黎主要集會於當地下午2時開始（據Asharq Al-Awsat轉述AFP）。",
+      "who": "法國公部門員工，以及當天使用公共服務的民眾。",
+      "what": "全國性公部門罷工與集會；巴黎部分學校周邊限制未申報集會並暫禁販售鞭炮（據AFP）。",
+      "when": "2026年11月17日（法國時間）。",
+      "first_published": "2026-11-17T16:11:00+08:00",
+      "published": "2026-11-17T16:11:00+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "Lecornu",
+        "AFP"
+      ],
+      "sources": [
+        {
+          "name": "Asharq Al-Awsat",
+          "title": "France Braces for Fresh Public Sector Strike Over Pay",
+          "url": "https://english.aawsat.com/node/5342199"
+        }
+      ]
+    },
+    {
+      "id": "intl-imperial-brands-job-cuts-1117",
+      "tab": "intl",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "英國菸草集團帝國品牌宣布裁員最多4600人　稱將擴大使用AI等技術",
+      "summary": "據《衛報》報導，旗下有Davidoff香菸與Blu電子菸的英國帝國品牌（Imperial Brands）11月17日宣布節省成本計畫，全球約2萬5000名員工中，今年裁撤2100個職位，到2030年底再減2100至2500個。公司將於明年關閉德國朗根哈根工廠，並已出售一座台灣工廠，兩者共涉及700個職缺。執行長帕拉維奇尼表示，目標是2030年前每年至少省下3.2億英鎊，並更多採用新軟體與AI。截至9月30日的年度營收下滑1.5%，稅前獲利減少12.1%。",
+      "who": "帝國品牌全球員工，包括德國與台灣廠區相關員工。",
+      "what": "今年裁2100人、2030年前再裁2100至2500人；多國進行裁員協商（據《衛報》）。",
+      "when": "2026年11月17日宣布；裁員分階段至2030年底。",
+      "first_published": "2026-11-17T17:01:00+08:00",
+      "published": "2026-11-17T17:01:00+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "Imperial Brands",
+        "Davidoff",
+        "Blu",
+        "Langenhagen",
+        "Paravicini"
+      ],
+      "sources": [
+        {
+          "name": "Guardian World",
+          "title": "Tobacco group Imperial Brands to axe up to 4,600 jobs as it uses more AI",
+          "url": "https://www.theguardian.com/business/2026/nov/17/uk-tobacco-imperial-brands-cut-jobs-cigarettes-ai"
+        }
+      ]
+    },
     {
       "id": "tw-covid-vaccine-novavax-1116",
       "tab": "tw",
@@ -111,32 +400,6 @@
           "name": "BBC World",
           "title": "Clothing factories shut in Bangladesh as workers strike over pay",
           "url": "https://www.bbc.co.uk/news/articles/cx5y1pzr9604o"
-        }
-      ]
-    },
-    {
-      "id": "intl-us-measles-status-1115",
-      "tab": "intl",
-      "category": "健康醫療",
-      "status": "快訊・初步資訊",
-      "title": "據知情人士：泛美衛生組織撤銷美國麻疹清零地位　美今年已通報逾5400例",
-      "summary": "中央社14日綜合外電報導，據知情人士表示，泛美衛生組織（PAHO）已撤銷美國自2000年取得的麻疹清零地位（目前僅見知情人士說法）。美國疾管中心（CDC）今年通報的麻疹病例已超過5400例，11月以來賓州、紐約州、威斯康辛州等地共有5人死亡。依CDC資料，美國幼兒園學童MMR疫苗接種率由6年前的95.2%降到92.4%，低於阻斷傳播所需的至少95%。美國若要重新取得清零認定，麻疹須停止持續傳播至少12個月。",
-      "who": "美國民眾，尤其是未接種或因健康因素無法接種麻疹疫苗的兒童與嬰兒。",
-      "what": "美國失去麻疹清零國家認定（據知情人士）；原報導未載明對旅行或入境規定的影響。",
-      "when": "中央社2026年11月14日（華盛頓時間）報導；原報導未載明撤銷的正式日期。",
-      "first_published": "2026-11-15T05:59:00+08:00",
-      "published": "2026-11-15T05:59:00+08:00",
-      "updated": null,
-      "copycheck_names": [
-        "PAHO",
-        "CDC",
-        "MMR"
-      ],
-      "sources": [
-        {
-          "name": "中央社 國際",
-          "title": "美國失去麻疹清零地位　疫情升溫數十年來最嚴重",
-          "url": "https://www.cna.com.tw/news/aopl/202611150007.aspx"
         }
       ]
     }
