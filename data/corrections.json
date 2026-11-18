@@ -298,6 +298,15 @@
       "url": "https://www.cna.com.tw/news/ahel/202611180190.aspx",
       "what_was_wrong": "原摘要寫「勞保局估計約306萬名勞工的投保薪資將配合逕調」，對象欄寫「據中央社引述勞保局」。中央社原文是勞動部勞動保險司長陳美女的說法。",
       "correction": "估計單位改為勞動部勞動保險司。306萬人、每年保費收入約增57億元、給付支出約增11億元等數字不變。"
+    },
+    {
+      "date": "2026-11-18",
+      "type": "用語調整",
+      "item_title": "泛美衛生組織宣布美國、墨西哥、玻利維亞失去麻疹消除地位",
+      "item_id": "intl-paho-measles-status-1117",
+      "url": "https://www.paho.org/en/news/17-11-2026-paho-urges-countries-step-efforts-stop-measles-outbreaks-and-move-towards",
+      "what_was_wrong": "標題與摘要寫「麻疹清零地位」「清零認定」，與PAHO原文 measles elimination status 用語不一致。",
+      "correction": "改為「麻疹消除地位」。三國名單、日期與數字都不變。"
     }
   ]
 }
