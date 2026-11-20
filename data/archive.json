@@ -1,6 +1,122 @@
 {
-  "updated": "2026-11-19T18:30:03+08:00",
+  "updated": "2026-11-20T18:36:31+08:00",
   "items": [
+    {
+      "id": "intl-indonesia-rate-hike-1118",
+      "tab": "intl",
+      "category": "財經",
+      "status": "完整版",
+      "title": "印尼央行升息0.25個百分點至6%　稱為穩定印尼盾匯率",
+      "summary": "印尼央行（Bank Indonesia）11月17日至18日理事會決定，基準利率BI-Rate調升0.25個百分點至6.00%，存款便利與貸款便利利率也各升0.25個百分點，分別為5.25%、6.75%。央行新聞稿表示，在全球不確定性升高下升息是為穩定印尼盾匯率，並預先確保2026、2027年通膨維持在2.5%±1%的目標區間。據海峽時報報導，這是2025年1月以來最高水準，印尼央行5月以來累計升息1.25個百分點；印尼盾11月17日曾跌至1美元兌18,285盾的歷史低點。",
+      "who": "印尼金融市場與以印尼盾計價的借貸；原報導未載明對個別借款人利率的影響。",
+      "what": "印尼三項政策利率各升0.25個百分點（印尼央行）。",
+      "when": "2026年11月18日（雅加達時間）宣布；原報導未載明新利率起算日。",
+      "first_published": "2026-11-18T15:20:00+08:00",
+      "published": "2026-11-18T15:20:00+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "Bank Indonesia",
+        "BI-Rate"
+      ],
+      "sources": [
+        {
+          "name": "印尼央行（Bank Indonesia）",
+          "title": "BI-Rate Naik 25 bps menjadi 6,00%: Memperkuat Stabilitas, Mendorong Pertumbuhan Ekonomi",
+          "url": "https://www.bi.go.id/id/publikasi/ruang-media/news-release/Pages/sp_2825426.aspx"
+        },
+        {
+          "name": "海峽時報",
+          "title": "Indonesia central bank hikes rates to support rupiah",
+          "url": "https://www.straitstimes.com/business/indonesia-central-bank-hikes-rates-to-support-rupiah"
+        }
+      ],
+      "archived": "2026-11-20T18:36:31+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "tw-labor-insurance-grade-0101",
+      "tab": "tw",
+      "category": "工作",
+      "status": "完整版",
+      "title": "勞保投保薪資分級表明年元旦起第1級調為3萬900元　約306萬勞工配合調整",
+      "summary": "2027年1月1日起，勞保投保薪資分級表最低一級由2萬9500元改為3萬900元，與明年最低工資月薪相同；原本3萬300元這一級刪除，其他級距金額不變，全表剩10級（勞動部11月17日修正發布、勞保局公告）。據中央社報導，勞動部勞動保險司估計約306萬名勞工的投保薪資將配合逕調，每年保費收入約增57億元、給付支出約增11億元。勞保局另說明，依勞工保險條例，勞保普通事故費率明年起由12.5%調為13%，扣除內含的1%就保費率後，以12%計收。",
+      "who": "投保薪資原為2萬9500元或3萬300元的勞工（約306萬人，據中央社引述勞動部勞動保險司）與其投保單位；費率調整適用勞保普通事故保險被保險人。",
+      "what": "最低月投保薪資提高到3萬900元、分級表剩10級；勞保普通事故費率同日起調為13%（勞保局）。",
+      "when": "勞動部2026年11月17日修正發布；2027年1月1日起生效。",
+      "first_published": "2026-11-18T15:19:00+08:00",
+      "published": "2026-11-18T15:19:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "tw-min-wage-penalty-0101"
+        }
+      ],
+      "sources": [
+        {
+          "name": "中央社 生活",
+          "title": "勞保投保薪資分級表更新剩10級　306萬勞工配合逕調",
+          "url": "https://www.cna.com.tw/news/ahel/202611180190.aspx"
+        },
+        {
+          "name": "勞動部勞工保險局",
+          "title": "116年1月1日起適用之勞保、災保投保薪資分級表、保險費分攤金額表及「勞保、就保、災保保險費試算」系統資料已更新，歡迎參閱使用。",
+          "url": "https://www.bli.gov.tw/0110324.html"
+        }
+      ],
+      "corrected": {
+        "date": "2026-11-18",
+        "type": "事實更正",
+        "note": "306萬人的估計單位更正為勞動部勞動保險司（原誤植為勞保局），數字不變。"
+      },
+      "archived": "2026-11-20T18:36:31+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "intl-paho-measles-status-1117",
+      "tab": "intl",
+      "category": "健康醫療",
+      "status": "完整版",
+      "title": "泛美衛生組織宣布美國、墨西哥、玻利維亞失去麻疹消除地位",
+      "summary": "泛美衛生組織（PAHO）11月17日宣布，美國、墨西哥與玻利維亞境內同一麻疹病毒株已連續傳播12個月以上，認定恢復地方性傳播，三國都失去麻疹消除地位。這項決定是PAHO署長接受區域監測委員會11月10日至13日會議的評估建議後作出。PAHO統計，截至11月13日美洲今年累計確診58,213例、死亡82例，去年同期為12,806例。據BBC報導，美國今年已有約5400例、10人死亡；美國疾管中心（CDC）表示將擴大疫苗可近性，爭取恢復消除地位。",
+      "who": "美國、墨西哥、玻利維亞民眾，特別是未接種麻疹疫苗者。",
+      "what": "三國失去麻疹消除地位；據BBC引述PAHO官員，三國須提交提升疫苗接種的矯正行動計畫。",
+      "when": "PAHO於2026年11月17日（華盛頓時間）宣布。",
+      "first_published": "2026-11-18T00:07:48+08:00",
+      "published": "2026-11-18T00:07:48+08:00",
+      "updated": null,
+      "copycheck_names": [
+        "PAHO",
+        "CDC",
+        "Jarbas Barbosa"
+      ],
+      "related": [
+        {
+          "id": "intl-us-measles-status-1115"
+        },
+        {
+          "id": "tw-cdc-us-measles-alert-1117"
+        }
+      ],
+      "sources": [
+        {
+          "name": "世界衛生組織美洲區域辦公室（泛美衛生組織 PAHO）",
+          "title": "PAHO urges countries to step up efforts to stop measles outbreaks and move towards elimination",
+          "url": "https://www.paho.org/en/news/17-11-2026-paho-urges-countries-step-efforts-stop-measles-outbreaks-and-move-towards"
+        },
+        {
+          "name": "BBC World",
+          "title": "US loses measles elimination status after 26 years amid record case numbers",
+          "url": "https://www.bbc.co.uk/news/articles/c977p71jx0xxo"
+        }
+      ],
+      "corrected": {
+        "date": "2026-11-18",
+        "type": "用語調整",
+        "note": "依PAHO原文 elimination status，「清零地位」改為「消除地位」，事實不變。"
+      },
+      "archived": "2026-11-20T18:36:31+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
     {
       "id": "intl-imperial-brands-job-cuts-1117",
       "tab": "intl",
