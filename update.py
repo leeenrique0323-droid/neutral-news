@@ -51,7 +51,7 @@ BULLET_MAX = 260           # characters per bullet
 FETCH_LOG_MAX = 500        # data/fetch_log.jsonl keeps only the last this-many lines
 FETCH_REUSE_MINUTES = 10   # `fetch` reuses data/new_candidates.json younger than this unless --force
 TITLE_SIM_MAX = 0.85       # validate: normalized-title similarity above this (with identical numbers) = duplicate
-SHARED_URL_HOSTS = ("cwa.gov.tw",)  # official hub pages legitimately cited as primary source by several items
+SHARED_URL_HOSTS = ("cwa.gov.tw", "dgbas.gov.tw")  # official hub pages legitimately cited as primary source by several items
 
 def load():
     return json.load(open(NEWS, encoding="utf-8"))
