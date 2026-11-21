@@ -314,8 +314,8 @@
       "item_title": "115年度中央政府總預算追加預算三讀　歲出追加6076億元照列",
       "item_id": "tw-supplementary-budget-1120",
       "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236884",
-      "what_was_wrong": "摘要列入「2028年1月底前凍漲油價與民生電價」主決議，但只有公視一個來源，政治類規定要有官方來源。",
-      "correction": "刪除這句，待立法院或主計總處公告後再補。三讀結果與金額不變。"
+      "what_was_wrong": "摘要列入「2028年1月底前凍漲油價與民生電價」主決議，以及撥補台電與中油1725億元、增資中油2338億元，這些只有公視一個來源，主計總處新聞稿未列，政治類規定要有官方來源。",
+      "correction": "刪除這些內容，待立法院或主計總處公告後再補。三讀結果與總金額不變。"
     },
     {
       "date": "2026-11-21",
@@ -324,7 +324,7 @@
       "item_id": "intl-uk-eu-deals-1120",
       "url": "https://www.gov.uk/government/news/costs-cut-prime-minister-secures-deal-with-eu-to-cut-costs-keep-prices-down-and-create-opportunities-for-young-people-worth-up-to-17-billion-per-year",
       "what_was_wrong": "缺少英國政府官方來源；學費問題只寫了歐盟一方的說法。",
-      "correction": "補上英國政府11/20新聞稿；補上DW報導的Burnham與范德賴恩雙方說法。"
+      "correction": "補上英國政府11/20新聞稿；學費問題補上衛報報導的英方官員說法（與協議無關）及DW報導雙方會再談。"
     }
   ]
 }
