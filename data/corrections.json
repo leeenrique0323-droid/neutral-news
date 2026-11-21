@@ -307,6 +307,24 @@
       "url": "https://www.paho.org/en/news/17-11-2026-paho-urges-countries-step-efforts-stop-measles-outbreaks-and-move-towards",
       "what_was_wrong": "標題與摘要寫「麻疹清零地位」「清零認定」，與PAHO原文 measles elimination status 用語不一致。",
       "correction": "改為「麻疹消除地位」。三國名單、日期與數字都不變。"
+    },
+    {
+      "date": "2026-11-21",
+      "type": "用語調整",
+      "item_title": "115年度中央政府總預算追加預算三讀　歲出追加6076億元照列",
+      "item_id": "tw-supplementary-budget-1120",
+      "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236884",
+      "what_was_wrong": "摘要列入「2028年1月底前凍漲油價與民生電價」主決議，但只有公視一個來源，政治類規定要有官方來源。",
+      "correction": "刪除這句，待立法院或主計總處公告後再補。三讀結果與金額不變。"
+    },
+    {
+      "date": "2026-11-21",
+      "type": "用語調整",
+      "item_title": "英國與歐盟宣布食品貿易、碳交易連結與青年交流3項協議",
+      "item_id": "intl-uk-eu-deals-1120",
+      "url": "https://www.gov.uk/government/news/costs-cut-prime-minister-secures-deal-with-eu-to-cut-costs-keep-prices-down-and-create-opportunities-for-young-people-worth-up-to-17-billion-per-year",
+      "what_was_wrong": "缺少英國政府官方來源；學費問題只寫了歐盟一方的說法。",
+      "correction": "補上英國政府11/20新聞稿；補上DW報導的Burnham與范德賴恩雙方說法。"
     }
   ]
 }
