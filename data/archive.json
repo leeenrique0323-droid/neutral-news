@@ -1,6 +1,112 @@
 {
-  "updated": "2026-11-21T18:42:52+08:00",
+  "updated": "2026-11-22T18:36:06+08:00",
   "items": [
+    {
+      "id": "intl-uk-eu-deals-1120",
+      "tab": "intl",
+      "category": "政治",
+      "status": "快訊・初步資訊",
+      "title": "英國與歐盟宣布食品貿易、碳交易連結與青年交流3項協議",
+      "summary": "英國首相Andy Burnham與歐盟執委會主席范德賴恩等人11月20日在布魯塞爾宣布3項協議：簡化食品進出口手續、連結雙方碳排放交易制度，以及「青年體驗計畫」。據DW報導，該計畫讓雙方各10萬名30歲以下民眾免現行簽證規定到對方工作、求學或旅遊，最長3年；英國也將重回伊拉斯謨斯＋（Erasmus+）交換計畫。據衛報報導，相關法案下週送英國國會；歐盟表示若英國不讓歐盟學生繳本國生學費，可能在6個月後阻擋協議。英方官員則表示學費與3項協議完全無關（衛報）。據DW，學費未談定，雙方表示會再談。",
+      "who": "英國與歐盟的30歲以下民眾、雙邊食品進出口業者及碳排放交易制度涵蓋的企業。",
+      "what": "食品貿易手續簡化、碳交易制度連結、青年免簽證居留名額；BBC報導，英國超市業者歡迎協議，但未承諾因此降價。",
+      "when": "2026年11月20日宣布；原報導未載明各項協議的生效日期。",
+      "first_published": "2026-11-20T22:30:00+08:00",
+      "published": "2026-11-20T22:30:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "英國政府",
+          "title": "'Costs cut': Prime Minister secures deal with EU to cut costs, keep prices down and create opportunities for young people worth up to £17 billion per year",
+          "url": "https://www.gov.uk/government/news/costs-cut-prime-minister-secures-deal-with-eu-to-cut-costs-keep-prices-down-and-create-opportunities-for-young-people-worth-up-to-17-billion-per-year"
+        },
+        {
+          "name": "DW World",
+          "title": "EU and UK strike 'landmark deal' to strengthen ties after Brexit",
+          "url": "https://www.dw.com/en/eu-and-uk-strike-landmark-deal-to-strengthen-ties-after-brexit/a-80001076"
+        },
+        {
+          "name": "衛報 Guardian",
+          "title": "Rejoining EU ‘on the table’ as UK strikes deals on trade and young people",
+          "url": "https://www.theguardian.com/politics/2026/nov/21/rejoining-eu-uk-trade-youth-deals-ed-miliband"
+        },
+        {
+          "name": "BBC Business",
+          "title": "Faisal Islam: This cost-cutting UK-EU deal doesn't mean lower prices will follow",
+          "url": "https://www.bbc.co.uk/news/articles/cm1wr029evnqo"
+        },
+        {
+          "name": "衛報 Guardian",
+          "title": "Burnham has agreed EU reset deal with tuition fees issue unresolved, says No 10",
+          "url": "https://www.theguardian.com/politics/2026/nov/20/fallout-over-tuition-fees-may-snag-burnhams-eu-deal-say-insiders"
+        }
+      ],
+      "corrected": {
+        "date": "2026-11-21",
+        "type": "用語調整",
+        "note": "補上英國政府官方新聞稿；學費問題補上英方與歐盟雙方說法。"
+      },
+      "archived": "2026-11-22T18:36:06+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "tw-tra-holiday-extra-trains-1124",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "台鐵行憲紀念日、元旦連假共加開250列次　11月24日、12月1日凌晨0時起分別開放訂票",
+      "summary": "想在年底兩個3天連假搭台鐵的旅客，訂票日期已公布：行憲紀念日疏運期（12月24日至28日）加開的111列次，11月24日凌晨0時起可訂；元旦疏運期（12月31日至2027年1月4日）加開的139列次，其中28列次是跨年散場加班車，12月1日凌晨0時起可訂。東線實名制列車晚一天開放，限設籍花蓮、台東的民眾與其配偶、一親等直系血親。據中央社引述台鐵新聞稿，兩段期間EMU3000暫停自由座，改為乘車當日每班限售200張無座票，親子車廂也暫停專用售票。",
+      "who": "12月24日至28日、12月31日至2027年1月4日要搭台鐵的旅客；東線實名制列車限設籍花蓮縣、台東縣（身分證U、V開頭）民眾及其配偶、一親等直系血親。",
+      "what": "兩段連假疏運期共加開250列次（111＋139）；EMU3000暫停自由座、每班當日限售200張無座票（不得進入6車騰雲座艙）；親子車廂改一般車廂售票（據中央社引述台鐵）。",
+      "when": "行憲紀念日加班車11月24日0時開放訂票（實名制11月25日0時）；元旦加班車12月1日0時開放訂票（實名制12月2日0時）。",
+      "first_published": "2026-11-20T17:59:00+08:00",
+      "published": "2026-11-20T17:59:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "行憲紀念日、元旦連假　台鐵共加開250列次",
+          "url": "https://www.cna.com.tw/news/ahel/202611200255.aspx"
+        },
+        {
+          "name": "聯合新聞網",
+          "title": "行憲紀念日連假接力元旦假期 台鐵宣布開放訂票日期",
+          "url": "https://udn.com/news/story/7266/9891742"
+        }
+      ],
+      "valid_until": "2026-11-24",
+      "evergreen": true,
+      "archived": "2026-11-22T18:36:06+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "tw-supplementary-budget-1120",
+      "tab": "tw",
+      "category": "政治",
+      "status": "快訊・初步資訊",
+      "title": "115年度中央政府總預算追加預算三讀　歲出追加6076億元照列",
+      "summary": "行政院主計總處公布，115年度中央政府總預算追加預算案11月20日完成三讀，歲入追加828億元、歲出追加6076億元均照列，另增加債務還本345億元。追加後全年歲入3兆5471億元、歲出3兆5946億元，差短475億元，連同債務還本1610億元，共需融資2085億元，全數以舉借債務支應。",
+      "who": "中央政府各機關。",
+      "what": "總預算歲出增加6076億元，差短與債務還本以舉債支應（據主計總處）。",
+      "when": "2026年11月20日三讀通過。",
+      "first_published": "2026-11-20T16:15:00+08:00",
+      "published": "2026-11-20T16:15:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "行政院主計總處",
+          "title": "115年度中央政府總預算追加預算案立法院審議結果",
+          "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236884"
+        }
+      ],
+      "corrected": {
+        "date": "2026-11-21",
+        "type": "用語調整",
+        "note": "刪除僅有單一媒體來源的主決議與撥補、增資金額，待官方公告後再補。"
+      },
+      "archived": "2026-11-22T18:36:06+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
     {
       "id": "tw-short-selling-limit-1120",
       "tab": "tw",
