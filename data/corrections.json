@@ -325,6 +325,15 @@
       "url": "https://www.gov.uk/government/news/costs-cut-prime-minister-secures-deal-with-eu-to-cut-costs-keep-prices-down-and-create-opportunities-for-young-people-worth-up-to-17-billion-per-year",
       "what_was_wrong": "缺少英國政府官方來源；學費問題只寫了歐盟一方的說法。",
       "correction": "補上英國政府11/20新聞稿；學費問題補上衛報報導的英方官員說法（與協議無關）及DW報導雙方會再談。"
+    },
+    {
+      "date": "2026-11-23",
+      "type": "用語調整",
+      "item_title": "比利時全國罷工　航管暫停服務14小時　布魯塞爾等機場11月23日航班幾乎全取消",
+      "item_id": "intl-belgium-strike-flights-1123",
+      "url": "https://www.aljazeera.com/news/2026/11/23/belgiums-airports-set-to-shut-down-due-to-anti-austerity-strike",
+      "what_was_wrong": "摘要只有工會與機場方的說法，未說明是否有政府回應。",
+      "correction": "補一句：目前報導未見比利時政府對罷工的回應（Al Jazeera、Politico 原文皆無）。"
     }
   ]
 }
