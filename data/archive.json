@@ -1,6 +1,123 @@
 {
-  "updated": "2026-11-23T18:40:23+08:00",
+  "updated": "2026-11-25T17:04:12+08:00",
   "items": [
+    {
+      "id": "tw-unemployment-oct-1123",
+      "tab": "tw",
+      "category": "工作",
+      "status": "完整版",
+      "title": "主計總處：10月失業率3.35%　失業人數40.4萬人、比9月少1千人",
+      "summary": "行政院主計總處11月23日公布10月人力資源統計：失業率3.35%，比9月低0.01個百分點，據中央社報導為連續第2個月下降；扣除季節因素後是3.33%，與9月相同。失業人數40.4萬人，月減1千人，中央社引述主計總處說明，主因是第一次找工作的失業者少了3千人，因不滿意原本工作而失業的則多了2千人。就業人數1,164.4萬人，月增4千人；勞動力參與率59.63%，上升0.04個百分點。",
+      "who": "求職者與受僱者，包括第一次找工作的人。",
+      "what": "10月就業失業統計：失業率3.35%、季調後3.33%、失業人數40.4萬人、勞動力參與率59.63%（主計總處）。",
+      "when": "統計月份為115年10月，主計總處2026年11月23日公布。",
+      "first_published": "2026-11-23T16:11:00+08:00",
+      "published": "2026-11-23T16:11:00+08:00",
+      "updated": null,
+      "related": [
+        {
+          "id": "tw-unemployment-sep-1023"
+        }
+      ],
+      "sources": [
+        {
+          "name": "行政院主計總處",
+          "title": "115年10月就業人數為1,164.4萬人，失業人數為40.4萬人，失業率為3.35%，季調失業率為3.33%，勞動力參與率為59.63%",
+          "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236878"
+        },
+        {
+          "name": "中央社 財經",
+          "title": "10月失業率降至3.35%　連2個月下滑",
+          "url": "https://www.cna.com.tw/news/afe/202611230166.aspx"
+        }
+      ],
+      "archived": "2026-11-25T17:04:12+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "intl-belgium-strike-flights-1123",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "比利時全國罷工　航管暫停服務14小時　布魯塞爾等機場11月23日航班幾乎全取消",
+      "summary": "比利時主要工會11月23日（當地時間）發起全國罷工，訴求反對總理德威弗政府的撙節與改革措施。航管業者Skeyes表示，部分航管員參加罷工、人力不足以安全處理一般航班，當地上午7時至晚間9時暫停相關服務，只保留緊急與攸關安全的飛行。據Politico，布魯塞爾機場確認這段時間起降航班全部取消，沙勒羅瓦機場表示沒有飛機能起降；據半島電視台，代表約25家航空公司的團體說，這是11個月來第11次影響比利時領空的罷工。布魯塞爾的大眾運輸也預計受影響。目前報導未見比利時政府對罷工的回應。",
+      "who": "11月23日預定在比利時各機場起降的旅客與航空公司（沙勒羅瓦機場稱數千名旅客受影響），以及比利時大眾運輸使用者。",
+      "what": "航管服務暫停約14小時，布魯塞爾、沙勒羅瓦等機場航班取消；工會同日在布魯塞爾舉行示威。",
+      "when": "2026年11月23日當地時間上午7時至晚間9時（台灣時間23日下午2時至24日凌晨4時）。",
+      "first_published": "2026-11-23T11:15:00+08:00",
+      "published": "2026-11-23T11:15:00+08:00",
+      "updated": "2026-11-23T19:00:00+08:00",
+      "sources": [
+        {
+          "name": "Al Jazeera English",
+          "title": "Belgium’s airports set to shut down due to anti-austerity strike",
+          "url": "https://www.aljazeera.com/news/2026/11/23/belgiums-airports-set-to-shut-down-due-to-anti-austerity-strike"
+        },
+        {
+          "name": "Politico Europe",
+          "title": "All flights to and from Brussels, Charleroi airports canceled Monday amid strike",
+          "url": "https://www.politico.eu/article/brussels-charleroi-airports-cancel-most-flights-monday-belgian-strike/"
+        }
+      ],
+      "corrected": {
+        "date": "2026-11-23",
+        "type": "用語調整",
+        "note": "補註目前報導未見比利時政府對罷工的回應。"
+      },
+      "archived": "2026-11-25T17:04:12+08:00",
+      "archive_reason": "過期：首次發布日已滿兩個日曆日"
+    },
+    {
+      "id": "tw-election-extra-flights-trains-1124",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "投票返鄉：離島第2波加班機1,884席11月24日上午9時開放訂位　台鐵東線再加開2列次",
+      "summary": "11月28日投票日前後要往返澎湖、金門、馬祖的旅客，11月24日上午9時起可訂民航局協調的第2波加班機：共20架次（含換用較大機型）、1,884個座位，其中澎湖、金門航線各872席，馬祖140席；民航局表示選舉期間先前已安排的座位合計約7.1萬個。據中央社引述台鐵新聞稿，台鐵在11月27日與29日共加開2列次東部幹線太魯閣號，11月24日凌晨0時起可用網路、台鐵e訂通、超商與電話語音訂票。民航局提醒尖峰時段較難訂到，可改選其他日期或離峰班次，離島航班也較易受天候影響。",
+      "who": "11月28日投票日前後往返澎湖、金門、馬祖，以及搭乘台鐵東部幹線的旅客。",
+      "what": "離島航線再增20架次、1,884個座位（民航局）；台鐵東部幹線加開太魯閣號2列次（據中央社引述台鐵）。",
+      "when": "加班機11月24日上午9時開放訂位；台鐵加開列車11月24日凌晨0時開放訂票，行駛日為11月27日、29日。",
+      "first_published": "2026-11-23T11:11:00+08:00",
+      "published": "2026-11-23T11:11:00+08:00",
+      "updated": null,
+      "valid_until": "2026-11-24",
+      "evergreen": true,
+      "related": [
+        {
+          "id": "tw-offshore-island-extra-flights-1120"
+        },
+        {
+          "id": "tw-tra-extra-trains-1120"
+        },
+        {
+          "id": "tw-election-transport-1127"
+        }
+      ],
+      "sources": [
+        {
+          "name": "交通部民用航空局",
+          "title": "週末投票，離島航線第二波加班機明日開放訂位",
+          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&lang=1&ngid=1&nid=2599"
+        },
+        {
+          "name": "中央社 生活",
+          "title": "因應投票日疏運　離島第2波加班機24日開賣",
+          "url": "https://www.cna.com.tw/news/ahel/202611230052.aspx"
+        },
+        {
+          "name": "中央社 生活",
+          "title": "台鐵東部幹線因應投票再加開2列次　24日開放訂票",
+          "url": "https://www.cna.com.tw/news/ahel/202611230168.aspx"
+        },
+        {
+          "name": "臺鐵公司",
+          "title": "臺鐵公司因應地方公職人員選舉返鄉投票旅運需求 東線再加開2列次",
+          "url": "https://www.railway.gov.tw/tra-tip-web/tip/tip009/tip911/newsDtl?newsNo=8ae4cac3a204a41f01a2075866010d1e&page=0"
+        }
+      ],
+      "archived": "2026-11-25T17:03:53+08:00",
+      "archive_reason": "過期：已過有效期限（或達14天上限）"
+    },
     {
       "id": "intl-eu-indonesia-trade-deal-1121",
       "tab": "intl",

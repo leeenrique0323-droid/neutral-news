@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-24T17:07:20+08:00",
+  "updated": "2026-11-25T17:04:29+08:00",
   "categories": [
     "政治",
     "財經",
@@ -9,6 +9,127 @@
     "安全"
   ],
   "items": [
+    {
+      "id": "intl-bangladesh-garment-wage-1201",
+      "tab": "intl",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "孟加拉成衣業最低月薪調高36%為1萬7千塔卡　12月1日起實施",
+      "summary": "據新加坡亞洲新聞台引述路透社報導，孟加拉政府任命的工資委員會11月25日凌晨通過新的工資結構，成衣工人最低月薪由1萬2,500塔卡調高36%至1萬7,000塔卡（約139美元），12月1日起實施。工人原本要求3萬塔卡。法新社（經巴基斯坦Dawn報）報導，勞方代表表示結果「不完全滿意」但呼籲工人返回工廠。孟加拉成衣業僱用超過400萬人，占出口收入八成以上。",
+      "who": "孟加拉超過400萬名成衣工人及相關工廠。",
+      "what": "成衣業最低月薪由12,500塔卡調為17,000塔卡（+36%）。",
+      "when": "2026年12月1日起。",
+      "first_published": "2026-11-25T12:11:00+08:00",
+      "published": "2026-11-25T12:11:00+08:00",
+      "updated": null,
+      "valid_until": "2026-12-01",
+      "sources": [
+        {
+          "name": "CNA Singapore",
+          "title": "Bangladesh raises garment workers' minimum wage 36% after protests",
+          "url": "https://www.channelnewsasia.com/asia/bangladesh-raises-garment-workers-minimum-wage-after-protests-6580411"
+        },
+        {
+          "name": "Dawn",
+          "title": "Bangladesh garment workers win 36pc wage rise",
+          "url": "https://www.dawn.com/news/2046973/bangladesh-garment-workers-win-36pc-wage-rise"
+        }
+      ],
+      "related": [
+        {
+          "id": "intl-bangladesh-garment-strike-1116"
+        }
+      ]
+    },
+    {
+      "id": "intl-uk-energy-price-cap-jan",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "英國能源監管機構Ofgem：2027年1月起電費與瓦斯費上限調高26%",
+      "summary": "英國廣播公司（BBC）報導，英國能源監管機構Ofgem宣布，英格蘭、蘇格蘭與威爾斯的能源價格上限在2027年1月到3月調高26%。以一般用量、直接扣款繳費的家庭計算，若漲幅維持一整年，年度帳單會從1,723英鎊增至2,166英鎊，約每月多37英鎊。Ofgem表示原因是供應商的批發成本上升，主要受伊朗戰事影響，近三個月批發天然氣價格上漲33%。英國政府將從1月4日起發給數百萬戶每戶100英鎊。",
+      "who": "英格蘭、蘇格蘭與威爾斯適用能源價格上限的數百萬家庭。",
+      "what": "能源價格上限調高26%；一般家庭年度帳單估由1,723英鎊增至2,166英鎊（據Ofgem說法，經BBC報導）；政府另發100英鎊補助。",
+      "when": "2027年1月1日至3月31日這一季；補助自1月4日起發放。",
+      "first_published": "2026-11-25T08:03:00+08:00",
+      "published": "2026-11-25T08:03:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "BBC",
+          "title": "Energy bills to rise by 26% from January",
+          "url": "https://www.bbc.co.uk/news/articles/cm20qnq33e90o"
+        }
+      ]
+    },
+    {
+      "id": "tw-teacher-childcare-leave-0101",
+      "tab": "tw",
+      "category": "工作",
+      "status": "快訊・初步資訊",
+      "title": "教育人員育嬰留職停薪2027年1月1日起放寬至子女8歲以下　總長3年",
+      "summary": "據中央社報導，教育部11月20日修正「教育人員留職停薪辦法」部分條文，配合11月13日三讀的性別平等工作法，預計2027年1月1日施行。撫育子女或孫子女申請留職停薪的年齡上限由3歲以下放寬為8歲以下，可請到孩子滿9歲，合計最長3年，多名子女合併計算。另新增照顧罹患重大傷病的兄弟姊妹可申請留職停薪，最長1年。（目前僅中央社報導）",
+      "who": "各級學校等適用教育人員留職停薪辦法的教育人員。",
+      "what": "育兒留職停薪子女年齡由3歲以下放寬為8歲以下（總長3年）；新增照顧重大傷病兄弟姊妹事由（最長1年）。",
+      "when": "據中央社，預計2027年1月1日施行。",
+      "first_published": "2026-11-25T14:58:00+08:00",
+      "published": "2026-11-25T14:58:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "教育人員留職停薪　撫育8歲以下子女最多可請3年",
+          "url": "https://www.cna.com.tw/news/ahel/202611250165.aspx"
+        }
+      ],
+      "related": [
+        {
+          "id": "tw-gender-equality-leave-law-1113"
+        }
+      ]
+    },
+    {
+      "id": "tw-tra-timetable-1229",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "台鐵12月29日起時刻微調81列次　平日早上加開樹林往七堵區間快車",
+      "summary": "據中央社報導台鐵公司新聞稿，台鐵自2026年12月29日起調整81個列次的時刻，其中23列次變動5分鐘以上。週一到週五早上7時25分將增開一班由樹林開往七堵的1002次區間快車；彰化到三義之間每天增開2列次區間快車；六家線有28列次（含內灣線2列次）配合高鐵新竹站轉乘重新安排。台鐵表示新時刻可在官網與「台鐵e訂通」App查詢。",
+      "who": "搭乘台鐵北部、中部（山線）與六家線、內灣線的旅客。",
+      "what": "共81列次時刻調整（23列次變動5分鐘以上）；平日上午增開樹林→七堵1002次區間快車；彰化—三義每日增開區間快車2列次；部分列車增加停靠站或延長行駛。",
+      "when": "2026年12月29日起。",
+      "first_published": "2026-11-25T09:57:00+08:00",
+      "published": "2026-11-25T09:57:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "台鐵時刻表12/29起微調影響81列次　週一至五通勤尖峰增1樹林七堵區間快車",
+          "url": "https://www.cna.com.tw/news/ahel/202611250039.aspx"
+        }
+      ]
+    },
+    {
+      "id": "tw-earthquake-taitung-115081-1125",
+      "tab": "tw",
+      "category": "安全",
+      "status": "完整版",
+      "title": "臺東東南部海域規模5.5地震　蘭嶼最大震度4級",
+      "summary": "中央氣象署第081號地震資訊：11月25日下午4點47分，臺灣東南部海域發生芮氏規模5.5地震，震央在臺東縣政府南南東方101.9公里，深度16.7公里。臺東縣蘭嶼測得最大震度4級，屏東縣恆春、鵝鑾鼻、滿州與高雄市旗山2級，臺東其他地區及多個縣市1級。氣象署表示這起地震預估達災防告警（PWS）發送門檻，範圍為臺東縣。",
+      "who": "臺東縣（特別是蘭嶼）、屏東縣南部與高雄市部分地區的民眾。",
+      "what": "各地震度：臺東縣最大4級（蘭嶼），屏東縣與高雄市最大2級，雲林、嘉義、臺南、花蓮、南投等地最大1級。原報導未載明災損。",
+      "when": "2026年11月25日16時47分17秒（台灣時間）。",
+      "first_published": "2026-11-25T16:47:17+08:00",
+      "published": "2026-11-25T16:47:17+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "中央氣象署",
+          "title": "地震資訊 第081號",
+          "url": "https://scweb.cwa.gov.tw/zh-tw/earthquake/details/2026081"
+        }
+      ]
+    },
     {
       "id": "tw-thsr-constitution-day-extra-trains-1126",
       "tab": "tw",
@@ -31,117 +152,6 @@
           "url": "https://www.cna.com.tw/news/ahel/202611240163.aspx"
         }
       ]
-    },
-    {
-      "id": "tw-unemployment-oct-1123",
-      "tab": "tw",
-      "category": "工作",
-      "status": "完整版",
-      "title": "主計總處：10月失業率3.35%　失業人數40.4萬人、比9月少1千人",
-      "summary": "行政院主計總處11月23日公布10月人力資源統計：失業率3.35%，比9月低0.01個百分點，據中央社報導為連續第2個月下降；扣除季節因素後是3.33%，與9月相同。失業人數40.4萬人，月減1千人，中央社引述主計總處說明，主因是第一次找工作的失業者少了3千人，因不滿意原本工作而失業的則多了2千人。就業人數1,164.4萬人，月增4千人；勞動力參與率59.63%，上升0.04個百分點。",
-      "who": "求職者與受僱者，包括第一次找工作的人。",
-      "what": "10月就業失業統計：失業率3.35%、季調後3.33%、失業人數40.4萬人、勞動力參與率59.63%（主計總處）。",
-      "when": "統計月份為115年10月，主計總處2026年11月23日公布。",
-      "first_published": "2026-11-23T16:11:00+08:00",
-      "published": "2026-11-23T16:11:00+08:00",
-      "updated": null,
-      "related": [
-        {
-          "id": "tw-unemployment-sep-1023"
-        }
-      ],
-      "sources": [
-        {
-          "name": "行政院主計總處",
-          "title": "115年10月就業人數為1,164.4萬人，失業人數為40.4萬人，失業率為3.35%，季調失業率為3.33%，勞動力參與率為59.63%",
-          "url": "https://www.dgbas.gov.tw/News_Content.aspx?n=3602&s=236878"
-        },
-        {
-          "name": "中央社 財經",
-          "title": "10月失業率降至3.35%　連2個月下滑",
-          "url": "https://www.cna.com.tw/news/afe/202611230166.aspx"
-        }
-      ]
-    },
-    {
-      "id": "tw-election-extra-flights-trains-1124",
-      "tab": "tw",
-      "category": "生活",
-      "status": "快訊・初步資訊",
-      "title": "投票返鄉：離島第2波加班機1,884席11月24日上午9時開放訂位　台鐵東線再加開2列次",
-      "summary": "11月28日投票日前後要往返澎湖、金門、馬祖的旅客，11月24日上午9時起可訂民航局協調的第2波加班機：共20架次（含換用較大機型）、1,884個座位，其中澎湖、金門航線各872席，馬祖140席；民航局表示選舉期間先前已安排的座位合計約7.1萬個。據中央社引述台鐵新聞稿，台鐵在11月27日與29日共加開2列次東部幹線太魯閣號，11月24日凌晨0時起可用網路、台鐵e訂通、超商與電話語音訂票。民航局提醒尖峰時段較難訂到，可改選其他日期或離峰班次，離島航班也較易受天候影響。",
-      "who": "11月28日投票日前後往返澎湖、金門、馬祖，以及搭乘台鐵東部幹線的旅客。",
-      "what": "離島航線再增20架次、1,884個座位（民航局）；台鐵東部幹線加開太魯閣號2列次（據中央社引述台鐵）。",
-      "when": "加班機11月24日上午9時開放訂位；台鐵加開列車11月24日凌晨0時開放訂票，行駛日為11月27日、29日。",
-      "first_published": "2026-11-23T11:11:00+08:00",
-      "published": "2026-11-23T11:11:00+08:00",
-      "updated": null,
-      "valid_until": "2026-11-24",
-      "evergreen": true,
-      "related": [
-        {
-          "id": "tw-offshore-island-extra-flights-1120"
-        },
-        {
-          "id": "tw-tra-extra-trains-1120"
-        },
-        {
-          "id": "tw-election-transport-1127"
-        }
-      ],
-      "sources": [
-        {
-          "name": "交通部民用航空局",
-          "title": "週末投票，離島航線第二波加班機明日開放訂位",
-          "url": "https://www.caa.gov.tw/NewsPublish-Content.aspx?a=381&lang=1&ngid=1&nid=2599"
-        },
-        {
-          "name": "中央社 生活",
-          "title": "因應投票日疏運　離島第2波加班機24日開賣",
-          "url": "https://www.cna.com.tw/news/ahel/202611230052.aspx"
-        },
-        {
-          "name": "中央社 生活",
-          "title": "台鐵東部幹線因應投票再加開2列次　24日開放訂票",
-          "url": "https://www.cna.com.tw/news/ahel/202611230168.aspx"
-        },
-        {
-          "name": "臺鐵公司",
-          "title": "臺鐵公司因應地方公職人員選舉返鄉投票旅運需求 東線再加開2列次",
-          "url": "https://www.railway.gov.tw/tra-tip-web/tip/tip009/tip911/newsDtl?newsNo=8ae4cac3a204a41f01a2075866010d1e&page=0"
-        }
-      ]
-    },
-    {
-      "id": "intl-belgium-strike-flights-1123",
-      "tab": "intl",
-      "category": "生活",
-      "status": "快訊・初步資訊",
-      "title": "比利時全國罷工　航管暫停服務14小時　布魯塞爾等機場11月23日航班幾乎全取消",
-      "summary": "比利時主要工會11月23日（當地時間）發起全國罷工，訴求反對總理德威弗政府的撙節與改革措施。航管業者Skeyes表示，部分航管員參加罷工、人力不足以安全處理一般航班，當地上午7時至晚間9時暫停相關服務，只保留緊急與攸關安全的飛行。據Politico，布魯塞爾機場確認這段時間起降航班全部取消，沙勒羅瓦機場表示沒有飛機能起降；據半島電視台，代表約25家航空公司的團體說，這是11個月來第11次影響比利時領空的罷工。布魯塞爾的大眾運輸也預計受影響。目前報導未見比利時政府對罷工的回應。",
-      "who": "11月23日預定在比利時各機場起降的旅客與航空公司（沙勒羅瓦機場稱數千名旅客受影響），以及比利時大眾運輸使用者。",
-      "what": "航管服務暫停約14小時，布魯塞爾、沙勒羅瓦等機場航班取消；工會同日在布魯塞爾舉行示威。",
-      "when": "2026年11月23日當地時間上午7時至晚間9時（台灣時間23日下午2時至24日凌晨4時）。",
-      "first_published": "2026-11-23T11:15:00+08:00",
-      "published": "2026-11-23T11:15:00+08:00",
-      "updated": "2026-11-23T19:00:00+08:00",
-      "sources": [
-        {
-          "name": "Al Jazeera English",
-          "title": "Belgium’s airports set to shut down due to anti-austerity strike",
-          "url": "https://www.aljazeera.com/news/2026/11/23/belgiums-airports-set-to-shut-down-due-to-anti-austerity-strike"
-        },
-        {
-          "name": "Politico Europe",
-          "title": "All flights to and from Brussels, Charleroi airports canceled Monday amid strike",
-          "url": "https://www.politico.eu/article/brussels-charleroi-airports-cancel-most-flights-monday-belgian-strike/"
-        }
-      ],
-      "corrected": {
-        "date": "2026-11-23",
-        "type": "用語調整",
-        "note": "補註目前報導未見比利時政府對罷工的回應。"
-      }
     }
   ]
 }

@@ -34,9 +34,9 @@ REQUIRED = ["id", "tab", "category", "status", "title", "summary", "who", "what"
 # --- expiry / length rules (keep in sync with AUTOMATION.md) ---
 # Normal items: at the daily 18:30 (Asia/Taipei) run, archive anything first published
 # two calendar days ago or earlier (e.g. an 11/11 item is moved at the 11/13 run).
-# Cutoff is 18:00 that day so a slightly early 18:30 run still picks them up.
+# Cutoff is 16:00 that day (run moved to 17:00 on 2026-11-25) so a slightly early run still picks them up.
 ARCHIVE_CALENDAR_DAYS = 2
-ARCHIVE_RUN_HOUR = 18
+ARCHIVE_RUN_HOUR = 16   # 2026-11-25: daily run moved to 17:00 (owner decision 11/24); cutoff 16:00
 VALID_MAX_DAYS = 14        # validate only: `valid_until` may not be more than 14 days after first_published; does not extend front-page life
 ONGOING_CATEGORY = "安全"  # active disaster alerts / 停班停課 (`ongoing` not yet ended) stay until officially lifted
 SUMMARY_MAX = 250          # normal summary (characters; 2026-10-29: was 300)
