@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26T17:12:01+08:00",
+  "updated": "2026-11-27T17:06:18+08:00",
   "categories": [
     "政治",
     "財經",
@@ -9,6 +9,103 @@
     "安全"
   ],
   "items": [
+    {
+      "id": "tw-civil-servant-childcare-leave-0101",
+      "tab": "tw",
+      "category": "工作",
+      "status": "完整版",
+      "title": "公務人員娩假延為72日、陪產假14日　考試院通過修正2027年1月1日實施",
+      "summary": "行政院11月26日說明，考試院院會當天審議通過《公務人員請假規則》與《公務人員留職停薪辦法》修正，配合11月13日三讀的性別平等工作法。重點有四：娩假從42日增為72日；陪產檢及陪產假從7日增為14日；育嬰（兒）留職停薪的子女年齡放寬到8歲以下，可留停到孩子滿9歲、最長3年；另新增60日育兒假，天數併入留職停薪計算，可依規定請領津貼。行政院表示，軍公教的家庭支持措施預定2027年1月1日同步實施。",
+      "who": "適用公務人員請假規則與留職停薪辦法的公務人員。",
+      "what": "娩假42→72日；陪產檢及陪產假7→14日；育嬰留停子女年齡放寬至8歲以下（最長3年）；新增60日育兒假（據行政院）。",
+      "when": "考試院2026年11月26日通過；據行政院，預定2027年1月1日實施。",
+      "first_published": "2026-11-27T17:20:00+08:00",
+      "published": "2026-11-27T17:20:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "行政院",
+          "title": "落實總統「台灣人口對策新戰略」 行政院推動公務人員請假規則及公務人員留職停薪辦法修正 擴大育兒照顧支持措施",
+          "url": "https://www.ey.gov.tw/Page/9277F759E41CCD91//a9416b6d-8e62-4367-8ad3-af34edf07613"
+        }
+      ],
+      "related": [
+        {
+          "id": "tw-gender-equality-leave-law-1113"
+        },
+        {
+          "id": "tw-teacher-childcare-leave-0101"
+        }
+      ]
+    },
+    {
+      "id": "tw-labor-insurance-auto-adjust-0101",
+      "tab": "tw",
+      "category": "工作",
+      "status": "完整版",
+      "title": "勞保局2027年1月1日起主動把投保薪資2萬9500、3萬300元者調為3萬900元　雇主免另申報",
+      "summary": "勞動部11月27日公布，配合最低工資2027年1月1日調為3萬900元，勞保、災保投保薪資分級表與勞退月提繳分級表同日修正適用。勞保局將主動替全時勞工中投保薪資或提繳工資為2萬9500元、3萬300元者，一律調成3萬900元，投保單位不必另外申報；部分工時等身分為3萬300元者也同日調整。勞保局會在11月份繳款單背面印通知，12月25日前寄出；實際被調整名單列在2027年1月份計費清單，隨繳款單於2月25日前寄發，單位核對不符可在繳款期限內反映。",
+      "who": "投保薪資或提繳工資為2萬9500元、3萬300元的勞工與其投保單位。",
+      "what": "由勞保局逕行調整為3萬900元，投保單位免申報；通知12月25日前寄出（據勞動部）。",
+      "when": "2027年1月1日起適用。",
+      "first_published": "2026-11-27T17:20:00+08:00",
+      "published": "2026-11-27T17:20:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "勞動部",
+          "title": "因應投保薪資(月提繳)分級表修正，勞保局主動辦理投保薪資及提繳工資逕調作業",
+          "url": "https://www.mol.gov.tw/1607/1632/1633/101409/"
+        }
+      ],
+      "related": [
+        {
+          "id": "tw-labor-insurance-grade-0101"
+        }
+      ]
+    },
+    {
+      "id": "intl-norse-atlantic-suspend-1126",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "挪威廉價長程航空Norse Atlantic暫停所有航班　稱找不到解方將申請破產",
+      "summary": "據BBC報導，挪威低成本長程航空公司Norse Atlantic 11月26日暫停全部航班，表示公司財務情況危急，若無法解決打算申請破產。該公司以12架波音787飛行倫敦蓋威克、羅馬、奧斯陸等歐洲機場的長程航線，原本有倫敦飛奧蘭多、開普敦、曼谷、普吉的班次。向它租用飛機與機組的巴基斯坦國際航空也取消部分英國航班。英國消費者團體Which?建議旅客先不要自行取消機票，以免失去退款權利。",
+      "who": "已訂Norse Atlantic航班的旅客，以及部分巴基斯坦國際航空英國航線旅客。",
+      "what": "暫停全部航班；公司表示若無解方將申請破產（據BBC）。",
+      "when": "2026年11月26日起暫停。",
+      "first_published": "2026-11-27T17:20:00+08:00",
+      "published": "2026-11-27T17:20:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "BBC Business",
+          "title": "Norse Atlantic suspends all flights as it faces potential collapse",
+          "url": "https://www.bbc.co.uk/news/articles/c9kgmd0ldy0lo"
+        }
+      ]
+    },
+    {
+      "id": "intl-australia-lng-reserve-law-1127",
+      "tab": "intl",
+      "category": "財經",
+      "status": "快訊・初步資訊",
+      "title": "澳洲國會通過天然氣保留法　2028年起LNG出口商最多須留20%供國內",
+      "summary": "據海峽時報引述路透報導，澳洲國會11月27日通過工黨政府的天然氣保留方案：自2028年起，液化天然氣（LNG）出口商須把最多20%的產量留給國內市場。法案11月26日深夜先在參議院過關，反對黨聯盟在政府同意排除西澳後表示不阻擋，修正後的法案27日回到眾議院通過。適用範圍是東岸的LNG計畫；西澳維持自身15%的保留政策。總理艾班尼斯說此法會對能源價格產生「下壓力道」，但沒說能省多少；批評者則擔心影響投資。",
+      "who": "澳洲東岸LNG出口商、澳洲家庭與企業用戶。",
+      "what": "2028年起LNG出口商最多20%產量保留給國內；西澳豁免（據海峽時報引述路透）。",
+      "when": "2026年11月27日國會通過；2028年起適用。",
+      "first_published": "2026-11-27T17:20:00+08:00",
+      "published": "2026-11-27T17:20:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "Straits Times Asia",
+          "title": "Australia clears law requiring LNG exporters to keep 20% for domestic use",
+          "url": "https://www.straitstimes.com/asia/australianz/australian-parliament-passes-government-plan-to-reserve-20-of-lng-for-domestic-market"
+        }
+      ]
+    },
     {
       "id": "tw-ezway-nhi-card-verify-1203",
       "tab": "tw",
@@ -98,127 +195,6 @@
           "name": "Yonhap",
           "title": "(3rd LD) BOK raises key rate to 3.25 pct amid strong growth, inflation, revises up 2027 forecast to 4.1 pct",
           "url": "https://en.yna.co.kr/view/AEN20261126001253320"
-        }
-      ]
-    },
-    {
-      "id": "intl-bangladesh-garment-wage-1201",
-      "tab": "intl",
-      "category": "工作",
-      "status": "快訊・初步資訊",
-      "title": "孟加拉成衣業最低月薪調高36%為1萬7千塔卡　12月1日起實施",
-      "summary": "據新加坡亞洲新聞台引述路透社報導，孟加拉政府任命的工資委員會11月25日凌晨通過新的工資結構，成衣工人最低月薪由1萬2,500塔卡調高36%至1萬7,000塔卡（約139美元），12月1日起實施。工人原本要求3萬塔卡。法新社（經巴基斯坦Dawn報）報導，勞方代表表示結果「不完全滿意」但呼籲工人返回工廠。孟加拉成衣業僱用超過400萬人，占出口收入八成以上。",
-      "who": "孟加拉超過400萬名成衣工人及相關工廠。",
-      "what": "成衣業最低月薪由12,500塔卡調為17,000塔卡（+36%）。",
-      "when": "2026年12月1日起。",
-      "first_published": "2026-11-25T12:11:00+08:00",
-      "published": "2026-11-25T12:11:00+08:00",
-      "updated": null,
-      "valid_until": "2026-12-01",
-      "sources": [
-        {
-          "name": "CNA Singapore",
-          "title": "Bangladesh raises garment workers' minimum wage 36% after protests",
-          "url": "https://www.channelnewsasia.com/asia/bangladesh-raises-garment-workers-minimum-wage-after-protests-6580411"
-        },
-        {
-          "name": "Dawn",
-          "title": "Bangladesh garment workers win 36pc wage rise",
-          "url": "https://www.dawn.com/news/2046973/bangladesh-garment-workers-win-36pc-wage-rise"
-        }
-      ],
-      "related": [
-        {
-          "id": "intl-bangladesh-garment-strike-1116"
-        }
-      ]
-    },
-    {
-      "id": "intl-uk-energy-price-cap-jan",
-      "tab": "intl",
-      "category": "生活",
-      "status": "快訊・初步資訊",
-      "title": "英國能源監管機構Ofgem：2027年1月起電費與瓦斯費上限調高26%",
-      "summary": "英國廣播公司（BBC）報導，英國能源監管機構Ofgem宣布，英格蘭、蘇格蘭與威爾斯的能源價格上限在2027年1月到3月調高26%。以一般用量、直接扣款繳費的家庭計算，若漲幅維持一整年，年度帳單會從1,723英鎊增至2,166英鎊，約每月多37英鎊。Ofgem表示原因是供應商的批發成本上升，主要受伊朗戰事影響，近三個月批發天然氣價格上漲33%。英國政府將從1月4日起發給數百萬戶每戶100英鎊。",
-      "who": "英格蘭、蘇格蘭與威爾斯適用能源價格上限的數百萬家庭。",
-      "what": "能源價格上限調高26%；一般家庭年度帳單估由1,723英鎊增至2,166英鎊（據Ofgem說法，經BBC報導）；政府另發100英鎊補助。",
-      "when": "2027年1月1日至3月31日這一季；補助自1月4日起發放。",
-      "first_published": "2026-11-25T08:03:00+08:00",
-      "published": "2026-11-25T08:03:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "BBC",
-          "title": "Energy bills to rise by 26% from January",
-          "url": "https://www.bbc.co.uk/news/articles/cm20qnq33e90o"
-        }
-      ]
-    },
-    {
-      "id": "tw-teacher-childcare-leave-0101",
-      "tab": "tw",
-      "category": "工作",
-      "status": "快訊・初步資訊",
-      "title": "教育人員育嬰留職停薪2027年1月1日起放寬至子女8歲以下　總長3年",
-      "summary": "據中央社報導，教育部11月20日修正「教育人員留職停薪辦法」部分條文，配合11月13日三讀的性別平等工作法，預計2027年1月1日施行。撫育子女或孫子女申請留職停薪的年齡上限由3歲以下放寬為8歲以下，可請到孩子滿9歲，合計最長3年，多名子女合併計算。另新增照顧罹患重大傷病的兄弟姊妹可申請留職停薪，最長1年。（目前僅中央社報導）",
-      "who": "各級學校等適用教育人員留職停薪辦法的教育人員。",
-      "what": "育兒留職停薪子女年齡由3歲以下放寬為8歲以下（總長3年）；新增照顧重大傷病兄弟姊妹事由（最長1年）。",
-      "when": "據中央社，預計2027年1月1日施行。",
-      "first_published": "2026-11-25T14:58:00+08:00",
-      "published": "2026-11-25T14:58:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "中央社",
-          "title": "教育人員留職停薪　撫育8歲以下子女最多可請3年",
-          "url": "https://www.cna.com.tw/news/ahel/202611250165.aspx"
-        }
-      ],
-      "related": [
-        {
-          "id": "tw-gender-equality-leave-law-1113"
-        }
-      ]
-    },
-    {
-      "id": "tw-tra-timetable-1229",
-      "tab": "tw",
-      "category": "生活",
-      "status": "快訊・初步資訊",
-      "title": "台鐵12月29日起時刻微調81列次　平日早上加開樹林往七堵區間快車",
-      "summary": "據中央社報導台鐵公司新聞稿，台鐵自2026年12月29日起調整81個列次的時刻，其中23列次變動5分鐘以上。週一到週五早上7時25分將增開一班由樹林開往七堵的1002次區間快車；彰化到三義之間每天增開2列次區間快車；六家線有28列次（含內灣線2列次）配合高鐵新竹站轉乘重新安排。台鐵表示新時刻可在官網與「台鐵e訂通」App查詢。",
-      "who": "搭乘台鐵北部、中部（山線）與六家線、內灣線的旅客。",
-      "what": "共81列次時刻調整（23列次變動5分鐘以上）；平日上午增開樹林→七堵1002次區間快車；彰化—三義每日增開區間快車2列次；部分列車增加停靠站或延長行駛。",
-      "when": "2026年12月29日起。",
-      "first_published": "2026-11-25T09:57:00+08:00",
-      "published": "2026-11-25T09:57:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "中央社",
-          "title": "台鐵時刻表12/29起微調影響81列次　週一至五通勤尖峰增1樹林七堵區間快車",
-          "url": "https://www.cna.com.tw/news/ahel/202611250039.aspx"
-        }
-      ]
-    },
-    {
-      "id": "tw-earthquake-taitung-115081-1125",
-      "tab": "tw",
-      "category": "安全",
-      "status": "完整版",
-      "title": "臺東東南部海域規模5.5地震　蘭嶼最大震度4級",
-      "summary": "中央氣象署第081號地震資訊：11月25日下午4點47分，臺灣東南部海域發生芮氏規模5.5地震，震央在臺東縣政府南南東方101.9公里，深度16.7公里。臺東縣蘭嶼測得最大震度4級，屏東縣恆春、鵝鑾鼻、滿州與高雄市旗山2級，臺東其他地區及多個縣市1級。氣象署表示這起地震預估達災防告警（PWS）發送門檻，範圍為臺東縣。",
-      "who": "臺東縣（特別是蘭嶼）、屏東縣南部與高雄市部分地區的民眾。",
-      "what": "各地震度：臺東縣最大4級（蘭嶼），屏東縣與高雄市最大2級，雲林、嘉義、臺南、花蓮、南投等地最大1級。原報導未載明災損。",
-      "when": "2026年11月25日16時47分17秒（台灣時間）。",
-      "first_published": "2026-11-25T16:47:17+08:00",
-      "published": "2026-11-25T16:47:17+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "中央氣象署",
-          "title": "地震資訊 第081號",
-          "url": "https://scweb.cwa.gov.tw/zh-tw/earthquake/details/2026081"
         }
       ]
     }
