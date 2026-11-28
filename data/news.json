@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T17:06:18+08:00",
+  "updated": "2026-11-28T17:08:31+08:00",
   "categories": [
     "政治",
     "財經",
@@ -9,6 +9,69 @@
     "安全"
   ],
   "items": [
+    {
+      "id": "tw-election-return-extra-trains-1129",
+      "tab": "tw",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "選後返程疏運　高鐵11月29日再加開8班全車自由座、台鐵加開彰化往七堵區間快",
+      "summary": "據中央社報導，台灣高鐵11月28日表示，11月29日再加開8班全車自由座列車（商務車廂除外），南下3班、北上5班，其中南港與台中間往返各2班，另有1班北上8826次由台南站發車。高鐵統計，選舉疏運期間總計加開79班，29日北上列車超過100班，呼籲自由座旅客分流。台鐵公司同日表示，29日加開區間快6402次，下午2時45分由彰化出發，傍晚6時12分到台北，晚間6時49分抵七堵，時刻可在台鐵官網與「台鐵e訂通」App查詢。",
+      "who": "11月29日搭高鐵自由座或台鐵西部幹線北上的旅客。",
+      "what": "高鐵加開8班全車自由座（南下3、北上5）；台鐵加開區間快6402次彰化→七堵（據中央社引述兩家公司）。",
+      "when": "2026年11月29日。",
+      "first_published": "2026-11-28T17:15:00+08:00",
+      "published": "2026-11-28T17:15:00+08:00",
+      "updated": null,
+      "valid_until": "2026-11-29",
+      "sources": [
+        {
+          "name": "中央社",
+          "title": "高鐵加強疏運返鄉投票人潮　29日加開8班全車自由座",
+          "url": "https://www.cna.com.tw/news/ahel/202611280081.aspx"
+        },
+        {
+          "name": "中央社",
+          "title": "選後返工免擠車 台鐵29日下午再加開一列次區間快助疏運",
+          "url": "https://www.cna.com.tw/news/ahel/202611280073.aspx"
+        }
+      ],
+      "related": [
+        {
+          "id": "tw-thsr-free-seat-gate-control-1127"
+        }
+      ]
+    },
+    {
+      "id": "intl-norse-atlantic-bankruptcy-1127",
+      "tab": "intl",
+      "category": "生活",
+      "status": "快訊・初步資訊",
+      "title": "挪威Norse Atlantic航空11月27日聲請破產　取消所有後續航班",
+      "summary": "據英國衛報與中央社引述法新社報導，挪威低成本長程航空Norse Atlantic 11月27日向奧斯陸證券交易所提交文件，表示董事會決定聲請破產，所有後續航班取消、停止售票，英國子公司的航班也一併取消。公司在官網請旅客不要前往機場，並改向旅行社、訂票平台、保險公司或信用卡公司聯繫，客服電話、電子郵件與社群管道已停止服務。中央社報導，該公司稱12架波音787的租賃合約已被通知終止。兩家媒體均報導，燃油價格上漲是財務惡化原因之一。",
+      "who": "已訂Norse Atlantic（含英國子公司）航班的旅客與該公司員工。",
+      "what": "聲請破產；取消所有後續航班並停止售票；客服停止（據衛報）。",
+      "when": "2026年11月27日宣布。",
+      "first_published": "2026-11-28T17:15:00+08:00",
+      "published": "2026-11-28T17:15:00+08:00",
+      "updated": null,
+      "sources": [
+        {
+          "name": "The Guardian",
+          "title": "Norse Atlantic Airways files for bankruptcy and cancels all future flights",
+          "url": "https://www.theguardian.com/business/2026/nov/27/norse-atlantic-airways-files-for-bankruptcy-cancels-all-future-flights"
+        },
+        {
+          "name": "中央社",
+          "title": "不堪燃料價格大漲再倒1家　挪威北歐大西洋航空聲請破產",
+          "url": "https://www.cna.com.tw/news/aopl/202611270285.aspx"
+        }
+      ],
+      "related": [
+        {
+          "id": "intl-norse-atlantic-suspend-1126"
+        }
+      ]
+    },
     {
       "id": "tw-civil-servant-childcare-leave-0101",
       "tab": "tw",
@@ -65,27 +128,6 @@
       ]
     },
     {
-      "id": "intl-norse-atlantic-suspend-1126",
-      "tab": "intl",
-      "category": "生活",
-      "status": "快訊・初步資訊",
-      "title": "挪威廉價長程航空Norse Atlantic暫停所有航班　稱找不到解方將申請破產",
-      "summary": "據BBC報導，挪威低成本長程航空公司Norse Atlantic 11月26日暫停全部航班，表示公司財務情況危急，若無法解決打算申請破產。該公司以12架波音787飛行倫敦蓋威克、羅馬、奧斯陸等歐洲機場的長程航線，原本有倫敦飛奧蘭多、開普敦、曼谷、普吉的班次。向它租用飛機與機組的巴基斯坦國際航空也取消部分英國航班。英國消費者團體Which?建議旅客先不要自行取消機票，以免失去退款權利。",
-      "who": "已訂Norse Atlantic航班的旅客，以及部分巴基斯坦國際航空英國航線旅客。",
-      "what": "暫停全部航班；公司表示若無解方將申請破產（據BBC）。",
-      "when": "2026年11月26日起暫停。",
-      "first_published": "2026-11-27T17:20:00+08:00",
-      "published": "2026-11-27T17:20:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "BBC Business",
-          "title": "Norse Atlantic suspends all flights as it faces potential collapse",
-          "url": "https://www.bbc.co.uk/news/articles/c9kgmd0ldy0lo"
-        }
-      ]
-    },
-    {
       "id": "intl-australia-lng-reserve-law-1127",
       "tab": "intl",
       "category": "財經",
@@ -103,98 +145,6 @@
           "name": "Straits Times Asia",
           "title": "Australia clears law requiring LNG exporters to keep 20% for domestic use",
           "url": "https://www.straitstimes.com/asia/australianz/australian-parliament-passes-government-plan-to-reserve-20-of-lng-for-domestic-market"
-        }
-      ]
-    },
-    {
-      "id": "tw-ezway-nhi-card-verify-1203",
-      "tab": "tw",
-      "category": "生活",
-      "status": "完整版",
-      "title": "EZ WAY易利委App 12月3日起擴大健保卡插卡驗證　原簡訊認證用戶將陸續通知補驗",
-      "summary": "財政部關務署11月25日發布：為防止個資被冒用註冊、冒名進口貨物，關貿網路公司營運的「EZ WAY易利委」報關App，自2026年12月3日起，用晶片居留證並以簡訊認證註冊的外籍人士，須以實體健保卡插卡驗證後才能使用。過去以簡訊認證的國人與外籍用戶，也會分批收到App推播，依指示補做驗證即可繼續使用；以電信認證或自然人憑證註冊的人不受影響。國人以簡訊新註冊，自2025年10月28日起已須插卡驗證。辦理需實體健保卡、電腦和讀卡機，可借親友設備、利用公立圖書館等場所，或到關務署1樓服務中心操作。",
-      "who": "使用EZ WAY易利委App的民眾，特別是以簡訊認證註冊的國人與外籍人士（含持晶片居留證者）。",
-      "what": "外籍簡訊認證新註冊者須插健保卡驗證才能使用；原簡訊認證用戶分批收到推播後補驗證；電信認證、自然人憑證註冊者不受影響（據財政部關務署）。",
-      "when": "2026年12月3日起；原有用戶依App推播通知分批辦理。",
-      "first_published": "2026-11-26T17:20:00+08:00",
-      "published": "2026-11-26T17:20:00+08:00",
-      "updated": null,
-      "valid_until": "2026-12-03",
-      "evergreen": true,
-      "sources": [
-        {
-          "name": "財政部",
-          "title": "防冒名、護個資！EZ WAY APP 12月3日起擴大實施健保卡實體驗證措施",
-          "url": "https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=30093dc183e141bd866b7b4558a8e021"
-        }
-      ]
-    },
-    {
-      "id": "tw-thsr-free-seat-gate-control-1127",
-      "tab": "tw",
-      "category": "生活",
-      "status": "快訊・初步資訊",
-      "title": "高鐵11月27日傍晚南港、台北、板橋站自由座進站管制　28日上午加開全車自由座列車",
-      "summary": "據中央社引述台灣高鐵新聞稿，高鐵預估11月27日下午5時到晚上8時，南港、台北、板橋3站自由座旅客會非常多，屆時自由座旅客改為每開放進站10分鐘、暫停5分鐘，實際依現場調整，對號座旅客不受影響。高鐵估計這段時間自由座要排隊至少45分鐘到1小時，人太多時可能評估限縮自由座銷售。11月27日晚間與28日上午共安排20班全車自由座列車（商務車廂除外），其中28日中午前有8班。11月27日至30日共加開71班。高鐵建議台北站旅客優先走地下1樓閘門。",
-      "who": "11月27日傍晚從南港、台北、板橋站搭高鐵自由座的旅客。",
-      "what": "自由座進站管制（開放10分鐘、管制5分鐘）；預估排隊45分鐘至1小時；27日晚間與28日上午共20班全車自由座列車（據台灣高鐵）。",
-      "when": "2026年11月27日下午5時至晚上8時（依現場狀況可能提前或延長）。",
-      "first_published": "2026-11-26T17:20:00+08:00",
-      "published": "2026-11-26T17:20:00+08:00",
-      "updated": null,
-      "valid_until": "2026-11-27T20:00:00+08:00",
-      "sources": [
-        {
-          "name": "中央社",
-          "title": "高鐵27日超尖峰3站推自由座進站管制　籲分流搭乘",
-          "url": "https://www.cna.com.tw/news/ahel/202611260125.aspx"
-        }
-      ]
-    },
-    {
-      "id": "tw-us301-overcapacity-tariff-proposal-1126",
-      "tab": "tw",
-      "category": "財經",
-      "status": "快訊・初步資訊",
-      "title": "擬議中：美國301產能過剩調查建議對台關稅15%不疊加　2027年1月5日前徵詢意見",
-      "summary": "擬議中：行政院表示，美國貿易代表署（USTR）在美東時間11月25日公布「結構性產能過剩」301調查報告，對14個經濟體提出建議關稅，台灣、日本、韓國、歐盟、瑞士等建議稅率為「15%不疊加MFN」，屬最低級別。這是建議措施，還要經過2027年1月5日前的公眾意見徵詢、1月25日起的公聽會，完成法定程序才定案。定案前，台灣輸美的傳統工業與農業產品仍適用強迫勞動301關稅「10%不疊加MFN」。報告也列出替代擬議稅率25%；行政院表示確信會維持15%。",
-      "who": "輸美的台灣傳統工業與農業產品業者。",
-      "what": "USTR建議對台稅率15%不疊加MFN（據行政院）；定案前續用10%不疊加MFN；替代擬議稅率25%。",
-      "when": "建議於美東時間2026年11月25日公布；意見徵詢至2027年1月5日，1月25日起公聽會；尚未定案。",
-      "first_published": "2026-11-26T17:20:00+08:00",
-      "published": "2026-11-26T17:20:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "行政院",
-          "title": "美方公布14國「結構性產能過剩」301調查報告 我301關稅建議稅率為最低級別「15%不疊加」",
-          "url": "https://www.ey.gov.tw/Page/9277F759E41CCD91//97a9d396-29cb-4da9-920f-832331d1e8f6"
-        },
-        {
-          "name": "中央社",
-          "title": "301台灣關稅15%不疊加　何時實施？ART是否重簽？政院關鍵問答統整",
-          "url": "https://www.cna.com.tw/news/aipl/202611260088.aspx"
-        }
-      ]
-    },
-    {
-      "id": "intl-bok-rate-hike-1126",
-      "tab": "intl",
-      "category": "財經",
-      "status": "快訊・初步資訊",
-      "title": "韓國央行升息至3.25%　2027年成長預測上修為4.1%",
-      "summary": "據韓聯社報導，韓國央行（BOK）貨幣政策委員會11月26日把基準利率調高到3.25%，是2024年10月以來最高。央行7、8月曾連續升息，10月維持不變。委員會聲明指出，國內成長走強、通膨預計會在相當長的時間高於目標，金融穩定風險仍在。央行預估2026年經濟成長3.9%、2027年4.1%。兩名委員主張維持3%，投下反對票。",
-      "who": "韓國的貸款戶、存款戶與企業。",
-      "what": "基準利率升至3.25%；2027年成長預測4.1%、2026年3.9%（據韓國央行，經韓聯社報導）。",
-      "when": "2026年11月26日決議。",
-      "first_published": "2026-11-26T17:20:00+08:00",
-      "published": "2026-11-26T17:20:00+08:00",
-      "updated": null,
-      "sources": [
-        {
-          "name": "Yonhap",
-          "title": "(3rd LD) BOK raises key rate to 3.25 pct amid strong growth, inflation, revises up 2027 forecast to 4.1 pct",
-          "url": "https://en.yna.co.kr/view/AEN20261126001253320"
         }
       ]
     }
